@@ -4,4 +4,3 @@ Learn how to use Github.
 - Thai Ly Han
 - Nguyen Tuan Phat
 - Nguyen Hoang Linh
-
