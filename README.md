@@ -1,2 +1,2 @@
 # MockProject_062026_NhomAI
-Hoang Minh
+Learn how to use Github.
