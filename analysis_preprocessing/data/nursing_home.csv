@@ -1,0 +1,8 @@
+Resident_ID,Age,Braden_Score,ADL_Score,Cognitive_Status,Gender,Fall_Risk
+1001,82,14,12,Mild,Female,Low
+1002,75,,8,Normal,Male,Low
+1003,,11,18,Severe,Female,High
+1004,91,12,15,,Male,High
+1005,68,19,6,Normal,Male,Low
+1006,85,15,,Mild,Female,Low
+1007,79,9,20,Severe,,High
