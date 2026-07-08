@@ -25,8 +25,8 @@ for folder in sorted(os.listdir(ROOT_DIR)):
     if not os.path.isdir(folder_path):
         continue
 
-    """if not folder.startswith(("1_", "2_", "3_")):
-        continue"""
+    if not folder.startswith(("1_", "2_", "3_")):
+        continue
 
     # Bỏ tiền tố số, ví dụ:
     # 1_CancerGov_QA -> CancerGov_QA
