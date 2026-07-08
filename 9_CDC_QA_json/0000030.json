@@ -1,0 +1,27 @@
+[
+	{
+		"question": "What is (are) Parasites - Ascariasis ?",
+		"answer": "Ascaris is an intestinal parasite of humans. It is the most common human worm infection. The larvae and adult worms live in the small intestine and can cause intestinal disease.",
+		"source": "MedQuAD/9_CDC_QA"
+	},
+	{
+		"question": "Who is at risk for Parasites - Ascariasis? ?",
+		"answer": "Ascaris infection is one of the most common intestinal worm infections. It is found in association with poor personal hygiene, poor sanitation, and in places where human feces are used as fertilizer.\n    Geographic Distribution\n    \nThe geographic distributions of Ascaris are worldwide in areas with warm, moist climates and are widely overlapping. Infection occurs worldwide and is most common in tropical and subtropical areas where sanitation and hygiene are poor.",
+		"source": "MedQuAD/9_CDC_QA"
+	},
+	{
+		"question": "How to diagnose Parasites - Ascariasis ?",
+		"answer": "The standard method for diagnosing ascariasis is by identifying Ascaris eggs in a stool sample using a microscope. Because eggs may be difficult to find in light infections, a concentration procedure is recommended.",
+		"source": "MedQuAD/9_CDC_QA"
+	},
+	{
+		"question": "What are the treatments for Parasites - Ascariasis ?",
+		"answer": "Anthelminthic medications (drugs that rid the body of parasitic worms), such as albendazole and mebendazole, are the drugs of choice for treatment of Ascaris infections. Infections are generally treated for 1-3 days. The drugs are effective and appear to have few side effects.\n    \nMore on: Resources for Health Professionals: Treatment",
+		"source": "MedQuAD/9_CDC_QA"
+	},
+	{
+		"question": "How to prevent Parasites - Ascariasis ?",
+		"answer": "The best way to prevent ascariasis is to always:\n    \n     - Avoid ingesting soil that may be contaminated with human feces, including where human fecal matter (\"night soil\") or wastewater is used to fertilize crops.\n     - Wash your hands with soap and warm water before handling food.\n     - Teach children the importance of washing hands to prevent infection.\n     - Wash, peel, or cook all raw vegetables and fruits before eating, particularly those that have been grown in soil that has been fertilized with manure.\n    \n    \nMore on: Handwashing\n    \nTransmission of infection to others can be prevented by\n    \n     - Not defecating outdoors.\n     - Effective sewage disposal systems.\n    \n    \nMore on: Handwashing",
+		"source": "MedQuAD/9_CDC_QA"
+	}
+]
