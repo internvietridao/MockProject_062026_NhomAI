@@ -21,7 +21,7 @@ train/
 ├── .gitignore                # Cấu hình ẩn các file cache, checkpoints, và token bảo mật
 ├── requirements.txt          # Danh sách thư viện Python cần thiết
 ├── KAGGLE_NOTEBOOK.md        # Hướng dẫn copy-paste code chạy trên Kaggle
-└── README.md                 # Tài liệu hướng dẫn này
+└── README.md                 
 ```
 
 ---

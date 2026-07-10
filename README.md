@@ -7,12 +7,10 @@ Hệ thống AI Chatbot chuyên biệt hỗ trợ quản lý viện dưỡng lã
 ## 📂 Tổng quan cấu trúc thư mục dự án
 
 ```
-MockProject_062026_NhomAI/
-├── data_raw/               # Chứa toàn bộ dữ liệu y tế gốc (MedQuAD XML)
 ├── analysis_preprocessing/ # Thư mục xử lý và chuẩn hóa dữ liệu từ XML sang JSON
 ├── data_clean/             # Chứa dữ liệu sạch cuối cùng đã chuẩn hóa (Fine-tune JSON & RAG Markdown)
 ├── train/                  # Component cấu hình, mã nguồn huấn luyện model LLM (QLoRA)
-└── README.md               # Tài liệu hướng dẫn cấp cao
+└── README.md               
 ```
 
 *Lưu ý: Bên trong mỗi thư mục con ở trên đều có file `README.md` riêng biệt mô tả chi tiết cấu trúc file, script vận hành và hướng dẫn chạy cho module đó.*

@@ -1,6 +1,7 @@
 # ── Thư mục không đẩy lên GitHub ──
 .agent/
 document/
+data_raw/
 
 # ── Python cache & IDE ──
 __pycache__/
