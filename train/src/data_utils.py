@@ -78,7 +78,6 @@ def preprocess_dataset(
     print(f"[DATA] Đã load {len(raw_data)} mẫu từ {data_cfg.dataset_path}")
     dataset = Dataset.from_list(raw_data)
 
-    # Chia tách lần 1: Train vs Temp (Validation + Test) phân tầng theo source
     first_split = dataset.train_test_split(
         test_size=1.0 - data_cfg.train_split_ratio,
         seed=data_cfg.seed,
@@ -98,7 +97,6 @@ def preprocess_dataset(
             f"so với train_split_ratio ({data_cfg.train_split_ratio})."
         )
 
-    # Chia tách lần 2: Validation vs Test phân tầng theo source từ tập Temp
     second_split = temp_dataset.train_test_split(
         test_size=1.0 - val_relative_ratio,
         seed=data_cfg.seed,

@@ -16,56 +16,36 @@ import torch
 from datasets import Dataset
 from transformers import PreTrainedTokenizer
 
-
-# Đảm bảo nltk punkt tokenizer đã tải (cần cho BLEU)
 try:
     nltk.data.find("tokenizers/punkt_tab")
 except LookupError:
     nltk.download("punkt_tab", quiet=True)
 
-
-# Load metrics một lần duy nhất (tránh reload mỗi evaluation step)
 _rouge_metric = evaluate.load("rouge")
 _bleu_metric = evaluate.load("bleu")
 
 
 def compute_perplexity(eval_loss: float) -> float:
-    """Tính perplexity từ eval loss. Perplexity = exp(loss)."""
     return math.exp(eval_loss) if eval_loss < 100 else float("inf")
 
 
 def build_compute_metrics(tokenizer: PreTrainedTokenizer):
-    """
-    Tạo hàm compute_metrics cho Trainer callback.
-
-    SFTTrainer truyền logits (không phải generated text).
-    Hàm này decode argmax(logits) → text rồi tính ROUGE/BLEU.
-    Chi phí decode lớn — nên cấu hình eval_steps hợp lý.
-    """
-
     def compute_metrics(eval_preds) -> Dict[str, float]:
         logits, labels = eval_preds
 
-        # Xử lý trường hợp logits là tuple (một số model trả về tuple)
         if isinstance(logits, tuple):
             logits = logits[0]
 
-        # Lấy token có xác suất cao nhất từ logits
         predictions = np.argmax(logits, axis=-1)
-
-        # Thay -100 (ignored tokens) bằng pad_token_id để decode
         labels = np.where(labels != -100, labels, tokenizer.pad_token_id)
         predictions = np.where(labels != -100, predictions, tokenizer.pad_token_id)
 
-        # Decode sang text
         decoded_preds = tokenizer.batch_decode(predictions, skip_special_tokens=True)
         decoded_labels = tokenizer.batch_decode(labels, skip_special_tokens=True)
 
-        # Trim khoảng trắng
         decoded_preds = [pred.strip() for pred in decoded_preds]
         decoded_labels = [label.strip() for label in decoded_labels]
 
-        # Lọc bỏ các cặp rỗng (tránh lỗi metrics)
         valid_pairs = [
             (p, l) for p, l in zip(decoded_preds, decoded_labels)
             if p and l
@@ -75,14 +55,12 @@ def build_compute_metrics(tokenizer: PreTrainedTokenizer):
 
         valid_preds, valid_labels = zip(*valid_pairs)
 
-        # Tính ROUGE
         rouge_results = _rouge_metric.compute(
             predictions=list(valid_preds),
             references=list(valid_labels),
             use_stemmer=True,
         )
 
-        # Tính BLEU (tokenize từ bằng nltk)
         bleu_preds = [nltk.word_tokenize(p) for p in valid_preds]
         bleu_refs = [[nltk.word_tokenize(r)] for r in valid_labels]
 
@@ -142,7 +120,6 @@ def save_predictions_csv(
         question = example["question"]
         reference = example["answer"]
 
-        # Tạo prompt (chỉ phần instruction — không có answer)
         if prompt_style == "chatml":
             prompt = (
                 f"<|im_start|>system\n{system_prompt}<|im_end|>\n"
@@ -156,22 +133,19 @@ def save_predictions_csv(
                 f"### Response:\n"
             )
 
-        # Tokenize và sinh câu trả lời
         inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
 
         with torch.no_grad():
             outputs = model.generate(
                 **inputs,
                 max_new_tokens=max_new_tokens,
-                do_sample=False,  # Greedy decoding — kết quả nhất quán
+                do_sample=False,  
                 pad_token_id=tokenizer.pad_token_id,
             )
 
-        # Decode chỉ phần sinh mới (bỏ prompt)
         generated_ids = outputs[0][inputs["input_ids"].shape[1]:]
         prediction = tokenizer.decode(generated_ids, skip_special_tokens=True).strip()
 
-        # Tính metrics cho từng mẫu
         rouge_scores = _rouge_metric.compute(
             predictions=[prediction],
             references=[reference],
@@ -198,15 +172,11 @@ def save_predictions_csv(
             "bleu": round(bleu_score, 4),
         })
 
-        # Log tiến trình mỗi 10 mẫu
         if (i + 1) % 10 == 0:
             print(f"[EVAL] Đã inference {i + 1}/{num_samples} mẫu...")
 
-    # Lưu CSV
     df = pd.DataFrame(results)
     df.to_csv(output_path, index=False, encoding="utf-8")
-
-    # In thống kê tổng hợp
     print(f"\n{'=' * 60}")
     print(f"[KẾT QUẢ] Đã lưu {len(results)} mẫu → {output_path}")
     print(f"  ROUGE-1 (avg): {df['rouge1'].mean():.4f}")

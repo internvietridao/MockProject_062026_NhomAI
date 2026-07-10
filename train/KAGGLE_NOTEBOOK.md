@@ -8,7 +8,7 @@
 ## Cell 1 (Markdown) — Tiêu đề
 
 ```markdown
-# 🏥 Nursing Home AI Chatbot — LLM Fine-tuning Pipeline
+# Nursing Home AI Chatbot — LLM Fine-tuning Pipeline
 
 Fine-tune mô hình LLM (Llama, Mistral, Gemma...) trên bộ dữ liệu y tế chuyên ngành
 Nursing Home bằng QLoRA 4-bit. Pipeline tự động hóa hoàn toàn từ data → train → evaluate → upload.
@@ -21,8 +21,8 @@ Nursing Home bằng QLoRA 4-bit. Pipeline tự động hóa hoàn toàn từ dat
 ## Cell 2 (Code) — Clone repo & cài thư viện
 
 ```python
-# Clone repository từ GitHub
-!git clone https://github.com/<YOUR_USERNAME>/MockProject_062026_NhomAI.git /kaggle/working/project
+# Clone repository từ GitHub với nhánh cụ thể
+!git clone -b TangTheToan https://github.com/internvietridao/MockProject_062026_NhomAI.git /kaggle/working/project
 
 # Di chuyển vào thư mục train
 %cd /kaggle/working/project/train
@@ -30,8 +30,6 @@ Nursing Home bằng QLoRA 4-bit. Pipeline tự động hóa hoàn toàn từ dat
 # Cài đặt thư viện từ requirements.txt
 !pip install -q -r requirements.txt
 ```
-
-> **Lưu ý:** Thay `<YOUR_USERNAME>` bằng GitHub username thật của bạn.
 
 ---
 

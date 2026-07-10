@@ -2,7 +2,6 @@
 train.py — File thực thi chính (Main Script) cho LLM Fine-tuning Pipeline.
 
 Kết nối tất cả module: config → data → model → training → evaluation → upload.
-Chạy: cd train && python src/train.py
 """
 
 import os
@@ -11,7 +10,6 @@ import sys
 from dotenv import load_dotenv
 from trl import SFTTrainer, SFTConfig
 
-# Thêm thư mục 'train/' vào sys.path để import từ src.*
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from src.config import ModelConfig, LoraConfig as AppLoraConfig, DataConfig, TrainConfig
@@ -21,13 +19,9 @@ from src.evaluation import save_predictions_csv, compute_perplexity
 
 
 def main():
-    """Luồng thực thi chính của Fine-tuning Pipeline."""
-
-    # ── Bước 1: Load biến môi trường từ file .env ──
     load_dotenv()
     print("[1/8] Đã load biến môi trường từ .env")
 
-    # ── Bước 2: Khởi tạo cấu hình ──
     model_cfg = ModelConfig()
     lora_cfg = AppLoraConfig()
     data_cfg = DataConfig()
@@ -43,19 +37,15 @@ def main():
     print(f"  Batch Size:  {train_cfg.per_device_train_batch_size} x {train_cfg.gradient_accumulation_steps} (effective: {effective_batch})")
     print(f"  Push to Hub: {train_cfg.push_to_hub}")
 
-    # ── Bước 3: Load tokenizer ──
     tokenizer = load_tokenizer(model_cfg.model_id)
     print(f"[3/8] Tokenizer loaded: vocab_size={tokenizer.vocab_size}, pad_token='{tokenizer.pad_token}'")
 
-    # ── Bước 4: Chuẩn bị dataset ──
     train_dataset, val_dataset, test_dataset = preprocess_dataset(data_cfg, tokenizer)
     print(f"[4/8] Dataset: train={len(train_dataset)}, val={len(val_dataset)}, test={len(test_dataset)}")
 
-    # ── Bước 5: Load model + PEFT/LoRA ──
     model = load_model_with_peft(model_cfg, lora_cfg, tokenizer)
     print("[5/8] Model loaded với QLoRA 4-bit + PEFT adapter")
 
-    # ── Bước 6: Cấu hình SFTConfig + khởi tạo Trainer ──
     sft_config = SFTConfig(
         output_dir=train_cfg.output_dir,
         num_train_epochs=train_cfg.num_train_epochs,
@@ -85,15 +75,12 @@ def main():
         load_best_model_at_end=True,
         metric_for_best_model="eval_loss",
         greater_is_better=False,
-        # Tham số SFT-specific
         max_seq_length=data_cfg.max_seq_length,
-        packing=False,  # Không pack nhiều samples vào 1 sequence
+        packing=False,  
     )
 
-    # Tạo formatting function cho SFTTrainer
     formatting_func = get_formatting_func(data_cfg.prompt_style, data_cfg.system_prompt)
 
-    # Khởi tạo SFTTrainer
     trainer = SFTTrainer(
         model=model,
         args=sft_config,
@@ -105,14 +92,12 @@ def main():
 
     print("[6/8] SFTTrainer khởi tạo thành công")
 
-    # ── Bước 7: Training ──
     print(f"\n{'=' * 60}")
     print("  BẮT ĐẦU TRAINING")
     print(f"{'=' * 60}\n")
 
     train_result = trainer.train()
 
-    # Log training metrics
     metrics = train_result.metrics
     train_loss = metrics.get("train_loss", 0)
     perplexity = compute_perplexity(train_loss)
@@ -122,18 +107,14 @@ def main():
     print(f"  Perplexity:   {perplexity:.4f}")
     print(f"  Runtime:      {metrics.get('train_runtime', 0):.0f}s")
 
-    # Lưu adapter cục bộ
     trainer.save_model(train_cfg.output_dir)
     tokenizer.save_pretrained(train_cfg.output_dir)
     print(f"  Adapter saved → {train_cfg.output_dir}/")
-
-    # Push to Hugging Face Hub (nếu enabled)
     if train_cfg.push_to_hub:
         print("\n[UPLOAD] Đang push adapter lên Hugging Face Hub...")
         trainer.push_to_hub()
         print(f"[UPLOAD] Hoàn tất! Model ID: {train_cfg.hub_model_id}")
 
-    # ── Bước 8: Evaluation — Inference trên test set ──
     eval_csv_path = os.path.join(train_cfg.output_dir, "evaluation_results.csv")
     print(f"\n[8/8] Chạy inference trên tập test để tính ROUGE/BLEU...")
 
@@ -145,11 +126,6 @@ def main():
         system_prompt=data_cfg.system_prompt,
         prompt_style=data_cfg.prompt_style,
     )
-
-    print(f"\n{'=' * 60}")
-    print("  PIPELINE HOÀN TẤT THÀNH CÔNG!")
-    print(f"{'=' * 60}")
-
 
 if __name__ == "__main__":
     main()
