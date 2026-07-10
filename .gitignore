@@ -1,0 +1,13 @@
+# ── Thư mục không đẩy lên GitHub ──
+.agent/
+document/
+
+# ── Python cache & IDE ──
+__pycache__/
+*.py[cod]
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db

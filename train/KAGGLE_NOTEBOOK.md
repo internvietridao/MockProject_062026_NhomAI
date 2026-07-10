@@ -21,7 +21,7 @@ Nursing Home bằng QLoRA 4-bit. Pipeline tự động hóa hoàn toàn từ dat
 ## Cell 2 (Code) — Clone repo & cài thư viện
 
 ```python
-# Clone repository từ GitHub với nhánh cụ thể
+# Clone repository từ GitHub
 !git clone -b TangTheToan https://github.com/internvietridao/MockProject_062026_NhomAI.git /kaggle/working/project
 
 # Di chuyển vào thư mục train
@@ -46,17 +46,15 @@ from kaggle_secrets import UserSecretsClient
 
 secrets = UserSecretsClient()
 
-# Lấy token từ Kaggle Secrets
 hf_token = secrets.get_secret("HF_TOKEN")
 wandb_key = secrets.get_secret("WANDB_API_KEY") if "WANDB_API_KEY" in dir(secrets) else ""
 
-# Ghi file .env
 with open(".env", "w") as f:
     f.write(f"HF_TOKEN={hf_token}\n")
     if wandb_key:
         f.write(f"WANDB_API_KEY={wandb_key}\n")
 
-print("✅ File .env đã tạo thành công (token được ẩn)")
+print("File .env đã tạo thành công")
 ```
 
 ---
@@ -76,7 +74,7 @@ print("✅ File .env đã tạo thành công (token được ẩn)")
 # Hoặc giảm max_seq_length nếu OOM:
 # !sed -i 's/max_seq_length: int = 1024/max_seq_length: int = 512/g' src/config.py
 
-print("ℹ️ Cấu hình mặc định — bỏ comment các dòng trên nếu cần thay đổi")
+print("Cấu hình mặc định — bỏ comment các dòng trên nếu cần thay đổi")
 ```
 
 ---
@@ -95,18 +93,16 @@ print("ℹ️ Cấu hình mặc định — bỏ comment các dòng trên nếu 
 ```python
 import pandas as pd
 
-# Đọc file kết quả evaluation
 results = pd.read_csv("outputs/evaluation_results.csv")
 
 print(f"Tổng số mẫu đánh giá: {len(results)}")
-print(f"\n📊 Kết quả trung bình:")
+print(f"\nKết quả trung bình:")
 print(f"  ROUGE-1: {results['rouge1'].mean():.4f}")
 print(f"  ROUGE-2: {results['rouge2'].mean():.4f}")
 print(f"  ROUGE-L: {results['rougeL'].mean():.4f}")
 print(f"  BLEU:    {results['bleu'].mean():.4f}")
 
-# Xem 5 mẫu đầu tiên
-print(f"\n📝 Mẫu dự đoán:")
+print(f"\nMẫu dự đoán:")
 results.head()
 ```
 
@@ -115,11 +111,12 @@ results.head()
 ## Cell 7 (Code) — (Tùy chọn) Download adapter về máy local
 
 ```python
-# Nén adapter để download
-!zip -r /kaggle/working/lora_adapter.zip outputs/
+%cd /kaggle/working
+
+!zip -r lora_adapter.zip outputs/
 
 from IPython.display import FileLink
-FileLink("/kaggle/working/lora_adapter.zip")
+FileLink("lora_adapter.zip")
 ```
 
 ---
