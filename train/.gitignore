@@ -1,0 +1,45 @@
+# ==============================================================
+# .gitignore — Dự án Python / Deep Learning Fine-tuning
+# ==============================================================
+
+# ── Biến môi trường & bảo mật ──
+.env
+
+# ── Python cache ──
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+
+# ── Training outputs ──
+outputs/
+checkpoints/
+runs/
+wandb/
+
+# ── Evaluation results ──
+*.csv
+
+# ── Log files ──
+*.log
+nohup.out
+
+# ── Hugging Face & Pip cache ──
+.cache/
+~/.cache/huggingface/
+~/.cache/pip/
+
+# ── Jupyter Notebook checkpoints ──
+.ipynb_checkpoints/
+
+# ── IDE ──
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ── OS generated ──
+.DS_Store
+Thumbs.db
