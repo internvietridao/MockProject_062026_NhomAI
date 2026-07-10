@@ -48,8 +48,8 @@ def main():
     print(f"[3/8] Tokenizer loaded: vocab_size={tokenizer.vocab_size}, pad_token='{tokenizer.pad_token}'")
 
     # ── Bước 4: Chuẩn bị dataset ──
-    train_dataset, eval_dataset = preprocess_dataset(data_cfg, tokenizer)
-    print(f"[4/8] Dataset: train={len(train_dataset)}, eval={len(eval_dataset)}")
+    train_dataset, val_dataset, test_dataset = preprocess_dataset(data_cfg, tokenizer)
+    print(f"[4/8] Dataset: train={len(train_dataset)}, val={len(val_dataset)}, test={len(test_dataset)}")
 
     # ── Bước 5: Load model + PEFT/LoRA ──
     model = load_model_with_peft(model_cfg, lora_cfg, tokenizer)
@@ -98,7 +98,7 @@ def main():
         model=model,
         args=sft_config,
         train_dataset=train_dataset,
-        eval_dataset=eval_dataset,
+        eval_dataset=val_dataset,
         processing_class=tokenizer,
         formatting_func=formatting_func,
     )
@@ -135,12 +135,12 @@ def main():
 
     # ── Bước 8: Evaluation — Inference trên test set ──
     eval_csv_path = os.path.join(train_cfg.output_dir, "evaluation_results.csv")
-    print(f"\n[8/8] Chạy inference trên tập eval để tính ROUGE/BLEU...")
+    print(f"\n[8/8] Chạy inference trên tập test để tính ROUGE/BLEU...")
 
     save_predictions_csv(
         model=model,
         tokenizer=tokenizer,
-        dataset=eval_dataset,
+        dataset=test_dataset,
         output_path=eval_csv_path,
         system_prompt=data_cfg.system_prompt,
         prompt_style=data_cfg.prompt_style,
