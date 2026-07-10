@@ -1,0 +1,7156 @@
+[
+    {
+        "Data": {
+            "Physical Activity": 0.1,
+            "Age": 56,
+            "Sleep Duration": 4.9,
+            "Stress Level": 5,
+            "BMI": 23.15,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 1,
+            "Gender": "Other"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 9.8,
+            "Age": 69,
+            "Sleep Duration": 7.2,
+            "Stress Level": 8,
+            "BMI": 20.83,
+            "Chronic Disease": null,
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 3,
+            "Gender": "Male"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 7.3,
+            "Age": 60,
+            "Sleep Duration": 5.9,
+            "Stress Level": 8,
+            "BMI": 27.09,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 9,
+            "Gender": "Male"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 6.7,
+            "Age": 78,
+            "Sleep Duration": 8.4,
+            "Stress Level": 10,
+            "BMI": 23.87,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 18,
+            "Gender": "Other"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 9.5,
+            "Age": 56,
+            "Sleep Duration": 4.7,
+            "Stress Level": 6,
+            "BMI": 29.09,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 3,
+            "Gender": "Male"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 4.0,
+            "Age": 75,
+            "Sleep Duration": 6.7,
+            "Stress Level": 1,
+            "BMI": 17.55,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 1,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 6.6,
+            "Age": 70,
+            "Sleep Duration": 7.8,
+            "Stress Level": 10,
+            "BMI": 26.07,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 6,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 6.9,
+            "Age": 53,
+            "Sleep Duration": 3.7,
+            "Stress Level": 6,
+            "BMI": 26.33,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 16,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 1.2,
+            "Age": 57,
+            "Sleep Duration": 6.8,
+            "Stress Level": 7,
+            "BMI": 22.99,
+            "Chronic Disease": null,
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 8,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 2.2,
+            "Age": 70,
+            "Sleep Duration": 7.9,
+            "Stress Level": 10,
+            "BMI": 17.79,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 9,
+            "Gender": "Other"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 4.2,
+            "Age": 61,
+            "Sleep Duration": 6.4,
+            "Stress Level": 10,
+            "BMI": 24.07,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 12,
+            "Gender": "Other"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 1.7,
+            "Age": 55,
+            "Sleep Duration": 9.1,
+            "Stress Level": 3,
+            "BMI": 23.19,
+            "Chronic Disease": null,
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 9,
+            "Gender": "Other"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 7.6,
+            "Age": 77,
+            "Sleep Duration": 7.6,
+            "Stress Level": 8,
+            "BMI": 15.95,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 15,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.8,
+            "Age": 50,
+            "Sleep Duration": 6.2,
+            "Stress Level": 10,
+            "BMI": 22.6,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 16,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 1.0,
+            "Age": 75,
+            "Sleep Duration": 9.5,
+            "Stress Level": 1,
+            "BMI": 26.84,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 17,
+            "Gender": "Other"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 6.6,
+            "Age": 78,
+            "Sleep Duration": 9.4,
+            "Stress Level": 7,
+            "BMI": 24.34,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 2,
+            "Gender": "Male"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 6.0,
+            "Age": 61,
+            "Sleep Duration": 6.5,
+            "Stress Level": 7,
+            "BMI": 14.82,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 19,
+            "Gender": "Female"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 2.3,
+            "Age": 66,
+            "Sleep Duration": 4.9,
+            "Stress Level": 9,
+            "BMI": 30.4,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 14,
+            "Gender": "Female"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 8.3,
+            "Age": 76,
+            "Sleep Duration": 5.9,
+            "Stress Level": 2,
+            "BMI": 22.97,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 8,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 9.7,
+            "Age": 59,
+            "Sleep Duration": 4.9,
+            "Stress Level": 1,
+            "BMI": 18.85,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 18,
+            "Gender": "Male"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 2.3,
+            "Age": 77,
+            "Sleep Duration": 8.5,
+            "Stress Level": 9,
+            "BMI": 28.24,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 10,
+            "Gender": "Female"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 4.2,
+            "Age": 79,
+            "Sleep Duration": 6.9,
+            "Stress Level": 3,
+            "BMI": 31.55,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 17,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.5,
+            "Age": 79,
+            "Sleep Duration": 6.9,
+            "Stress Level": 4,
+            "BMI": 23.89,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 19,
+            "Gender": "Other"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.4,
+            "Age": 64,
+            "Sleep Duration": 7.8,
+            "Stress Level": 8,
+            "BMI": 19.27,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 12,
+            "Gender": "Other"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 5.7,
+            "Age": 79,
+            "Sleep Duration": 8.4,
+            "Stress Level": 4,
+            "BMI": 24.43,
+            "Chronic Disease": null,
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 7,
+            "Gender": "Female"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 3.9,
+            "Age": 68,
+            "Sleep Duration": 6.9,
+            "Stress Level": 9,
+            "BMI": 28.17,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 6,
+            "Gender": "Female"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.3,
+            "Age": 61,
+            "Sleep Duration": 9.8,
+            "Stress Level": 9,
+            "BMI": 18.86,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 16,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 5.8,
+            "Age": 72,
+            "Sleep Duration": 7.3,
+            "Stress Level": 6,
+            "BMI": 33.3,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 14,
+            "Gender": "Female"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.1,
+            "Age": 69,
+            "Sleep Duration": 6.5,
+            "Stress Level": 2,
+            "BMI": 29.49,
+            "Chronic Disease": null,
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 19,
+            "Gender": "Female"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 7.9,
+            "Age": 74,
+            "Sleep Duration": 4.6,
+            "Stress Level": 10,
+            "BMI": 23.97,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 14,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.4,
+            "Age": 54,
+            "Sleep Duration": 6.5,
+            "Stress Level": 9,
+            "BMI": 21.65,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 13,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 5.9,
+            "Age": 68,
+            "Sleep Duration": 8.4,
+            "Stress Level": 6,
+            "BMI": 25.37,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 4,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 2.8,
+            "Age": 56,
+            "Sleep Duration": 8.0,
+            "Stress Level": 1,
+            "BMI": 27.53,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 7,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 3.7,
+            "Age": 77,
+            "Sleep Duration": 7.1,
+            "Stress Level": 3,
+            "BMI": 28.54,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 0,
+            "Gender": "Other"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.5,
+            "Age": 67,
+            "Sleep Duration": 8.9,
+            "Stress Level": 5,
+            "BMI": 27.3,
+            "Chronic Disease": null,
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 15,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 4.3,
+            "Age": 75,
+            "Sleep Duration": 5.0,
+            "Stress Level": 1,
+            "BMI": 28.04,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 17,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 2.2,
+            "Age": 70,
+            "Sleep Duration": 7.6,
+            "Stress Level": 8,
+            "BMI": 31.25,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 17,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 1.0,
+            "Age": 64,
+            "Sleep Duration": 6.4,
+            "Stress Level": 2,
+            "BMI": 26.87,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 12,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 4.5,
+            "Age": 77,
+            "Sleep Duration": 8.4,
+            "Stress Level": 9,
+            "BMI": 21.21,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 13,
+            "Gender": "Female"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 8.7,
+            "Age": 61,
+            "Sleep Duration": 7.6,
+            "Stress Level": 8,
+            "BMI": 23.42,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 9,
+            "Gender": "Female"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.8,
+            "Age": 78,
+            "Sleep Duration": 6.6,
+            "Stress Level": 8,
+            "BMI": 21.3,
+            "Chronic Disease": null,
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 5,
+            "Gender": "Female"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 7.5,
+            "Age": 64,
+            "Sleep Duration": 7.8,
+            "Stress Level": 5,
+            "BMI": 17.04,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 13,
+            "Gender": "Female"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.5,
+            "Age": 52,
+            "Sleep Duration": 5.7,
+            "Stress Level": 4,
+            "BMI": 27.82,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 7,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 3.3,
+            "Age": 53,
+            "Sleep Duration": 6.1,
+            "Stress Level": 8,
+            "BMI": 23.62,
+            "Chronic Disease": null,
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 9,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 3.9,
+            "Age": 67,
+            "Sleep Duration": 6.1,
+            "Stress Level": 2,
+            "BMI": 24.87,
+            "Chronic Disease": null,
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 16,
+            "Gender": "Other"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 5.3,
+            "Age": 57,
+            "Sleep Duration": 6.9,
+            "Stress Level": 1,
+            "BMI": 24.13,
+            "Chronic Disease": null,
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 8,
+            "Gender": "Female"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 8.1,
+            "Age": 79,
+            "Sleep Duration": 7.3,
+            "Stress Level": 9,
+            "BMI": 22.52,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 6,
+            "Gender": "Male"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 1.5,
+            "Age": 71,
+            "Sleep Duration": 9.8,
+            "Stress Level": 9,
+            "BMI": 19.53,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 0,
+            "Gender": "Female"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 1.5,
+            "Age": 59,
+            "Sleep Duration": 7.1,
+            "Stress Level": 7,
+            "BMI": 26.86,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 4,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 3.6,
+            "Age": 71,
+            "Sleep Duration": 6.1,
+            "Stress Level": 1,
+            "BMI": 24.88,
+            "Chronic Disease": null,
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 17,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.3,
+            "Age": 61,
+            "Sleep Duration": 10.0,
+            "Stress Level": 3,
+            "BMI": 37.01,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 7,
+            "Gender": "Female"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 3.9,
+            "Age": 51,
+            "Sleep Duration": 8.9,
+            "Stress Level": 9,
+            "BMI": 24.89,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 3,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 1.9,
+            "Age": 79,
+            "Sleep Duration": 5.3,
+            "Stress Level": 9,
+            "BMI": 33.91,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 10,
+            "Gender": "Male"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 6.4,
+            "Age": 53,
+            "Sleep Duration": 7.5,
+            "Stress Level": 10,
+            "BMI": 20.62,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 4,
+            "Gender": "Male"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 9.0,
+            "Age": 65,
+            "Sleep Duration": 7.3,
+            "Stress Level": 7,
+            "BMI": 24.57,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 1,
+            "Gender": "Male"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 6.7,
+            "Age": 77,
+            "Sleep Duration": 9.0,
+            "Stress Level": 9,
+            "BMI": 29.94,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 10,
+            "Gender": "Other"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 8.3,
+            "Age": 74,
+            "Sleep Duration": 9.5,
+            "Stress Level": 6,
+            "BMI": 28.12,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 3,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 6.7,
+            "Age": 79,
+            "Sleep Duration": 11.7,
+            "Stress Level": 7,
+            "BMI": 22.53,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 14,
+            "Gender": "Other"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 8.2,
+            "Age": 57,
+            "Sleep Duration": 5.3,
+            "Stress Level": 2,
+            "BMI": 22.78,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 0,
+            "Gender": "Other"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 7.4,
+            "Age": 62,
+            "Sleep Duration": 7.8,
+            "Stress Level": 1,
+            "BMI": 34.06,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 5,
+            "Gender": "Other"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 6.7,
+            "Age": 64,
+            "Sleep Duration": 9.9,
+            "Stress Level": 6,
+            "BMI": 26.97,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 0,
+            "Gender": "Other"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 2.7,
+            "Age": 70,
+            "Sleep Duration": 5.8,
+            "Stress Level": 5,
+            "BMI": 28.41,
+            "Chronic Disease": null,
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 5,
+            "Gender": "Female"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 9.9,
+            "Age": 77,
+            "Sleep Duration": 8.1,
+            "Stress Level": 4,
+            "BMI": 29.75,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 16,
+            "Gender": "Other"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 9.8,
+            "Age": 77,
+            "Sleep Duration": 3.9,
+            "Stress Level": 4,
+            "BMI": 24.01,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 9,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 7.9,
+            "Age": 77,
+            "Sleep Duration": 7.0,
+            "Stress Level": 5,
+            "BMI": 31.59,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 17,
+            "Gender": "Female"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 6.6,
+            "Age": 62,
+            "Sleep Duration": 3.9,
+            "Stress Level": 8,
+            "BMI": 27.01,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 6,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 5.8,
+            "Age": 58,
+            "Sleep Duration": 6.5,
+            "Stress Level": 10,
+            "BMI": 35.91,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 2,
+            "Gender": "Female"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 4.7,
+            "Age": 62,
+            "Sleep Duration": 5.7,
+            "Stress Level": 4,
+            "BMI": 19.84,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 19,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 2.0,
+            "Age": 61,
+            "Sleep Duration": 6.1,
+            "Stress Level": 2,
+            "BMI": 28.77,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 11,
+            "Gender": "Female"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 5.6,
+            "Age": 68,
+            "Sleep Duration": 4.9,
+            "Stress Level": 2,
+            "BMI": 26.06,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 13,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 8.2,
+            "Age": 52,
+            "Sleep Duration": 6.9,
+            "Stress Level": 5,
+            "BMI": 29.66,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 13,
+            "Gender": "Male"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.4,
+            "Age": 52,
+            "Sleep Duration": 6.1,
+            "Stress Level": 1,
+            "BMI": 29.37,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 9,
+            "Gender": "Female"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 8.9,
+            "Age": 50,
+            "Sleep Duration": 6.3,
+            "Stress Level": 4,
+            "BMI": 15.68,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 16,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 9.9,
+            "Age": 76,
+            "Sleep Duration": 8.0,
+            "Stress Level": 4,
+            "BMI": 20.49,
+            "Chronic Disease": null,
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 9,
+            "Gender": "Male"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 2.1,
+            "Age": 59,
+            "Sleep Duration": 6.9,
+            "Stress Level": 7,
+            "BMI": 35.01,
+            "Chronic Disease": null,
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 15,
+            "Gender": "Male"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 7.7,
+            "Age": 56,
+            "Sleep Duration": 10.3,
+            "Stress Level": 9,
+            "BMI": 24.47,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 0,
+            "Gender": "Female"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 2.5,
+            "Age": 75,
+            "Sleep Duration": 4.9,
+            "Stress Level": 2,
+            "BMI": 33.9,
+            "Chronic Disease": null,
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 16,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 8.7,
+            "Age": 58,
+            "Sleep Duration": 4.2,
+            "Stress Level": 1,
+            "BMI": 16.84,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 8,
+            "Gender": "Other"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 3.2,
+            "Age": 51,
+            "Sleep Duration": 9.4,
+            "Stress Level": 1,
+            "BMI": 31.88,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 8,
+            "Gender": "Other"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 6.8,
+            "Age": 50,
+            "Sleep Duration": 8.2,
+            "Stress Level": 1,
+            "BMI": 28.89,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 4,
+            "Gender": "Male"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 5.9,
+            "Age": 65,
+            "Sleep Duration": 8.3,
+            "Stress Level": 5,
+            "BMI": 27.01,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 9,
+            "Gender": "Male"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 6.0,
+            "Age": 72,
+            "Sleep Duration": 4.9,
+            "Stress Level": 1,
+            "BMI": 21.57,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 16,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 5.8,
+            "Age": 79,
+            "Sleep Duration": 2.7,
+            "Stress Level": 1,
+            "BMI": 23.54,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 15,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 2.8,
+            "Age": 54,
+            "Sleep Duration": 8.4,
+            "Stress Level": 2,
+            "BMI": 24.75,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 8,
+            "Gender": "Male"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 7.7,
+            "Age": 52,
+            "Sleep Duration": 7.8,
+            "Stress Level": 10,
+            "BMI": 24.22,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 14,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 2.3,
+            "Age": 61,
+            "Sleep Duration": 6.7,
+            "Stress Level": 3,
+            "BMI": 30.31,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 4,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 6.9,
+            "Age": 57,
+            "Sleep Duration": 7.0,
+            "Stress Level": 1,
+            "BMI": 13.83,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 12,
+            "Gender": "Other"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 7.5,
+            "Age": 52,
+            "Sleep Duration": 8.1,
+            "Stress Level": 8,
+            "BMI": 26.6,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 14,
+            "Gender": "Female"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.6,
+            "Age": 52,
+            "Sleep Duration": 7.4,
+            "Stress Level": 2,
+            "BMI": 24.57,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 12,
+            "Gender": "Female"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 1.3,
+            "Age": 54,
+            "Sleep Duration": 8.4,
+            "Stress Level": 5,
+            "BMI": 29.04,
+            "Chronic Disease": null,
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 16,
+            "Gender": "Female"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 6.1,
+            "Age": 64,
+            "Sleep Duration": 6.4,
+            "Stress Level": 6,
+            "BMI": 18.77,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 7,
+            "Gender": "Male"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 9.3,
+            "Age": 72,
+            "Sleep Duration": 7.3,
+            "Stress Level": 1,
+            "BMI": 26.27,
+            "Chronic Disease": null,
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 0,
+            "Gender": "Other"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 4.7,
+            "Age": 56,
+            "Sleep Duration": 7.3,
+            "Stress Level": 4,
+            "BMI": 31.17,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 10,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 4.3,
+            "Age": 59,
+            "Sleep Duration": 6.6,
+            "Stress Level": 6,
+            "BMI": 31.11,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 18,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 5.5,
+            "Age": 77,
+            "Sleep Duration": 8.1,
+            "Stress Level": 7,
+            "BMI": 31.07,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 3,
+            "Gender": "Female"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 3.0,
+            "Age": 68,
+            "Sleep Duration": 5.6,
+            "Stress Level": 2,
+            "BMI": 26.81,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 8,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 9.7,
+            "Age": 56,
+            "Sleep Duration": 5.5,
+            "Stress Level": 6,
+            "BMI": 23.48,
+            "Chronic Disease": null,
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 10,
+            "Gender": "Male"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.5,
+            "Age": 66,
+            "Sleep Duration": 6.1,
+            "Stress Level": 6,
+            "BMI": 26.9,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 13,
+            "Gender": "Other"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 8.9,
+            "Age": 69,
+            "Sleep Duration": 7.3,
+            "Stress Level": 2,
+            "BMI": 23.37,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 6,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 5.8,
+            "Age": 78,
+            "Sleep Duration": 7.4,
+            "Stress Level": 2,
+            "BMI": 22.25,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 14,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.9,
+            "Age": 54,
+            "Sleep Duration": 5.9,
+            "Stress Level": 5,
+            "BMI": 19.83,
+            "Chronic Disease": null,
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 10,
+            "Gender": "Other"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 3.4,
+            "Age": 56,
+            "Sleep Duration": 6.8,
+            "Stress Level": 2,
+            "BMI": 27.24,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 14,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 9.2,
+            "Age": 62,
+            "Sleep Duration": 6.3,
+            "Stress Level": 5,
+            "BMI": 22.06,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 0,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 1.4,
+            "Age": 60,
+            "Sleep Duration": 6.5,
+            "Stress Level": 10,
+            "BMI": 25.7,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 18,
+            "Gender": "Male"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 2.9,
+            "Age": 53,
+            "Sleep Duration": 6.4,
+            "Stress Level": 2,
+            "BMI": 24.33,
+            "Chronic Disease": null,
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 9,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 7.9,
+            "Age": 76,
+            "Sleep Duration": 9.5,
+            "Stress Level": 4,
+            "BMI": 20.64,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 0,
+            "Gender": "Male"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 6.8,
+            "Age": 68,
+            "Sleep Duration": 4.1,
+            "Stress Level": 4,
+            "BMI": 27.02,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 17,
+            "Gender": "Female"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.0,
+            "Age": 59,
+            "Sleep Duration": 7.1,
+            "Stress Level": 2,
+            "BMI": 21.75,
+            "Chronic Disease": null,
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 0,
+            "Gender": "Female"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 2.7,
+            "Age": 62,
+            "Sleep Duration": 8.7,
+            "Stress Level": 10,
+            "BMI": 30.37,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 1,
+            "Gender": "Other"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 2.2,
+            "Age": 79,
+            "Sleep Duration": 6.4,
+            "Stress Level": 2,
+            "BMI": 24.18,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 15,
+            "Gender": "Male"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 6.6,
+            "Age": 74,
+            "Sleep Duration": 5.4,
+            "Stress Level": 10,
+            "BMI": 27.74,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 14,
+            "Gender": "Other"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 6.3,
+            "Age": 70,
+            "Sleep Duration": 9.1,
+            "Stress Level": 9,
+            "BMI": 20.41,
+            "Chronic Disease": null,
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 12,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 3.2,
+            "Age": 61,
+            "Sleep Duration": 5.5,
+            "Stress Level": 4,
+            "BMI": 26.54,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 16,
+            "Gender": "Female"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 6.7,
+            "Age": 61,
+            "Sleep Duration": 7.9,
+            "Stress Level": 6,
+            "BMI": 22.76,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 6,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 1.3,
+            "Age": 79,
+            "Sleep Duration": 7.1,
+            "Stress Level": 7,
+            "BMI": 27.25,
+            "Chronic Disease": null,
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 16,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 8.3,
+            "Age": 75,
+            "Sleep Duration": 5.8,
+            "Stress Level": 3,
+            "BMI": 28.34,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 6,
+            "Gender": "Male"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 9.2,
+            "Age": 72,
+            "Sleep Duration": 9.0,
+            "Stress Level": 3,
+            "BMI": 19.55,
+            "Chronic Disease": null,
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 16,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 4.0,
+            "Age": 56,
+            "Sleep Duration": 7.4,
+            "Stress Level": 9,
+            "BMI": 26.48,
+            "Chronic Disease": null,
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 16,
+            "Gender": "Female"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 7.3,
+            "Age": 79,
+            "Sleep Duration": 6.6,
+            "Stress Level": 8,
+            "BMI": 30.03,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 16,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 7.8,
+            "Age": 50,
+            "Sleep Duration": 9.0,
+            "Stress Level": 7,
+            "BMI": 23.74,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 10,
+            "Gender": "Female"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.0,
+            "Age": 74,
+            "Sleep Duration": 7.3,
+            "Stress Level": 8,
+            "BMI": 32.18,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 14,
+            "Gender": "Other"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 3.6,
+            "Age": 79,
+            "Sleep Duration": 5.8,
+            "Stress Level": 9,
+            "BMI": 26.78,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 15,
+            "Gender": "Other"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 2.5,
+            "Age": 74,
+            "Sleep Duration": 9.3,
+            "Stress Level": 3,
+            "BMI": 16.58,
+            "Chronic Disease": null,
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 8,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.1,
+            "Age": 69,
+            "Sleep Duration": 4.7,
+            "Stress Level": 10,
+            "BMI": 20.33,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 0,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 8.5,
+            "Age": 58,
+            "Sleep Duration": 6.4,
+            "Stress Level": 9,
+            "BMI": 27.85,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 8,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 5.7,
+            "Age": 56,
+            "Sleep Duration": 4.2,
+            "Stress Level": 7,
+            "BMI": 28.18,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 11,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 6.1,
+            "Age": 79,
+            "Sleep Duration": 8.4,
+            "Stress Level": 3,
+            "BMI": 18.61,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 18,
+            "Gender": "Male"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 3.9,
+            "Age": 54,
+            "Sleep Duration": 7.3,
+            "Stress Level": 9,
+            "BMI": 16.78,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 18,
+            "Gender": "Other"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 2.4,
+            "Age": 50,
+            "Sleep Duration": 7.5,
+            "Stress Level": 5,
+            "BMI": 20.57,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 1,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.9,
+            "Age": 68,
+            "Sleep Duration": 5.4,
+            "Stress Level": 6,
+            "BMI": 32.76,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 8,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 3.1,
+            "Age": 59,
+            "Sleep Duration": 5.7,
+            "Stress Level": 2,
+            "BMI": 17.24,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 12,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 1.0,
+            "Age": 61,
+            "Sleep Duration": 9.7,
+            "Stress Level": 8,
+            "BMI": 23.48,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 14,
+            "Gender": "Other"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 4.4,
+            "Age": 76,
+            "Sleep Duration": 6.6,
+            "Stress Level": 6,
+            "BMI": 25.85,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 13,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 5.3,
+            "Age": 71,
+            "Sleep Duration": 7.0,
+            "Stress Level": 6,
+            "BMI": 21.5,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 7,
+            "Gender": "Female"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 8.1,
+            "Age": 58,
+            "Sleep Duration": 6.4,
+            "Stress Level": 9,
+            "BMI": 21.59,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 1,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 3.3,
+            "Age": 69,
+            "Sleep Duration": 6.9,
+            "Stress Level": 1,
+            "BMI": 25.3,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 7,
+            "Gender": "Female"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 3.1,
+            "Age": 66,
+            "Sleep Duration": 7.5,
+            "Stress Level": 9,
+            "BMI": 30.63,
+            "Chronic Disease": null,
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 5,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 4.0,
+            "Age": 79,
+            "Sleep Duration": 8.3,
+            "Stress Level": 10,
+            "BMI": 22.73,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 11,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 6.7,
+            "Age": 66,
+            "Sleep Duration": 7.0,
+            "Stress Level": 7,
+            "BMI": 24.9,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 14,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 6.8,
+            "Age": 75,
+            "Sleep Duration": 7.9,
+            "Stress Level": 4,
+            "BMI": 19.22,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 7,
+            "Gender": "Other"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 3.2,
+            "Age": 69,
+            "Sleep Duration": 9.5,
+            "Stress Level": 3,
+            "BMI": 17.34,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 3,
+            "Gender": "Male"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 6.3,
+            "Age": 79,
+            "Sleep Duration": 7.5,
+            "Stress Level": 6,
+            "BMI": 15.88,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 19,
+            "Gender": "Female"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 1.3,
+            "Age": 56,
+            "Sleep Duration": 4.7,
+            "Stress Level": 1,
+            "BMI": 36.64,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 16,
+            "Gender": "Female"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 7.0,
+            "Age": 66,
+            "Sleep Duration": 6.9,
+            "Stress Level": 9,
+            "BMI": 27.88,
+            "Chronic Disease": null,
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 1,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 7.5,
+            "Age": 54,
+            "Sleep Duration": 6.2,
+            "Stress Level": 3,
+            "BMI": 23.74,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 12,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 8.7,
+            "Age": 66,
+            "Sleep Duration": 7.4,
+            "Stress Level": 2,
+            "BMI": 26.96,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 12,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 5.0,
+            "Age": 73,
+            "Sleep Duration": 6.9,
+            "Stress Level": 4,
+            "BMI": 24.06,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 14,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 6.2,
+            "Age": 76,
+            "Sleep Duration": 7.1,
+            "Stress Level": 1,
+            "BMI": 24.83,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 9,
+            "Gender": "Female"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 1.9,
+            "Age": 66,
+            "Sleep Duration": 5.9,
+            "Stress Level": 6,
+            "BMI": 20.25,
+            "Chronic Disease": null,
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 2,
+            "Gender": "Female"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 6.2,
+            "Age": 71,
+            "Sleep Duration": 6.3,
+            "Stress Level": 10,
+            "BMI": 21.91,
+            "Chronic Disease": null,
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 7,
+            "Gender": "Other"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 2.0,
+            "Age": 54,
+            "Sleep Duration": 7.1,
+            "Stress Level": 9,
+            "BMI": 26.98,
+            "Chronic Disease": null,
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 19,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 9.6,
+            "Age": 50,
+            "Sleep Duration": 7.7,
+            "Stress Level": 8,
+            "BMI": 28.87,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 10,
+            "Gender": "Male"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 5.9,
+            "Age": 79,
+            "Sleep Duration": 6.4,
+            "Stress Level": 3,
+            "BMI": 24.33,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 16,
+            "Gender": "Female"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.9,
+            "Age": 70,
+            "Sleep Duration": 6.6,
+            "Stress Level": 1,
+            "BMI": 20.15,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 1,
+            "Gender": "Other"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.6,
+            "Age": 61,
+            "Sleep Duration": 6.6,
+            "Stress Level": 4,
+            "BMI": 27.76,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 14,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 6.4,
+            "Age": 72,
+            "Sleep Duration": 6.3,
+            "Stress Level": 5,
+            "BMI": 31.99,
+            "Chronic Disease": null,
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 4,
+            "Gender": "Other"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.4,
+            "Age": 72,
+            "Sleep Duration": 6.7,
+            "Stress Level": 3,
+            "BMI": 22.11,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 12,
+            "Gender": "Male"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 6.9,
+            "Age": 73,
+            "Sleep Duration": 7.0,
+            "Stress Level": 4,
+            "BMI": 27.36,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 19,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 2.5,
+            "Age": 76,
+            "Sleep Duration": 7.5,
+            "Stress Level": 8,
+            "BMI": 25.7,
+            "Chronic Disease": null,
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 16,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 6.1,
+            "Age": 55,
+            "Sleep Duration": 6.5,
+            "Stress Level": 8,
+            "BMI": 26.92,
+            "Chronic Disease": null,
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 4,
+            "Gender": "Female"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 5.8,
+            "Age": 69,
+            "Sleep Duration": 5.7,
+            "Stress Level": 4,
+            "BMI": 27.5,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 6,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 7.3,
+            "Age": 51,
+            "Sleep Duration": 6.1,
+            "Stress Level": 4,
+            "BMI": 18.52,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 8,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 1.9,
+            "Age": 65,
+            "Sleep Duration": 5.9,
+            "Stress Level": 9,
+            "BMI": 28.76,
+            "Chronic Disease": null,
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 2,
+            "Gender": "Female"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 5.6,
+            "Age": 50,
+            "Sleep Duration": 6.9,
+            "Stress Level": 6,
+            "BMI": 21.5,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 9,
+            "Gender": "Male"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 9.1,
+            "Age": 77,
+            "Sleep Duration": 7.4,
+            "Stress Level": 7,
+            "BMI": 22.2,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 9,
+            "Gender": "Male"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.2,
+            "Age": 76,
+            "Sleep Duration": 8.9,
+            "Stress Level": 10,
+            "BMI": 34.1,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 11,
+            "Gender": "Female"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 6.8,
+            "Age": 77,
+            "Sleep Duration": 2.5,
+            "Stress Level": 5,
+            "BMI": 27.62,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 7,
+            "Gender": "Other"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 4.0,
+            "Age": 76,
+            "Sleep Duration": 7.9,
+            "Stress Level": 2,
+            "BMI": 21.33,
+            "Chronic Disease": null,
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 7,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 7.6,
+            "Age": 53,
+            "Sleep Duration": 7.4,
+            "Stress Level": 10,
+            "BMI": 23.23,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 12,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 3.8,
+            "Age": 69,
+            "Sleep Duration": 5.7,
+            "Stress Level": 8,
+            "BMI": 26.57,
+            "Chronic Disease": null,
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 16,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.6,
+            "Age": 58,
+            "Sleep Duration": 5.3,
+            "Stress Level": 2,
+            "BMI": 24.99,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 1,
+            "Gender": "Female"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 3.4,
+            "Age": 50,
+            "Sleep Duration": 6.6,
+            "Stress Level": 1,
+            "BMI": 27.07,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 17,
+            "Gender": "Female"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 5.1,
+            "Age": 57,
+            "Sleep Duration": 6.2,
+            "Stress Level": 8,
+            "BMI": 21.14,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 11,
+            "Gender": "Female"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 1.6,
+            "Age": 56,
+            "Sleep Duration": 8.2,
+            "Stress Level": 4,
+            "BMI": 17.82,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 18,
+            "Gender": "Male"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 10.0,
+            "Age": 57,
+            "Sleep Duration": 7.1,
+            "Stress Level": 4,
+            "BMI": 29.88,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 16,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 1.2,
+            "Age": 74,
+            "Sleep Duration": 7.5,
+            "Stress Level": 3,
+            "BMI": 16.88,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 5,
+            "Gender": "Female"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 4.1,
+            "Age": 67,
+            "Sleep Duration": 3.4,
+            "Stress Level": 1,
+            "BMI": 19.5,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 0,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 6.5,
+            "Age": 59,
+            "Sleep Duration": 4.9,
+            "Stress Level": 7,
+            "BMI": 21.2,
+            "Chronic Disease": null,
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 3,
+            "Gender": "Other"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.6,
+            "Age": 52,
+            "Sleep Duration": 7.8,
+            "Stress Level": 4,
+            "BMI": 25.17,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 6,
+            "Gender": "Other"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 9.4,
+            "Age": 77,
+            "Sleep Duration": 7.6,
+            "Stress Level": 6,
+            "BMI": 28.51,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 6,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 1.5,
+            "Age": 65,
+            "Sleep Duration": 4.6,
+            "Stress Level": 6,
+            "BMI": 27.31,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 3,
+            "Gender": "Other"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 4.8,
+            "Age": 74,
+            "Sleep Duration": 9.0,
+            "Stress Level": 9,
+            "BMI": 35.59,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 5,
+            "Gender": "Other"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 6.0,
+            "Age": 69,
+            "Sleep Duration": 6.1,
+            "Stress Level": 4,
+            "BMI": 19.14,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 19,
+            "Gender": "Female"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 5.8,
+            "Age": 77,
+            "Sleep Duration": 7.8,
+            "Stress Level": 6,
+            "BMI": 18.83,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 4,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 4.0,
+            "Age": 66,
+            "Sleep Duration": 4.7,
+            "Stress Level": 8,
+            "BMI": 28.47,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 19,
+            "Gender": "Male"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 3.9,
+            "Age": 65,
+            "Sleep Duration": 6.5,
+            "Stress Level": 2,
+            "BMI": 33.63,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 7,
+            "Gender": "Other"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 1.6,
+            "Age": 79,
+            "Sleep Duration": 9.2,
+            "Stress Level": 6,
+            "BMI": 25.48,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 0,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.6,
+            "Age": 54,
+            "Sleep Duration": 8.3,
+            "Stress Level": 8,
+            "BMI": 28.15,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 2,
+            "Gender": "Other"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 6.0,
+            "Age": 76,
+            "Sleep Duration": 8.0,
+            "Stress Level": 9,
+            "BMI": 25.41,
+            "Chronic Disease": null,
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 4,
+            "Gender": "Female"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 8.7,
+            "Age": 72,
+            "Sleep Duration": 7.0,
+            "Stress Level": 2,
+            "BMI": 32.92,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 13,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 3.5,
+            "Age": 58,
+            "Sleep Duration": 7.2,
+            "Stress Level": 7,
+            "BMI": 31.57,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 15,
+            "Gender": "Male"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 8.0,
+            "Age": 52,
+            "Sleep Duration": 10.3,
+            "Stress Level": 5,
+            "BMI": 18.93,
+            "Chronic Disease": null,
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 5,
+            "Gender": "Male"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.8,
+            "Age": 65,
+            "Sleep Duration": 6.9,
+            "Stress Level": 9,
+            "BMI": 17.96,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 7,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 1.4,
+            "Age": 71,
+            "Sleep Duration": 7.4,
+            "Stress Level": 6,
+            "BMI": 21.25,
+            "Chronic Disease": null,
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 17,
+            "Gender": "Male"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 1.5,
+            "Age": 73,
+            "Sleep Duration": 8.6,
+            "Stress Level": 3,
+            "BMI": 26.13,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 1,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 4.3,
+            "Age": 50,
+            "Sleep Duration": 5.7,
+            "Stress Level": 6,
+            "BMI": 22.36,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 7,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.8,
+            "Age": 69,
+            "Sleep Duration": 6.9,
+            "Stress Level": 4,
+            "BMI": 27.52,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 0,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 7.6,
+            "Age": 66,
+            "Sleep Duration": 8.5,
+            "Stress Level": 9,
+            "BMI": 19.65,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 15,
+            "Gender": "Female"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 8.3,
+            "Age": 53,
+            "Sleep Duration": 8.1,
+            "Stress Level": 3,
+            "BMI": 21.48,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 11,
+            "Gender": "Female"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.8,
+            "Age": 55,
+            "Sleep Duration": 6.6,
+            "Stress Level": 10,
+            "BMI": 23.81,
+            "Chronic Disease": null,
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 10,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 4.8,
+            "Age": 57,
+            "Sleep Duration": 6.9,
+            "Stress Level": 1,
+            "BMI": 25.44,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 9,
+            "Gender": "Male"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 8.3,
+            "Age": 79,
+            "Sleep Duration": 7.4,
+            "Stress Level": 1,
+            "BMI": 20.76,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 12,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 7.8,
+            "Age": 52,
+            "Sleep Duration": 4.0,
+            "Stress Level": 9,
+            "BMI": 16.99,
+            "Chronic Disease": null,
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 2,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 2.8,
+            "Age": 65,
+            "Sleep Duration": 5.3,
+            "Stress Level": 1,
+            "BMI": 35.78,
+            "Chronic Disease": null,
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 14,
+            "Gender": "Female"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 9.4,
+            "Age": 79,
+            "Sleep Duration": 8.4,
+            "Stress Level": 5,
+            "BMI": 19.34,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 15,
+            "Gender": "Female"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 8.8,
+            "Age": 52,
+            "Sleep Duration": 6.2,
+            "Stress Level": 3,
+            "BMI": 25.16,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 16,
+            "Gender": "Other"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.4,
+            "Age": 63,
+            "Sleep Duration": 6.8,
+            "Stress Level": 5,
+            "BMI": 27.32,
+            "Chronic Disease": null,
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 18,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 5.8,
+            "Age": 71,
+            "Sleep Duration": 6.9,
+            "Stress Level": 5,
+            "BMI": 27.84,
+            "Chronic Disease": null,
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 2,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 9.4,
+            "Age": 52,
+            "Sleep Duration": 7.5,
+            "Stress Level": 3,
+            "BMI": 28.0,
+            "Chronic Disease": null,
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 5,
+            "Gender": "Male"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 4.8,
+            "Age": 78,
+            "Sleep Duration": 4.7,
+            "Stress Level": 10,
+            "BMI": 23.82,
+            "Chronic Disease": null,
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 17,
+            "Gender": "Other"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 8.1,
+            "Age": 58,
+            "Sleep Duration": 8.7,
+            "Stress Level": 9,
+            "BMI": 19.06,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 16,
+            "Gender": "Other"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 9.5,
+            "Age": 53,
+            "Sleep Duration": 8.5,
+            "Stress Level": 7,
+            "BMI": 23.23,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 3,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.2,
+            "Age": 50,
+            "Sleep Duration": 5.8,
+            "Stress Level": 10,
+            "BMI": 19.82,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 14,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.9,
+            "Age": 50,
+            "Sleep Duration": 6.3,
+            "Stress Level": 7,
+            "BMI": 25.25,
+            "Chronic Disease": null,
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 2,
+            "Gender": "Other"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 1.3,
+            "Age": 65,
+            "Sleep Duration": 7.9,
+            "Stress Level": 9,
+            "BMI": 25.99,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 4,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 6.4,
+            "Age": 73,
+            "Sleep Duration": 6.4,
+            "Stress Level": 4,
+            "BMI": 23.5,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 18,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 3.8,
+            "Age": 50,
+            "Sleep Duration": 5.4,
+            "Stress Level": 2,
+            "BMI": 23.14,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 9,
+            "Gender": "Female"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 2.2,
+            "Age": 65,
+            "Sleep Duration": 7.2,
+            "Stress Level": 3,
+            "BMI": 20.04,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 10,
+            "Gender": "Female"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.5,
+            "Age": 76,
+            "Sleep Duration": 5.8,
+            "Stress Level": 8,
+            "BMI": 25.27,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 15,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 8.2,
+            "Age": 68,
+            "Sleep Duration": 6.4,
+            "Stress Level": 7,
+            "BMI": 15.99,
+            "Chronic Disease": null,
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 18,
+            "Gender": "Male"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 5.9,
+            "Age": 72,
+            "Sleep Duration": 5.5,
+            "Stress Level": 1,
+            "BMI": 10.56,
+            "Chronic Disease": null,
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 13,
+            "Gender": "Female"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 8.0,
+            "Age": 63,
+            "Sleep Duration": 5.0,
+            "Stress Level": 4,
+            "BMI": 26.42,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 4,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 8.3,
+            "Age": 55,
+            "Sleep Duration": 6.1,
+            "Stress Level": 9,
+            "BMI": 27.7,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 18,
+            "Gender": "Other"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 6.3,
+            "Age": 55,
+            "Sleep Duration": 8.1,
+            "Stress Level": 10,
+            "BMI": 18.59,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 11,
+            "Gender": "Male"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 7.8,
+            "Age": 62,
+            "Sleep Duration": 6.7,
+            "Stress Level": 4,
+            "BMI": 20.17,
+            "Chronic Disease": null,
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 17,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 6.0,
+            "Age": 68,
+            "Sleep Duration": 6.3,
+            "Stress Level": 4,
+            "BMI": 27.09,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 3,
+            "Gender": "Other"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 4.1,
+            "Age": 71,
+            "Sleep Duration": 7.1,
+            "Stress Level": 9,
+            "BMI": 21.56,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 16,
+            "Gender": "Female"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 2.2,
+            "Age": 51,
+            "Sleep Duration": 6.4,
+            "Stress Level": 9,
+            "BMI": 23.16,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 13,
+            "Gender": "Male"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 1.8,
+            "Age": 50,
+            "Sleep Duration": 8.7,
+            "Stress Level": 9,
+            "BMI": 21.86,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 17,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 6.0,
+            "Age": 64,
+            "Sleep Duration": 6.5,
+            "Stress Level": 9,
+            "BMI": 21.36,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 10,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 7.6,
+            "Age": 50,
+            "Sleep Duration": 7.0,
+            "Stress Level": 3,
+            "BMI": 17.33,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 11,
+            "Gender": "Female"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 2.3,
+            "Age": 77,
+            "Sleep Duration": 8.8,
+            "Stress Level": 1,
+            "BMI": 27.5,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 8,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 6.7,
+            "Age": 78,
+            "Sleep Duration": 5.4,
+            "Stress Level": 1,
+            "BMI": 36.44,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 8,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.8,
+            "Age": 65,
+            "Sleep Duration": 5.9,
+            "Stress Level": 1,
+            "BMI": 19.78,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 9,
+            "Gender": "Female"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 1.8,
+            "Age": 52,
+            "Sleep Duration": 8.4,
+            "Stress Level": 5,
+            "BMI": 29.95,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 6,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 2.0,
+            "Age": 66,
+            "Sleep Duration": 9.5,
+            "Stress Level": 5,
+            "BMI": 22.46,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 3,
+            "Gender": "Female"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.5,
+            "Age": 61,
+            "Sleep Duration": 8.0,
+            "Stress Level": 3,
+            "BMI": 31.04,
+            "Chronic Disease": null,
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 14,
+            "Gender": "Other"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 3.8,
+            "Age": 63,
+            "Sleep Duration": 7.7,
+            "Stress Level": 6,
+            "BMI": 24.85,
+            "Chronic Disease": null,
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 14,
+            "Gender": "Female"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 8.4,
+            "Age": 70,
+            "Sleep Duration": 6.0,
+            "Stress Level": 2,
+            "BMI": 24.13,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 16,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 5.1,
+            "Age": 52,
+            "Sleep Duration": 7.8,
+            "Stress Level": 2,
+            "BMI": 24.92,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 13,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.6,
+            "Age": 77,
+            "Sleep Duration": 3.9,
+            "Stress Level": 1,
+            "BMI": 29.32,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 17,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.7,
+            "Age": 58,
+            "Sleep Duration": 6.5,
+            "Stress Level": 10,
+            "BMI": 21.02,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 19,
+            "Gender": "Other"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 5.7,
+            "Age": 54,
+            "Sleep Duration": 8.4,
+            "Stress Level": 10,
+            "BMI": 25.54,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 17,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 5.6,
+            "Age": 66,
+            "Sleep Duration": 8.5,
+            "Stress Level": 8,
+            "BMI": 24.85,
+            "Chronic Disease": null,
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 10,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 9.6,
+            "Age": 63,
+            "Sleep Duration": 6.0,
+            "Stress Level": 7,
+            "BMI": 15.2,
+            "Chronic Disease": null,
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 14,
+            "Gender": "Male"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.5,
+            "Age": 70,
+            "Sleep Duration": 7.0,
+            "Stress Level": 3,
+            "BMI": 35.3,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 11,
+            "Gender": "Male"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.4,
+            "Age": 52,
+            "Sleep Duration": 4.6,
+            "Stress Level": 2,
+            "BMI": 24.8,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 19,
+            "Gender": "Male"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 1.9,
+            "Age": 77,
+            "Sleep Duration": 5.6,
+            "Stress Level": 2,
+            "BMI": 30.84,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 5,
+            "Gender": "Other"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 5.4,
+            "Age": 50,
+            "Sleep Duration": 6.2,
+            "Stress Level": 10,
+            "BMI": 20.69,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 2,
+            "Gender": "Other"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 6.5,
+            "Age": 69,
+            "Sleep Duration": 3.9,
+            "Stress Level": 3,
+            "BMI": 13.49,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 12,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.5,
+            "Age": 78,
+            "Sleep Duration": 7.1,
+            "Stress Level": 7,
+            "BMI": 22.78,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 12,
+            "Gender": "Female"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.8,
+            "Age": 50,
+            "Sleep Duration": 8.1,
+            "Stress Level": 4,
+            "BMI": 26.04,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 5,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 5.2,
+            "Age": 59,
+            "Sleep Duration": 8.0,
+            "Stress Level": 4,
+            "BMI": 22.97,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 7,
+            "Gender": "Other"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 3.6,
+            "Age": 71,
+            "Sleep Duration": 5.8,
+            "Stress Level": 1,
+            "BMI": 29.61,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 7,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 9.9,
+            "Age": 75,
+            "Sleep Duration": 7.4,
+            "Stress Level": 10,
+            "BMI": 32.05,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 10,
+            "Gender": "Other"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 9.5,
+            "Age": 57,
+            "Sleep Duration": 6.1,
+            "Stress Level": 7,
+            "BMI": 26.38,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 7,
+            "Gender": "Other"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 1.4,
+            "Age": 63,
+            "Sleep Duration": 10.1,
+            "Stress Level": 7,
+            "BMI": 29.0,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 7,
+            "Gender": "Female"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 5.5,
+            "Age": 67,
+            "Sleep Duration": 7.0,
+            "Stress Level": 2,
+            "BMI": 25.84,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 19,
+            "Gender": "Other"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.0,
+            "Age": 64,
+            "Sleep Duration": 7.3,
+            "Stress Level": 8,
+            "BMI": 25.31,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 15,
+            "Gender": "Male"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 4.2,
+            "Age": 59,
+            "Sleep Duration": 8.5,
+            "Stress Level": 9,
+            "BMI": 26.18,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 12,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 1.0,
+            "Age": 57,
+            "Sleep Duration": 7.4,
+            "Stress Level": 10,
+            "BMI": 20.1,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 2,
+            "Gender": "Male"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 9.6,
+            "Age": 50,
+            "Sleep Duration": 5.8,
+            "Stress Level": 5,
+            "BMI": 18.36,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 18,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 7.3,
+            "Age": 60,
+            "Sleep Duration": 7.3,
+            "Stress Level": 6,
+            "BMI": 30.79,
+            "Chronic Disease": null,
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 4,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 3.2,
+            "Age": 71,
+            "Sleep Duration": 6.0,
+            "Stress Level": 7,
+            "BMI": 22.74,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 9,
+            "Gender": "Male"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 3.9,
+            "Age": 65,
+            "Sleep Duration": 7.3,
+            "Stress Level": 1,
+            "BMI": 22.82,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 16,
+            "Gender": "Male"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 2.4,
+            "Age": 56,
+            "Sleep Duration": 6.1,
+            "Stress Level": 6,
+            "BMI": 26.41,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 14,
+            "Gender": "Female"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 1.8,
+            "Age": 59,
+            "Sleep Duration": 6.0,
+            "Stress Level": 5,
+            "BMI": 21.09,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 14,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 8.0,
+            "Age": 72,
+            "Sleep Duration": 4.9,
+            "Stress Level": 7,
+            "BMI": 29.4,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 13,
+            "Gender": "Male"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 5.5,
+            "Age": 52,
+            "Sleep Duration": 7.9,
+            "Stress Level": 6,
+            "BMI": 31.56,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 6,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 4.8,
+            "Age": 67,
+            "Sleep Duration": 7.8,
+            "Stress Level": 4,
+            "BMI": 18.74,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 11,
+            "Gender": "Male"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 3.5,
+            "Age": 77,
+            "Sleep Duration": 8.3,
+            "Stress Level": 10,
+            "BMI": 28.21,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 18,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 7.8,
+            "Age": 75,
+            "Sleep Duration": 5.0,
+            "Stress Level": 10,
+            "BMI": 31.12,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 13,
+            "Gender": "Other"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 2.4,
+            "Age": 74,
+            "Sleep Duration": 5.6,
+            "Stress Level": 5,
+            "BMI": 25.19,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 1,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 8.7,
+            "Age": 53,
+            "Sleep Duration": 8.6,
+            "Stress Level": 7,
+            "BMI": 32.28,
+            "Chronic Disease": null,
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 17,
+            "Gender": "Female"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 8.3,
+            "Age": 62,
+            "Sleep Duration": 8.4,
+            "Stress Level": 3,
+            "BMI": 34.0,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 6,
+            "Gender": "Male"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 9.8,
+            "Age": 63,
+            "Sleep Duration": 7.5,
+            "Stress Level": 5,
+            "BMI": 26.8,
+            "Chronic Disease": null,
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 17,
+            "Gender": "Female"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 7.3,
+            "Age": 68,
+            "Sleep Duration": 6.4,
+            "Stress Level": 7,
+            "BMI": 18.59,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 14,
+            "Gender": "Female"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 8.0,
+            "Age": 51,
+            "Sleep Duration": 6.9,
+            "Stress Level": 6,
+            "BMI": 25.74,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 4,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 4.2,
+            "Age": 68,
+            "Sleep Duration": 7.4,
+            "Stress Level": 1,
+            "BMI": 18.3,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 7,
+            "Gender": "Female"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 4.0,
+            "Age": 75,
+            "Sleep Duration": 6.5,
+            "Stress Level": 1,
+            "BMI": 26.52,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 13,
+            "Gender": "Other"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 5.2,
+            "Age": 79,
+            "Sleep Duration": 3.7,
+            "Stress Level": 9,
+            "BMI": 26.33,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 7,
+            "Gender": "Male"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 10.0,
+            "Age": 78,
+            "Sleep Duration": 9.1,
+            "Stress Level": 2,
+            "BMI": 29.19,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 9,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 6.8,
+            "Age": 75,
+            "Sleep Duration": 8.9,
+            "Stress Level": 7,
+            "BMI": 31.07,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 16,
+            "Gender": "Other"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 4.0,
+            "Age": 75,
+            "Sleep Duration": 8.4,
+            "Stress Level": 2,
+            "BMI": 24.3,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 3,
+            "Gender": "Other"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 1.6,
+            "Age": 66,
+            "Sleep Duration": 5.3,
+            "Stress Level": 8,
+            "BMI": 28.67,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 3,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 9.5,
+            "Age": 69,
+            "Sleep Duration": 7.5,
+            "Stress Level": 6,
+            "BMI": 19.81,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 4,
+            "Gender": "Other"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 8.8,
+            "Age": 59,
+            "Sleep Duration": 5.7,
+            "Stress Level": 7,
+            "BMI": 27.51,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 3,
+            "Gender": "Female"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 2.1,
+            "Age": 71,
+            "Sleep Duration": 4.3,
+            "Stress Level": 10,
+            "BMI": 24.53,
+            "Chronic Disease": null,
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 1,
+            "Gender": "Other"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 3.6,
+            "Age": 60,
+            "Sleep Duration": 3.7,
+            "Stress Level": 9,
+            "BMI": 24.57,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 10,
+            "Gender": "Other"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 6.7,
+            "Age": 77,
+            "Sleep Duration": 7.3,
+            "Stress Level": 9,
+            "BMI": 29.06,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 13,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 4.8,
+            "Age": 54,
+            "Sleep Duration": 6.2,
+            "Stress Level": 7,
+            "BMI": 27.89,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 4,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 4.2,
+            "Age": 50,
+            "Sleep Duration": 6.2,
+            "Stress Level": 9,
+            "BMI": 25.15,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 5,
+            "Gender": "Male"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 5.9,
+            "Age": 70,
+            "Sleep Duration": 8.8,
+            "Stress Level": 3,
+            "BMI": 27.47,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 7,
+            "Gender": "Male"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 5.8,
+            "Age": 77,
+            "Sleep Duration": 6.6,
+            "Stress Level": 3,
+            "BMI": 28.62,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 13,
+            "Gender": "Other"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 1.6,
+            "Age": 61,
+            "Sleep Duration": 6.5,
+            "Stress Level": 1,
+            "BMI": 36.5,
+            "Chronic Disease": null,
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 2,
+            "Gender": "Other"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 4.7,
+            "Age": 61,
+            "Sleep Duration": 7.8,
+            "Stress Level": 5,
+            "BMI": 30.38,
+            "Chronic Disease": null,
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 11,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 5.7,
+            "Age": 56,
+            "Sleep Duration": 7.3,
+            "Stress Level": 2,
+            "BMI": 25.39,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 16,
+            "Gender": "Other"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.3,
+            "Age": 62,
+            "Sleep Duration": 4.1,
+            "Stress Level": 8,
+            "BMI": 26.64,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 9,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 7.8,
+            "Age": 69,
+            "Sleep Duration": 5.7,
+            "Stress Level": 5,
+            "BMI": 21.89,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 8,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 2.6,
+            "Age": 64,
+            "Sleep Duration": 7.7,
+            "Stress Level": 4,
+            "BMI": 23.75,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 15,
+            "Gender": "Other"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 6.9,
+            "Age": 52,
+            "Sleep Duration": 9.2,
+            "Stress Level": 3,
+            "BMI": 24.9,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 17,
+            "Gender": "Male"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 5.7,
+            "Age": 72,
+            "Sleep Duration": 6.3,
+            "Stress Level": 1,
+            "BMI": 29.14,
+            "Chronic Disease": null,
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 18,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 8.0,
+            "Age": 57,
+            "Sleep Duration": 6.3,
+            "Stress Level": 5,
+            "BMI": 20.37,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 11,
+            "Gender": "Female"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 7.4,
+            "Age": 69,
+            "Sleep Duration": 8.7,
+            "Stress Level": 6,
+            "BMI": 31.44,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 7,
+            "Gender": "Other"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 1.3,
+            "Age": 67,
+            "Sleep Duration": 7.4,
+            "Stress Level": 6,
+            "BMI": 18.0,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 9,
+            "Gender": "Other"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 2.6,
+            "Age": 77,
+            "Sleep Duration": 5.3,
+            "Stress Level": 4,
+            "BMI": 28.6,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 14,
+            "Gender": "Male"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 4.2,
+            "Age": 59,
+            "Sleep Duration": 5.0,
+            "Stress Level": 9,
+            "BMI": 32.23,
+            "Chronic Disease": null,
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 14,
+            "Gender": "Female"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.1,
+            "Age": 73,
+            "Sleep Duration": 9.8,
+            "Stress Level": 6,
+            "BMI": 32.27,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 8,
+            "Gender": "Other"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 7.3,
+            "Age": 75,
+            "Sleep Duration": 6.1,
+            "Stress Level": 7,
+            "BMI": 22.73,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 17,
+            "Gender": "Female"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.2,
+            "Age": 72,
+            "Sleep Duration": 5.3,
+            "Stress Level": 3,
+            "BMI": 20.9,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 12,
+            "Gender": "Other"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 9.4,
+            "Age": 54,
+            "Sleep Duration": 7.6,
+            "Stress Level": 5,
+            "BMI": 14.53,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 8,
+            "Gender": "Other"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 4.7,
+            "Age": 70,
+            "Sleep Duration": 7.6,
+            "Stress Level": 6,
+            "BMI": 26.69,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 11,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.9,
+            "Age": 79,
+            "Sleep Duration": 7.5,
+            "Stress Level": 10,
+            "BMI": 16.51,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 5,
+            "Gender": "Male"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 5.2,
+            "Age": 70,
+            "Sleep Duration": 8.3,
+            "Stress Level": 5,
+            "BMI": 30.83,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 15,
+            "Gender": "Female"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 2.0,
+            "Age": 75,
+            "Sleep Duration": 6.3,
+            "Stress Level": 3,
+            "BMI": 25.91,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 15,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.2,
+            "Age": 75,
+            "Sleep Duration": 8.1,
+            "Stress Level": 8,
+            "BMI": 20.82,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 6,
+            "Gender": "Male"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 5.8,
+            "Age": 64,
+            "Sleep Duration": 8.6,
+            "Stress Level": 8,
+            "BMI": 23.52,
+            "Chronic Disease": null,
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 7,
+            "Gender": "Female"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 8.9,
+            "Age": 51,
+            "Sleep Duration": 5.2,
+            "Stress Level": 2,
+            "BMI": 25.63,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 12,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 8.1,
+            "Age": 79,
+            "Sleep Duration": 5.7,
+            "Stress Level": 10,
+            "BMI": 34.31,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 16,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 4.3,
+            "Age": 71,
+            "Sleep Duration": 7.8,
+            "Stress Level": 1,
+            "BMI": 34.43,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 16,
+            "Gender": "Other"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 7.5,
+            "Age": 65,
+            "Sleep Duration": 6.9,
+            "Stress Level": 4,
+            "BMI": 33.15,
+            "Chronic Disease": null,
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 4,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 5.7,
+            "Age": 57,
+            "Sleep Duration": 7.6,
+            "Stress Level": 10,
+            "BMI": 21.88,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 18,
+            "Gender": "Male"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 1.8,
+            "Age": 62,
+            "Sleep Duration": 6.1,
+            "Stress Level": 9,
+            "BMI": 29.14,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 12,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 2.7,
+            "Age": 70,
+            "Sleep Duration": 8.3,
+            "Stress Level": 3,
+            "BMI": 24.96,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 13,
+            "Gender": "Female"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 3.1,
+            "Age": 78,
+            "Sleep Duration": 5.6,
+            "Stress Level": 9,
+            "BMI": 21.75,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 7,
+            "Gender": "Male"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 5.6,
+            "Age": 56,
+            "Sleep Duration": 6.1,
+            "Stress Level": 1,
+            "BMI": 29.74,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 12,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.8,
+            "Age": 72,
+            "Sleep Duration": 5.8,
+            "Stress Level": 3,
+            "BMI": 22.84,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 2,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 2.8,
+            "Age": 68,
+            "Sleep Duration": 5.0,
+            "Stress Level": 7,
+            "BMI": 18.17,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 7,
+            "Gender": "Male"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 4.0,
+            "Age": 54,
+            "Sleep Duration": 4.6,
+            "Stress Level": 3,
+            "BMI": 25.95,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 7,
+            "Gender": "Female"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.1,
+            "Age": 74,
+            "Sleep Duration": 6.7,
+            "Stress Level": 4,
+            "BMI": 34.31,
+            "Chronic Disease": null,
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 13,
+            "Gender": "Male"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.2,
+            "Age": 64,
+            "Sleep Duration": 6.9,
+            "Stress Level": 6,
+            "BMI": 23.48,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 16,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 1.5,
+            "Age": 66,
+            "Sleep Duration": 5.2,
+            "Stress Level": 2,
+            "BMI": 30.99,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 4,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 4.6,
+            "Age": 63,
+            "Sleep Duration": 6.1,
+            "Stress Level": 8,
+            "BMI": 18.73,
+            "Chronic Disease": null,
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 8,
+            "Gender": "Female"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 5.6,
+            "Age": 79,
+            "Sleep Duration": 5.6,
+            "Stress Level": 10,
+            "BMI": 26.74,
+            "Chronic Disease": null,
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 19,
+            "Gender": "Female"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 6.6,
+            "Age": 69,
+            "Sleep Duration": 6.7,
+            "Stress Level": 7,
+            "BMI": 17.95,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 6,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 8.8,
+            "Age": 65,
+            "Sleep Duration": 6.3,
+            "Stress Level": 5,
+            "BMI": 30.16,
+            "Chronic Disease": null,
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 16,
+            "Gender": "Female"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 2.3,
+            "Age": 56,
+            "Sleep Duration": 7.7,
+            "Stress Level": 7,
+            "BMI": 23.16,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 19,
+            "Gender": "Male"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 9.0,
+            "Age": 53,
+            "Sleep Duration": 10.1,
+            "Stress Level": 3,
+            "BMI": 27.01,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 12,
+            "Gender": "Other"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 2.6,
+            "Age": 50,
+            "Sleep Duration": 8.8,
+            "Stress Level": 4,
+            "BMI": 24.04,
+            "Chronic Disease": null,
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 16,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 2.2,
+            "Age": 79,
+            "Sleep Duration": 8.7,
+            "Stress Level": 10,
+            "BMI": 31.95,
+            "Chronic Disease": null,
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 3,
+            "Gender": "Female"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 8.6,
+            "Age": 54,
+            "Sleep Duration": 8.1,
+            "Stress Level": 8,
+            "BMI": 24.74,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 0,
+            "Gender": "Female"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 6.7,
+            "Age": 75,
+            "Sleep Duration": 6.2,
+            "Stress Level": 9,
+            "BMI": 23.11,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 12,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 7.6,
+            "Age": 71,
+            "Sleep Duration": 8.4,
+            "Stress Level": 8,
+            "BMI": 24.2,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 7,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 3.1,
+            "Age": 53,
+            "Sleep Duration": 5.7,
+            "Stress Level": 6,
+            "BMI": 28.89,
+            "Chronic Disease": null,
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 12,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 4.1,
+            "Age": 51,
+            "Sleep Duration": 8.1,
+            "Stress Level": 9,
+            "BMI": 26.77,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 13,
+            "Gender": "Female"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 2.1,
+            "Age": 69,
+            "Sleep Duration": 6.0,
+            "Stress Level": 4,
+            "BMI": 19.51,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 7,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 9.3,
+            "Age": 75,
+            "Sleep Duration": 6.7,
+            "Stress Level": 1,
+            "BMI": 26.77,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 12,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 7.8,
+            "Age": 75,
+            "Sleep Duration": 5.4,
+            "Stress Level": 7,
+            "BMI": 20.12,
+            "Chronic Disease": null,
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 4,
+            "Gender": "Male"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 9.7,
+            "Age": 73,
+            "Sleep Duration": 6.1,
+            "Stress Level": 6,
+            "BMI": 23.89,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 1,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 1.3,
+            "Age": 62,
+            "Sleep Duration": 7.9,
+            "Stress Level": 9,
+            "BMI": 20.39,
+            "Chronic Disease": null,
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 16,
+            "Gender": "Other"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 5.0,
+            "Age": 72,
+            "Sleep Duration": 9.1,
+            "Stress Level": 2,
+            "BMI": 25.51,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 17,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 4.3,
+            "Age": 66,
+            "Sleep Duration": 8.3,
+            "Stress Level": 7,
+            "BMI": 16.19,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 10,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 7.8,
+            "Age": 67,
+            "Sleep Duration": 8.0,
+            "Stress Level": 10,
+            "BMI": 21.98,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 8,
+            "Gender": "Female"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 9.1,
+            "Age": 52,
+            "Sleep Duration": 5.4,
+            "Stress Level": 9,
+            "BMI": 29.42,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 19,
+            "Gender": "Female"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 3.7,
+            "Age": 77,
+            "Sleep Duration": 9.6,
+            "Stress Level": 2,
+            "BMI": 20.4,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 9,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 7.5,
+            "Age": 50,
+            "Sleep Duration": 5.7,
+            "Stress Level": 8,
+            "BMI": 19.45,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 11,
+            "Gender": "Male"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 9.0,
+            "Age": 50,
+            "Sleep Duration": 7.3,
+            "Stress Level": 7,
+            "BMI": 27.84,
+            "Chronic Disease": null,
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 19,
+            "Gender": "Other"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 8.5,
+            "Age": 78,
+            "Sleep Duration": 8.2,
+            "Stress Level": 4,
+            "BMI": 18.33,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 0,
+            "Gender": "Male"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 1.8,
+            "Age": 68,
+            "Sleep Duration": 6.1,
+            "Stress Level": 2,
+            "BMI": 37.07,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 19,
+            "Gender": "Other"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 9.6,
+            "Age": 60,
+            "Sleep Duration": 8.3,
+            "Stress Level": 8,
+            "BMI": 25.4,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 8,
+            "Gender": "Female"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 3.8,
+            "Age": 54,
+            "Sleep Duration": 5.2,
+            "Stress Level": 5,
+            "BMI": 26.74,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 14,
+            "Gender": "Male"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 1.1,
+            "Age": 50,
+            "Sleep Duration": 6.6,
+            "Stress Level": 1,
+            "BMI": 22.29,
+            "Chronic Disease": null,
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 10,
+            "Gender": "Male"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 2.5,
+            "Age": 57,
+            "Sleep Duration": 8.2,
+            "Stress Level": 8,
+            "BMI": 28.16,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 1,
+            "Gender": "Other"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 8.1,
+            "Age": 60,
+            "Sleep Duration": 5.9,
+            "Stress Level": 9,
+            "BMI": 30.09,
+            "Chronic Disease": null,
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 8,
+            "Gender": "Other"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 8.8,
+            "Age": 61,
+            "Sleep Duration": 6.7,
+            "Stress Level": 1,
+            "BMI": 38.32,
+            "Chronic Disease": null,
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 14,
+            "Gender": "Female"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 1.5,
+            "Age": 63,
+            "Sleep Duration": 7.3,
+            "Stress Level": 4,
+            "BMI": 24.59,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 7,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 9.5,
+            "Age": 78,
+            "Sleep Duration": 7.0,
+            "Stress Level": 10,
+            "BMI": 18.67,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 11,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 6.8,
+            "Age": 68,
+            "Sleep Duration": 8.2,
+            "Stress Level": 5,
+            "BMI": 24.71,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 0,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 3.3,
+            "Age": 67,
+            "Sleep Duration": 6.7,
+            "Stress Level": 9,
+            "BMI": 22.76,
+            "Chronic Disease": null,
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 10,
+            "Gender": "Other"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 5.0,
+            "Age": 52,
+            "Sleep Duration": 8.8,
+            "Stress Level": 6,
+            "BMI": 35.05,
+            "Chronic Disease": null,
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 7,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 3.3,
+            "Age": 79,
+            "Sleep Duration": 7.0,
+            "Stress Level": 4,
+            "BMI": 21.86,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 5,
+            "Gender": "Male"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 6.6,
+            "Age": 51,
+            "Sleep Duration": 7.2,
+            "Stress Level": 10,
+            "BMI": 28.01,
+            "Chronic Disease": null,
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 17,
+            "Gender": "Female"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 7.5,
+            "Age": 68,
+            "Sleep Duration": 6.6,
+            "Stress Level": 5,
+            "BMI": 21.45,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 5,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 8.1,
+            "Age": 58,
+            "Sleep Duration": 8.9,
+            "Stress Level": 10,
+            "BMI": 22.45,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 4,
+            "Gender": "Male"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 8.6,
+            "Age": 75,
+            "Sleep Duration": 6.7,
+            "Stress Level": 7,
+            "BMI": 17.77,
+            "Chronic Disease": null,
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 7,
+            "Gender": "Male"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 1.3,
+            "Age": 70,
+            "Sleep Duration": 8.4,
+            "Stress Level": 10,
+            "BMI": 25.47,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 8,
+            "Gender": "Male"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 7.1,
+            "Age": 67,
+            "Sleep Duration": 9.5,
+            "Stress Level": 10,
+            "BMI": 23.2,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 16,
+            "Gender": "Male"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 7.4,
+            "Age": 62,
+            "Sleep Duration": 9.0,
+            "Stress Level": 2,
+            "BMI": 27.56,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 2,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 8.7,
+            "Age": 73,
+            "Sleep Duration": 6.5,
+            "Stress Level": 1,
+            "BMI": 24.69,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 16,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 1.7,
+            "Age": 53,
+            "Sleep Duration": 7.7,
+            "Stress Level": 1,
+            "BMI": 21.32,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 18,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 4.8,
+            "Age": 78,
+            "Sleep Duration": 7.1,
+            "Stress Level": 9,
+            "BMI": 20.13,
+            "Chronic Disease": null,
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 18,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 8.5,
+            "Age": 74,
+            "Sleep Duration": 4.0,
+            "Stress Level": 10,
+            "BMI": 24.97,
+            "Chronic Disease": null,
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 6,
+            "Gender": "Male"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 3.8,
+            "Age": 53,
+            "Sleep Duration": 9.2,
+            "Stress Level": 1,
+            "BMI": 30.19,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 16,
+            "Gender": "Other"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 8.4,
+            "Age": 54,
+            "Sleep Duration": 7.1,
+            "Stress Level": 9,
+            "BMI": 31.55,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 18,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 7.2,
+            "Age": 52,
+            "Sleep Duration": 2.7,
+            "Stress Level": 8,
+            "BMI": 26.0,
+            "Chronic Disease": null,
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 5,
+            "Gender": "Male"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 5.1,
+            "Age": 66,
+            "Sleep Duration": 7.0,
+            "Stress Level": 1,
+            "BMI": 26.81,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 4,
+            "Gender": "Other"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 6.0,
+            "Age": 52,
+            "Sleep Duration": 6.8,
+            "Stress Level": 8,
+            "BMI": 31.84,
+            "Chronic Disease": null,
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 18,
+            "Gender": "Other"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 4.6,
+            "Age": 65,
+            "Sleep Duration": 6.3,
+            "Stress Level": 1,
+            "BMI": 30.94,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 19,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 8.3,
+            "Age": 53,
+            "Sleep Duration": 9.6,
+            "Stress Level": 5,
+            "BMI": 27.68,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 3,
+            "Gender": "Male"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 7.1,
+            "Age": 66,
+            "Sleep Duration": 8.2,
+            "Stress Level": 6,
+            "BMI": 24.04,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 10,
+            "Gender": "Female"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 1.1,
+            "Age": 56,
+            "Sleep Duration": 7.5,
+            "Stress Level": 9,
+            "BMI": 18.9,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 3,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 3.6,
+            "Age": 79,
+            "Sleep Duration": 8.6,
+            "Stress Level": 10,
+            "BMI": 29.17,
+            "Chronic Disease": null,
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 8,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 7.3,
+            "Age": 54,
+            "Sleep Duration": 4.7,
+            "Stress Level": 3,
+            "BMI": 23.67,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 13,
+            "Gender": "Other"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 4.1,
+            "Age": 66,
+            "Sleep Duration": 7.6,
+            "Stress Level": 3,
+            "BMI": 22.27,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 2,
+            "Gender": "Male"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 8.9,
+            "Age": 72,
+            "Sleep Duration": 8.3,
+            "Stress Level": 2,
+            "BMI": 22.42,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 13,
+            "Gender": "Other"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 6.3,
+            "Age": 52,
+            "Sleep Duration": 5.2,
+            "Stress Level": 1,
+            "BMI": 19.18,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 17,
+            "Gender": "Male"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 2.7,
+            "Age": 58,
+            "Sleep Duration": 4.0,
+            "Stress Level": 4,
+            "BMI": 21.32,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 15,
+            "Gender": "Female"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 3.0,
+            "Age": 66,
+            "Sleep Duration": 7.2,
+            "Stress Level": 4,
+            "BMI": 26.21,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 11,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 7.8,
+            "Age": 79,
+            "Sleep Duration": 6.7,
+            "Stress Level": 2,
+            "BMI": 27.61,
+            "Chronic Disease": null,
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 7,
+            "Gender": "Female"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 1.4,
+            "Age": 65,
+            "Sleep Duration": 8.0,
+            "Stress Level": 9,
+            "BMI": 26.33,
+            "Chronic Disease": null,
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 17,
+            "Gender": "Male"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 3.7,
+            "Age": 76,
+            "Sleep Duration": 4.6,
+            "Stress Level": 2,
+            "BMI": 19.05,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 8,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 3.4,
+            "Age": 66,
+            "Sleep Duration": 6.6,
+            "Stress Level": 10,
+            "BMI": 25.16,
+            "Chronic Disease": null,
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 15,
+            "Gender": "Other"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 5.2,
+            "Age": 53,
+            "Sleep Duration": 7.9,
+            "Stress Level": 1,
+            "BMI": 23.67,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 11,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 8.8,
+            "Age": 78,
+            "Sleep Duration": 7.9,
+            "Stress Level": 4,
+            "BMI": 26.12,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 12,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 5.1,
+            "Age": 58,
+            "Sleep Duration": 8.1,
+            "Stress Level": 6,
+            "BMI": 20.97,
+            "Chronic Disease": null,
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 1,
+            "Gender": "Female"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 4.2,
+            "Age": 69,
+            "Sleep Duration": 6.2,
+            "Stress Level": 6,
+            "BMI": 24.17,
+            "Chronic Disease": null,
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 2,
+            "Gender": "Female"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 7.9,
+            "Age": 75,
+            "Sleep Duration": 8.1,
+            "Stress Level": 9,
+            "BMI": 24.54,
+            "Chronic Disease": null,
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 2,
+            "Gender": "Other"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 2.0,
+            "Age": 64,
+            "Sleep Duration": 6.8,
+            "Stress Level": 3,
+            "BMI": 13.8,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 15,
+            "Gender": "Male"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 6.5,
+            "Age": 70,
+            "Sleep Duration": 9.5,
+            "Stress Level": 10,
+            "BMI": 29.96,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 14,
+            "Gender": "Other"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 4.6,
+            "Age": 52,
+            "Sleep Duration": 7.1,
+            "Stress Level": 9,
+            "BMI": 20.8,
+            "Chronic Disease": null,
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 11,
+            "Gender": "Other"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 5.1,
+            "Age": 69,
+            "Sleep Duration": 7.7,
+            "Stress Level": 5,
+            "BMI": 21.69,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 14,
+            "Gender": "Other"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 3.2,
+            "Age": 76,
+            "Sleep Duration": 5.4,
+            "Stress Level": 10,
+            "BMI": 14.85,
+            "Chronic Disease": null,
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 1,
+            "Gender": "Female"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 10.0,
+            "Age": 53,
+            "Sleep Duration": 5.6,
+            "Stress Level": 4,
+            "BMI": 31.29,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 19,
+            "Gender": "Male"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 4.4,
+            "Age": 70,
+            "Sleep Duration": 8.0,
+            "Stress Level": 4,
+            "BMI": 17.41,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 11,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.5,
+            "Age": 74,
+            "Sleep Duration": 7.4,
+            "Stress Level": 4,
+            "BMI": 31.13,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 15,
+            "Gender": "Male"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 2.0,
+            "Age": 56,
+            "Sleep Duration": 6.7,
+            "Stress Level": 4,
+            "BMI": 25.19,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 0,
+            "Gender": "Female"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 4.2,
+            "Age": 62,
+            "Sleep Duration": 6.1,
+            "Stress Level": 6,
+            "BMI": 25.68,
+            "Chronic Disease": null,
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 1,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 2.2,
+            "Age": 70,
+            "Sleep Duration": 9.2,
+            "Stress Level": 6,
+            "BMI": 26.86,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 2,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.0,
+            "Age": 59,
+            "Sleep Duration": 6.0,
+            "Stress Level": 7,
+            "BMI": 21.05,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 19,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 9.2,
+            "Age": 75,
+            "Sleep Duration": 5.4,
+            "Stress Level": 1,
+            "BMI": 30.97,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 16,
+            "Gender": "Female"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 8.4,
+            "Age": 56,
+            "Sleep Duration": 8.0,
+            "Stress Level": 3,
+            "BMI": 19.39,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 19,
+            "Gender": "Other"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 1.2,
+            "Age": 75,
+            "Sleep Duration": 4.8,
+            "Stress Level": 6,
+            "BMI": 22.45,
+            "Chronic Disease": null,
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 5,
+            "Gender": "Other"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 7.2,
+            "Age": 52,
+            "Sleep Duration": 6.9,
+            "Stress Level": 3,
+            "BMI": 31.88,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 13,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 1.2,
+            "Age": 60,
+            "Sleep Duration": 7.8,
+            "Stress Level": 3,
+            "BMI": 25.63,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 13,
+            "Gender": "Male"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 3.7,
+            "Age": 64,
+            "Sleep Duration": 7.8,
+            "Stress Level": 10,
+            "BMI": 28.62,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 16,
+            "Gender": "Male"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.4,
+            "Age": 75,
+            "Sleep Duration": 5.5,
+            "Stress Level": 10,
+            "BMI": 26.36,
+            "Chronic Disease": null,
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 14,
+            "Gender": "Other"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 9.9,
+            "Age": 61,
+            "Sleep Duration": 4.8,
+            "Stress Level": 1,
+            "BMI": 28.25,
+            "Chronic Disease": null,
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 3,
+            "Gender": "Other"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.5,
+            "Age": 78,
+            "Sleep Duration": 7.9,
+            "Stress Level": 6,
+            "BMI": 25.75,
+            "Chronic Disease": null,
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 2,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 1.9,
+            "Age": 55,
+            "Sleep Duration": 7.9,
+            "Stress Level": 7,
+            "BMI": 16.48,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 7,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 3.9,
+            "Age": 63,
+            "Sleep Duration": 9.1,
+            "Stress Level": 8,
+            "BMI": 25.7,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 7,
+            "Gender": "Other"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 3.4,
+            "Age": 57,
+            "Sleep Duration": 8.4,
+            "Stress Level": 4,
+            "BMI": 26.26,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 9,
+            "Gender": "Male"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 4.4,
+            "Age": 59,
+            "Sleep Duration": 6.9,
+            "Stress Level": 5,
+            "BMI": 24.68,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 19,
+            "Gender": "Female"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 5.1,
+            "Age": 67,
+            "Sleep Duration": 7.9,
+            "Stress Level": 1,
+            "BMI": 20.29,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 7,
+            "Gender": "Other"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 8.7,
+            "Age": 75,
+            "Sleep Duration": 7.5,
+            "Stress Level": 6,
+            "BMI": 27.11,
+            "Chronic Disease": null,
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 4,
+            "Gender": "Female"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 9.9,
+            "Age": 54,
+            "Sleep Duration": 8.8,
+            "Stress Level": 10,
+            "BMI": 26.58,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 5,
+            "Gender": "Male"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 4.8,
+            "Age": 55,
+            "Sleep Duration": 8.1,
+            "Stress Level": 8,
+            "BMI": 29.44,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 4,
+            "Gender": "Female"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 2.5,
+            "Age": 65,
+            "Sleep Duration": 7.8,
+            "Stress Level": 1,
+            "BMI": 23.07,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 1,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 5.4,
+            "Age": 62,
+            "Sleep Duration": 7.0,
+            "Stress Level": 7,
+            "BMI": 26.7,
+            "Chronic Disease": null,
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 0,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 1.0,
+            "Age": 69,
+            "Sleep Duration": 2.2,
+            "Stress Level": 4,
+            "BMI": 25.46,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 10,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 4.0,
+            "Age": 62,
+            "Sleep Duration": 7.0,
+            "Stress Level": 3,
+            "BMI": 28.9,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 12,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 8.2,
+            "Age": 53,
+            "Sleep Duration": 6.9,
+            "Stress Level": 8,
+            "BMI": 20.68,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 8,
+            "Gender": "Male"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 8.3,
+            "Age": 77,
+            "Sleep Duration": 7.7,
+            "Stress Level": 2,
+            "BMI": 29.5,
+            "Chronic Disease": null,
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 14,
+            "Gender": "Male"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 2.4,
+            "Age": 78,
+            "Sleep Duration": 5.8,
+            "Stress Level": 2,
+            "BMI": 28.67,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 11,
+            "Gender": "Female"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 2.3,
+            "Age": 61,
+            "Sleep Duration": 7.1,
+            "Stress Level": 2,
+            "BMI": 21.75,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 0,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.7,
+            "Age": 71,
+            "Sleep Duration": 5.0,
+            "Stress Level": 1,
+            "BMI": 25.42,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 7,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 1.9,
+            "Age": 56,
+            "Sleep Duration": 8.1,
+            "Stress Level": 1,
+            "BMI": 22.66,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 4,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 8.8,
+            "Age": 56,
+            "Sleep Duration": 9.4,
+            "Stress Level": 10,
+            "BMI": 26.33,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 9,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 9.1,
+            "Age": 79,
+            "Sleep Duration": 6.6,
+            "Stress Level": 6,
+            "BMI": 28.21,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 14,
+            "Gender": "Male"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 3.3,
+            "Age": 62,
+            "Sleep Duration": 5.4,
+            "Stress Level": 9,
+            "BMI": 38.44,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 5,
+            "Gender": "Male"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 9.5,
+            "Age": 67,
+            "Sleep Duration": 7.1,
+            "Stress Level": 1,
+            "BMI": 21.56,
+            "Chronic Disease": null,
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 12,
+            "Gender": "Other"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 3.0,
+            "Age": 79,
+            "Sleep Duration": 6.6,
+            "Stress Level": 6,
+            "BMI": 23.24,
+            "Chronic Disease": null,
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 7,
+            "Gender": "Male"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 3.0,
+            "Age": 75,
+            "Sleep Duration": 6.6,
+            "Stress Level": 6,
+            "BMI": 29.43,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 14,
+            "Gender": "Male"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 1.2,
+            "Age": 78,
+            "Sleep Duration": 4.8,
+            "Stress Level": 3,
+            "BMI": 31.11,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 16,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 6.3,
+            "Age": 58,
+            "Sleep Duration": 8.9,
+            "Stress Level": 10,
+            "BMI": 33.75,
+            "Chronic Disease": null,
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 5,
+            "Gender": "Other"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 1.2,
+            "Age": 56,
+            "Sleep Duration": 6.0,
+            "Stress Level": 8,
+            "BMI": 19.93,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 16,
+            "Gender": "Female"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 5.4,
+            "Age": 79,
+            "Sleep Duration": 7.6,
+            "Stress Level": 10,
+            "BMI": 12.99,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 2,
+            "Gender": "Male"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.8,
+            "Age": 74,
+            "Sleep Duration": 5.5,
+            "Stress Level": 4,
+            "BMI": 27.12,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 13,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 9.6,
+            "Age": 77,
+            "Sleep Duration": 7.4,
+            "Stress Level": 7,
+            "BMI": 25.72,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 13,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 2.5,
+            "Age": 66,
+            "Sleep Duration": 5.2,
+            "Stress Level": 1,
+            "BMI": 32.4,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 14,
+            "Gender": "Male"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 1.7,
+            "Age": 73,
+            "Sleep Duration": 8.5,
+            "Stress Level": 3,
+            "BMI": 36.45,
+            "Chronic Disease": null,
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 14,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 8.5,
+            "Age": 50,
+            "Sleep Duration": 8.2,
+            "Stress Level": 5,
+            "BMI": 25.54,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 12,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.1,
+            "Age": 55,
+            "Sleep Duration": 7.0,
+            "Stress Level": 4,
+            "BMI": 24.47,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 16,
+            "Gender": "Other"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 5.1,
+            "Age": 70,
+            "Sleep Duration": 5.5,
+            "Stress Level": 2,
+            "BMI": 24.08,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 2,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 9.3,
+            "Age": 75,
+            "Sleep Duration": 7.0,
+            "Stress Level": 3,
+            "BMI": 13.96,
+            "Chronic Disease": null,
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 4,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 9.1,
+            "Age": 61,
+            "Sleep Duration": 3.5,
+            "Stress Level": 1,
+            "BMI": 23.9,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 16,
+            "Gender": "Other"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 8.2,
+            "Age": 62,
+            "Sleep Duration": 8.2,
+            "Stress Level": 10,
+            "BMI": 14.66,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 1,
+            "Gender": "Female"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 2.0,
+            "Age": 62,
+            "Sleep Duration": 8.8,
+            "Stress Level": 5,
+            "BMI": 18.8,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 4,
+            "Gender": "Female"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 2.8,
+            "Age": 78,
+            "Sleep Duration": 5.4,
+            "Stress Level": 4,
+            "BMI": 20.53,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 19,
+            "Gender": "Male"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 2.9,
+            "Age": 64,
+            "Sleep Duration": 2.2,
+            "Stress Level": 10,
+            "BMI": 21.65,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 5,
+            "Gender": "Male"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 5.4,
+            "Age": 71,
+            "Sleep Duration": 4.5,
+            "Stress Level": 3,
+            "BMI": 30.42,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 17,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 1.7,
+            "Age": 77,
+            "Sleep Duration": 6.5,
+            "Stress Level": 1,
+            "BMI": 38.65,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 13,
+            "Gender": "Female"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 3.1,
+            "Age": 54,
+            "Sleep Duration": 8.1,
+            "Stress Level": 3,
+            "BMI": 26.89,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 13,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 5.0,
+            "Age": 53,
+            "Sleep Duration": 6.0,
+            "Stress Level": 10,
+            "BMI": 24.1,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 12,
+            "Gender": "Other"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 8.0,
+            "Age": 52,
+            "Sleep Duration": 3.9,
+            "Stress Level": 10,
+            "BMI": 21.1,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 6,
+            "Gender": "Male"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 1.6,
+            "Age": 74,
+            "Sleep Duration": 6.4,
+            "Stress Level": 2,
+            "BMI": 26.34,
+            "Chronic Disease": null,
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 18,
+            "Gender": "Female"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.9,
+            "Age": 64,
+            "Sleep Duration": 7.4,
+            "Stress Level": 3,
+            "BMI": 14.19,
+            "Chronic Disease": null,
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 14,
+            "Gender": "Male"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 3.8,
+            "Age": 58,
+            "Sleep Duration": 6.8,
+            "Stress Level": 5,
+            "BMI": 24.91,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 11,
+            "Gender": "Other"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 4.1,
+            "Age": 66,
+            "Sleep Duration": 5.1,
+            "Stress Level": 10,
+            "BMI": 30.38,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 2,
+            "Gender": "Female"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 3.5,
+            "Age": 70,
+            "Sleep Duration": 7.8,
+            "Stress Level": 3,
+            "BMI": 29.16,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 3,
+            "Gender": "Male"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.4,
+            "Age": 71,
+            "Sleep Duration": 6.9,
+            "Stress Level": 9,
+            "BMI": 24.09,
+            "Chronic Disease": null,
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 2,
+            "Gender": "Other"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 1.8,
+            "Age": 71,
+            "Sleep Duration": 4.9,
+            "Stress Level": 1,
+            "BMI": 28.86,
+            "Chronic Disease": null,
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 15,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 7.6,
+            "Age": 74,
+            "Sleep Duration": 5.9,
+            "Stress Level": 4,
+            "BMI": 25.72,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 6,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 1.9,
+            "Age": 55,
+            "Sleep Duration": 5.8,
+            "Stress Level": 5,
+            "BMI": 23.47,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 5,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 8.9,
+            "Age": 70,
+            "Sleep Duration": 5.7,
+            "Stress Level": 5,
+            "BMI": 24.16,
+            "Chronic Disease": null,
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 14,
+            "Gender": "Male"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 8.1,
+            "Age": 75,
+            "Sleep Duration": 6.6,
+            "Stress Level": 5,
+            "BMI": 30.79,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 3,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 3.3,
+            "Age": 53,
+            "Sleep Duration": 6.7,
+            "Stress Level": 9,
+            "BMI": 16.33,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 15,
+            "Gender": "Female"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 3.6,
+            "Age": 75,
+            "Sleep Duration": 6.9,
+            "Stress Level": 6,
+            "BMI": 26.91,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 12,
+            "Gender": "Male"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 1.5,
+            "Age": 77,
+            "Sleep Duration": 7.4,
+            "Stress Level": 8,
+            "BMI": 28.18,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 12,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 6.0,
+            "Age": 67,
+            "Sleep Duration": 7.1,
+            "Stress Level": 9,
+            "BMI": 25.29,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 1,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 1.3,
+            "Age": 54,
+            "Sleep Duration": 5.4,
+            "Stress Level": 1,
+            "BMI": 21.77,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 14,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 2.0,
+            "Age": 58,
+            "Sleep Duration": 8.3,
+            "Stress Level": 4,
+            "BMI": 38.39,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 10,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 2.4,
+            "Age": 53,
+            "Sleep Duration": 5.2,
+            "Stress Level": 6,
+            "BMI": 22.57,
+            "Chronic Disease": null,
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 8,
+            "Gender": "Other"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 6.4,
+            "Age": 71,
+            "Sleep Duration": 7.9,
+            "Stress Level": 1,
+            "BMI": 28.66,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 12,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 3.6,
+            "Age": 50,
+            "Sleep Duration": 6.3,
+            "Stress Level": 9,
+            "BMI": 27.35,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 6,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 8.2,
+            "Age": 70,
+            "Sleep Duration": 5.9,
+            "Stress Level": 1,
+            "BMI": 29.23,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 11,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 1.8,
+            "Age": 65,
+            "Sleep Duration": 7.1,
+            "Stress Level": 3,
+            "BMI": 19.53,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 15,
+            "Gender": "Female"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 3.4,
+            "Age": 63,
+            "Sleep Duration": 8.7,
+            "Stress Level": 1,
+            "BMI": 27.64,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 5,
+            "Gender": "Male"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 6.8,
+            "Age": 52,
+            "Sleep Duration": 7.8,
+            "Stress Level": 1,
+            "BMI": 27.44,
+            "Chronic Disease": null,
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 17,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.3,
+            "Age": 78,
+            "Sleep Duration": 3.7,
+            "Stress Level": 5,
+            "BMI": 15.9,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 17,
+            "Gender": "Female"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.6,
+            "Age": 68,
+            "Sleep Duration": 7.7,
+            "Stress Level": 1,
+            "BMI": 30.86,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 1,
+            "Gender": "Other"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 2.4,
+            "Age": 64,
+            "Sleep Duration": 10.8,
+            "Stress Level": 10,
+            "BMI": 28.9,
+            "Chronic Disease": null,
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 12,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 3.0,
+            "Age": 73,
+            "Sleep Duration": 10.5,
+            "Stress Level": 3,
+            "BMI": 18.93,
+            "Chronic Disease": null,
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 11,
+            "Gender": "Male"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 9.1,
+            "Age": 67,
+            "Sleep Duration": 8.4,
+            "Stress Level": 4,
+            "BMI": 22.85,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 5,
+            "Gender": "Other"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 0.1,
+            "Age": 76,
+            "Sleep Duration": 7.2,
+            "Stress Level": 2,
+            "BMI": 25.25,
+            "Chronic Disease": "Hypertension",
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 9,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 4.8,
+            "Age": 62,
+            "Sleep Duration": 6.8,
+            "Stress Level": 1,
+            "BMI": 24.19,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 17,
+            "Gender": "Male"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 3.1,
+            "Age": 72,
+            "Sleep Duration": 5.8,
+            "Stress Level": 7,
+            "BMI": 31.07,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 7,
+            "Gender": "Male"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 9.3,
+            "Age": 73,
+            "Sleep Duration": 6.0,
+            "Stress Level": 1,
+            "BMI": 24.25,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 8,
+            "Gender": "Male"
+        },
+        "Level": 2
+    },
+    {
+        "Data": {
+            "Physical Activity": 1.6,
+            "Age": 50,
+            "Sleep Duration": 5.0,
+            "Stress Level": 2,
+            "BMI": 21.43,
+            "Chronic Disease": null,
+            "Smoking Status": "Former",
+            "Alcohol Consumption": 4,
+            "Gender": "Male"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 9.7,
+            "Age": 71,
+            "Sleep Duration": 6.9,
+            "Stress Level": 1,
+            "BMI": 30.55,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Never",
+            "Alcohol Consumption": 9,
+            "Gender": "Female"
+        },
+        "Level": 1
+    },
+    {
+        "Data": {
+            "Physical Activity": 8.8,
+            "Age": 64,
+            "Sleep Duration": 7.2,
+            "Stress Level": 3,
+            "BMI": 34.46,
+            "Chronic Disease": "Diabetes",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 2,
+            "Gender": "Other"
+        },
+        "Level": 3
+    },
+    {
+        "Data": {
+            "Physical Activity": 5.5,
+            "Age": 66,
+            "Sleep Duration": 6.2,
+            "Stress Level": 7,
+            "BMI": 22.69,
+            "Chronic Disease": "Heart Disease",
+            "Smoking Status": "Current",
+            "Alcohol Consumption": 9,
+            "Gender": "Male"
+        },
+        "Level": 3
+    }
+]
