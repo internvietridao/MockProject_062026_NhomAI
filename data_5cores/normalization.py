@@ -1,93 +1,84 @@
 import json
-import os
+import math
 import pandas as pd
 
-# 1. Đường dẫn file JSON đầu vào
-json_file_path = "healthcare_cores.json"
+df = pd.read_csv("./data/healthcare_real_time_dataset.csv")
 
-if not os.path.exists(json_file_path):
-    print(
-        f"Lỗi: Không tìm thấy file '{json_file_path}'. Hãy chạy file chuyển đổi trước!"
-    )
-    exit()
+def clean_val(val):
+    if pd.isna(val) or (isinstance(val, float) and math.isnan(val)):
+        return None
+    return val
 
-# 2. Đọc dữ liệu từ file JSON
-with open(json_file_path, "r", encoding="utf-8") as f:
-    data = json.load(f)
+level_map = {"High": 3, "Moderate": 2, "Low": 1}
+json_5cores_output = []
+json_flat_output = []
 
-# Phẳng hóa cấu trúc JSON lồng nhau thành DataFrame để tiện xử lý
-flattened_data = []
-for item in data:
-    cores = item.get("5 cores", {})
-    row = {
-        "Level": item.get("Level"),
-        "Age": cores.get("ADLs & IADLs", {}).get("Age"),
-        "Physical_Activity": cores.get("ADLs & IADLs", {}).get(
-            "Physical Activity"
-        ),
-        "Sleep_Duration": cores.get("Cognitive & Neurological Status", {}).get(
-            "Sleep Duration"
-        ),
-        "Stress_Level": cores.get("Cognitive & Neurological Status", {}).get(
-            "Stress Level"
-        ),
-        "BMI": cores.get("Clinical Risk Assessments", {}).get("BMI"),
-        "Chronic_Disease": cores.get("Clinical Risk Assessments", {}).get(
-            "Chronic Disease"
-        ),
-        "Alcohol_Consumption": cores.get("Mood & Behavioral Health", {}).get(
-            "Alcohol Consumption"
-        ),
+for _, row in df.iterrows():
+    raw_age = row.get("Age")
+    if pd.isna(raw_age) or raw_age < 50:
+        continue  
+
+    age = clean_val(raw_age)
+    gender = clean_val(row.get("Gender"))
+    bmi = clean_val(row.get("BMI"))
+    smoking = clean_val(row.get("Smoking Status"))
+    alcohol = clean_val(row.get("Alcohol Consumption (per week)"))
+    activity = clean_val(row.get("Physical Activity (hours/week)"))
+    sleep = clean_val(row.get("Sleep Duration (hours/day)"))
+    disease = clean_val(row.get("Chronic Disease History"))
+
+    raw_level = clean_val(row.get("Health Risk Level"))
+    mapped_level = level_map.get(raw_level, None) if raw_level else None
+
+    # --- ĐỊNH DẠNG 1: CẤU TRÚC 5 CORES ---
+    item_5cores = {
+        "5 cores": {
+            "ADLs & IADLs": {"Physical Activity": activity, "Age": age},
+            "Cognitive & Neurological Status": {
+                "Sleep Duration": sleep,
+                "Stress Level": clean_val(row.get("Stress Level (1-10)")),
+            },
+            "Clinical Risk Assessments": {"BMI": bmi, "Chronic Disease": disease},
+            "Mood & Behavioral Health": {
+                "Stress Level": clean_val(row.get("Stress Level (1-10)")),
+                "Smoking Status": smoking,
+                "Alcohol Consumption": alcohol,
+            },
+            "Financial & Legal": {
+                "Age": age,
+                "Gender": gender,
+                "Chronic Disease": disease,
+            },
+        },
+        "Level": mapped_level,
     }
-    flattened_data.append(row)
+    json_5cores_output.append(item_5cores)
 
-df = pd.DataFrame(flattened_data)
+    # --- ĐỊNH DẠNG 2: CẤU TRÚC PHẲNG ---
+    item_flat = {
+        "Data": {  
+            "Physical Activity": activity,
+            "Age": age,
+            "Sleep Duration": sleep,
+            "Stress Level": clean_val(row.get("Stress Level (1-10)")),
+            "BMI": bmi,
+            "Chronic Disease": disease,
+            "Smoking Status": smoking,
+            "Alcohol Consumption": alcohol,
+            "Gender": gender,
+        },
+        "Level": mapped_level,
+    }
+    json_flat_output.append(item_flat)
 
-# 3. Tính toán các chỉ số thống kê
-total_records = len(df)  # Tính tổng số mẫu dữ liệu
-level_counts = df["Level"].value_counts().sort_index()
+with open("./data/healthcare_5cores.json", "w", encoding="utf-8") as f:
+    json.dump(json_5cores_output, f, ensure_ascii=False, indent=4)
 
-numeric_cols = [
-    "Age",
-    "BMI",
-    "Physical_Activity",
-    "Sleep_Duration",
-    "Stress_Level",
-    "Alcohol_Consumption",
-]
-grouped_means = df.groupby("Level")[numeric_cols].mean()
+with open("./data/healthcare_flat.json", "w", encoding="utf-8") as f:
+    json.dump(json_flat_output, f, ensure_ascii=False, indent=4)
 
-high_risk_disease = (
-    df[df["Level"] == 3]["Chronic_Disease"].value_counts(normalize=True) * 100
-)
-
-# 4. Tạo nội dung chuỗi cấu trúc Markdown
-md_content = f"""# Báo cáo Phân tích & Thống kê Dữ liệu Chăm sóc Sức khỏe
-
-## 1. Phân bổ số lượng mẫu theo từng Mức độ Rủi ro (Level)
-- **Tổng số dữ liệu mẫu**: {total_records} mẫu
-- **Level 1 (Thấp)**: {level_counts.get(1, 0)} mẫu
-- **Level 2 (Trung bình)**: {level_counts.get(2, 0)} mẫu
-- **Level 3 (Cao)**: {level_counts.get(3, 0)} mẫu
-
-## 2. Các chỉ số sức khỏe trung bình theo từng Nhóm Nguy cơ
-
-| Level | Tuổi (Age) | Chỉ số BMI | Giờ tập thể dục/tuần | Giờ ngủ/ngày | Mức độ Stress | Đơn vị cồn/tuần |
-| :---: | :--------: | :--------: | :------------------: | :----------: | :-----------: | :-------------: |
-| **1** | {grouped_means.loc[1, 'Age']:.2f} | {grouped_means.loc[1, 'BMI']:.2f} | {grouped_means.loc[1, 'Physical_Activity']:.2f} | {grouped_means.loc[1, 'Sleep_Duration']:.2f} | {grouped_means.loc[1, 'Stress_Level']:.2f} | {grouped_means.loc[1, 'Alcohol_Consumption']:.2f} |
-| **2** | {grouped_means.loc[2, 'Age']:.2f} | {grouped_means.loc[2, 'BMI']:.2f} | {grouped_means.loc[2, 'Physical_Activity']:.2f} | {grouped_means.loc[2, 'Sleep_Duration']:.2f} | {grouped_means.loc[2, 'Stress_Level']:.2f} | {grouped_means.loc[2, 'Alcohol_Consumption']:.2f} |
-| **3** | {grouped_means.loc[3, 'Age']:.2f} | {grouped_means.loc[3, 'BMI']:.2f} | {grouped_means.loc[3, 'Physical_Activity']:.2f} | {grouped_means.loc[3, 'Sleep_Duration']:.2f} | {grouped_means.loc[3, 'Stress_Level']:.2f} | {grouped_means.loc[3, 'Alcohol_Consumption']:.2f} |
-
-## 3. Thống kê tỷ lệ Tiền sử Bệnh lý ở Nhóm Nguy cơ Cao (Level 3)
-"""
-
-for disease, percentage in high_risk_disease.items():
-    md_content += f"- **Bệnh {disease}**: {percentage:.1f}%\n"
-
-# 5. Lưu kết quả ra file .md
-with open("healthcare_analysis_report.md", "w", encoding="utf-8") as f:
-    f.write(md_content)
-
-print(
-    "Đã phân tích lại và xuất thành công file báo cáo mới tại 'healthcare_analysis_report.md'!"
-)
+print("=" * 60)
+print(f"Đã lọc thành công {len(json_flat_output)}")
+print("- File cấu trúc 5 Cores: './data/healthcare_5cores.json'")
+print("- File cấu trúc Phẳng: './data/healthcare_flat.json'")
+print("=" * 60)

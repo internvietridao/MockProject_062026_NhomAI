@@ -2,7 +2,7 @@ import json
 import os
 import pandas as pd
 
-json_file_path = "./data/healthcare_cores.json"
+json_file_path = "./data/healthcare_5cores.json"
 
 if not os.path.exists(json_file_path):
     print(
