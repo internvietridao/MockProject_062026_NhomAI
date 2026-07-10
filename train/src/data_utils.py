@@ -78,15 +78,15 @@ def preprocess_dataset(
     print(f"[DATA] Đã load {len(raw_data)} mẫu từ {data_cfg.dataset_path}")
     dataset = Dataset.from_list(raw_data)
 
-    # Chia tách lần 1: Train vs Temp (Validation + Test)
+    # Chia tách lần 1: Train vs Temp (Validation + Test) phân tầng theo source
     first_split = dataset.train_test_split(
         test_size=1.0 - data_cfg.train_split_ratio,
         seed=data_cfg.seed,
+        stratify_by_column="source",
     )
     train_dataset = first_split["train"]
     temp_dataset = first_split["test"]
 
-    # Tính toán tỉ lệ val tương đối trên tập Temp
     remaining_ratio = 1.0 - data_cfg.train_split_ratio
     if remaining_ratio <= 0.0:
         raise ValueError("train_split_ratio phải nhỏ hơn 1.0")
@@ -98,10 +98,11 @@ def preprocess_dataset(
             f"so với train_split_ratio ({data_cfg.train_split_ratio})."
         )
 
-    # Chia tách lần 2: Validation vs Test từ tập Temp
+    # Chia tách lần 2: Validation vs Test phân tầng theo source từ tập Temp
     second_split = temp_dataset.train_test_split(
         test_size=1.0 - val_relative_ratio,
         seed=data_cfg.seed,
+        stratify_by_column="source",
     )
     val_dataset = second_split["train"]
     test_dataset = second_split["test"]
