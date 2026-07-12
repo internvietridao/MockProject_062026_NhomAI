@@ -1,0 +1,25 @@
+# Embeddings files (too large for GitHub)
+data_clean/RAG_chunk_embeddings.json
+data_clean/chunk_embeddings/*.json
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
