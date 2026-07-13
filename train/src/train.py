@@ -4,6 +4,7 @@ train.py — File thực thi chính (Main Script) cho LLM Fine-tuning Pipeline.
 Kết nối tất cả module: config → data → model → training → evaluation → upload.
 """
 
+import math
 import os
 import sys
 
@@ -46,6 +47,12 @@ def main():
     model = load_model_with_peft(model_cfg, lora_cfg, tokenizer)
     print("[5/8] Model loaded với QLoRA 4-bit + PEFT adapter")
 
+    total_steps = math.ceil(
+        len(train_dataset)
+        / (train_cfg.per_device_train_batch_size * train_cfg.gradient_accumulation_steps)
+    ) * train_cfg.num_train_epochs
+    warmup_steps = int(train_cfg.warmup_ratio * total_steps)
+
     sft_config = SFTConfig(
         output_dir=train_cfg.output_dir,
         num_train_epochs=train_cfg.num_train_epochs,
@@ -54,7 +61,7 @@ def main():
         gradient_accumulation_steps=train_cfg.gradient_accumulation_steps,
         learning_rate=train_cfg.learning_rate,
         weight_decay=train_cfg.weight_decay,
-        warmup_ratio=train_cfg.warmup_ratio,
+        warmup_steps=warmup_steps,
         lr_scheduler_type=train_cfg.lr_scheduler_type,
         logging_steps=train_cfg.logging_steps,
         eval_strategy=train_cfg.eval_strategy,

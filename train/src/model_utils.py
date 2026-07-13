@@ -41,7 +41,7 @@ def load_model_with_peft(
 
     model_kwargs = {
         "quantization_config": bnb_config,
-        "torch_dtype": model_cfg.get_torch_dtype(),
+        "dtype": model_cfg.get_torch_dtype(),
         "device_map": model_cfg.device_map,
         "trust_remote_code": model_cfg.trust_remote_code,
     }
