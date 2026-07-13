@@ -51,6 +51,10 @@ def load_model_with_peft(
 
     model = AutoModelForCausalLM.from_pretrained(model_cfg.model_id, **model_kwargs)
 
+    # Ghi đè cấu hình torch_dtype của mô hình để prepare_model_for_kbit_training và PEFT
+    # nhận biết và khởi tạo/ép kiểu các layer không lượng hóa sang float16 thay vì bfloat16 mặc định.
+    model.config.torch_dtype = model_cfg.get_torch_dtype()
+
     # Không cần resize_token_embeddings nếu không thêm token mới vào từ điển.
     # Việc resize có thể làm mất các special tokens ở cuối vocab và sinh lỗi mismatch kiểu dữ liệu (BFloat16).
     # model.resize_token_embeddings(len(tokenizer))
@@ -73,6 +77,11 @@ def load_model_with_peft(
     )
 
     model = get_peft_model(model, peft_config)
+
+    # Ép kiểu tất cả tham số bfloat16 còn sót lại sang float16 để tránh lỗi GradScaler crash
+    for name, param in model.named_parameters():
+        if param.dtype == torch.bfloat16:
+            param.data = param.data.to(torch.float16)
 
     model.print_trainable_parameters()
 
