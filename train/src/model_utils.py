@@ -12,11 +12,11 @@ from transformers import AutoModelForCausalLM, BitsAndBytesConfig, PreTrainedTok
 from peft import LoraConfig as PeftLoraConfig, get_peft_model, prepare_model_for_kbit_training
 
 
-def get_bnb_config() -> BitsAndBytesConfig:
+def get_bnb_config(compute_dtype: torch.dtype) -> BitsAndBytesConfig:
     return BitsAndBytesConfig(
         load_in_4bit=True,
         bnb_4bit_quant_type="nf4",
-        bnb_4bit_compute_dtype=torch.float16,
+        bnb_4bit_compute_dtype=compute_dtype,
         bnb_4bit_use_double_quant=True,
     )
 
@@ -37,7 +37,8 @@ def load_model_with_peft(
     lora_cfg,
     tokenizer: PreTrainedTokenizer,
 ) -> torch.nn.Module:
-    bnb_config = get_bnb_config()
+    target_dtype = model_cfg.get_torch_dtype()
+    bnb_config = get_bnb_config(target_dtype)
 
     model_kwargs = {
         "quantization_config": bnb_config,
@@ -78,10 +79,10 @@ def load_model_with_peft(
 
     model = get_peft_model(model, peft_config)
 
-    # Ép kiểu tất cả tham số bfloat16 còn sót lại sang float16 để tránh lỗi GradScaler crash
+    # Ép kiểu các tham số trainable dạng float sang target_dtype để đồng bộ
     for name, param in model.named_parameters():
-        if param.dtype == torch.bfloat16:
-            param.data = param.data.to(torch.float16)
+        if param.dtype in [torch.float16, torch.bfloat16, torch.float32] and param.requires_grad:
+            param.data = param.data.to(target_dtype)
 
     model.print_trainable_parameters()
 

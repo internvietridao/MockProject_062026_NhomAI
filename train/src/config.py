@@ -15,7 +15,7 @@ import torch
 @dataclass
 class ModelConfig:
     model_id: str = "unsloth/Llama-3.2-1B-Instruct"
-    torch_dtype: str = "float16"
+    torch_dtype: str = "bfloat16"
     device_map: str = "auto"
     trust_remote_code: bool = True
     attn_implementation: Optional[str] = None
@@ -26,7 +26,7 @@ class ModelConfig:
             "bfloat16": torch.bfloat16,
             "float32": torch.float32,
         }
-        return dtype_map.get(self.torch_dtype, torch.float16)
+        return dtype_map.get(self.torch_dtype, torch.bfloat16)
 
 
 @dataclass
@@ -72,8 +72,8 @@ class TrainConfig:
     save_steps: int = 100
     save_total_limit: int = 2
 
-    fp16: bool = True
-    bf16: bool = False
+    fp16: bool = False
+    bf16: bool = True
     optim: str = "paged_adamw_8bit"
     gradient_checkpointing: bool = True
 
