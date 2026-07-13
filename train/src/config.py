@@ -14,7 +14,7 @@ import torch
 
 @dataclass
 class ModelConfig:
-    model_id: str = "unsloth/Llama-3.2-1B-Instruct"
+    model_id: str = "Qwen/Qwen2.5-0.5B-Instruct"
     torch_dtype: str = "bfloat16"
     device_map: str = "auto"
     trust_remote_code: bool = True
@@ -42,12 +42,14 @@ class LoraConfig:
 @dataclass
 class DataConfig:
     dataset_path: str = "data/final_train_dataset.json"
-    prompt_style: str = "alpaca"
+    prompt_style: str = "chatml"
     max_seq_length: int = 1024
     train_split_ratio: float = 0.8
     val_split_ratio: float = 0.1
     system_prompt: str = (
-        "You are a medical AI assistant specializing in nursing home care in US."
+        "You are a highly precise medical AI Assistant specializing in US nursing home care and management. "
+        "Your answer must be direct, strictly factual, and professional. Avoid speculation, extrapolation, "
+        "or conversational fluff."
     )
     seed: int = 42
 
@@ -55,7 +57,7 @@ class DataConfig:
 @dataclass
 class TrainConfig:
     output_dir: str = "outputs"
-    num_train_epochs: int = 3
+    num_train_epochs: int = 1
     per_device_train_batch_size: int = 2
     per_device_eval_batch_size: int = 2
     gradient_accumulation_steps: int = 8
@@ -67,9 +69,9 @@ class TrainConfig:
 
     logging_steps: int = 10
     eval_strategy: str = "steps"
-    eval_steps: int = 50
+    eval_steps: int = 200
     save_strategy: str = "steps"
-    save_steps: int = 100
+    save_steps: int = 1000
     save_total_limit: int = 2
 
     fp16: bool = False
