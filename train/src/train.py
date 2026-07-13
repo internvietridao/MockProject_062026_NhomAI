@@ -75,8 +75,6 @@ def main():
         load_best_model_at_end=True,
         metric_for_best_model="eval_loss",
         greater_is_better=False,
-        max_seq_length=data_cfg.max_seq_length,
-        packing=False,  
     )
 
     formatting_func = get_formatting_func(data_cfg.prompt_style, data_cfg.system_prompt)
@@ -88,6 +86,8 @@ def main():
         eval_dataset=val_dataset,
         processing_class=tokenizer,
         formatting_func=formatting_func,
+        max_seq_length=data_cfg.max_seq_length,
+        packing=False,  
     )
 
     print("[6/8] SFTTrainer khởi tạo thành công")
