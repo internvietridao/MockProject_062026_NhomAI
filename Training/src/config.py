@@ -30,9 +30,9 @@ TEST_FILE = OUTPUT_DIR / "test.jsonl"
 TRAIN_SAMPLE_LIMIT = 600  # số sample lấy từ medquad.json để build dataset (demo)
 
 # Tỷ lệ chia train/val/test (phải cộng lại = 1.0)
-TRAIN_RATIO = 0.75
-VAL_RATIO = 0.24
-TEST_RATIO = 0.01
+TRAIN_RATIO = 0.7
+VAL_RATIO = 0.15
+TEST_RATIO = 0.15
 
 # Seed cố định để chia tập lần nào cũng ra kết quả giống nhau (reproducible)
 SPLIT_SEED = 42
