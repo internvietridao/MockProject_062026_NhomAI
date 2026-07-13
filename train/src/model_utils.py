@@ -41,7 +41,7 @@ def load_model_with_peft(
 
     model_kwargs = {
         "quantization_config": bnb_config,
-        "dtype": model_cfg.get_torch_dtype(),
+        "torch_dtype": model_cfg.get_torch_dtype(),
         "device_map": {"": 0},
         "trust_remote_code": model_cfg.trust_remote_code,
     }
@@ -51,7 +51,9 @@ def load_model_with_peft(
 
     model = AutoModelForCausalLM.from_pretrained(model_cfg.model_id, **model_kwargs)
 
-    model.resize_token_embeddings(len(tokenizer))
+    # Không cần resize_token_embeddings nếu không thêm token mới vào từ điển.
+    # Việc resize có thể làm mất các special tokens ở cuối vocab và sinh lỗi mismatch kiểu dữ liệu (BFloat16).
+    # model.resize_token_embeddings(len(tokenizer))
 
     model = prepare_model_for_kbit_training(model)
 
