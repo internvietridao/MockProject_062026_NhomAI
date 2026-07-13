@@ -77,6 +77,7 @@ def preprocess_dataset(
 
     print(f"[DATA] Đã load {len(raw_data)} mẫu từ {data_cfg.dataset_path}")
     dataset = Dataset.from_list(raw_data)
+    dataset = dataset.class_encode_column("source")
 
     first_split = dataset.train_test_split(
         test_size=1.0 - data_cfg.train_split_ratio,
