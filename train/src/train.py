@@ -78,6 +78,7 @@ def main():
     )
 
     formatting_func = get_formatting_func(data_cfg.prompt_style, data_cfg.system_prompt)
+    tokenizer.model_max_length = data_cfg.max_seq_length
 
     trainer = SFTTrainer(
         model=model,
@@ -86,8 +87,6 @@ def main():
         eval_dataset=val_dataset,
         processing_class=tokenizer,
         formatting_func=formatting_func,
-        max_seq_length=data_cfg.max_seq_length,
-        packing=False,  
     )
 
     print("[6/8] SFTTrainer khởi tạo thành công")
@@ -98,14 +97,18 @@ def main():
 
     train_result = trainer.train()
 
-    metrics = train_result.metrics
-    train_loss = metrics.get("train_loss", 0)
-    perplexity = compute_perplexity(train_loss)
+    train_metrics = train_result.metrics
+    train_loss = train_metrics.get("train_loss", 0)
+
+    eval_metrics = trainer.evaluate()
+    eval_loss = eval_metrics.get("eval_loss", 0)
+    perplexity = compute_perplexity(eval_loss)
 
     print(f"\n[7/8] Training hoàn tất!")
     print(f"  Train Loss:   {train_loss:.4f}")
-    print(f"  Perplexity:   {perplexity:.4f}")
-    print(f"  Runtime:      {metrics.get('train_runtime', 0):.0f}s")
+    print(f"  Eval Loss:    {eval_loss:.4f}")
+    print(f"  Perplexity:   {perplexity:.4f} (từ eval_loss)")
+    print(f"  Runtime:      {train_metrics.get('train_runtime', 0):.0f}s")
 
     trainer.save_model(train_cfg.output_dir)
     tokenizer.save_pretrained(train_cfg.output_dir)
