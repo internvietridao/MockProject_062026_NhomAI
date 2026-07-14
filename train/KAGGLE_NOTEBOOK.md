@@ -111,10 +111,12 @@ results.head()
 ## Cell 7 (Code) — (Tùy chọn) Download adapter về máy local
 
 ```python
+# Di chuyển vào thư mục train để nén trực tiếp thư mục outputs
+%cd /kaggle/working/project/train
+!zip -r /kaggle/working/lora_adapter.zip outputs/
+
+# Di chuyển về thư mục làm việc gốc và tạo liên kết tải file
 %cd /kaggle/working
-
-!zip -r lora_adapter.zip outputs/
-
 from IPython.display import FileLink
 FileLink("lora_adapter.zip")
 ```

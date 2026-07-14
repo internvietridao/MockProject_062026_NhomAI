@@ -1,9 +1,9 @@
 """
 evaluate_llm_judge.py — Đánh giá nâng cao mô hình ngôn ngữ lớn bằng LLM-as-a-judge.
 
-Đọc kết quả từ outputs/evaluation_results.csv, sử dụng Gemini API hoặc OpenAI API
+Đọc kết quả từ outputs_Qwen-0.5B/evaluation_results.csv, sử dụng Gemini API hoặc OpenAI API
 để đánh giá độ chính xác y khoa, độ đầy đủ và giọng điệu chuyên nghiệp của câu trả lời.
-Xuất báo cáo chi tiết ra outputs/llm_judge_report.md.
+Xuất báo cáo chi tiết ra outputs_Qwen-0.5B/llm_judge_report.md.
 """
 
 import os
@@ -111,9 +111,9 @@ def evaluate_with_openai(client, question: str, reference: str, prediction: str)
 
 def main():
     parser = argparse.ArgumentParser(description="Đánh giá kết quả fine-tune bằng LLM-as-a-judge.")
-    parser.add_argument("--csv", type=str, default="outputs/evaluation_results.csv", help="Đường dẫn tới file CSV kết quả.")
+    parser.add_argument("--csv", type=str, default="outputs_Qwen-0.5B/evaluation_results.csv", help="Đường dẫn tới file CSV kết quả.")
     parser.add_argument("--num_samples", type=int, default=10, help="Số lượng mẫu ngẫu nhiên để đánh giá.")
-    parser.add_argument("--output", type=str, default="outputs/llm_judge_report.md", help="Đường dẫn lưu báo cáo Markdown.")
+    parser.add_argument("--output", type=str, default="outputs_Qwen-0.5B/llm_judge_report.md", help="Đường dẫn lưu báo cáo Markdown.")
     parser.add_argument("--provider", type=str, default="auto", choices=["auto", "gemini", "openai"], help="API Provider sử dụng.")
     args = parser.parse_args()
 
