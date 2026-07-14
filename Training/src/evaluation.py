@@ -91,7 +91,7 @@ def save_predictions_csv(
     system_prompt: str,
     prompt_style: str = "alpaca",
     max_new_tokens: int = 256,
-    max_samples: int = 800,
+    max_samples: int = 1700,
 ):
     """
     Chạy inference trên tập test và lưu kết quả ra CSV.
