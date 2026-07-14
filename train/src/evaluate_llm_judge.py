@@ -1,18 +1,26 @@
 """
 evaluate_llm_judge.py — Đánh giá nâng cao mô hình ngôn ngữ lớn bằng LLM-as-a-judge.
-
-Đọc kết quả từ outputs_Qwen-0.5B/evaluation_results.csv, sử dụng Gemini API hoặc OpenAI API
-để đánh giá độ chính xác y khoa, độ đầy đủ và giọng điệu chuyên nghiệp của câu trả lời.
-Xuất báo cáo chi tiết ra outputs_Qwen-0.5B/llm_judge_report.md.
 """
 
 import os
+import sys
+import io
 import json
 import random
 import argparse
 import pandas as pd
 from typing import Dict, List, Optional
 from dotenv import load_dotenv
+
+# Cấu hình mã hóa UTF-8 cho đầu ra console để in tiếng Việt không bị lỗi trên Windows
+if sys.platform.startswith("win"):
+    try:
+        sys.stdout.reconfigure(encoding='utf-8')
+        sys.stderr.reconfigure(encoding='utf-8')
+    except AttributeError:
+        sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+        sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
+
 
 try:
     import google.generativeai as genai
@@ -30,7 +38,7 @@ except ImportError:
 def setup_gemini_client(api_key: str):
     genai.configure(api_key=api_key)
     return genai.GenerativeModel(
-        model_name="gemini-1.5-flash",
+        model_name="gemini-2.5-flash",
         generation_config={"response_mime_type": "application/json"}
     )
 
@@ -113,7 +121,7 @@ def main():
     parser = argparse.ArgumentParser(description="Đánh giá kết quả fine-tune bằng LLM-as-a-judge.")
     parser.add_argument("--csv", type=str, default="outputs_Qwen-0.5B/evaluation_results.csv", help="Đường dẫn tới file CSV kết quả.")
     parser.add_argument("--num_samples", type=int, default=10, help="Số lượng mẫu ngẫu nhiên để đánh giá.")
-    parser.add_argument("--output", type=str, default="outputs_Qwen-0.5B/llm_judge_report.md", help="Đường dẫn lưu báo cáo Markdown.")
+    parser.add_argument("--output", type=str, default="LLM-as-Judge/Qwen-0.5B.md", help="Đường dẫn lưu báo cáo Markdown.")
     parser.add_argument("--provider", type=str, default="auto", choices=["auto", "gemini", "openai"], help="API Provider sử dụng.")
     args = parser.parse_args()
 
@@ -143,7 +151,7 @@ def main():
             print("Lỗi: Chưa cài đặt thư viện 'google-generativeai'. Vui lòng chạy: pip install google-generativeai")
             return
         client = setup_gemini_client(gemini_key)
-        provider_used = "Gemini (gemini-1.5-flash)"
+        provider_used = "Gemini (gemini-2.5-flash)"
         print("Sử dụng Gemini API làm Giám khảo.")
     elif args.provider == "openai" or (args.provider == "auto" and openai_key and HAS_OPENAI):
         if not openai_key:

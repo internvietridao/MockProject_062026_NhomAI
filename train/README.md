@@ -18,22 +18,23 @@ train/
 │   └── train.py              # Script thực thi chính (kết nối pipeline)
 ├── data/                     # Thư mục chứa dữ liệu huấn luyện
 │   └── final_train_dataset.json  # Bộ dữ liệu Q&A sạch (37,172 mẫu)
-├── outputs/                  # Thư mục lưu kết quả sau khi train (sinh ra tự động hoặc tải về)
+├── outputs_Qwen-0.5B/        # Thư mục chứa kết quả huấn luyện model Qwen-0.5B
 │   ├── checkpoint-1000/      # Thư mục lưu checkpoint bước 1000
 │   ├── checkpoint-1859/      # Thư mục lưu checkpoint bước 1859 (cuối)
-│   ├── adapter_config.json   # Cấu hình chi tiết LoRA adapter
-│   ├── adapter_model.safetensors # Trọng số của LoRA adapter sau huấn luyện
+│   ├── adapter_config.json   # Cấu hình chi tiết LoRA adapter Qwen-0.5B
+│   ├── adapter_model.safetensors # Trọng số LoRA adapter của Qwen-0.5B
 │   ├── chat_template.jinja   # File mẫu prompt chat định dạng ChatML
-│   ├── evaluation_results.csv # Bảng kết quả chạy thử nghiệm và tính điểm ROUGE, BLEU
+│   ├── evaluation_results.csv # Bảng kết quả chạy thử nghiệm của Qwen-0.5B
 │   ├── judge_prompt.md       # Prompt chi tiết phục vụ copy-paste lên các Chatbot Web UI để đánh giá CSV
-│   ├── tokenizer.json        # Dữ liệu tokenizer cho mô hình
+│   ├── tokenizer.json        # Dữ liệu tokenizer cho Qwen-0.5B
 │   ├── tokenizer_config.json # Cấu hình tokenizer tương ứng
-│   └── training_args.bin     # Tham số huấn luyện được lưu dưới dạng binary
-├── .env.example              # Template chứa các biến môi trường nhạy cảm
-├── .gitignore                # Cấu hình ẩn các file cache, checkpoints, và token bảo mật
+│   └── training_args.bin     # Tham số huấn luyện Qwen-0.5B
+├── outputs_<Model-ID>/       # Thư mục kết quả tương ứng sẽ tự động sinh ra khi train model mới (vd: outputs_Llama-3-8B)
+├── .env.example              
+├── .gitignore                
 ├── requirements.txt          # Danh sách thư viện Python cần thiết
-├── KAGGLE_NOTEBOOK.md        # Hướng dẫn sao chép code để chạy huấn luyện trên Kaggle
-└── README.md                 # Hướng dẫn chi tiết sử dụng của module
+├── KAGGLE_NOTEBOOK.md        # Hướng dẫn chạy huấn luyện trên Kaggle
+└── README.md                 
 ```
 
 ---
@@ -57,7 +58,7 @@ Gom toàn bộ tham số vào các `dataclasses` để dễ dàng quản lý:
 
 ### 4. Đánh giá chất lượng (`src/evaluation.py`)
 *   Tính toán các chỉ số `ROUGE-1/2/L` và `BLEU` bằng thư viện `evaluate` của HuggingFace.
-*   Chạy sinh thử nghiệm (inference) trên tập **Test** sau khi train xong và xuất kết quả ra file `outputs/evaluation_results.csv` (lưu cả question, reference, prediction và điểm số chi tiết cho từng câu hỏi) nhằm chuẩn bị cho bước đánh giá nâng cao LLM-as-a-judge.
+*   Chạy sinh thử nghiệm (inference) trên tập **Test** sau khi train xong và xuất kết quả ra file `outputs_<Model-ID>/evaluation_results.csv` (lưu cả question, reference, prediction và điểm số chi tiết cho từng câu hỏi) nhằm chuẩn bị cho bước đánh giá nâng cao LLM-as-a-judge.
 
 ---
 
@@ -82,8 +83,8 @@ Quá trình fine-tune được thực hiện với mô hình nền `Qwen/Qwen2.5
 | **ROUGE-L** | **27.25%** | Độ trùng khớp chuỗi con chung dài nhất (Longest Common Subsequence). |
 | **BLEU** | **0.00%** | Điểm số BLEU-4 ở cấp độ câu đơn lẻ rất khắt khe và thường trả về 0 nếu không có cụm 4-gram nào trùng khớp tuyệt đối mà không có cơ chế làm trơn (smoothing). Do đó, điểm số này không phản ánh đầy đủ chất lượng nội dung y khoa, cần kết hợp đánh giá **LLM-as-a-judge**. |
 
-### 3. Cấu trúc thư mục đầu ra `outputs/`
-Sau khi chạy hoàn tất, các tệp tin sau được sinh ra trong thư mục `outputs/`:
+### 3. Cấu trúc thư mục đầu ra `outputs_<Model-ID>/` (Ví dụ: `outputs_Qwen-0.5B/`)
+Sau khi chạy hoàn tất, các tệp tin sau được sinh ra trong thư mục kết quả tương ứng:
 - `adapter_config.json`: Cấu hình chi tiết của adapter LoRA.
 - `adapter_model.safetensors`: Trọng số LoRA đã được tối ưu hóa sau khi huấn luyện.
 - `tokenizer.json` & `tokenizer_config.json`: Cấu hình bộ mã hóa từ vựng tương thích.
@@ -111,4 +112,4 @@ Link Notebook mẫu: [https://www.kaggle.com/code/fthetoan/llm-nhms/notebook](ht
     ```bash
     python src/train.py
     ```
-4.  Kết quả adapter sẽ được lưu tại thư mục `outputs/`, file CSV đánh giá chất lượng được lưu tại `outputs/evaluation_results.csv`.
+4.  Kết quả adapter sẽ được lưu tại thư mục `outputs_<Model-ID>/` (tùy thuộc vào cấu hình `output_dir` trong file [config.py](file:///e:/AI_VTD/MockProject_062026_NhomAI/train/src/config.py)), file CSV đánh giá chất lượng được lưu tại `outputs_<Model-ID>/evaluation_results.csv`.
