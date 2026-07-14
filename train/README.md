@@ -96,6 +96,7 @@ Sau khi chạy hoàn tất, các tệp tin sau được sinh ra trong thư mục
 
 ### Cách 1: Chạy trên Kaggle (GPU miễn phí - Khuyến nghị)
 Xem chi tiết các bước thiết lập và copy-paste code tại file [KAGGLE_NOTEBOOK.md](file:///e:/AI_VTD/MockProject_062026_NhomAI/train/KAGGLE_NOTEBOOK.md).
+Link Notebook mẫu: [https://www.kaggle.com/code/fthetoan/llm-nhms/notebook](https://www.kaggle.com/code/fthetoan/llm-nhms)
 
 ### Cách 2: Chạy ở máy Local (Yêu cầu GPU NVIDIA có CUDA)
 1.  Cài đặt các thư viện:
