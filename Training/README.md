@@ -1,53 +1,40 @@
+# Medical Chatbot Fine-tuning Pipeline
+
+Fine-tune LoRA cho chatbot hỏi-đáp y tế, base model `Qwen/Qwen2.5-0.5B-Instruct`.
+
+---
+
 ## 📂 Train / Validation / Test split
 
-`pipeline/build_train_dataset.py` sẽ xáo trộn dữ liệu (sử dụng `SPLIT_SEED`
-trong `src/config.py` để mỗi lần chạy đều cho cùng một kết quả), sau đó chia
-theo các tỷ lệ `TRAIN_RATIO`, `VAL_RATIO` và `TEST_RATIO`.
+`pipeline/build_train_dataset.py` đọc dữ liệu gốc từ `data/final_train_dataset.json`, xáo trộn (dùng `SPLIT_SEED` trong `src/config.py`
+để mỗi lần chạy ra cùng kết quả), rồi chia theo:
 
-Các file được tạo gồm:
+- `TRAIN_RATIO = 0.7`
+- `VAL_RATIO = 0.15`
+- `TEST_RATIO = 0.15`
 
-- 📘 **train.jsonl**: dùng để fine-tune model (`pipeline/train.py`).
-- 📗 **val.jsonl**: dùng để theo dõi validation loss trong quá trình train
-  (`eval_strategy="epoch"` của `SFTConfig`). Tập này chỉ phục vụ đánh giá,
-  không tham gia cập nhật trọng số.
-- 📕 **test.jsonl**: tập dữ liệu model chưa từng thấy trong quá trình train.
-  `pipeline/evaluate.py` sử dụng tập này để đánh giá cuối cùng bằng RAGAs,
-  phản ánh khả năng tổng quát hóa của model thay vì khả năng ghi nhớ dữ liệu.
+Các file được tạo trong `output/`:
 
-`train.jsonl` và `val.jsonl` được lưu theo định dạng chat `messages`, phù hợp
-để huấn luyện bằng `SFTTrainer`.
+- 📘 **train.jsonl**: fine-tune model (`pipeline/train.py`).
+- 📗 **val.jsonl**: theo dõi validation loss trong lúc train (eval theo step,
+  không phải theo epoch) + dùng cho early stopping. Không tham gia cập nhật
+  trọng số.
+- 📕 **test.jsonl**: tập model chưa từng thấy lúc train, giữ nguyên trường thô
+  `{question, answer}` — dùng ở 2 bước đánh giá cuối (ROUGE/BLEU trong
+  `train.py`, và LLM Judge trong `pipeline/evaluate.py`).
 
-`test.jsonl` giữ nguyên các trường `{question, contexts, ground_truth}` vì
-`evaluate.py` sẽ để model tự sinh câu trả lời trước khi tiến hành đánh giá.
+`train.jsonl` / `val.jsonl` lưu theo định dạng chat `messages`, sẵn sàng cho
+`SFTTrainer`.
 
 ---
 
 ## 🔍 Bật / tắt RAG
 
-Hiện tại project **chưa kết nối với vector database** nên mặc định
-`USE_RAG=False` (xem trong `src/config.py`).
-
-Ở chế độ này, model được huấn luyện như một chatbot hỏi đáp thông thường.
-`build_prompt()` sẽ không chèn phần ngữ cảnh (context) và system prompt cũng
-được điều chỉnh để phù hợp với trường hợp không có tài liệu tham chiếu.
-
-Khi đã tích hợp vector database, có thể bật RAG bằng:
+Mặc định `USE_RAG=False` (chưa nối vector database thật). Bật bằng:
 
 ```bash
 MEDQUAD_USE_RAG=1 python -m pipeline.build_train_dataset
 ```
-
-Khi đó:
-
-- ✅ `build_train_dataset.py` sẽ tạo prompt có context.
-- ✅ `evaluate.py` sẽ sử dụng đầy đủ các metric của RAGAs như
-  `faithfulness`, `context_precision` và `context_recall`.
-
-Nếu không bật RAG, chỉ sử dụng `answer_relevancy`.
-
-`pipeline/chat.py` hoạt động độc lập với cờ này. Có thể truyền
-`chunks=None` để thử chế độ không dùng RAG hoặc truyền danh sách context thật
-sau khi đã tích hợp vector database.
 
 ---
 
@@ -56,93 +43,90 @@ sau khi đã tích hợp vector database.
 ```bash
 pip install -r requirements.txt
 
-# 1. Đặt medquad.json vào thư mục data/
+# 1. Đặt final_train_dataset.json vào thư mục data/
 
 # 2. Tạo train/validation/test
 python -m pipeline.build_train_dataset
 
-# 3. Fine-tune LoRA
+# 3. Fine-tune LoRA (train.py TỰ ĐỘNG chạy luôn bước ROUGE/BLEU sau khi train xong)
 python -m pipeline.train
 
 # 4. Demo chatbot
 python -m pipeline.chat
 
-# 5. Đánh giá
+# 5. Đánh giá bằng LLM Judge (đọc CSV do bước 3 xuất ra)
 python -m pipeline.evaluate
 ```
 
-Nên chạy bằng:
+Chạy bằng `python -m pipeline.<script_name>` (không phải
+`python pipeline/<script_name>.py`) để Python nhận đúng thư mục gốc project.
 
-```bash
-python -m pipeline.<script_name>
-```
+---
 
-thay vì
+## 🧪 Quy trình đánh giá — 2 bước tách rời
 
-```bash
-python pipeline/<script_name>.py
-```
+Khác với các phiên bản trước, đánh giá được chia làm **2 bước độc lập**:
 
-để Python tự nhận đúng thư mục gốc của project.
+### Bước 1 — ROUGE/BLEU (chạy TỰ ĐỘNG ngay trong `pipeline/train.py`)
+
+Sau khi train xong và lưu checkpoint tốt nhất, `train.py` gọi
+`save_predictions_csv()` (trong `src/evaluation.py`):
+
+- Lấy **100 mẫu đầu tiên** của `test.jsonl` (mặc định `max_samples=100`,
+  không phải toàn bộ tập test — vì generate tuần tự từng mẫu khá chậm).
+- Sinh câu trả lời bằng model vừa train, tính ROUGE-1/2/L + BLEU cho từng mẫu.
+- Xuất ra `output/evaluation_results.csv` (cột: `question, reference,
+  prediction, rouge1, rouge2, rougeL, bleu`).
+- Ghi thêm 1 dòng tổng hợp vào `output/training_summary.csv` (model,
+  rouge1/2/L, bleu, perplexity, train_loss, val_loss, mean_token_accuracy) —
+  dễ so sánh giữa các lần train.
+
+⚠️ BLEU tính theo geometric mean 1-4 gram nên rất dễ về gần 0 với câu trả lời
+bị paraphrase (không trùng nguyên văn 4-gram liên tiếp) — không có nghĩa là
+model kém, chỉ là BLEU quá khắt khe với kiểu dữ liệu này. ROUGE đáng tin hơn
+trong trường hợp này.
+
+⚠️ Vì chỉ chạy trên 100/1733 mẫu, con số này chỉ mang tính **ước lượng nhanh
+(proxy)**, không đại diện đầy đủ cho toàn bộ tập test. Muốn số đáng tin hơn để
+báo cáo chính thức, cần tăng `max_samples` trong lời gọi `save_predictions_csv`
+(đánh đổi bằng thời gian chạy lâu hơn).
+
+### Bước 2 — LLM Judge (`pipeline/evaluate.py`, chạy riêng, thủ công)
+
+Đọc CSV từ bước 1, dùng LLM giám khảo **tách biệt** với model đang được đánh
+giá để chấm điểm ngữ nghĩa (không chỉ so khớp từ vựng như ROUGE/BLEU):
+
+- Ưu tiên gọi qua **API** (`MEDQUAD_JUDGE_API_KEY`, endpoint kiểu
+  OpenAI-compatible, mặc định model `gpt-4o-mini`) — nhanh, không tốn VRAM.
+- Nếu không có API key, fallback về Prometheus 2 (`prometheus-eval/prometheus-7b-v2.0`)
+  chạy cục bộ, mặc định load 4-bit (`JUDGE_LOAD_IN_4BIT=1`) để vừa GPU free
+  tier (Colab/Kaggle T4).
+
+Tách 2 model (model bị đánh giá vs. model giám khảo) để tránh **self-preference
+bias** — model có xu hướng tự chấm cao câu trả lời của chính mình nếu dùng
+chung 1 model.
 
 ---
 
 ## ⚙️ Đổi model hoặc đường dẫn
 
-Hầu hết các thiết lập đều nằm trong `src/config.py`.
-
-Ngoài ra có thể ghi đè bằng biến môi trường:
+Hầu hết thiết lập nằm trong `src/config.py`, có thể ghi đè bằng biến môi trường:
 
 ```bash
 MEDQUAD_BASE_MODEL="Qwen/Qwen2.5-1.5B-Instruct" python -m pipeline.train
-
 MEDQUAD_OUTPUT_DIR="/kaggle/working/output" python -m pipeline.train
+MEDQUAD_JUDGE_API_KEY="sk-..." python -m pipeline.evaluate
 ```
-
----
-
-## ☁️ Chạy trên Google Colab
-
-- 📁 Mount Google Drive.
-- 📂 Di chuyển vào thư mục project (`src/`, `pipeline/`, ...).
-- ▶️ Chạy các lệnh như hướng dẫn ở trên.
-
-Phiên bản hiện tại không cần thêm `sys.path.append(...)` thủ công.
 
 ---
 
 ## 🏆 Chạy trên Kaggle
 
-Mở notebook `kaggle/main_pipeline.ipynb`.
+Mở `main_pipeline.ipynb`, chạy tuần tự các cell theo thứ tự
+build_train_dataset → train → (chat demo) → evaluate.
 
-Có thể:
-
-- 📦 Upload toàn bộ project thành Kaggle Dataset.
-- 🔗 Hoặc clone trực tiếp repository từ GitHub.
-
-Notebook sẽ tự cài các thư viện trong `requirements.txt` và chạy toàn bộ
-pipeline.
-
----
-
-## 📝 Lưu ý
-
-- 🤖 `pipeline/evaluate.py` sử dụng **hai model riêng biệt**.
-
-  - **Model được đánh giá**: base model + LoRA adapter, chỉ dùng để sinh câu trả lời.
-  - **Model giám khảo**: `prometheus-eval/prometheus-7b-v2.0`, chỉ dùng để chấm điểm.
-
-  Cách làm này giúp giảm hiện tượng **self-preference bias** (model tự chấm cao
-  câu trả lời của chính mình).
-
-- 💾 Prometheus 2 mặc định được load ở chế độ **4-bit** (`JUDGE_LOAD_IN_4BIT`)
-  để phù hợp với GPU miễn phí trên Colab hoặc Kaggle. Có thể thay đổi bằng
-  `MEDQUAD_JUDGE_MODEL` hoặc `MEDQUAD_JUDGE_4BIT=0`.
-
-- 📊 Điểm số từ Prometheus chỉ mang tính tham khảo. Nếu cần đánh giá có độ tin
-  cậy cao hơn, nên sử dụng các LLM mạnh hơn như GPT-4 hoặc Claude.
-
-- 🧩 Phiên bản hiện tại chưa tích hợp vector database. Vì vậy
-  `build_train_dataset.py` đang dùng câu trả lời gốc của MedQuAD làm context
-  giả lập. Khi hoàn thiện RAG, chỉ cần thay phần này bằng các chunks được truy
-  xuất từ vector database.
+Lưu ý: Kaggle free tier giới hạn thời gian GPU/phiên khá ngắn — nếu train +
+inference ROUGE/BLEU đang chạy dở mà hết giờ, checkpoint model (`output_model/`)
+vẫn đã được lưu an toàn từ trước đó, nhưng `evaluation_results.csv` chỉ được
+ghi ra **sau khi chạy xong toàn bộ vòng lặp inference**, nên có thể mất nếu bị
+ngắt giữa chừng bước này.
