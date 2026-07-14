@@ -1,0 +1,2330 @@
+{
+    "summary": {
+        "total_queries": 100,
+        "rank_counts": {
+            "1": 65,
+            "2": 12,
+            "3": 5,
+            "not_found": 18
+        },
+        "accuracies": {
+            "top_1": 65.0,
+            "top_2": 12.0,
+            "top_3": 5.0,
+            "not_found": 18.0,
+            "top_k_hit_rate": 82.0,
+            "mrr": 0.7266666666666669,
+            "precision_at_3": 0.27333333333333304
+        }
+    },
+    "matches_by_rank": {
+        "1": [
+            {
+                "query": "What does the policy document state about 6)Participant lives outside the established range of transportation resources and participant cannot...?",
+                "expected_chunk_id": "Policies_and_Procedures_chunk_133",
+                "reference_answer": "6)Participant lives outside the established range of transportation resources and participant cannot provide self-transportation.",
+                "source_file": "Policies_and_Procedures.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "Policies_and_Procedures_chunk_133",
+                        "distance": 0.03278688524590164,
+                        "source": "Policies_and_Procedures.md"
+                    },
+                    {
+                        "chunk_id": "Policies_and_Procedures_chunk_149",
+                        "distance": 0.016129032258064516,
+                        "source": "Policies_and_Procedures.md"
+                    },
+                    {
+                        "chunk_id": "Policies_and_Procedures_chunk_096",
+                        "distance": 0.016129032258064516,
+                        "source": "Policies_and_Procedures.md"
+                    }
+                ]
+            },
+            {
+                "query": "What does the policy document state about advise a high residue diet or bulk laxative to prevent constipation Specific...?",
+                "expected_chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_3001",
+                "reference_answer": "Advise a high residue diet or bulk laxative to prevent constipation Specific treatment includes: - Rubber-band ligation for 2°–3° haemorrhoids - Manual anal dilatations - Injection sclerotherapy. - Haemorrhoidectomy (for 2°–3° piles) where other methods have failed. - Management of associated compilations.",
+                "source_file": "ken_D1_clinical_guidelines_for_management_and_re.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_3001",
+                        "distance": 0.03278688524590164,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    },
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_3729",
+                        "distance": 0.03225806451612903,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    },
+                    {
+                        "chunk_id": "R70SOMA_chunk_1636",
+                        "distance": 0.015873015873015872,
+                        "source": "R70SOMA.md"
+                    }
+                ]
+            },
+            {
+                "query": "Can you explain the guidelines for these tasks may not present the potential for causing injuries?",
+                "expected_chunk_id": "FINAL_NH_GUIDELINES_chunk_205",
+                "reference_answer": "These tasks may not present the potential for causing injuries. For problems in all circumstances. example, support is available from",
+                "source_file": "FINAL_NH_GUIDELINES.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "FINAL_NH_GUIDELINES_chunk_205",
+                        "distance": 0.03278688524590164,
+                        "source": "FINAL_NH_GUIDELINES.md"
+                    },
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_3383",
+                        "distance": 0.016129032258064516,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_1635",
+                        "distance": 0.016129032258064516,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    }
+                ]
+            },
+            {
+                "query": "According to the documentation, what is specified about and application of dressings (M1200E)?",
+                "expected_chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_5997",
+                "reference_answer": "and application of dressings (M1200E).",
+                "source_file": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_5997",
+                        "distance": 0.03278688524590164,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_3143",
+                        "distance": 0.03225806451612903,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_4834",
+                        "distance": 0.03125763125763126,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    }
+                ]
+            },
+            {
+                "query": "According to the documentation, what is specified about the use of a medication to treat a clinical condition without identifiable...?",
+                "expected_chunk_id": "R70SOMA_chunk_3475",
+                "reference_answer": "The use of a medication to treat a clinical condition without identifiable evidence that safer alternatives or more clinically appropriate medications have been considered; The use of an appropriate medication that is not helping attain the intended treatment goals because of timing of administration, dosing intervals, sufficiency of dose,",
+                "source_file": "R70SOMA.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "R70SOMA_chunk_3475",
+                        "distance": 0.03278688524590164,
+                        "source": "R70SOMA.md"
+                    },
+                    {
+                        "chunk_id": "R70SOMA_chunk_2246",
+                        "distance": 0.016129032258064516,
+                        "source": "R70SOMA.md"
+                    },
+                    {
+                        "chunk_id": "R70SOMA_chunk_2353",
+                        "distance": 0.016129032258064516,
+                        "source": "R70SOMA.md"
+                    }
+                ]
+            },
+            {
+                "query": "What does the policy document state about routine antenatal screening at first visit and visits near term?",
+                "expected_chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_965",
+                "reference_answer": "Routine antenatal screening at first visit and visits near term",
+                "source_file": "ken_D1_clinical_guidelines_for_management_and_re.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_965",
+                        "distance": 0.03278688524590164,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    },
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_3755",
+                        "distance": 0.03200204813108039,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    },
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_3834",
+                        "distance": 0.03076923076923077,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    }
+                ]
+            },
+            {
+                "query": "Can you explain the guidelines for encourage families to consume vitamin A rich foods, which include: - Animal...?",
+                "expected_chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_2087",
+                "reference_answer": "Encourage families to consume vitamin A rich foods, which include: - Animal products, for example liver, milk and kidneys. - Plant products, for example dark green leafy vegetables, yellow fruits and vegetables (carrots, pumpkin, pawpaw). Give vitamin A supplementation together with immunization. Give vitamin A supplementation routinely in the presence of the following conditions: - Malnutrition - Diarrhoea - Malaria - Tuberculosis PAEDIATRICS - Pneumonia - Worm infestation - Fever",
+                "source_file": "ken_D1_clinical_guidelines_for_management_and_re.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_2087",
+                        "distance": 0.03278688524590164,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    },
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_2081",
+                        "distance": 0.031054405392392875,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    },
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_2084",
+                        "distance": 0.016129032258064516,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    }
+                ]
+            },
+            {
+                "query": "According to the documentation, what is specified about - For E0500C, code if the impact of the resident’s behavior is...?",
+                "expected_chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_1505",
+                "reference_answer": "- For E0500C, code if the impact of the resident’s behavior is limiting or keeping the resident from engaging in solitary activities or hobbies, joining groups, or attending programmed activities or having positive social encounters with visitors, other residents, or staff.",
+                "source_file": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_1505",
+                        "distance": 0.03278688524590164,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_1504",
+                        "distance": 0.031754032258064516,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_1496",
+                        "distance": 0.03076923076923077,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    }
+                ]
+            },
+            {
+                "query": "What does the policy document state about worker satisfaction has increased from the bed to his cart or to...?",
+                "expected_chunk_id": "FINAL_NH_GUIDELINES_chunk_302",
+                "reference_answer": "Worker satisfaction has increased from the bed to his cart or to the greatly. One nursing assistant, who toilet. He had numerous bruises from has spent most of her career working falling and dreaded being moved. in nursing homes, confessed to With the lifts in place, the resident’s being sore and unhappy at Wyandot wife reports that the staff “can easily",
+                "source_file": "FINAL_NH_GUIDELINES.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "FINAL_NH_GUIDELINES_chunk_302",
+                        "distance": 0.03278688524590164,
+                        "source": "FINAL_NH_GUIDELINES.md"
+                    },
+                    {
+                        "chunk_id": "FINAL_NH_GUIDELINES_chunk_042",
+                        "distance": 0.016129032258064516,
+                        "source": "FINAL_NH_GUIDELINES.md"
+                    },
+                    {
+                        "chunk_id": "R70SOMA_chunk_4073",
+                        "distance": 0.016129032258064516,
+                        "source": "R70SOMA.md"
+                    }
+                ]
+            },
+            {
+                "query": "According to the documentation, what is specified about how staff manage and assess urinary leakage from the point of catheter...?",
+                "expected_chunk_id": "R70SOMA_chunk_1620",
+                "reference_answer": "How staff manage and assess urinary leakage from the point of catheter insertion to the bag, if present; If the resident has catheter-related pain, how staff assess and manage the pain; and What interventions (such as anchoring the catheter, avoiding excessive tugging on the catheter during transfer and care delivery) are being used to prevent inadvertent catheter removal or tissue injury from dislodging the catheter.",
+                "source_file": "R70SOMA.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "R70SOMA_chunk_1620",
+                        "distance": 0.03278688524590164,
+                        "source": "R70SOMA.md"
+                    },
+                    {
+                        "chunk_id": "R70SOMA_chunk_1574",
+                        "distance": 0.0315136476426799,
+                        "source": "R70SOMA.md"
+                    },
+                    {
+                        "chunk_id": "R70SOMA_chunk_1579",
+                        "distance": 0.030090497737556562,
+                        "source": "R70SOMA.md"
+                    }
+                ]
+            },
+            {
+                "query": "What does the policy document state about bed-hold for days of absence in excess of the State‘s bed-hold limit...?",
+                "expected_chunk_id": "R70SOMA_chunk_316",
+                "reference_answer": "Bed-hold for days of absence in excess of the State‘s bed-hold limit are considered noncovered services which means that the resident could use his/her own income to pay for the bed-hold. However, if such a resident does not elect to pay to hold the bed, readmission rights to the next available bed are specified at §483.12(b)(3). NonMedicaid residents may be requested to pay for all days of bed-hold.",
+                "source_file": "R70SOMA.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "R70SOMA_chunk_316",
+                        "distance": 0.03278688524590164,
+                        "source": "R70SOMA.md"
+                    },
+                    {
+                        "chunk_id": "R70SOMA_chunk_311",
+                        "distance": 0.031754032258064516,
+                        "source": "R70SOMA.md"
+                    },
+                    {
+                        "chunk_id": "R70SOMA_chunk_314",
+                        "distance": 0.0315136476426799,
+                        "source": "R70SOMA.md"
+                    }
+                ]
+            },
+            {
+                "query": "According to the documentation, what is specified about 18.1: Assessment, classification, and management of diarrhoea in children?",
+                "expected_chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_091",
+                "reference_answer": "18.1: Assessment, classification, and management of diarrhoea in children",
+                "source_file": "ken_D1_clinical_guidelines_for_management_and_re.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_091",
+                        "distance": 0.03278688524590164,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    },
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_1346",
+                        "distance": 0.03225806451612903,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    },
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_1385",
+                        "distance": 0.030330882352941176,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    }
+                ]
+            },
+            {
+                "query": "What does the policy document state about malabsorption; stools may contain mucus?",
+                "expected_chunk_id": "guideline_170_en_chunk_1230",
+                "reference_answer": "malabsorption; stools may contain mucus. Diarrhoea is usually associated with non-specific gastrointestinal symptoms (abdominal distension and cramps, flatulence, nausea, anorexia), but patients have low-grade fever or no fever.",
+                "source_file": "guideline_170_en.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "guideline_170_en_chunk_1230",
+                        "distance": 0.03252247488101534,
+                        "source": "guideline_170_en.md"
+                    },
+                    {
+                        "chunk_id": "guideline_170_en_chunk_1229",
+                        "distance": 0.032018442622950824,
+                        "source": "guideline_170_en.md"
+                    },
+                    {
+                        "chunk_id": "guideline_170_en_chunk_1232",
+                        "distance": 0.016129032258064516,
+                        "source": "guideline_170_en.md"
+                    }
+                ]
+            },
+            {
+                "query": "What does the policy document state about oral antibiotic therapy, oral amoxicillin/clavulanate 625mg 12 hourly OR PO nitrofurantoin 100mg...?",
+                "expected_chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_3874",
+                "reference_answer": "Oral antibiotic therapy, oral amoxicillin/clavulanate 625mg 12 hourly OR PO nitrofurantoin 100mg 8 hourly OR OR erythromycin 500mg 8 hourly. All for 10 days. Can be managed at all levels of health care provided culture and sensitivity",
+                "source_file": "ken_D1_clinical_guidelines_for_management_and_re.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_3874",
+                        "distance": 0.03278688524590164,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    },
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_3987",
+                        "distance": 0.03225806451612903,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    },
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_3367",
+                        "distance": 0.02919863597612958,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    }
+                ]
+            },
+            {
+                "query": "What does the policy document state about check when IV access was midline access?",
+                "expected_chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_3414",
+                "reference_answer": "Check when IV access was midline access. Midline catheters are inserted into the antecubital (or other upper arm) vein and do not reach all the way to a central vein such as the superior vena cava.",
+                "source_file": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_3414",
+                        "distance": 0.03278688524590164,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_3413",
+                        "distance": 0.03225806451612903,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_3415",
+                        "distance": 0.031746031746031744,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    }
+                ]
+            },
+            {
+                "query": "What are the specific requirements and regulations regarding replace the sulfonylurea with intermediate-acting insulin SC: start with 0.2 IU/kg at...?",
+                "expected_chunk_id": "guideline_170_en_chunk_2483",
+                "reference_answer": "replace the sulfonylurea with intermediate-acting insulin SC: start with 0.2 IU/kg at bedtime. The dose is adjusted after measuring fasting blood glucose in the morning. Once blood glucose levels have stabilized, test levels once weekly then after each consultation. Doses of 1 IU/kg/day or more may be necessary to reach glycaemic targets. If the necessary dose is over 0.5 IU/kg/day, administer in 2 injections daily.",
+                "source_file": "guideline_170_en.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "guideline_170_en_chunk_2483",
+                        "distance": 0.03278688524590164,
+                        "source": "guideline_170_en.md"
+                    },
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_2604",
+                        "distance": 0.03200204813108039,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    },
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_2597",
+                        "distance": 0.0315136476426799,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    }
+                ]
+            },
+            {
+                "query": "Can you explain the guidelines for there is a grey adherent membrane on tonsils and throat, exclude diphtheria...?",
+                "expected_chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_1538",
+                "reference_answer": "There is a grey adherent membrane on tonsils and throat, exclude diphtheria by a throat swab. Barrier nurse a patient who may be toxic. Give crystalline penicillin 25,000 units/kg QDS for 7 days and antitoxin if available.",
+                "source_file": "ken_D1_clinical_guidelines_for_management_and_re.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_1538",
+                        "distance": 0.03278688524590164,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    },
+                    {
+                        "chunk_id": "guideline_170_en_chunk_455",
+                        "distance": 0.03225806451612903,
+                        "source": "guideline_170_en.md"
+                    },
+                    {
+                        "chunk_id": "guideline_170_en_chunk_496",
+                        "distance": 0.03125,
+                        "source": "guideline_170_en.md"
+                    }
+                ]
+            },
+            {
+                "query": "Can you explain the guidelines for in case of necrotising fasciitis, septic arthritis or osteomyelitis: urgent transfer to...?",
+                "expected_chunk_id": "guideline_170_en_chunk_925",
+                "reference_answer": "In case of necrotising fasciitis, septic arthritis or osteomyelitis: urgent transfer to a surgical centre, initiate IV antibiotic treatment while awaiting transfer. Hospitalize for the following: children younger than 3 months, critically ill appearing patient b , local complications, debilitated patient (chronic conditions, the elderly) or if there is a risk of non-compliance with or failure of outpatient treatment. Treat other patients as outpatients.",
+                "source_file": "guideline_170_en.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "guideline_170_en_chunk_925",
+                        "distance": 0.03278688524590164,
+                        "source": "guideline_170_en.md"
+                    },
+                    {
+                        "chunk_id": "guideline_170_en_chunk_921",
+                        "distance": 0.030090497737556562,
+                        "source": "guideline_170_en.md"
+                    },
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_2915",
+                        "distance": 0.016129032258064516,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    }
+                ]
+            },
+            {
+                "query": "Can you explain the guidelines for i have written 3 words for you to remember?",
+                "expected_chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_5680",
+                "reference_answer": "I have written 3 words for you to remember. Please read them. Then, I will remove the card and ask you repeat or write down the words as you remember them.",
+                "source_file": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_5680",
+                        "distance": 0.03278688524590164,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_5674",
+                        "distance": 0.0315136476426799,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_1147",
+                        "distance": 0.016129032258064516,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    }
+                ]
+            },
+            {
+                "query": "What does the policy document state about ongoing staff training and supervision, including how to approach a resident who...?",
+                "expected_chunk_id": "R70SOMA_chunk_1816",
+                "reference_answer": "Ongoing staff training and supervision, including how to approach a resident who may be agitated, combative, verbally or physically aggressive, or anxious, and how and when to obtain assistance in managing a resident with behavior symptoms.",
+                "source_file": "R70SOMA.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "R70SOMA_chunk_1816",
+                        "distance": 0.03278688524590164,
+                        "source": "R70SOMA.md"
+                    },
+                    {
+                        "chunk_id": "Policies_and_Procedures_chunk_044",
+                        "distance": 0.03057889822595705,
+                        "source": "Policies_and_Procedures.md"
+                    },
+                    {
+                        "chunk_id": "R70SOMA_chunk_498",
+                        "distance": 0.016129032258064516,
+                        "source": "R70SOMA.md"
+                    }
+                ]
+            },
+            {
+                "query": "What does the policy document state about evidence that the facility considered the development of care planning interventions for...?",
+                "expected_chunk_id": "R70SOMA_chunk_876",
+                "reference_answer": "Evidence that the facility considered the development of care planning interventions for all CAAs triggered by the MDS. The care plan must reflect intermediate steps for each outcome objective if identification of those steps will enhance the resident‘s ability to meet his/her objectives. Facility staff will use these objectives to monitor resident progress. Facilities may, for some residents, need to prioritize their care plan interventions. This should be noted in the clinical record",
+                "source_file": "R70SOMA.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "R70SOMA_chunk_876",
+                        "distance": 0.03278688524590164,
+                        "source": "R70SOMA.md"
+                    },
+                    {
+                        "chunk_id": "R70SOMA_chunk_953",
+                        "distance": 0.016129032258064516,
+                        "source": "R70SOMA.md"
+                    },
+                    {
+                        "chunk_id": "R70SOMA_chunk_706",
+                        "distance": 0.016129032258064516,
+                        "source": "R70SOMA.md"
+                    }
+                ]
+            },
+            {
+                "query": "What does the policy document state about provide guidelines for healthcare and other professionalshospital stay [10]?",
+                "expected_chunk_id": "NVZF_wereldrichtlijn_over_vallen_chunk_056",
+                "reference_answer": "provide guidelines for healthcare and other professionalshospital stay [10]. Tis suggests that risk factors may diﬀer working with older adults on how to identify and assess guestacross locations and settings, which could have relevance for the risk of falls and which interventions, alone or in com- on preventative strategies. 28 bination, to oﬀer as part of a person-centred approach. Tese guidelines are novel in systematically considering: (i)",
+                "source_file": "NVZF_wereldrichtlijn_over_vallen.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "NVZF_wereldrichtlijn_over_vallen_chunk_056",
+                        "distance": 0.03278688524590164,
+                        "source": "NVZF_wereldrichtlijn_over_vallen.md"
+                    },
+                    {
+                        "chunk_id": "Article 5 - Administration (§ 72501 to 72557)_chunk_072",
+                        "distance": 0.016129032258064516,
+                        "source": "Article 5 - Administration (§ 72501 to 72557).md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_3907",
+                        "distance": 0.016129032258064516,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    }
+                ]
+            },
+            {
+                "query": "According to the documentation, what is specified about spreads easily in schools?",
+                "expected_chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_1106",
+                "reference_answer": "Spreads easily in schools. Isolate and treat infected individuals. Separate towels and bath facilities.",
+                "source_file": "ken_D1_clinical_guidelines_for_management_and_re.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_1106",
+                        "distance": 0.03278688524590164,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    },
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_2542",
+                        "distance": 0.03225806451612903,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    },
+                    {
+                        "chunk_id": "R70SOMA_chunk_3738",
+                        "distance": 0.015873015873015872,
+                        "source": "R70SOMA.md"
+                    }
+                ]
+            },
+            {
+                "query": "What are the specific requirements and regulations regarding most individuals with indwelling catheters for more than 7 days have bacteriuria?",
+                "expected_chunk_id": "R70SOMA_chunk_1580",
+                "reference_answer": "Most individuals with indwelling catheters for more than 7 days have bacteriuria. Bacteriuria alone in a catheterized individual should not be treated with antibiotics. A long term indwelling catheter (>2 to 4 weeks) increases the chances of having a symptomatic UTI and urosepsis. The incidence of bacteremia is 40 times greater in",
+                "source_file": "R70SOMA.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "R70SOMA_chunk_1580",
+                        "distance": 0.03278688524590164,
+                        "source": "R70SOMA.md"
+                    },
+                    {
+                        "chunk_id": "R70SOMA_chunk_1597",
+                        "distance": 0.031754032258064516,
+                        "source": "R70SOMA.md"
+                    },
+                    {
+                        "chunk_id": "R70SOMA_chunk_1572",
+                        "distance": 0.030776515151515152,
+                        "source": "R70SOMA.md"
+                    }
+                ]
+            },
+            {
+                "query": "What does the policy document state about the three most commonly used pressure coefficient of friction should be avoided?",
+                "expected_chunk_id": "5a517b64dacfb4fee06c221412f0b4e9_chunk_211",
+                "reference_answer": "The three most commonly used pressure coefficient of friction should be avoided. There is ulcer risk scales (Braden, Norton and Waterlow) anecdotal evidence that application of siliconeall recognise moisture or incontinence as a risk based lotions to the skin of patients who have a factor for pressure ulcers40-42. However, only lot of drag or resistance during repositioning may the Braden scale specifically evaluates friction ease friction.",
+                "source_file": "5a517b64dacfb4fee06c221412f0b4e9.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "5a517b64dacfb4fee06c221412f0b4e9_chunk_211",
+                        "distance": 0.03278688524590164,
+                        "source": "5a517b64dacfb4fee06c221412f0b4e9.md"
+                    },
+                    {
+                        "chunk_id": "5a517b64dacfb4fee06c221412f0b4e9_chunk_198",
+                        "distance": 0.03200204813108039,
+                        "source": "5a517b64dacfb4fee06c221412f0b4e9.md"
+                    },
+                    {
+                        "chunk_id": "5a517b64dacfb4fee06c221412f0b4e9_chunk_148",
+                        "distance": 0.030303030303030304,
+                        "source": "5a517b64dacfb4fee06c221412f0b4e9.md"
+                    }
+                ]
+            },
+            {
+                "query": "What are the specific requirements and regulations regarding the diagnosis and treatment of genital infections (GI) present several difficulties: clinical...?",
+                "expected_chunk_id": "guideline_170_en_chunk_1945",
+                "reference_answer": "The diagnosis and treatment of genital infections (GI) present several difficulties: clinical features are not specific; many infections are asymptomatic; laboratory tests available in the field are not always reliable; mixed infections are common; sexual partners need to be treated simultaneously in case of sexually transmitted infections a and the risk of recurrence or treatment failure is increased in HIV-infected patients.",
+                "source_file": "guideline_170_en.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "guideline_170_en_chunk_1945",
+                        "distance": 0.03278688524590164,
+                        "source": "guideline_170_en.md"
+                    },
+                    {
+                        "chunk_id": "guideline_170_en_chunk_1949",
+                        "distance": 0.030117753623188408,
+                        "source": "guideline_170_en.md"
+                    },
+                    {
+                        "chunk_id": "guideline_170_en_chunk_2007",
+                        "distance": 0.016129032258064516,
+                        "source": "guideline_170_en.md"
+                    }
+                ]
+            },
+            {
+                "query": "According to the documentation, what is specified about because of increases in MDROs, review of the use of antibiotics (including...?",
+                "expected_chunk_id": "R70SOMA_chunk_3663",
+                "reference_answer": "Because of increases in MDROs, review of the use of antibiotics (including comparing prescribed antibiotics with available susceptibility reports) is a vital aspect of the infection prevention and control program. It is the physician‘s (or other appropriate authorized practitioner‘s) responsibility to prescribe appropriate antibiotics and to establish the indication",
+                "source_file": "R70SOMA.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "R70SOMA_chunk_3663",
+                        "distance": 0.03278688524590164,
+                        "source": "R70SOMA.md"
+                    },
+                    {
+                        "chunk_id": "R70SOMA_chunk_3807",
+                        "distance": 0.031754032258064516,
+                        "source": "R70SOMA.md"
+                    },
+                    {
+                        "chunk_id": "R70SOMA_chunk_3613",
+                        "distance": 0.029411764705882353,
+                        "source": "R70SOMA.md"
+                    }
+                ]
+            },
+            {
+                "query": "What does the policy document state about non-haemorrhagic: dry mouth, absence of tears, Profuse diarrhoea and/or?",
+                "expected_chunk_id": "guideline_170_en_chunk_031",
+                "reference_answer": "Non-haemorrhagic: dry mouth, absence of tears, Profuse diarrhoea and/or",
+                "source_file": "guideline_170_en.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "guideline_170_en_chunk_031",
+                        "distance": 0.03278688524590164,
+                        "source": "guideline_170_en.md"
+                    },
+                    {
+                        "chunk_id": "guideline_170_en_chunk_338",
+                        "distance": 0.03225806451612903,
+                        "source": "guideline_170_en.md"
+                    },
+                    {
+                        "chunk_id": "guideline_170_en_chunk_389",
+                        "distance": 0.015873015873015872,
+                        "source": "guideline_170_en.md"
+                    }
+                ]
+            },
+            {
+                "query": "What are the specific requirements and regulations regarding blood slide for malaria parasites in endemic malarious areas?",
+                "expected_chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_3557",
+                "reference_answer": "Blood slide for malaria parasites in endemic malarious areas",
+                "source_file": "ken_D1_clinical_guidelines_for_management_and_re.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_3557",
+                        "distance": 0.03278688524590164,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    },
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_1068",
+                        "distance": 0.031754032258064516,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    },
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_989",
+                        "distance": 0.0315136476426799,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    }
+                ]
+            },
+            {
+                "query": "Can you explain the guidelines for background noise; written instructions; use of gestures or sign language to enhance...?",
+                "expected_chunk_id": "R70SOMA_chunk_564",
+                "reference_answer": "background noise; written instructions; use of gestures or sign language to enhance verbal communication; adapted TV (closed captioning, magnified screen,",
+                "source_file": "R70SOMA.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "R70SOMA_chunk_564",
+                        "distance": 0.03278688524590164,
+                        "source": "R70SOMA.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_1121",
+                        "distance": 0.0315136476426799,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_1631",
+                        "distance": 0.031024531024531024,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    }
+                ]
+            },
+            {
+                "query": "Can you explain the guidelines for of 40 mg/kg or 3 g?",
+                "expected_chunk_id": "guideline_170_en_chunk_199",
+                "reference_answer": "of 40 mg/kg or 3 g.",
+                "source_file": "guideline_170_en.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "guideline_170_en_chunk_199",
+                        "distance": 0.03278688524590164,
+                        "source": "guideline_170_en.md"
+                    },
+                    {
+                        "chunk_id": "guideline_170_en_chunk_172",
+                        "distance": 0.016129032258064516,
+                        "source": "guideline_170_en.md"
+                    },
+                    {
+                        "chunk_id": "guideline_170_en_chunk_2229",
+                        "distance": 0.016129032258064516,
+                        "source": "guideline_170_en.md"
+                    }
+                ]
+            },
+            {
+                "query": "Can you explain the guidelines for children 6 months-4 years < 11 g/dl Hb ≥ 4 g/dl and...?",
+                "expected_chunk_id": "guideline_170_en_chunk_322",
+                "reference_answer": "Children 6 months-4 years < 11 g/dl Hb ≥ 4 g/dl and < 6 g/dl if there are signs of",
+                "source_file": "guideline_170_en.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "guideline_170_en_chunk_322",
+                        "distance": 0.03278688524590164,
+                        "source": "guideline_170_en.md"
+                    },
+                    {
+                        "chunk_id": "guideline_170_en_chunk_321",
+                        "distance": 0.03225806451612903,
+                        "source": "guideline_170_en.md"
+                    },
+                    {
+                        "chunk_id": "guideline_170_en_chunk_328",
+                        "distance": 0.030303030303030304,
+                        "source": "guideline_170_en.md"
+                    }
+                ]
+            },
+            {
+                "query": "Can you explain the guidelines for all ages except neonates: Shigella, cholera, salmonella spp., amoeba, giardia, candida?",
+                "expected_chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_1343",
+                "reference_answer": "All ages except neonates: Shigella, cholera, salmonella spp., amoeba, giardia, candida.",
+                "source_file": "ken_D1_clinical_guidelines_for_management_and_re.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_1343",
+                        "distance": 0.03278688524590164,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    },
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_2184",
+                        "distance": 0.03149801587301587,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    },
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_1294",
+                        "distance": 0.016129032258064516,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    }
+                ]
+            },
+            {
+                "query": "According to the documentation, what is specified about - For E0500B, code if the impact of the resident’s behavior is...?",
+                "expected_chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_1504",
+                "reference_answer": "- For E0500B, code if the impact of the resident’s behavior is impeding the delivery of care to such an extent that necessary or essential care (medical, nursing, rehabilitative or personal that is required to achieve the resident’s goals for health and well-being) cannot be received safely, completely, or in a timely way without more than a minimal accommodation, such as simple change in care routines or environment.",
+                "source_file": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_1504",
+                        "distance": 0.03252247488101534,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_1505",
+                        "distance": 0.032266458495966696,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_1496",
+                        "distance": 0.030776515151515152,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    }
+                ]
+            },
+            {
+                "query": "What does the policy document state about immobilise the limb?",
+                "expected_chunk_id": "guideline_170_en_chunk_2200",
+                "reference_answer": "Immobilise the limb. Systematic antibiotic therapy (see Erysipelas and cellulitis, Chapter 4). Adapt analgesics to the pain level (see Pain, Chapter 1). Apply compresses soaked in 70% alcohol 2 times daily (max. 3 times daily to prevent burns to the skin) until incision and drainage.",
+                "source_file": "guideline_170_en.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "guideline_170_en_chunk_2200",
+                        "distance": 0.03225806451612903,
+                        "source": "guideline_170_en.md"
+                    },
+                    {
+                        "chunk_id": "guideline_170_en_chunk_2167",
+                        "distance": 0.03177805800756621,
+                        "source": "guideline_170_en.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_3735",
+                        "distance": 0.01639344262295082,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    }
+                ]
+            },
+            {
+                "query": "What are the specific requirements and regulations regarding streptomycin 74, 218, 219 Thirst 10, 52, 114, 141, 285 Stress 41,...?",
+                "expected_chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_4284",
+                "reference_answer": "Streptomycin 74, 218, 219 Thirst 10, 52, 114, 141, 285 Stress 41, 123, 243, 244, 301, 312, 315 Threatened abortion 431",
+                "source_file": "ken_D1_clinical_guidelines_for_management_and_re.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_4284",
+                        "distance": 0.03278688524590164,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_2801",
+                        "distance": 0.016129032258064516,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    },
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_4217",
+                        "distance": 0.016129032258064516,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    }
+                ]
+            },
+            {
+                "query": "What does the policy document state about – IV Phenytoin (with glucose-free solution)?",
+                "expected_chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_2500",
+                "reference_answer": "– IV Phenytoin (with glucose-free solution). Loading dose 15–20mg/kg. Infusion not to exceed 1mg/kg/minute.",
+                "source_file": "ken_D1_clinical_guidelines_for_management_and_re.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_2500",
+                        "distance": 0.03278688524590164,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    },
+                    {
+                        "chunk_id": "guideline_170_en_chunk_150",
+                        "distance": 0.016129032258064516,
+                        "source": "guideline_170_en.md"
+                    },
+                    {
+                        "chunk_id": "guideline_170_en_chunk_219",
+                        "distance": 0.016129032258064516,
+                        "source": "guideline_170_en.md"
+                    }
+                ]
+            },
+            {
+                "query": "According to the documentation, what is specified about late syphilis (more Procaine penicillin (PAM) 600,000 units IM OD x 14...?",
+                "expected_chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_425",
+                "reference_answer": "Late syphilis (more Procaine penicillin (PAM) 600,000 units IM OD x 14 days than 1 year) OR Benzathine penicillin 2.4 MU weekly x 4 to 5 doses In pregnancy Use either one of the penicillin preparations or erythromycin (see above). If erythromycin is used, the neonate should be treated soon after birth. Congenital syphilis Aqueous crystalline penicillin G 25,000 units/kg IM, twice a day",
+                "source_file": "ken_D1_clinical_guidelines_for_management_and_re.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_425",
+                        "distance": 0.03278688524590164,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    },
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_423",
+                        "distance": 0.03225806451612903,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    },
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_426",
+                        "distance": 0.03125763125763126,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    }
+                ]
+            },
+            {
+                "query": "What are the specific requirements and regulations regarding hypertension is diagnosed when blood pressure (BP) reading is greater than 140/90...?",
+                "expected_chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_520",
+                "reference_answer": "Hypertension is diagnosed when blood pressure (BP) reading is greater than 140/90 mmHg on 3 separate readings.",
+                "source_file": "ken_D1_clinical_guidelines_for_management_and_re.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_520",
+                        "distance": 0.03278688524590164,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_5171",
+                        "distance": 0.030834914611005692,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_2353",
+                        "distance": 0.03055037313432836,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    }
+                ]
+            },
+            {
+                "query": "Can you explain the guidelines for that patients are positioned in a way that does equipment not allow...?",
+                "expected_chunk_id": "5a517b64dacfb4fee06c221412f0b4e9_chunk_201",
+                "reference_answer": "that patients are positioned in a way that does equipment not allow them to slip easily and by ensuring ●are● difficult to reposition without some sliding that body tissues are not dragged upon across bed sheets or support surface during repositioning or left distorted following ●slip● or slide from a position that they have repositioning been placed in when in a bed, chair or ■increasing■ contact area with support wheelchair – eg patients who are unable to or",
+                "source_file": "5a517b64dacfb4fee06c221412f0b4e9.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "5a517b64dacfb4fee06c221412f0b4e9_chunk_201",
+                        "distance": 0.03278688524590164,
+                        "source": "5a517b64dacfb4fee06c221412f0b4e9.md"
+                    },
+                    {
+                        "chunk_id": "FINAL_NH_GUIDELINES_chunk_213",
+                        "distance": 0.016129032258064516,
+                        "source": "FINAL_NH_GUIDELINES.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_5621",
+                        "distance": 0.016129032258064516,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    }
+                ]
+            },
+            {
+                "query": "According to the documentation, what is specified about 5 mg per dose; if necessary up to 2 doses taken 10...?",
+                "expected_chunk_id": "guideline_170_en_chunk_2564",
+                "reference_answer": "5 mg per dose; if necessary up to 2 doses taken 10 minutes apart",
+                "source_file": "guideline_170_en.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "guideline_170_en_chunk_2564",
+                        "distance": 0.03278688524590164,
+                        "source": "guideline_170_en.md"
+                    },
+                    {
+                        "chunk_id": "guideline_170_en_chunk_2544",
+                        "distance": 0.03149801587301587,
+                        "source": "guideline_170_en.md"
+                    },
+                    {
+                        "chunk_id": "guideline_170_en_chunk_179",
+                        "distance": 0.016129032258064516,
+                        "source": "guideline_170_en.md"
+                    }
+                ]
+            },
+            {
+                "query": "Can you explain the guidelines for - In pregnancy: Podophyllin should not be used during pregnancy, not in...?",
+                "expected_chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_464",
+                "reference_answer": "- In pregnancy: Podophyllin should not be used during pregnancy, not in vaginal, cervical, internal urethral, anal, or oral warts. Alternative regimens may be used, except 5-Fluorouracil and podophyllotoxin. Table 2.6: Genital ulcer disease features, probable causes, and",
+                "source_file": "ken_D1_clinical_guidelines_for_management_and_re.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_464",
+                        "distance": 0.03278688524590164,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    },
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_984",
+                        "distance": 0.031754032258064516,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    },
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_3807",
+                        "distance": 0.031746031746031744,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    }
+                ]
+            },
+            {
+                "query": "What are the specific requirements and regulations regarding - The response to this item should be individualized and DESIGNATED LOCAL...?",
+                "expected_chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_3804",
+                "reference_answer": "- The response to this item should be individualized and DESIGNATED LOCAL resident-driven rather than what the nursing home staff CONTACT AGENCY judge to be in the best interest of the resident. This item (LCA) focuses on exploring the resident’s expectations, not Each state has community whether or not the staff considers them to be realistic. contact agencies that can Coding other than the resident’s stated expectation is a provide individuals with violation of the resident’s civil rights.",
+                "source_file": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_3804",
+                        "distance": 0.03252247488101534,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_5598",
+                        "distance": 0.01639344262295082,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_3896",
+                        "distance": 0.016129032258064516,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    }
+                ]
+            },
+            {
+                "query": "According to the documentation, what is specified about and is in line-of-sight of the treating therapist?",
+                "expected_chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_6352",
+                "reference_answer": "and is in line-of-sight of the treating therapist. The",
+                "source_file": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_6352",
+                        "distance": 0.03278688524590164,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_6178",
+                        "distance": 0.03225806451612903,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_6438",
+                        "distance": 0.03036576949620428,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    }
+                ]
+            },
+            {
+                "query": "What does the policy document state about - In place of carbimazole, propylthiouracil can be administered at doses not...?",
+                "expected_chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_628",
+                "reference_answer": "- In place of carbimazole, propylthiouracil can be administered at doses not exceeding 300mg/day and given in divided doses at 6–8 hourly intervals. Methimazole may also be given instead, administered at doses of 20–30mg once daily. The dose may be increased to 30–40mg daily after 2 weeks then tapered after euthyroid status has been realized. Maintenance dose is 2.5– 5mg daily for 12–24 months.",
+                "source_file": "ken_D1_clinical_guidelines_for_management_and_re.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_628",
+                        "distance": 0.03278688524590164,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    },
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_627",
+                        "distance": 0.03125763125763126,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    },
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_2628",
+                        "distance": 0.016129032258064516,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    }
+                ]
+            },
+            {
+                "query": "Can you explain the guidelines for if pain persists refer to an eye specialist for appropriate management?",
+                "expected_chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_3352",
+                "reference_answer": "If pain persists refer to an eye specialist for appropriate management.",
+                "source_file": "ken_D1_clinical_guidelines_for_management_and_re.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_3352",
+                        "distance": 0.03278688524590164,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    },
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_3323",
+                        "distance": 0.0315136476426799,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    },
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_3347",
+                        "distance": 0.031024531024531024,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    }
+                ]
+            },
+            {
+                "query": "What does the policy document state about sweats, tachycardia at rest and in the absence of fever?",
+                "expected_chunk_id": "guideline_170_en_chunk_619",
+                "reference_answer": "Sweats, tachycardia at rest and in the absence of fever",
+                "source_file": "guideline_170_en.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "guideline_170_en_chunk_619",
+                        "distance": 0.03278688524590164,
+                        "source": "guideline_170_en.md"
+                    },
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_3906",
+                        "distance": 0.031754032258064516,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    },
+                    {
+                        "chunk_id": "guideline_170_en_chunk_312",
+                        "distance": 0.030303030303030304,
+                        "source": "guideline_170_en.md"
+                    }
+                ]
+            },
+            {
+                "query": "According to the documentation, what is specified about adverse consequences of (Basis/reason for checking the item, SEDATIVES/HYPNOTICS exhibited by this...?",
+                "expected_chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_5540",
+                "reference_answer": "Adverse consequences of (Basis/reason for checking the item, SEDATIVES/HYPNOTICS exhibited by this including the location, date, and source",
+                "source_file": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_5540",
+                        "distance": 0.03278688524590164,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_5535",
+                        "distance": 0.03200204813108039,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_5526",
+                        "distance": 0.03200204813108039,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    }
+                ]
+            },
+            {
+                "query": "According to the documentation, what is specified about what is the facility‘s practice for dealing with employees who come to...?",
+                "expected_chunk_id": "R70SOMA_chunk_3088",
+                "reference_answer": "What is the facility‘s practice for dealing with employees who come to work with symptoms of contagious illness (e.g., coughing, sneezing, diarrhea, vomiting) or open",
+                "source_file": "R70SOMA.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "R70SOMA_chunk_3088",
+                        "distance": 0.03278688524590164,
+                        "source": "R70SOMA.md"
+                    },
+                    {
+                        "chunk_id": "R70SOMA_chunk_3818",
+                        "distance": 0.016129032258064516,
+                        "source": "R70SOMA.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_1257",
+                        "distance": 0.016129032258064516,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    }
+                ]
+            },
+            {
+                "query": "What are the specific requirements and regulations regarding an individual’s information, including Personal Data, may be transferred to — and...?",
+                "expected_chunk_id": "Policies_and_Procedures_chunk_555",
+                "reference_answer": "An individual’s information, including Personal Data, may be transferred to — and maintained on — computers located outside of the individual’s state, province, country or other governmental jurisdiction where the data protection laws may differ from those of the individual’s jurisdiction. Those located outside the United States and who choose to provide information to us, are notified via our website Privacy Policy that we transfer the data, including Personal Data, to",
+                "source_file": "Policies_and_Procedures.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "Policies_and_Procedures_chunk_555",
+                        "distance": 0.03278688524590164,
+                        "source": "Policies_and_Procedures.md"
+                    },
+                    {
+                        "chunk_id": "Policies_and_Procedures_chunk_543",
+                        "distance": 0.03125,
+                        "source": "Policies_and_Procedures.md"
+                    },
+                    {
+                        "chunk_id": "Policies_and_Procedures_chunk_551",
+                        "distance": 0.030834914611005692,
+                        "source": "Policies_and_Procedures.md"
+                    }
+                ]
+            },
+            {
+                "query": "Can you explain the guidelines for stopping the offending medications?",
+                "expected_chunk_id": "R70SOMA_chunk_2253",
+                "reference_answer": "stopping the offending medications. ―Non-pharmacological interventions‖ refers to approaches to care that do not involve medications, generally directed towards stabilizing or improving a resident‘s mental, physical or psychosocial well-being. ―Psychopharmacological medication‖ is any medication used for managing behavior, stabilizing mood, or treating psychiatric disorders.",
+                "source_file": "R70SOMA.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "R70SOMA_chunk_2253",
+                        "distance": 0.03252247488101534,
+                        "source": "R70SOMA.md"
+                    },
+                    {
+                        "chunk_id": "Article 3 - Required Services (§ 72301 to 72389)_chunk_028",
+                        "distance": 0.01639344262295082,
+                        "source": "Article 3 - Required Services (§ 72301 to 72389).md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_1635",
+                        "distance": 0.016129032258064516,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    }
+                ]
+            },
+            {
+                "query": "Can you explain the guidelines for ―Bladder Rehabilitation/Bladder Retraining‖ is a behavioral technique that requires the resident to...?",
+                "expected_chunk_id": "R70SOMA_chunk_1536",
+                "reference_answer": "―Bladder Rehabilitation/Bladder Retraining‖ is a behavioral technique that requires the resident to resist or inhibit the sensation of urgency (the strong desire to urinate), to postpone or delay voiding, and to urinate according to a timetable rather than to the urge to void. Depending upon the resident‘s successful ability to control the urge to void, the intervals between voiding may be increased progressively. Bladder training generally consists of education, scheduled",
+                "source_file": "R70SOMA.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "R70SOMA_chunk_1536",
+                        "distance": 0.03252247488101534,
+                        "source": "R70SOMA.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_4955",
+                        "distance": 0.03200204813108039,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_2178",
+                        "distance": 0.03131881575727918,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    }
+                ]
+            },
+            {
+                "query": "Can you explain the guidelines for documenting and notifying the birth to the civil registrar?",
+                "expected_chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_3936",
+                "reference_answer": "Documenting and notifying the birth to the civil registrar. If no problem, discharging after 24–48 hrs to avoid ward congestion. Women who deliver at home should come for check up with their babies within 24–48 hours.",
+                "source_file": "ken_D1_clinical_guidelines_for_management_and_re.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_3936",
+                        "distance": 0.03278688524590164,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    },
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_1660",
+                        "distance": 0.016129032258064516,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_1635",
+                        "distance": 0.016129032258064516,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    }
+                ]
+            },
+            {
+                "query": "What are the specific requirements and regulations regarding the facility must provide immediate access to any representative of the Secretary...?",
+                "expected_chunk_id": "R70SOMA_chunk_228",
+                "reference_answer": "The facility must provide immediate access to any representative of the Secretary of the Department of Health and Human Services, the State, the resident‘s individual physician, the State long term care ombudsman, or the agencies responsible for the protection and advocacy of individuals with developmental disabilities or mental illness. The facility",
+                "source_file": "R70SOMA.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "R70SOMA_chunk_228",
+                        "distance": 0.03278688524590164,
+                        "source": "R70SOMA.md"
+                    },
+                    {
+                        "chunk_id": "R70SOMA_chunk_224",
+                        "distance": 0.030834914611005692,
+                        "source": "R70SOMA.md"
+                    },
+                    {
+                        "chunk_id": "R70SOMA_chunk_233",
+                        "distance": 0.016129032258064516,
+                        "source": "R70SOMA.md"
+                    }
+                ]
+            },
+            {
+                "query": "According to the documentation, what is specified about prevention and management approach and algorithm to be - Te world’s population...?",
+                "expected_chunk_id": "NVZF_wereldrichtlijn_over_vallen_chunk_088",
+                "reference_answer": "prevention and management approach and algorithm to be - Te world’s population is ageing. Falls and related applied in community older adults. We stratiﬁed falls risk",
+                "source_file": "NVZF_wereldrichtlijn_over_vallen.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "NVZF_wereldrichtlijn_over_vallen_chunk_088",
+                        "distance": 0.03278688524590164,
+                        "source": "NVZF_wereldrichtlijn_over_vallen.md"
+                    },
+                    {
+                        "chunk_id": "NVZF_wereldrichtlijn_over_vallen_chunk_087",
+                        "distance": 0.029857397504456328,
+                        "source": "NVZF_wereldrichtlijn_over_vallen.md"
+                    },
+                    {
+                        "chunk_id": "NVZF_wereldrichtlijn_over_vallen_chunk_117",
+                        "distance": 0.029850746268656716,
+                        "source": "NVZF_wereldrichtlijn_over_vallen.md"
+                    }
+                ]
+            },
+            {
+                "query": "Can you explain the guidelines for have outstanding Medicaid balances?",
+                "expected_chunk_id": "R70SOMA_chunk_321",
+                "reference_answer": "have outstanding Medicaid balances. Once readmitted, however, these residents may be transferred if the facility can demonstrate that non-payment of charges exists and documentation and notice requirements are followed. The right to readmission is applicable to individuals seeking to return from a transfer or discharge as long as all of the specific qualifications set out in §483.12(b)(3) are met.",
+                "source_file": "R70SOMA.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "R70SOMA_chunk_321",
+                        "distance": 0.032018442622950824,
+                        "source": "R70SOMA.md"
+                    },
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_177",
+                        "distance": 0.01639344262295082,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_4587",
+                        "distance": 0.016129032258064516,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    }
+                ]
+            },
+            {
+                "query": "What are the specific requirements and regulations regarding other systems without special effort on the part of the user?",
+                "expected_chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_5013",
+                "reference_answer": "other systems without special effort on the part of the user.",
+                "source_file": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_5013",
+                        "distance": 0.03278688524590164,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    },
+                    {
+                        "chunk_id": "Article 4 - Optional Services (§ 72401 to 72475)_chunk_051",
+                        "distance": 0.03200204813108039,
+                        "source": "Article 4 - Optional Services (§ 72401 to 72475).md"
+                    },
+                    {
+                        "chunk_id": "R70SOMA_chunk_3961",
+                        "distance": 0.016129032258064516,
+                        "source": "R70SOMA.md"
+                    }
+                ]
+            },
+            {
+                "query": "What does the policy document state about lesions may also spread to the mucosa (mouth, nose, conjunctiva) giving rise...?",
+                "expected_chunk_id": "guideline_170_en_chunk_1206",
+                "reference_answer": "Lesions may also spread to the mucosa (mouth, nose, conjunctiva) giving rise to the mucocutaneous form, which may cause severe disfigurement.",
+                "source_file": "guideline_170_en.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "guideline_170_en_chunk_1206",
+                        "distance": 0.03278688524590164,
+                        "source": "guideline_170_en.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_5436",
+                        "distance": 0.030536130536130537,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    },
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_3191",
+                        "distance": 0.016129032258064516,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    }
+                ]
+            },
+            {
+                "query": "What are the specific requirements and regulations regarding throat and skin swab where indicated?",
+                "expected_chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_1186",
+                "reference_answer": "Throat and skin swab where indicated. Streptococcus may be cultured.",
+                "source_file": "ken_D1_clinical_guidelines_for_management_and_re.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_1186",
+                        "distance": 0.03278688524590164,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    },
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_504",
+                        "distance": 0.031746031746031744,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    },
+                    {
+                        "chunk_id": "guideline_170_en_chunk_473",
+                        "distance": 0.016129032258064516,
+                        "source": "guideline_170_en.md"
+                    }
+                ]
+            },
+            {
+                "query": "What does the policy document state about dietary staff must wear hair restraints (e.g., hairnet, hat, and/or beard restraint)...?",
+                "expected_chunk_id": "R70SOMA_chunk_3007",
+                "reference_answer": "Dietary staff must wear hair restraints (e.g., hairnet, hat, and/or beard restraint) to prevent their hair from contacting exposed food. Dietary staff maintaining nails that are clean and neat, and wearing intact disposable gloves in good condition, and that are changed appropriately will also help reduce the spread of microorganisms. Since jewelry can harbor microorganisms, it is recommended that dietary staff keep jewelry to a minimum and cover hand jewelry with gloves when handling food9.",
+                "source_file": "R70SOMA.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "R70SOMA_chunk_3007",
+                        "distance": 0.03278688524590164,
+                        "source": "R70SOMA.md"
+                    },
+                    {
+                        "chunk_id": "R70SOMA_chunk_3705",
+                        "distance": 0.031754032258064516,
+                        "source": "R70SOMA.md"
+                    },
+                    {
+                        "chunk_id": "Article 3 - Required Services (§ 72301 to 72389)_chunk_143",
+                        "distance": 0.016129032258064516,
+                        "source": "Article 3 - Required Services (§ 72301 to 72389).md"
+                    }
+                ]
+            },
+            {
+                "query": "Can you explain the guidelines for (1) Food prepared by methods that conserve nutritive value, flavor, and appearance;...?",
+                "expected_chunk_id": "R70SOMA_chunk_2932",
+                "reference_answer": "(1) Food prepared by methods that conserve nutritive value, flavor, and appearance; (2) Food that is palatable, attractive, and at the proper temperature;",
+                "source_file": "R70SOMA.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "R70SOMA_chunk_2932",
+                        "distance": 0.03278688524590164,
+                        "source": "R70SOMA.md"
+                    },
+                    {
+                        "chunk_id": "Article 3 - Required Services (§ 72301 to 72389)_chunk_117",
+                        "distance": 0.03225806451612903,
+                        "source": "Article 3 - Required Services (§ 72301 to 72389).md"
+                    },
+                    {
+                        "chunk_id": "R70SOMA_chunk_2934",
+                        "distance": 0.03055037313432836,
+                        "source": "R70SOMA.md"
+                    }
+                ]
+            },
+            {
+                "query": "What does the policy document state about staff should interact with the resident in a way that takes into...?",
+                "expected_chunk_id": "R70SOMA_chunk_507",
+                "reference_answer": "Staff should interact with the resident in a way that takes into account the physical limitations of the resident, assures communication, and maintains respect; for example, getting down to eye level with a resident who is sitting, speaking so a resident with limited hearing who reads lips can see their mouth when they speak, utilizing a hearing amplification device such as a pocket-talker if the resident has such a device, etc.",
+                "source_file": "R70SOMA.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "R70SOMA_chunk_507",
+                        "distance": 0.03278688524590164,
+                        "source": "R70SOMA.md"
+                    },
+                    {
+                        "chunk_id": "R70SOMA_chunk_617",
+                        "distance": 0.03125763125763126,
+                        "source": "R70SOMA.md"
+                    },
+                    {
+                        "chunk_id": "R70SOMA_chunk_462",
+                        "distance": 0.028985507246376812,
+                        "source": "R70SOMA.md"
+                    }
+                ]
+            },
+            {
+                "query": "According to the documentation, what is specified about - Integral to the process of safe medication UP administration practice is...?",
+                "expected_chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_3302",
+                "reference_answer": "- Integral to the process of safe medication UP administration practice is timely communication with a The process of contacting a physician when a potential or actual clinically physician to communicate an significant medication issue has been identified. identified medication issue and completing all physician- • Physician-prescribed/recommended actions in prescribed/recommended response to identified potential or actual clinically actions by midnight of the significant medication issues must",
+                "source_file": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_3302",
+                        "distance": 0.03278688524590164,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_3327",
+                        "distance": 0.03225806451612903,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    },
+                    {
+                        "chunk_id": "R70SOMA_chunk_2283",
+                        "distance": 0.015873015873015872,
+                        "source": "R70SOMA.md"
+                    }
+                ]
+            },
+            {
+                "query": "According to the documentation, what is specified about §483.10(f)(2) -- Prompt efforts by the facility to resolve grievances the resident...?",
+                "expected_chunk_id": "R70SOMA_chunk_204",
+                "reference_answer": "§483.10(f)(2) -- Prompt efforts by the facility to resolve grievances the resident may have, including those with respect to the behavior of other residents.",
+                "source_file": "R70SOMA.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "R70SOMA_chunk_204",
+                        "distance": 0.03278688524590164,
+                        "source": "R70SOMA.md"
+                    },
+                    {
+                        "chunk_id": "R70SOMA_chunk_027",
+                        "distance": 0.03200204813108039,
+                        "source": "R70SOMA.md"
+                    },
+                    {
+                        "chunk_id": "R70SOMA_chunk_206",
+                        "distance": 0.031754032258064516,
+                        "source": "R70SOMA.md"
+                    }
+                ]
+            },
+            {
+                "query": "What does the policy document state about hypnotics, e.g., diazepam 5–10mg nocte for 1–2 weeks and then taper off?",
+                "expected_chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_1281",
+                "reference_answer": "Hypnotics, e.g., diazepam 5–10mg nocte for 1–2 weeks and then taper off. Caution: Avoid chronic use (over 14 days) of hypnotics.",
+                "source_file": "ken_D1_clinical_guidelines_for_management_and_re.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_1281",
+                        "distance": 0.03278688524590164,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    },
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_1267",
+                        "distance": 0.030776515151515152,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    },
+                    {
+                        "chunk_id": "R70SOMA_chunk_2367",
+                        "distance": 0.016129032258064516,
+                        "source": "R70SOMA.md"
+                    }
+                ]
+            }
+        ],
+        "2": [
+            {
+                "query": "What does the policy document state about - After completing the MDS and CAA portions of the comprehensive assessment,...?",
+                "expected_chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_474",
+                "reference_answer": "- After completing the MDS and CAA portions of the comprehensive assessment, the next step is to evaluate the information gained through both assessment processes in order to identify problems, causes, contributing factors, and risk factors related to the problems. Subsequently, the IDT must evaluate the information gained to develop a care plan that addresses those findings in the context of the resident’s goals, preferences, strengths, problems, and needs (described in detail in Chapter 4 of",
+                "source_file": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_222",
+                        "distance": 0.032266458495966696,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_474",
+                        "distance": 0.032266458495966696,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_467",
+                        "distance": 0.031754032258064516,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    }
+                ]
+            },
+            {
+                "query": "Can you explain the guidelines for - D0500J Being short-tempered, easily annoyed These items are used to calculate...?",
+                "expected_chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_4821",
+                "reference_answer": "- D0500J Being short-tempered, easily annoyed These items are used to calculate a Total Severity Score for the resident interview at item D0160 and for the staff assessment at item D0600. The resident qualifies as depressed for PDPM classification in either of the two following cases: The D0160 Total Severity Score is greater than or equal to 10 but not 99,",
+                "source_file": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_4847",
+                        "distance": 0.03278688524590164,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_4821",
+                        "distance": 0.03225806451612903,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_4866",
+                        "distance": 0.031746031746031744,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    }
+                ]
+            },
+            {
+                "query": "What does the policy document state about resident environment remained as free of accident hazards as possible and if...?",
+                "expected_chunk_id": "R70SOMA_chunk_1914",
+                "reference_answer": "resident environment remained as free of accident hazards as possible and if each resident received adequate supervision and assistive devices to try to prevent accidents by: Identifying potential hazards and risks (may require various strategies to gather such information); Evaluating and analyzing the information gathered to identify the underlying causes of the hazard and/or risk;",
+                "source_file": "R70SOMA.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "R70SOMA_chunk_1758",
+                        "distance": 0.03278688524590164,
+                        "source": "R70SOMA.md"
+                    },
+                    {
+                        "chunk_id": "R70SOMA_chunk_1914",
+                        "distance": 0.03225806451612903,
+                        "source": "R70SOMA.md"
+                    },
+                    {
+                        "chunk_id": "R70SOMA_chunk_1886",
+                        "distance": 0.03149801587301587,
+                        "source": "R70SOMA.md"
+                    }
+                ]
+            },
+            {
+                "query": "Can you explain the guidelines for febrile seizures: in young children with fever, usually in a context of...?",
+                "expected_chunk_id": "guideline_170_en_chunk_164",
+                "reference_answer": "Febrile seizures: in young children with fever, usually in a context of a respiratory or gastrointestinal viral infection. CNS infections: e.g. any meningitis (for Bacterial meningitis, see Chapter 7); severe malaria, neurocysticercosis, trypanosomiasis (see Chapter 6); cerebral toxoplasmosis, cryptococcal meningitis (see HIV infection and AIDS, Chapter 8). Metabolic abnormalities: e.g. hypoglycaemia (Chapter 1), electrolyte disorders (hyponatremia, hypocalcaemia).",
+                "source_file": "guideline_170_en.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "guideline_170_en_chunk_125",
+                        "distance": 0.032266458495966696,
+                        "source": "guideline_170_en.md"
+                    },
+                    {
+                        "chunk_id": "guideline_170_en_chunk_164",
+                        "distance": 0.032266458495966696,
+                        "source": "guideline_170_en.md"
+                    },
+                    {
+                        "chunk_id": "guideline_170_en_chunk_117",
+                        "distance": 0.03128054740957967,
+                        "source": "guideline_170_en.md"
+                    }
+                ]
+            },
+            {
+                "query": "According to the documentation, what is specified about therapy Aides cannot provide skilled services?",
+                "expected_chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_3535",
+                "reference_answer": "Therapy Aides cannot provide skilled services. Only the time a therapy aide spends on set-up preceding skilled therapy may be coded on the MDS (e.g., set up the treatment area for wound therapy) and should be coded under the appropriate mode for the skilled therapy (individual, concurrent, or group) in O0390 Therapy Services and/or O0425 Part A Therapies. The therapy",
+                "source_file": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_6118",
+                        "distance": 0.03252247488101534,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_3535",
+                        "distance": 0.032266458495966696,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_6300",
+                        "distance": 0.03200204813108039,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    }
+                ]
+            },
+            {
+                "query": "According to the documentation, what is specified about check that device is stable before use and is rated for Points...?",
+                "expected_chunk_id": "FINAL_NH_GUIDELINES_chunk_165",
+                "reference_answer": "Check that device is stable before use and is rated for Points to Remember: resident weight to be supported. Ensure frame is firmly Some wheelchair scales can accommo­ attached to bed, or if it relies on mattress support that date larger wheelchairs. Built-in bed scales mattress is heavy enough to hold the frame. Can aid may increase weight of the bed and prevent it from resident independence. lowering to appropriate work heights.",
+                "source_file": "FINAL_NH_GUIDELINES.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_602",
+                        "distance": 0.01639344262295082,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    },
+                    {
+                        "chunk_id": "FINAL_NH_GUIDELINES_chunk_165",
+                        "distance": 0.01639344262295082,
+                        "source": "FINAL_NH_GUIDELINES.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_3725",
+                        "distance": 0.016129032258064516,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    }
+                ]
+            },
+            {
+                "query": "What are the specific requirements and regulations regarding current literature reports that all Stage II, III, and IV pressure ulcers...?",
+                "expected_chunk_id": "R70SOMA_chunk_1366",
+                "reference_answer": "Current literature reports that all Stage II, III, and IV pressure ulcers are colonized with bacteria but may not be infected. Identification, diagnosis and treatment of infection, when present, are critical to healing a pressure ulcer.38 The infection occurs when the bacteria have invaded the tissue surrounding or within the pressure ulcer.",
+                "source_file": "R70SOMA.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "R70SOMA_chunk_1460",
+                        "distance": 0.03125763125763126,
+                        "source": "R70SOMA.md"
+                    },
+                    {
+                        "chunk_id": "R70SOMA_chunk_1366",
+                        "distance": 0.031099324975891997,
+                        "source": "R70SOMA.md"
+                    },
+                    {
+                        "chunk_id": "R70SOMA_chunk_1373",
+                        "distance": 0.030621785881252923,
+                        "source": "R70SOMA.md"
+                    }
+                ]
+            },
+            {
+                "query": "According to the documentation, what is specified about check if suctioning was performed on an as-needed basis, as opposed to...?",
+                "expected_chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_3379",
+                "reference_answer": "Check if suctioning was performed on an as-needed basis, as opposed to at regular scheduled intervals, such as when secretions become so prominent that gurgling or choking is noted or a sudden desaturation occurs from a mucus plug. - O0110E1, Tracheostomy care Code cleansing of the tracheostomy and/or cannula in this item. This item may be coded if the resident performs their own tracheostomy care. This item includes laryngectomy tube care.",
+                "source_file": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_3378",
+                        "distance": 0.03252247488101534,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_3379",
+                        "distance": 0.03252247488101534,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_1865",
+                        "distance": 0.015873015873015872,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    }
+                ]
+            },
+            {
+                "query": "What does the policy document state about stercoralis but the following may occur: microscopy (motile?",
+                "expected_chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_2149",
+                "reference_answer": "stercoralis but the following may occur: microscopy (motile",
+                "source_file": "ken_D1_clinical_guidelines_for_management_and_re.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_719",
+                        "distance": 0.03278688524590164,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    },
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_2149",
+                        "distance": 0.03225806451612903,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    },
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_3443",
+                        "distance": 0.015873015873015872,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    }
+                ]
+            },
+            {
+                "query": "According to the documentation, what is specified about benzyl penicillin plus gentamicin?",
+                "expected_chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_1598",
+                "reference_answer": "Benzyl penicillin plus gentamicin. If no improvement after 48 hours or suspect Staphylococcal pneumonia use cloxacillin or flucloxacillin instead of penicillin.",
+                "source_file": "ken_D1_clinical_guidelines_for_management_and_re.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_1906",
+                        "distance": 0.03252247488101534,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    },
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_1598",
+                        "distance": 0.032266458495966696,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    },
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_2382",
+                        "distance": 0.031054405392392875,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    }
+                ]
+            },
+            {
+                "query": "What are the specific requirements and regulations regarding individual problems and causes, linked with input from residents, residents’ families (and/or...?",
+                "expected_chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_068",
+                "reference_answer": "individual problems and causes, linked with input from residents, residents’ families (and/or guardian or other legally authorized representative), and the interdisciplinary team, residents have experienced goal achievement and either their level of functioning has improved or has deteriorated at a slower rate. Nursing home staff report that, as individualized attention increases, resident satisfaction with quality of life also increases.",
+                "source_file": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "R70SOMA_chunk_1651",
+                        "distance": 0.01639344262295082,
+                        "source": "R70SOMA.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_068",
+                        "distance": 0.01639344262295082,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    },
+                    {
+                        "chunk_id": "R70SOMA_chunk_329",
+                        "distance": 0.016129032258064516,
+                        "source": "R70SOMA.md"
+                    }
+                ]
+            },
+            {
+                "query": "According to the documentation, what is specified about - Code 1: if resident is male?",
+                "expected_chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_5745",
+                "reference_answer": "- Code 1: if resident is male. - Code 2: if resident is female.",
+                "source_file": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_711",
+                        "distance": 0.03278688524590164,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_5745",
+                        "distance": 0.03225806451612903,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_4853",
+                        "distance": 0.015873015873015872,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    }
+                ]
+            }
+        ],
+        "3": [
+            {
+                "query": "According to the documentation, what is specified about cMS’s RAI Version 3.0 Manual Appendix C: CAA Resources 11?",
+                "expected_chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_5408",
+                "reference_answer": "CMS’s RAI Version 3.0 Manual Appendix C: CAA Resources 11. Fall(s)",
+                "source_file": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_5142",
+                        "distance": 0.03177805800756621,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_5415",
+                        "distance": 0.03125763125763126,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_5408",
+                        "distance": 0.031099324975891997,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    }
+                ]
+            },
+            {
+                "query": "What are the specific requirements and regulations regarding prescribed on a routine, emergency, or as needed basis, medications should be...?",
+                "expected_chunk_id": "R70SOMA_chunk_3334",
+                "reference_answer": "prescribed on a routine, emergency, or as needed basis, medications should be administered in a timely manner. Delayed acquisition of a medication may impede timely administration and adversely affect a resident‘s condition. Factors that may help determine timeliness and guide acquisition procedures include: Availability of medications to enable continuity of care for an anticipated admission or transfer of a resident from acute care or other institutional settings;",
+                "source_file": "R70SOMA.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "Article 3 - Required Services (§ 72301 to 72389)_chunk_022",
+                        "distance": 0.030776515151515152,
+                        "source": "Article 3 - Required Services (§ 72301 to 72389).md"
+                    },
+                    {
+                        "chunk_id": "R70SOMA_chunk_3333",
+                        "distance": 0.01639344262295082,
+                        "source": "R70SOMA.md"
+                    },
+                    {
+                        "chunk_id": "R70SOMA_chunk_3334",
+                        "distance": 0.01639344262295082,
+                        "source": "R70SOMA.md"
+                    }
+                ]
+            },
+            {
+                "query": "According to the documentation, what is specified about pDPM clinical category mapping indicates that the resident’s primary diagnosis code is...?",
+                "expected_chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_4735",
+                "reference_answer": "PDPM clinical category mapping indicates that the resident’s primary diagnosis code is eligible for one of the two orthopedic surgery categories (major joint replacement or spinal surgery, and orthopedic surgery (except major joint replacement or spinal surgery)), then proceed to Step 1A; if eligible for the non-orthopedic surgery category, then proceed to Step 1C. Otherwise, proceed to Step 1D to finalize the primary diagnosis clinical category assignment.",
+                "source_file": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_4669",
+                        "distance": 0.03278688524590164,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_4702",
+                        "distance": 0.03225806451612903,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_4735",
+                        "distance": 0.031746031746031744,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    }
+                ]
+            },
+            {
+                "query": "What does the policy document state about cMS’s RAI Version 3.0 Manual CH 3: MDS Items [A] A0410: Unit...?",
+                "expected_chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_690",
+                "reference_answer": "CMS’s RAI Version 3.0 Manual CH 3: MDS Items [A] A0410: Unit Certification or Licensure Designation (cont.)",
+                "source_file": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_634",
+                        "distance": 0.030798389007344232,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_969",
+                        "distance": 0.01639344262295082,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_690",
+                        "distance": 0.01639344262295082,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    }
+                ]
+            },
+            {
+                "query": "What does the policy document state about in using the protocol summarized in Table 6.2, bear in mind: The...?",
+                "expected_chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_641",
+                "reference_answer": "In using the protocol summarized in Table 6.2, bear in mind: The volumes indicated are guidelines only. Rehydration must be evaluated in terms of clinical signs, not in terms of volume of fluids given. If necessary, the volumes given below can be increased or else the initial high rate of administration can be maintained until there is clinical improvement. Periorbital oedema is a sign of fluid overload in infants or hypernatreamia in those on ORS.",
+                "source_file": "ken_D1_clinical_guidelines_for_management_and_re.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_2401",
+                        "distance": 0.031746031746031744,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    },
+                    {
+                        "chunk_id": "R70SOMA_chunk_954",
+                        "distance": 0.01639344262295082,
+                        "source": "R70SOMA.md"
+                    },
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_641",
+                        "distance": 0.01639344262295082,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    }
+                ]
+            }
+        ],
+        "not_found": [
+            {
+                "query": "According to the documentation, what is specified about d?",
+                "expected_chunk_id": "R70SOMA_chunk_3281",
+                "reference_answer": "d. What did the facility do to increase the amount of physical activity the resident could do (for example, the number of repetitions of an exercise, the distance walked)? e. What did the facility do to prevent or minimize contractures, which could lead to decreased mobility and increased risk of pressure ulcer occurrence? 2. For occupational therapy a. What did the facility do to decrease the amount of assistance needed to perform a task?",
+                "source_file": "R70SOMA.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_3785",
+                        "distance": 0.01639344262295082,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    },
+                    {
+                        "chunk_id": "R70SOMA_chunk_274",
+                        "distance": 0.01639344262295082,
+                        "source": "R70SOMA.md"
+                    },
+                    {
+                        "chunk_id": "R70SOMA_chunk_786",
+                        "distance": 0.016129032258064516,
+                        "source": "R70SOMA.md"
+                    }
+                ]
+            },
+            {
+                "query": "According to the documentation, what is specified about 1?",
+                "expected_chunk_id": "guideline_170_en_chunk_1507",
+                "reference_answer": "1. Nelson CA, Meaney-Delman D, Fleck-Derderian S, Cooley KM, et al. Antimicrobial treatment and prophylaxis of plague: recommendations for naturally acquired infection and bioterrorism response. MMWR Recomm Rep 2021;70(No. RR-3):1-27.",
+                "source_file": "guideline_170_en.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_4235",
+                        "distance": 0.01639344262295082,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    },
+                    {
+                        "chunk_id": "R70SOMA_chunk_274",
+                        "distance": 0.01639344262295082,
+                        "source": "R70SOMA.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_1697",
+                        "distance": 0.016129032258064516,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    }
+                ]
+            },
+            {
+                "query": "According to the documentation, what is specified about 4?",
+                "expected_chunk_id": "R70SOMA_chunk_4408",
+                "reference_answer": "4. Abuse/Neglect: Concerns about resident abuse, neglect or cognitively impaired. misappropriation of resident property, or how the facility responds to allegations of abuse, neglect or misappropriation 12. Incontinence/Toileting Programs: Concerns related to of resident property. resident incontinence and facility toileting.",
+                "source_file": "R70SOMA.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "guideline_170_en_chunk_1838",
+                        "distance": 0.01639344262295082,
+                        "source": "guideline_170_en.md"
+                    },
+                    {
+                        "chunk_id": "R70SOMA_chunk_274",
+                        "distance": 0.01639344262295082,
+                        "source": "R70SOMA.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_602",
+                        "distance": 0.016129032258064516,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    }
+                ]
+            },
+            {
+                "query": "According to the documentation, what is specified about 7?",
+                "expected_chunk_id": "guideline_170_en_chunk_115",
+                "reference_answer": "7. Evans L, Rhodes A, Alhazzani W, et al. Surviving sepsis campaign: international guidelines for management of sepsis and septic shock 2021. Intensive Care Med. 2021;47(11):1181-1247.",
+                "source_file": "guideline_170_en.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_726",
+                        "distance": 0.01639344262295082,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    },
+                    {
+                        "chunk_id": "R70SOMA_chunk_843",
+                        "distance": 0.01639344262295082,
+                        "source": "R70SOMA.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_4606",
+                        "distance": 0.016129032258064516,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    }
+                ]
+            },
+            {
+                "query": "According to the documentation, what is specified about A?",
+                "expected_chunk_id": "Policies_and_Procedures_chunk_078",
+                "reference_answer": "A. Have a bachelor’s degree from an accredited college or university, preferably in a health and human services field, or be a registered nurse. B. Duties exclusive to the administration and provision of services at the day care center.",
+                "source_file": "Policies_and_Procedures.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "guideline_170_en_chunk_1713",
+                        "distance": 0.01639344262295082,
+                        "source": "guideline_170_en.md"
+                    },
+                    {
+                        "chunk_id": "R70SOMA_chunk_274",
+                        "distance": 0.01639344262295082,
+                        "source": "R70SOMA.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_696",
+                        "distance": 0.016129032258064516,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    }
+                ]
+            },
+            {
+                "query": "According to the documentation, what is specified about 1?",
+                "expected_chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_4338",
+                "reference_answer": "1. Resident has little interest or pleasure in doing things as indicated by:",
+                "source_file": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_4235",
+                        "distance": 0.01639344262295082,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    },
+                    {
+                        "chunk_id": "R70SOMA_chunk_274",
+                        "distance": 0.01639344262295082,
+                        "source": "R70SOMA.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_1697",
+                        "distance": 0.016129032258064516,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    }
+                ]
+            },
+            {
+                "query": "Can you explain the guidelines for 17?",
+                "expected_chunk_id": "Policies_and_Procedures_chunk_006",
+                "reference_answer": "17. Information Technology 87 18. Quality Assurance Program 93",
+                "source_file": "Policies_and_Procedures.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_1298",
+                        "distance": 0.01639344262295082,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_1635",
+                        "distance": 0.01639344262295082,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    },
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_028",
+                        "distance": 0.016129032258064516,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    }
+                ]
+            },
+            {
+                "query": "According to the documentation, what is specified about after completing duty?",
+                "expected_chunk_id": "R70SOMA_chunk_3701",
+                "reference_answer": "After completing duty. Consistent use by staff of proper hygienic practices and techniques is critical to preventing the spread of infections. It is necessary for staff to have access to proper hand washing facilities with available soap (regular or anti-microbial), warm water, and disposable towels and/or heat/air drying methods. Alcohol based hand rubs (ABHR) cannot be used in place of proper hand washing techniques in a food service setting.92",
+                "source_file": "R70SOMA.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "Policies_and_Procedures_chunk_459",
+                        "distance": 0.01639344262295082,
+                        "source": "Policies_and_Procedures.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_051",
+                        "distance": 0.01639344262295082,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    },
+                    {
+                        "chunk_id": "R70SOMA_chunk_917",
+                        "distance": 0.016129032258064516,
+                        "source": "R70SOMA.md"
+                    }
+                ]
+            },
+            {
+                "query": "Can you explain the guidelines for cMS’s RAI Version 3.0 Manual CH 3: MDS Items [C] C0200–C0500: Brief...?",
+                "expected_chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_1130",
+                "reference_answer": "CMS’s RAI Version 3.0 Manual CH 3: MDS Items [C] C0200–C0500: Brief Interview for Mental Status (BIMS) (cont.) - If the interview is stopped, do the following: 1. Code (—), dash in C0400A, C0400B, and C0400C. 2. Code 99 in the BIMS Summary Score (C0500), and if the assessment being completed is a stand-alone Part A PPS Discharge, continue to C1310. Signs and Symptoms of Delirium. Otherwise, proceed to step 3.",
+                "source_file": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_1112",
+                        "distance": 0.03057889822595705,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_1099",
+                        "distance": 0.030309988518943745,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_606",
+                        "distance": 0.01639344262295082,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    }
+                ]
+            },
+            {
+                "query": "What does the policy document state about 126?",
+                "expected_chunk_id": "NVZF_wereldrichtlijn_over_vallen_chunk_487",
+                "reference_answer": "126. Clemson L, Pighills A. Environmental interventions to pre- 140. World Health Organization. Integrated Care for Older Peovent falls at home and in the community. In: Lord S, ple (ICOPE): Guidance for Person-Centred Assessment and Sherrington C, Naganathan V, eds. Falls in Older People: Pathways in Primary Care. World Health Organization, Risk Factors, Strategies for Prevention and Implications for 2019; Contract No.: License: CC BY-NC-SA 3.0 IGO). World guidelines for falls prevention and",
+                "source_file": "NVZF_wereldrichtlijn_over_vallen.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_5716",
+                        "distance": 0.01639344262295082,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    },
+                    {
+                        "chunk_id": "R70SOMA_chunk_630",
+                        "distance": 0.01639344262295082,
+                        "source": "R70SOMA.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_871",
+                        "distance": 0.016129032258064516,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    }
+                ]
+            },
+            {
+                "query": "According to the documentation, what is specified about 4?",
+                "expected_chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_1049",
+                "reference_answer": "4. Consult with the primary nurse assistants (over all shifts) and the resident’s family and speech-language pathologist.",
+                "source_file": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "guideline_170_en_chunk_1838",
+                        "distance": 0.01639344262295082,
+                        "source": "guideline_170_en.md"
+                    },
+                    {
+                        "chunk_id": "R70SOMA_chunk_274",
+                        "distance": 0.01639344262295082,
+                        "source": "R70SOMA.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_602",
+                        "distance": 0.016129032258064516,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    }
+                ]
+            },
+            {
+                "query": "According to the documentation, what is specified about questionnaire?",
+                "expected_chunk_id": "Policies_and_Procedures_chunk_575",
+                "reference_answer": "questionnaire. In addition, complaints and compliments will be reviewed at least on a quarterly basis by the center director and appropriate personnel as determined by the center director. A report will go to the CEO/President of Winter Growth with a recommended course of action if there are significant problems. D. Review of medication errors and adverse drug reactions.",
+                "source_file": "Policies_and_Procedures.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_602",
+                        "distance": 0.01639344262295082,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_5623",
+                        "distance": 0.01639344262295082,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    },
+                    {
+                        "chunk_id": "R70SOMA_chunk_4239",
+                        "distance": 0.016129032258064516,
+                        "source": "R70SOMA.md"
+                    }
+                ]
+            },
+            {
+                "query": "According to the documentation, what is specified about 30 days or discharged return not anticipated, facilities may develop their own...?",
+                "expected_chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_203",
+                "reference_answer": "30 days or discharged return not anticipated, facilities may develop their own specific policies regarding how to handle return situations, whether or not to copy the previous RAI to the new record. — In cases where the resident returns to the facility after a long break in care (i.e., 15 months or longer), staff may want to review the older record and familiarize themselves with the resident history and care needs. However, the decision on retaining the prior stay record in the active clinical",
+                "source_file": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_206",
+                        "distance": 0.03278688524590164,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_856",
+                        "distance": 0.03128054740957967,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_859",
+                        "distance": 0.03125,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    }
+                ]
+            },
+            {
+                "query": "According to the documentation, what is specified about 1?",
+                "expected_chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_2398",
+                "reference_answer": "1. Interact with the resident using their preferred language. Be sure they can hear you and/or have access to their preferred method for communication. If the resident appears unable to communicate, offer alternatives such as writing, pointing, sign language, or cue cards. 2. Determine whether or not the resident is rarely/never understood verbally, in writing, or using another method. If the resident is rarely/never understood, skip to item J0800, Indicators of Pain or Possible Pain.",
+                "source_file": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_4235",
+                        "distance": 0.01639344262295082,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    },
+                    {
+                        "chunk_id": "R70SOMA_chunk_274",
+                        "distance": 0.01639344262295082,
+                        "source": "R70SOMA.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_1697",
+                        "distance": 0.016129032258064516,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    }
+                ]
+            },
+            {
+                "query": "Can you explain the guidelines for clinical standards of practice?",
+                "expected_chunk_id": "R70SOMA_chunk_1374",
+                "reference_answer": "clinical standards of practice. No particular dressing promotes healing of all pressure",
+                "source_file": "R70SOMA.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "R70SOMA_chunk_2321",
+                        "distance": 0.03278688524590164,
+                        "source": "R70SOMA.md"
+                    },
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_177",
+                        "distance": 0.016129032258064516,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    },
+                    {
+                        "chunk_id": "R70SOMA_chunk_2246",
+                        "distance": 0.016129032258064516,
+                        "source": "R70SOMA.md"
+                    }
+                ]
+            },
+            {
+                "query": "What does the policy document state about 217?",
+                "expected_chunk_id": "NVZF_wereldrichtlijn_over_vallen_chunk_538",
+                "reference_answer": "217. Canning CG, Sherrington C, Lord SR et al. Exercise for falls Ter 2019; 23: 497–505. prevention in Parkinson disease: a randomized controlled 233. Szlejf C, Parra-Rodriguez L, Rosas-Carrasco O. Osteosar- November trial. Neurology 2015; 84: 304–12. copenic obesity: prevalence and relation with frailty and Seymour K, Pickering physical performance in middle-aged and older women. J 2022218. Chivers R, Rochester L et al. Multicentre, randomised controlled trial of PDSAFE, a Am Med Dir Assoc",
+                "source_file": "NVZF_wereldrichtlijn_over_vallen.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "guideline_170_en_chunk_1199",
+                        "distance": 0.01639344262295082,
+                        "source": "guideline_170_en.md"
+                    },
+                    {
+                        "chunk_id": "R70SOMA_chunk_630",
+                        "distance": 0.01639344262295082,
+                        "source": "R70SOMA.md"
+                    },
+                    {
+                        "chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_5716",
+                        "distance": 0.016129032258064516,
+                        "source": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md"
+                    }
+                ]
+            },
+            {
+                "query": "According to the documentation, what is specified about a good history and physical examination are essential?",
+                "expected_chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_1216",
+                "reference_answer": "A good history and physical examination are essential. The patient may be illlooking, not appreciating surroundings, not alert, not aware of time, place, or who they are. They may also be unable to remember, and may forget easily with poor attention and concentration. They may have visual/auditory hallucinations or delusions (grandiose or paranoid) or may be aggressive and excited. They may also have illusions (e.g., a stick is mistaken for a snake). In general, symptoms get worse at night.",
+                "source_file": "ken_D1_clinical_guidelines_for_management_and_re.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_580",
+                        "distance": 0.03131881575727918,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    },
+                    {
+                        "chunk_id": "Policies_and_Procedures_chunk_468",
+                        "distance": 0.030798389007344232,
+                        "source": "Policies_and_Procedures.md"
+                    },
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_584",
+                        "distance": 0.030621785881252923,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    }
+                ]
+            },
+            {
+                "query": "What are the standard guidelines described in this section?",
+                "expected_chunk_id": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1_chunk_5854",
+                "reference_answer": "",
+                "source_file": "final_mds_3_0_rai_manual_v1_20_1_october_2025_1.md",
+                "retrieved_results": [
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_3439",
+                        "distance": 0.03177805800756621,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    },
+                    {
+                        "chunk_id": "R70SOMA_chunk_2321",
+                        "distance": 0.01639344262295082,
+                        "source": "R70SOMA.md"
+                    },
+                    {
+                        "chunk_id": "ken_D1_clinical_guidelines_for_management_and_re_chunk_177",
+                        "distance": 0.016129032258064516,
+                        "source": "ken_D1_clinical_guidelines_for_management_and_re.md"
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -1,4 +1,4 @@
-# Embbeding_RAG
+# Embedding_RAG
 
 ---
 
@@ -6,86 +6,72 @@
 
 ```text
 Embbeding_RAG/
-├── chucks/                          # Thư mục chứa dữ liệu chunks đầu vào
-│   ├── check_chunks.ipynb           # Kiểm tra số lượng và tính đầy đủ của các chunk của file
-│   └── all_chunks.json              # File JSON lưu trữ toàn bộ các chunks văn bản từ Module 1
-├── chroma_db/                       # Cơ sở dữ liệu vector ChromaDB cục bộ (sau khi nạp dữ liệu)
-├── test_vector_db/                  # Module kiểm thử độ chính xác và tích hợp LLM
-│   ├── result/                      # Kết quả sinh tự động từ quá trình chạy kiểm tra
-│   │   ├── test_queries.json        # Bộ 100 câu hỏi kiểm thử tiếng Anh kèm đáp án mẫu
-│   │   ├── evaluation_results.json  # Phân loại độ chính xác truy xuất (Retrieval) theo từng Rank
-│   │   └── rag_pipeline_evaluation.json # Đánh giá 2x2 ma trận tích hợp RAG (Retrieval vs Generation)
-│   ├── generate_and_test_queries.py # Tạo bộ câu hỏi trắc nghiệm tiếng Anh từ dữ liệu gốc
-│   ├── query_vector_db.py           # Đánh giá độ chính xác truy xuất dữ liệu từ cơ sở dữ liệu
-│   └── rag_pipeline.py              # Đánh giá liên kết truy xuất và sinh câu trả lời bằng LLM cục bộ (Ollama)
-├── data_ingestion_chunking.py        # Cắt nhỏ tài liệu Markdown bằng thuật toán đệ quy thuần Python (Module 1)
-├── embedding_storage.py             # Sinh vector nhúng lưu vào ChromaDB cục bộ (Module 2)
-└── requirements.txt                 # Danh sách các thư viện cần thiết của dự án
+├── chucks/                          # Chứa dữ liệu chunks đầu vào (all_chunks.json)
+├── all-MiniLM-L6-v2/                # Module RAG sử dụng mô hình all-MiniLM-L6-v2
+│   ├── chroma_db/                   # Database vector ChromaDB (không gian Cosine)
+│   ├── test_vector_db/              
+│   │   ├── result/                  # Thư mục lưu báo cáo kết quả kiểm thử (.json, .md)
+│   │   ├── generate_and_test_queries.py
+│   │   ├── query_vector_db.py
+│   │   ├── rag_pipeline.py
+│   │   └── retrieval.py             # Thư viện tìm chung chứa BM25 và Hybrid Search (RRF)
+│   ├── config.py                    # Cấu hình tập trung tham số
+│   ├── embedding_storage.py         # Nhúng và lưu vector vào ChromaDB
+│   └── run.py                       # Chạy tự động quy trình load DB & đánh giá
+├── nomic-embed-text-v1.5/           # Module RAG sử dụng mô hình nomic-embed-text-v1.5
+│   └── (Cấu trúc tương tự như all-MiniLM-L6-v2 ở trên)
+├── data_ingestion_chunking.py        # Đọc dữ liệu MD thô và phân mảnh (Module 1)
+└── requirements.txt                 # Dependencies của dự án
 ```
 
 ---
 
-## 2. Chi tiết chức năng từng file
+## 2. Các chế độ truy xuất (`RETRIEVAL_MODE` trong `config.py`)
 
-### `data_ingestion_chunking.py`
-* **Nhiệm vụ**: Quét đệ quy toàn bộ file `.md` trong thư mục dữ liệu thô, phân tích cấu trúc Heading (`#`, `##`, `###`) của tài liệu để cắt khối. Các khối quá lớn tiếp tục được phân tách đệ quy về ngưỡng tối đa `500` ký tự (độ chồng chéo `50` ký tự).
-* **Đầu ra**: File [chucks/all_chunks.json].
-
-### `embedding_storage.py`
-* **Nhiệm vụ**: Đọc dữ liệu từ file JSON, sử dụng mô hình nhúng cục bộ `sentence-transformers/all-MiniLM-L6-v2` để sinh vector nhúng và đẩy toàn bộ dữ liệu vào ChromaDB cục bộ dưới dạng batch `32` phần tử.
-* **Xử lý Metadata**: Tự động chuyển đổi các dictionary lồng nhau (headings) thành chuỗi JSON thô để tương thích với ChromaDB.
-
-### `test_vector_db/generate_and_test_queries.py`
-* **Nhiệm vụ**: Lấy mẫu ngẫu nhiên từ file chunks và biên dịch thành câu hỏi tiếng Anh tự nhiên tương ứng bằng các mẫu câu NLP động.
-* **Đầu ra**: File [test_vector_db/result/test_queries.json].
-
-### `test_vector_db/query_vector_db.py`
-* **Nhiệm vụ**: Đọc câu hỏi kiểm thử từ thư mục `result/`, thực hiện tìm kiếm tương đồng trên ChromaDB và thống kê độ chính xác truy xuất ở các mốc: chính xác tuyệt đối Rank 1 và tỷ lệ bao phủ (hit rate) trong Top $K$ ($k=3$).
-* **Đầu ra**: Bản in console thống kê và tệp phân loại chi tiết [test_vector_db/result/evaluation_results.json].
-
-### `test_vector_db/rag_pipeline.py`
-* **Nhiệm vụ**: Kết hợp việc tìm kiếm ngữ cảnh với mô hình ngôn ngữ lớn cục bộ **Ollama** chạy CPU (`qwen2:1.5b`) sử dụng cấu trúc prompt tiếng Anh. Đo lường chất lượng sinh câu trả lời bằng phương pháp Cosine Similarity giữa vector nhúng của câu trả lời từ LLM với câu trả lời tham chiếu (ngưỡng `0.70`).
-* **Đầu ra**: Bảng ma trận hiệu năng 2x2 trên Console và file chi tiết các ca kiểm thử tương ứng tại [test_vector_db/result/rag_pipeline_evaluation.json].
+* **`cosine`**: Tìm kiếm ngữ nghĩa qua vector nhúng (Dense Retrieval).
+* **`bm25`**: Tìm kiếm từ khóa chính xác qua thuật toán BM25 (Sparse Retrieval).
+* **`hybrid`**: Kết hợp `cosine` + `bm25` qua cơ chế trộn thứ hạng chéo RRF ($s=60$).
 
 ---
 
-## 3. Cài đặt dự án
+## 3. Chức năng chính các tệp tin
 
-### Cài đặt thư viện Python
-Trong môi trường ảo của bạn (Conda hoặc virtualenv), chạy lệnh sau:
-```bash
-pip install -r requirements.txt
-```
+* **`data_ingestion_chunking.py`**: Quét, đọc và phân mảnh tài liệu markdown thô thành các block.
+* **`[model]/config.py`**: Chứa toàn bộ cấu hình chung (model, DB path, prompt, LLM,...).
+* **`[model]/embedding_storage.py`**: Vector hóa tài liệu và nạp vào ChromaDB (sử dụng độ đo Cosine).
+* **`[model]/test_vector_db/retrieval.py`**: Đóng gói logic truy xuất ngữ cảnh (Cosine, BM25, Hybrid).
+* **`[model]/test_vector_db/generate_and_test_queries.py`**: Sinh ngẫu nhiên bộ 100 câu hỏi trắc nghiệm tiếng Anh từ tài liệu gốc.
+* **`[model]/test_vector_db/query_vector_db.py`**: Đánh giá độ chính xác tìm kiếm (Accuracy, Hit Rate, Precision, MRR) và xuất báo cáo.
+* **`[model]/test_vector_db/rag_pipeline.py`**: Chạy pipeline RAG gửi câu hỏi và ngữ cảnh đến LLM, so sánh chất lượng kết quả.
+* **`[model]/run.py`**: Chạy tuần tự quy trình nạp DB, sinh câu hỏi và đánh giá độ chính xác truy xuất.
+
 ---
 
-## 4. Thứ tự thực thi
+## 4. Hướng dẫn thực thi
 
-### Bước 1: Ingestion & Cắt nhỏ chunk tài liệu
+### Bước 1: Phân mảnh tài liệu (chạy tại thư mục gốc)
 ```bash
 python data_ingestion_chunking.py
 ```
-*Tạo ra tệp tin dữ liệu trung gian `chucks/all_chunks.json`.*
 
-### Bước 2: Nhúng vector và nạp dữ liệu vào ChromaDB
-```bash
-python embedding_storage.py
-```
-*Tạo chỉ mục vector cục bộ bên trong thư mục `chroma_db/`.*
+### Bước 2: Nạp dữ liệu và đánh giá tìm kiếm (cho từng mô hình)
+Di chuyển vào thư mục mô hình mong muốn và khởi chạy:
 
-### Bước 3: Sinh tự động 100 câu hỏi kiểm thử tiếng Anh
-```bash
-python test_vector_db/generate_and_test_queries.py
-```
-*Sinh file câu hỏi `test_vector_db/result/test_queries.json`.*
+* **Với mô hình MiniLM**:
+  ```bash
+  cd all-MiniLM-L6-v2
+  python run.py
+  ```
 
-### Bước 4: Đánh giá chất lượng của bộ máy tìm kiếm (Retrieval)
-```bash
-python test_vector_db/query_vector_db.py
-```
-*Tính tỷ lệ thành công khi truy xuất dữ liệu trong cơ sở dữ liệu.*
+* **Với mô hình Nomic**:
+  ```bash
+  cd nomic-embed-text-v1.5
+  python run.py
+  ```
 
-### Bước 5: Đánh giá toàn bộ hiệu năng RAG (Tương tác LLM)
+### Bước 3: Đánh giá tích hợp RAG (gửi LLM)
+Khởi chạy local LLM Ollama hoặc thiết lập API Key OpenAI trong `config.py` tương ứng rồi chạy:
 ```bash
-python test_vector_db/rag_pipeline.py
+cd test_vector_db
+python rag_pipeline.py
 ```
-*Đo lường độ chính xác tổng hợp của cả quá trình tìm kiếm ngữ cảnh lẫn sinh từ ngữ từ mô hình ngôn ngữ.*

@@ -13,18 +13,14 @@ logging.basicConfig(
     ]
 )
 
-# =====================================================================
-# 1. CONFIGURATION BLOCK
-# =====================================================================
+# 1. CONFIGURATION
 DATA_DIR = str(Path(__file__).parent.parent / "data_clean" / "RAG")
 OUTPUT_DIR = str(Path(__file__).parent / "chucks")
 OUTPUT_FILE_NAME = "all_chunks.json"
 CHUNK_SIZE = 500
 CHUNK_OVERLAP = 50
 
-# =====================================================================
 # 2. DATA INGESTION
-# =====================================================================
 def scan_and_read_md_files(data_dir: str) -> List[Dict]:
     md_files = []
     data_path = Path(data_dir)
@@ -67,9 +63,7 @@ def scan_and_read_md_files(data_dir: str) -> List[Dict]:
     logging.info(f"Total files ingested: {len(md_files)}")
     return md_files
 
-# =====================================================================
-# 3. MARKDOWN CHUNKING STRATEGY (Pure Python)
-# =====================================================================
+# 3. MARKDOWN CHUNKING STRATEGY
 def split_markdown_by_headers(text: str) -> List[Dict]:
     lines = text.splitlines()
     blocks = []
@@ -190,9 +184,7 @@ def split_text_recursively(text: str, chunk_size: int, chunk_overlap: int, separ
         
     return chunks
 
-# =====================================================================
 # 4. PIPELINE ORCHESTRATION
-# =====================================================================
 def chunk_markdown_pipeline(data_dir: str, chunk_size: int, chunk_overlap: int) -> List[Dict]:
     try:
         md_files = scan_and_read_md_files(data_dir)
@@ -253,9 +245,7 @@ def chunk_markdown_pipeline(data_dir: str, chunk_size: int, chunk_overlap: int) 
     logging.info(f"Total chunks created across all files: {len(all_chunks)}")
     return all_chunks
 
-# =====================================================================
 # 5. MAIN DEMO EXECUTION
-# =====================================================================
 if __name__ == "__main__":
     logging.info("Starting Data Ingestion & Chunking pipeline...")
     
