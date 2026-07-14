@@ -25,7 +25,6 @@ train/
 │   ├── adapter_model.safetensors # Trọng số LoRA adapter của Qwen-0.5B
 │   ├── chat_template.jinja   # File mẫu prompt chat định dạng ChatML
 │   ├── evaluation_results.csv # Bảng kết quả chạy thử nghiệm của Qwen-0.5B
-│   ├── judge_prompt.md       # Prompt chi tiết phục vụ copy-paste lên các Chatbot Web UI để đánh giá CSV
 │   ├── tokenizer.json        # Dữ liệu tokenizer cho Qwen-0.5B
 │   ├── tokenizer_config.json # Cấu hình tokenizer tương ứng
 │   └── training_args.bin     # Tham số huấn luyện Qwen-0.5B
