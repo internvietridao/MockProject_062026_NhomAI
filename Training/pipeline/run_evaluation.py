@@ -80,16 +80,28 @@ def load_raw_test_for_export(path):
     return Dataset.from_list(raw_samples) if raw_samples else None
 
 
-def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "--max_samples",
-        type=int,
-        default=100,
-        help="Số mẫu test dùng để tính ROUGE/BLEU (mặc định 100, giống train.py). "
-             "Đặt lớn hơn (vd: 1733) để chạy trên toàn bộ tập test -- sẽ lâu hơn.",
-    )
-    args = parser.parse_args()
+def main(max_samples: int = None):
+    """
+    Args:
+        max_samples: số mẫu test dùng để tính ROUGE/BLEU. Nếu để None (mặc
+            định), sẽ đọc từ dòng lệnh (--max_samples, mặc định 100 nếu
+            không truyền) -- dùng khi chạy `python -m pipeline.run_evaluation`.
+            Truyền trực tiếp giá trị khi gọi từ notebook, vd:
+                run_evaluation.main(max_samples=1733)
+            để bỏ qua argparse hoàn toàn (tránh lỗi "-f kernel.json" của
+            Jupyter/Colab/Kaggle).
+    """
+    if max_samples is None:
+        parser = argparse.ArgumentParser()
+        parser.add_argument(
+            "--max_samples",
+            type=int,
+            default=100,
+            help="Số mẫu test dùng để tính ROUGE/BLEU (mặc định 100, giống train.py). "
+                 "Đặt lớn hơn (vd: 1733) để chạy trên toàn bộ tập test -- sẽ lâu hơn.",
+        )
+        args = parser.parse_known_args()[0]
+        max_samples = args.max_samples
 
     model, tokenizer = load_trained_model()
 
@@ -100,7 +112,7 @@ def main():
             f"Không tìm thấy/rỗng {TEST_FILE}. Hãy chạy "
             f"`python -m pipeline.build_train_dataset` trước."
         )
-    print(f"Số câu hỏi test: {len(test_raw)} | Sẽ chạy: {min(len(test_raw), args.max_samples)}")
+    print(f"Số câu hỏi test: {len(test_raw)} | Sẽ chạy: {min(len(test_raw), max_samples)}")
 
     save_predictions_csv(
         model=model,
@@ -110,7 +122,7 @@ def main():
         system_prompt=SYSTEM_PROMPT,
         prompt_style=PROMPT_STYLE,
         max_new_tokens=MAX_NEW_TOKENS_TRAIN_GEN,
-        max_samples=args.max_samples,
+        max_samples=max_samples,
     )
     print(f"Đã lưu CSV dự đoán -> {PREDICTIONS_CSV}")
 
