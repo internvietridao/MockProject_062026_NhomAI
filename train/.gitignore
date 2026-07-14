@@ -9,13 +9,9 @@ dist/
 build/
 
 # ── Training outputs ──
-outputs/
 checkpoints/
 runs/
 wandb/
-
-# ── Evaluation results ──
-*.csv
 
 # ── Log files ──
 *.log
