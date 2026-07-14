@@ -19,6 +19,7 @@ from peft import PeftModel
 
 from src.config import ADAPTER_DIR, BASE_MODEL_NAME, MAX_NEW_TOKENS_CHAT
 from src.prompt_template import build_prompt
+from src.rag_retriever import RAGRetriever
 
 USE_GPU = torch.cuda.is_available()
 
@@ -39,15 +40,18 @@ def load_chat_model():
             torch_dtype=torch.float16,
             device_map="auto",
         )
+        model = PeftModel.from_pretrained(base_model, str(ADAPTER_DIR))
     else:
+        # Load base model lên CPU
         base_model = AutoModelForCausalLM.from_pretrained(
             BASE_MODEL_NAME,
             torch_dtype=torch.float32,
-            device_map={"": "cpu"},
         )
-        
-    # Gắn adapter (kiến thức đã train) vào model gốc
-    model = PeftModel.from_pretrained(base_model, str(ADAPTER_DIR))
+        # Gắn adapter trước khi move sang device
+        model = PeftModel.from_pretrained(base_model, str(ADAPTER_DIR))
+        # Move toàn bộ model sang CPU
+        model = model.to("cpu")
+
     model.eval()
 
     print("Load model xong.")
@@ -101,22 +105,23 @@ def generate_answer(model, tokenizer, chunks: list[str], question: str,
 
 def main():
     model, tokenizer = load_chat_model()
-
-    # Đây là chunks GIẢ LẬP -- lúc chạy thật, phần này sẽ do vector DB
-    # của đồng nghiệp bạn trả về, không phải viết tay như thế này.
-    demo_chunks = [
-        "Signs and symptoms of adult ALL include fever, feeling tired, "
-        "and easy bruising or bleeding. Check with your doctor if you have "
-        "weakness, night sweats, easy bruising, petechiae, shortness of breath, "
-        "weight loss, bone or stomach pain, or painless lumps."
-    ]
+    
+    # Load RAG retriever
+    retriever = RAGRetriever()
+    retriever.load_embeddings()
+    
     demo_question = "Triệu chứng của bệnh bạch cầu cấp ở người lớn là gì?"
 
     print("\n" + "=" * 50)
     print("CÂU HỎI:", demo_question)
     print("=" * 50)
-
-    answer = generate_answer(model, tokenizer, demo_chunks, demo_question)
+    print("Đang tìm kiếm chunks tương tự...")
+    
+    # Tìm kiếm chunks từ embeddings
+    retrieved_chunks = retriever.search(demo_question, top_k=3)
+    
+    print("\nĐã tìm thấy chunks, đang sinh câu trả lời...")
+    answer = generate_answer(model, tokenizer, retrieved_chunks, demo_question)
 
     print("TRẢ LỜI:", answer)
     print("=" * 50)
