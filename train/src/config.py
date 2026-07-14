@@ -14,11 +14,13 @@ import torch
 
 @dataclass
 class ModelConfig:
-    model_id: str = "Qwen/Qwen2.5-0.5B-Instruct"
+    model_id: str = "unsloth/llama-3-8b-Instruct-bnb-4bit"
     torch_dtype: str = "bfloat16"
     device_map: str = "auto"
     trust_remote_code: bool = True
     attn_implementation: Optional[str] = None
+    temperature: float = 0.1
+    do_sample: bool = True
 
     def get_torch_dtype(self) -> torch.dtype:
         dtype_map = {
@@ -79,12 +81,13 @@ class TrainConfig:
     optim: str = "paged_adamw_8bit"
     gradient_checkpointing: bool = True
 
-    push_to_hub: bool = False
+    push_to_hub: bool = True
     hub_model_id: Optional[str] = None
     hf_token: Optional[str] = None
 
     report_to: str = "none"
     seed: int = 42
+    early_stopping_patience: int = 3
 
     def __post_init__(self):
         if self.hf_token is None:

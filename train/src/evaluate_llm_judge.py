@@ -14,7 +14,6 @@ import pandas as pd
 from typing import Dict, List, Optional
 from dotenv import load_dotenv
 
-# Cố gắng import thư viện AI, ưu tiên google-generativeai, sau đó là openai
 try:
     import google.generativeai as genai
     HAS_GEMINI = True
@@ -29,9 +28,7 @@ except ImportError:
 
 
 def setup_gemini_client(api_key: str):
-    """Thiết lập kết nối với Gemini API"""
     genai.configure(api_key=api_key)
-    # Sử dụng gemini-1.5-flash làm mô hình đánh giá mặc định (tốc độ nhanh và chi phí tối ưu)
     return genai.GenerativeModel(
         model_name="gemini-1.5-flash",
         generation_config={"response_mime_type": "application/json"}
@@ -39,12 +36,10 @@ def setup_gemini_client(api_key: str):
 
 
 def setup_openai_client(api_key: str):
-    """Thiết lập kết nối với OpenAI API"""
     return OpenAI(api_key=api_key)
 
 
 def get_evaluation_prompt(question: str, reference: str, prediction: str) -> str:
-    """Trả về prompt chuẩn để LLM đóng vai trò giám khảo y khoa"""
     return f"""Bạn là một chuyên gia y tế Hoa Kỳ cao cấp và chuyên gia đánh giá mô hình ngôn ngữ lớn (LLM-as-a-judge).
 Nhiệm vụ của bạn là đánh giá câu trả lời dự đoán (Prediction) của chatbot AI so với câu trả lời chuẩn (Reference) cho câu hỏi y khoa dưới đây.
 
@@ -88,7 +83,6 @@ Yêu cầu đầu ra bắt buộc phải trả về dưới định dạng JSON 
 
 
 def evaluate_with_gemini(model, question: str, reference: str, prediction: str) -> Optional[Dict]:
-    """Gửi yêu cầu đánh giá tới Gemini API"""
     prompt = get_evaluation_prompt(question, reference, prediction)
     try:
         response = model.generate_content(prompt)
@@ -99,7 +93,6 @@ def evaluate_with_gemini(model, question: str, reference: str, prediction: str) 
 
 
 def evaluate_with_openai(client, question: str, reference: str, prediction: str) -> Optional[Dict]:
-    """Gửi yêu cầu đánh giá tới OpenAI API"""
     prompt = get_evaluation_prompt(question, reference, prediction)
     try:
         response = client.chat.completions.create(
@@ -124,13 +117,10 @@ def main():
     parser.add_argument("--provider", type=str, default="auto", choices=["auto", "gemini", "openai"], help="API Provider sử dụng.")
     args = parser.parse_args()
 
-    # Load biến môi trường từ file .env ở thư mục train
     load_dotenv()
 
-    # Tìm đường dẫn file CSV thực tế
     csv_path = args.csv
     if not os.path.exists(csv_path):
-        # Thử tìm tương đối so với thư mục train
         csv_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), args.csv)
         if not os.path.exists(csv_path):
             print(f"Không tìm thấy file kết quả CSV tại: {args.csv}")
@@ -139,7 +129,6 @@ def main():
     df = pd.read_csv(csv_path)
     print(f"Đã đọc file CSV thành công: tìm thấy {len(df)} mẫu thử nghiệm.")
 
-    # Xác định API client
     client = None
     provider_used = ""
     
@@ -172,9 +161,7 @@ def main():
         print("Và cài đặt thư viện tương ứng (pip install google-generativeai hoặc pip install openai)")
         return
 
-    # Lấy ngẫu nhiên các mẫu để đánh giá
     num_samples = min(args.num_samples, len(df))
-    # Dùng seed cố định để đảm bảo kết quả nhất quán nếu chạy lại
     random.seed(42)
     sample_indices = random.sample(range(len(df)), num_samples)
     sampled_df = df.iloc[sample_indices].reset_index(drop=True)
@@ -199,7 +186,6 @@ def main():
             res["question"] = question
             res["reference"] = reference
             res["prediction"] = prediction
-            # Lưu điểm ROUGE từ CSV để đối chiếu
             res["rouge1"] = row.get("rouge1", 0.0)
             res["rougeL"] = row.get("rougeL", 0.0)
             evaluated_results.append(res)
@@ -210,12 +196,9 @@ def main():
         print("Không có kết quả đánh giá nào được tạo thành công.")
         return
 
-    # Tính điểm trung bình các tiêu chí
     avg_accuracy = sum(r["accuracy_score"] for r in evaluated_results) / len(evaluated_results)
     avg_completeness = sum(r["completeness_score"] for r in evaluated_results) / len(evaluated_results)
     avg_tone = sum(r["tone_score"] for r in evaluated_results) / len(evaluated_results)
-
-    # Xuất báo cáo Markdown
     output_dir = os.path.dirname(args.output)
     if output_dir:
         os.makedirs(output_dir, exist_ok=True)

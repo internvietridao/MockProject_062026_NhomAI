@@ -11,6 +11,12 @@ import torch
 from transformers import AutoModelForCausalLM, BitsAndBytesConfig, PreTrainedTokenizer
 from peft import LoraConfig as PeftLoraConfig, get_peft_model, prepare_model_for_kbit_training
 
+try:
+    from unsloth import FastLanguageModel
+    HAS_UNSLOTH = True
+except ImportError:
+    HAS_UNSLOTH = False
+
 
 def get_bnb_config(compute_dtype: torch.dtype) -> BitsAndBytesConfig:
     return BitsAndBytesConfig(
@@ -36,7 +42,36 @@ def load_model_with_peft(
     model_cfg,
     lora_cfg,
     tokenizer: PreTrainedTokenizer,
+    max_seq_length: int = 1024,
 ) -> torch.nn.Module:
+    if HAS_UNSLOTH:
+        print(f"[MODEL] Phát hiện thư viện Unsloth. Tiến hành tải model {model_cfg.model_id} bằng FastLanguageModel...")
+        model, _ = FastLanguageModel.from_pretrained(
+            model_name=model_cfg.model_id,
+            max_seq_length=max_seq_length,
+            dtype=None,
+            load_in_4bit=True,
+            trust_remote_code=model_cfg.trust_remote_code,
+        )
+
+        if lora_cfg.target_modules == "auto":
+            target_modules = ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"]
+        else:
+            target_modules = lora_cfg.target_modules
+
+        model = FastLanguageModel.get_peft_model(
+            model,
+            r=lora_cfg.r,
+            target_modules=target_modules,
+            lora_alpha=lora_cfg.lora_alpha,
+            lora_dropout=0,  # Unsloth tối ưu tốc độ tốt nhất với dropout = 0
+            bias=lora_cfg.bias,
+            use_gradient_checkpointing="unsloth",  # Gradient Checkpointing cực kỳ tối ưu của Unsloth
+            random_state=lora_cfg.task_type if hasattr(lora_cfg, "seed") else 3407,
+        )
+        return model
+
+    # Fallback về cách load thông thường bằng transformers & bitsandbytes khi không có Unsloth
     target_dtype = model_cfg.get_torch_dtype()
     bnb_config = get_bnb_config(target_dtype)
 
@@ -52,13 +87,9 @@ def load_model_with_peft(
 
     model = AutoModelForCausalLM.from_pretrained(model_cfg.model_id, **model_kwargs)
 
-    # Ghi đè cấu hình torch_dtype của mô hình để prepare_model_for_kbit_training và PEFT
-    # nhận biết và khởi tạo/ép kiểu các layer không lượng hóa sang float16 thay vì bfloat16 mặc định.
     model.config.torch_dtype = model_cfg.get_torch_dtype()
 
-    # Không cần resize_token_embeddings nếu không thêm token mới vào từ điển.
-    # Việc resize có thể làm mất các special tokens ở cuối vocab và sinh lỗi mismatch kiểu dữ liệu (BFloat16).
-    # model.resize_token_embeddings(len(tokenizer))
+    model = prepare_model_for_kbit_training(model)
 
     model = prepare_model_for_kbit_training(model)
 

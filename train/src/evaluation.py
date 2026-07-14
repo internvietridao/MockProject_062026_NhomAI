@@ -92,6 +92,8 @@ def save_predictions_csv(
     prompt_style: str = "alpaca",
     max_new_tokens: int = 256,
     max_samples: int = 100,
+    temperature: float = 0.1,
+    do_sample: bool = True,
 ):
     """
     Chạy inference trên tập test và lưu kết quả ra CSV.
@@ -139,7 +141,8 @@ def save_predictions_csv(
             outputs = model.generate(
                 **inputs,
                 max_new_tokens=max_new_tokens,
-                do_sample=False,  
+                do_sample=do_sample,
+                temperature=temperature if do_sample else None,
                 pad_token_id=tokenizer.pad_token_id,
             )
 

@@ -11,6 +11,7 @@ import sys
 
 from dotenv import load_dotenv
 from trl import SFTTrainer, SFTConfig
+from transformers import EarlyStoppingCallback
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -45,7 +46,7 @@ def main():
     train_dataset, val_dataset, test_dataset = preprocess_dataset(data_cfg, tokenizer)
     print(f"[4/8] Dataset: train={len(train_dataset)}, val={len(val_dataset)}, test={len(test_dataset)}")
 
-    model = load_model_with_peft(model_cfg, lora_cfg, tokenizer)
+    model = load_model_with_peft(model_cfg, lora_cfg, tokenizer, max_seq_length=data_cfg.max_seq_length)
     print("[5/8] Model loaded với QLoRA 4-bit + PEFT adapter")
 
     total_steps = math.ceil(
@@ -95,6 +96,7 @@ def main():
         eval_dataset=val_dataset,
         processing_class=tokenizer,
         formatting_func=formatting_func,
+        callbacks=[EarlyStoppingCallback(early_stopping_patience=train_cfg.early_stopping_patience)],
     )
 
     print("[6/8] SFTTrainer khởi tạo thành công")
@@ -136,6 +138,8 @@ def main():
         output_path=eval_csv_path,
         system_prompt=data_cfg.system_prompt,
         prompt_style=data_cfg.prompt_style,
+        temperature=model_cfg.temperature,
+        do_sample=model_cfg.do_sample,
     )
 
 if __name__ == "__main__":
