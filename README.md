@@ -10,6 +10,7 @@ Hệ thống AI Chatbot chuyên biệt hỗ trợ quản lý viện dưỡng lã
 ├── analysis_preprocessing/ # Thư mục xử lý và chuẩn hóa dữ liệu từ XML sang JSON
 ├── data_clean/             # Chứa dữ liệu sạch cuối cùng đã chuẩn hóa (Fine-tune JSON & RAG Markdown)
 ├── train/                  # Component cấu hình, mã nguồn huấn luyện model LLM (QLoRA)
+├── LLM-as-Judge/           # Chứa các báo cáo đánh giá chất lượng mô hình bằng LLM-as-a-judge (như Qwen-0.5B.md...)
 └── README.md               
 ```
 
