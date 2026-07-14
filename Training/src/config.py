@@ -23,11 +23,11 @@ DATA_DIR = Path(os.environ.get("MEDQUAD_DATA_DIR", BASE_DIR / "data"))
 OUTPUT_DIR = Path(os.environ.get("MEDQUAD_OUTPUT_DIR", BASE_DIR / "output"))
 
 # ---- Dữ liệu ----
-INPUT_FILE = DATA_DIR / "medquad.json"
+INPUT_FILE = DATA_DIR / "final_train_dataset.json"
 TRAIN_FILE = OUTPUT_DIR / "train.jsonl"
 VAL_FILE = OUTPUT_DIR / "val.jsonl"
 TEST_FILE = OUTPUT_DIR / "test.jsonl"
-TRAIN_SAMPLE_LIMIT = 11548  # số sample lấy từ medquad.json để build dataset (demo)
+TRAIN_SAMPLE_LIMIT = 11548  # số sample lấy từ final_train_dataset.json để build dataset (demo)
 
 # Tỷ lệ chia train/val/test (phải cộng lại = 1.0)
 TRAIN_RATIO = 0.7
@@ -53,6 +53,25 @@ USE_RAG = os.environ.get("MEDQUAD_USE_RAG", "0") == "1"
 BASE_MODEL_NAME = os.environ.get("MEDQUAD_BASE_MODEL", "Qwen/Qwen2.5-0.5B-Instruct")
 ADAPTER_DIR = OUTPUT_DIR / "output_model"
 
+# ---- Sinh dự đoán ra CSV (ROUGE/BLEU) ----
+# Sau khi train xong, chạy inference thật trên tập TEST rồi lưu CSV
+# (question, reference, prediction, rouge1/2/L, bleu). CSV này dùng làm
+# input cho bước LLM Judge ở evaluate.py -- KHÔNG generate lại câu trả lời
+# lần 2 ở đó nữa.
+PREDICTIONS_CSV = OUTPUT_DIR / "evaluation_results.csv"
+
+# Bảng tổng hợp 1 dòng cuối cùng: model, rouge1/2/L, bleu, perplexity,
+# train_loss, val_loss, mean_token_accuracy -- dễ so sánh giữa các lần train.
+SUMMARY_CSV = OUTPUT_DIR / "training_summary.csv"
+
+SYSTEM_PROMPT = os.environ.get(
+    "MEDQUAD_SYSTEM_PROMPT",
+    "You are a helpful medical assistant. Answer the question accurately and concisely.",
+)
+# "chatml" khớp với chat template của Qwen2.5-Instruct. Đổi "alpaca" nếu base
+# model khác dùng format instruction/response thay vì chat template.
+PROMPT_STYLE = os.environ.get("MEDQUAD_PROMPT_STYLE", "chatml")
+
 # ---- Đánh giá (RAGAs) ----
 EMBEDDING_MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"  # free, nhẹ
 
@@ -61,15 +80,18 @@ EMBEDDING_MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"  # free, nhẹ
 # model vừa fine-tune có xu hướng tự thấy câu trả lời của chính nó hợp lý hơn
 # thực tế khi được giao luôn vai giám khảo.
 #
-# Prometheus 2 (7B, Apache 2.0) là model được train CHUYÊN để chấm điểm LLM
-# khác (không phải model chat thông thường), độ khớp với GPT-4/con người
-# 72-85% theo benchmark của nhóm tác giả. Free, chạy local.
-# https://huggingface.co/prometheus-eval/prometheus-7b-v2.0
+# Ưu tiên gọi giám khảo qua API (xem JUDGE_API_* bên dưới) -- nhanh và không
+# tốn VRAM. Prometheus 2 cục bộ (local HF model) chỉ dùng làm PHƯƠNG ÁN DỰ
+# PHÒNG khi không có JUDGE_API_KEY.
 JUDGE_MODEL_NAME = os.environ.get("MEDQUAD_JUDGE_MODEL", "prometheus-eval/prometheus-7b-v2.0")
-
-# Prometheus 2 là model 7B -> cần ~16GB VRAM ở bf16. Load 4-bit để vừa GPU free
-# tier (Colab T4 / Kaggle T4-P100, ~15-16GB VRAM), chỉ cần ~5-6GB.
 JUDGE_LOAD_IN_4BIT = os.environ.get("MEDQUAD_JUDGE_4BIT", "1") != "0"
+
+# ---- Giám khảo qua API ----
+# Nếu MEDQUAD_JUDGE_API_KEY có giá trị -> evaluate.py gọi model giám khảo
+# qua API (endpoint kiểu OpenAI-compatible) thay vì load model 7B cục bộ.
+JUDGE_API_BASE = os.environ.get("MEDQUAD_JUDGE_API_BASE", "https://api.openai.com/v1")
+JUDGE_API_KEY = os.environ.get("MEDQUAD_JUDGE_API_KEY", "")
+JUDGE_API_MODEL = os.environ.get("MEDQUAD_JUDGE_API_MODEL", "gpt-4o-mini")
 
 # ---- Sinh câu trả lời ----
 MAX_NEW_TOKENS_TRAIN_GEN = 300   # dùng khi generate answer cho eval

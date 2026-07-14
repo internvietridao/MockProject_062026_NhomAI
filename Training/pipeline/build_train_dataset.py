@@ -1,7 +1,7 @@
 """
 build_train_dataset.py
 -----------------------
-Build 3 tập train/val/test từ medquad.json:
+Build 3 tập train/val/test từ final_train_dataset.json:
   - train.jsonl : dùng để fine-tune (pipeline/train.py)
   - val.jsonl   : theo dõi loss trong lúc train, không dùng để cập nhật
                   trọng số (pipeline/train.py)

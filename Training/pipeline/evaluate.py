@@ -9,16 +9,14 @@ luôn LLM Judge -- giống 1 học sinh tự chấm bài thi của mình: model 
 hướng tự đánh giá cao câu trả lời của chính nó (self-preference bias), kết
 quả không đáng tin.
 
-Giờ tách làm 2 model độc lập:
-  - Model BỊ ĐÁNH GIÁ: base model + adapter LoRA vừa train (pipeline/train.py)
-    -> chỉ dùng để SINH câu trả lời.
-  - Model GIÁM KHẢO: Prometheus 2 (prometheus-eval/prometheus-7b-v2.0) -- model
-    được train CHUYÊN để chấm điểm LLM khác, KHÔNG dính dáng gì tới model vừa
-    train ở trên. Xem src/config.py (JUDGE_MODEL_NAME).
-
-LƯU Ý:
-Prometheus 2 vẫn nhỏ hơn nhiều so với GPT-4/Claude nên kết quả chỉ mang tính
-tham khảo, nhưng đáng tin hơn hẳn việc để model tự chấm bài mình.
+THAY ĐỔI SO VỚI BẢN CŨ:
+  - KHÔNG tự load model bị đánh giá + tự generate câu trả lời nữa. Bước sinh
+    câu trả lời (+ ROUGE/BLEU) đã làm ở CUỐI pipeline/train.py rồi, kết quả
+    lưu sẵn ở src.config.PREDICTIONS_CSV (question, reference, prediction,
+    rouge1/2/L, bleu). File này chỉ ĐỌC csv đó lên, tránh generate 2 lần.
+  - Giám khảo ƯU TIÊN gọi qua API (nhanh, không tốn VRAM) thay vì load
+    Prometheus 2 (7B) cục bộ. Đặt MEDQUAD_JUDGE_API_KEY để dùng API; nếu
+    không set, tự động fallback về load Prometheus cục bộ (code cũ).
 
 Cài đặt cần thiết:
     pip install -r requirements.txt
@@ -27,69 +25,71 @@ Cách chạy:
     python -m pipeline.evaluate
 """
 
-import json
 import os
 
+import pandas as pd
 import torch
-from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig, pipeline
-from peft import PeftModel
-from langchain_community.llms import HuggingFacePipeline
-from langchain_community.embeddings import HuggingFaceEmbeddings
 
 from datasets import Dataset
+from langchain_community.embeddings import HuggingFaceEmbeddings
 from ragas import evaluate
 from ragas.metrics import (
-    faithfulness,
     answer_relevancy,
     context_precision,
     context_recall,
+    faithfulness,
 )
 from ragas.run_config import RunConfig
 
 from src.config import (
-    ADAPTER_DIR,
-    BASE_MODEL_NAME,
     EMBEDDING_MODEL_NAME,
+    JUDGE_API_BASE,
+    JUDGE_API_KEY,
+    JUDGE_API_MODEL,
     JUDGE_LOAD_IN_4BIT,
     JUDGE_MODEL_NAME,
-    MAX_NEW_TOKENS_TRAIN_GEN,
-    TEST_FILE,
+    PREDICTIONS_CSV,
     USE_RAG,
 )
-from src.prompt_template import build_prompt
 
 USE_GPU = torch.cuda.is_available()
 
 
 # ============================================================
-# 1a. LOAD MODEL BỊ ĐÁNH GIÁ (base model + adapter LoRA vừa train)
-#     -> chỉ dùng để sinh câu trả lời, KHÔNG dùng làm giám khảo.
+# 1. LOAD MODEL GIÁM KHẢO
+#    - Có JUDGE_API_KEY -> gọi qua API (ưu tiên, nhanh, không tốn VRAM)
+#    - Không có -> fallback load Prometheus 2 cục bộ (code cũ)
+#    Cả 2 đường đều KHÔNG liên quan gì tới model vừa fine-tune ở train.py.
 # ============================================================
 
-def load_model_under_test():
-    tokenizer = AutoTokenizer.from_pretrained(str(ADAPTER_DIR))
+def load_judge_llm():
+    if JUDGE_API_KEY:
+        from langchain_openai import ChatOpenAI
 
-    base_model = AutoModelForCausalLM.from_pretrained(
-        BASE_MODEL_NAME,
-        torch_dtype=torch.float16 if USE_GPU else torch.float32,
-        device_map="auto" if USE_GPU else {"": "cpu"},
+        print(f"Gọi model giám khảo qua API: {JUDGE_API_MODEL} ({JUDGE_API_BASE})")
+        return ChatOpenAI(
+            model=JUDGE_API_MODEL,
+            base_url=JUDGE_API_BASE,
+            api_key=JUDGE_API_KEY,
+            temperature=0,
+        )
+
+    print(
+        "Không có MEDQUAD_JUDGE_API_KEY -> fallback load Prometheus 2 cục bộ "
+        f"({JUDGE_MODEL_NAME}). Đặt biến môi trường này để gọi giám khảo qua "
+        "API thay thế (nhanh hơn nhiều, không cần load model 7B)."
     )
-    model = PeftModel.from_pretrained(base_model, str(ADAPTER_DIR))
-    model.eval()
-    return model, tokenizer
+    from langchain_community.llms import HuggingFacePipeline
+    from transformers import (
+        AutoModelForCausalLM,
+        AutoTokenizer,
+        BitsAndBytesConfig,
+        pipeline,
+    )
 
-
-# ============================================================
-# 1b. LOAD MODEL GIÁM KHẢO (Prometheus 2) — hoàn toàn tách biệt,
-#     không load adapter LoRA, không liên quan tới model vừa train.
-# ============================================================
-
-def load_judge_model():
     tokenizer = AutoTokenizer.from_pretrained(JUDGE_MODEL_NAME)
 
     if USE_GPU and JUDGE_LOAD_IN_4BIT:
-        # Prometheus 2 là model 7B -> quantize 4-bit để vừa GPU free tier
-        # (Colab T4 / Kaggle T4-P100, ~15-16GB VRAM).
         print(f"Load {JUDGE_MODEL_NAME} ở chế độ 4-bit (giám khảo, tách biệt model đang train)")
         bnb_config = BitsAndBytesConfig(
             load_in_4bit=True,
@@ -111,7 +111,7 @@ def load_judge_model():
     else:
         print(
             "CẢNH BÁO: không có GPU -> chạy Prometheus 2 (7B) trên CPU sẽ RẤT chậm. "
-            "Cân nhắc chạy evaluate.py trên máy/Colab/Kaggle có GPU."
+            "Cân nhắc đặt MEDQUAD_JUDGE_API_KEY để gọi qua API thay vì load cục bộ."
         )
         model = AutoModelForCausalLM.from_pretrained(
             JUDGE_MODEL_NAME,
@@ -119,7 +119,6 @@ def load_judge_model():
             device_map={"": "cpu"},
         )
 
-    # Bọc model thành 1 "pipeline" text-generation, để LangChain/RAGAs gọi được
     gen_pipeline = pipeline(
         "text-generation",
         model=model,
@@ -127,62 +126,38 @@ def load_judge_model():
         max_new_tokens=256,
         do_sample=False,  # tắt random để LLM Judge chấm điểm ổn định hơn
     )
-
     return HuggingFacePipeline(pipeline=gen_pipeline)
 
 
 # ============================================================
-# 2. TẢI DỮ LIỆU ĐÁNH GIÁ TỪ test.jsonl
-#    (tập TEST -- model chưa từng thấy lúc train, xem
-#    pipeline/build_train_dataset.py)
+# 2. ĐỌC DỰ ĐOÁN TỪ CSV (đã sinh sẵn ở pipeline/train.py)
 # ============================================================
 
-def load_eval_samples():
+def load_predictions():
     """
-    Đọc test.jsonl (sinh bởi pipeline/build_train_dataset.py). Mỗi dòng có
-    dạng {question, contexts, ground_truth}. contexts rỗng nếu USE_RAG=False.
+    Đọc PREDICTIONS_CSV (sinh bởi save_predictions_csv() cuối train.py).
+    Cột: question, reference, prediction, rouge1, rouge2, rougeL, bleu.
     """
-    if not os.path.exists(TEST_FILE):
+    if not os.path.exists(PREDICTIONS_CSV):
         raise FileNotFoundError(
-            f"Không tìm thấy {TEST_FILE}. "
-            f"Hãy chạy `python -m pipeline.build_train_dataset` trước để tạo file này."
+            f"Không tìm thấy {PREDICTIONS_CSV}. "
+            f"Hãy chạy `python -m pipeline.train` trước để sinh CSV dự đoán "
+            f"(bước cuối của train.py: inference + ROUGE/BLEU trên tập test)."
         )
+
+    df = pd.read_csv(PREDICTIONS_CSV)
 
     samples = []
-    with open(TEST_FILE, "r", encoding="utf-8") as f:
-        for line in f:
-            line = line.strip()
-            if line:
-                samples.append(json.loads(line))
-
-    if not samples:
-        raise ValueError(
-            f"{TEST_FILE} rỗng -- tập test quá nhỏ so với dataset gốc. "
-            f"Tăng TRAIN_SAMPLE_LIMIT hoặc TEST_RATIO trong src/config.py rồi build lại."
-        )
-
-    return samples
-
-
-def generate_answers(samples, model, tokenizer):
-    """Dùng model bị đánh giá để sinh câu trả lời thật cho từng câu hỏi test."""
-
-    for sample in samples:
-        messages = build_prompt(sample["contexts"], sample["question"])
-        text = tokenizer.apply_chat_template(
-            messages, tokenize=False, add_generation_prompt=True
-        )
-        inputs = tokenizer(text, return_tensors="pt").to(model.device)
-
-        with torch.no_grad():
-            output_ids = model.generate(
-                **inputs,
-                max_new_tokens=MAX_NEW_TOKENS_TRAIN_GEN,
-                do_sample=False,
-            )
-
-        new_tokens = output_ids[0][inputs["input_ids"].shape[1]:]
-        sample["answer"] = tokenizer.decode(new_tokens, skip_special_tokens=True).strip()
+    for _, row in df.iterrows():
+        samples.append({
+            "question": row["question"],
+            "answer": row["prediction"],
+            "ground_truth": row["reference"],
+            # CSV hiện chưa lưu contexts -- chỉ cần khi USE_RAG=True.
+            # Nếu muốn dùng đủ faithfulness/context_precision/context_recall,
+            # sửa save_predictions_csv() để lưu thêm cột "contexts" (JSON list).
+            "contexts": [],
+        })
 
     return samples
 
@@ -199,7 +174,13 @@ def select_metrics():
     dùng được trong cả 2 chế độ.
     """
     if USE_RAG:
+        print(
+            "USE_RAG=True nhưng CSV dự đoán hiện KHÔNG có cột contexts thật -> "
+            "faithfulness/context_precision/context_recall sẽ không đáng tin. "
+            "Cần bổ sung contexts vào save_predictions_csv() nếu muốn dùng đủ 4 metrics."
+        )
         return [faithfulness, answer_relevancy, context_precision, context_recall]
+
     print(
         "USE_RAG=False -> bỏ qua faithfulness/context_precision/context_recall "
         "(cần contexts thật, hiện không có). Chỉ chấm answer_relevancy."
@@ -208,41 +189,32 @@ def select_metrics():
 
 
 def main():
-    print("Đang load model bị đánh giá (base + adapter LoRA vừa train)...")
-    model, tokenizer = load_model_under_test()
-
-    print("Đang tải dữ liệu đánh giá từ test.jsonl...")
-    samples = load_eval_samples()
-    print(f"Số câu hỏi test: {len(samples)}")
-    samples = generate_answers(samples, model, tokenizer)
-
-    # Giải phóng model bị đánh giá trước khi load giám khảo (7B, tốn VRAM)
-    del model
-    if USE_GPU:
-        torch.cuda.empty_cache()
-
-    print(f"Đang load model giám khảo ({JUDGE_MODEL_NAME}, tách biệt model vừa train)...")
-    llm_judge = load_judge_model()
+    print("Đang đọc CSV dự đoán (đã sinh sẵn từ bước train, gồm ROUGE/BLEU)...")
+    samples = load_predictions()
+    print(f"Số mẫu: {len(samples)}")
 
     dataset = Dataset.from_list(samples)
+
+    print("Đang khởi tạo model giám khảo (tách biệt model vừa train)...")
+    llm_judge = load_judge_llm()
 
     print("Đang load embedding model (cho Answer Relevance)...")
     embeddings = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL_NAME)
 
-    print("Đang chấm điểm bằng RAGAs (có thể chậm vì dùng model local)...")
+    print("Đang chấm điểm bằng RAGAs...")
     result = evaluate(
         dataset,
         metrics=select_metrics(),
         llm=llm_judge,
         embeddings=embeddings,
         run_config=RunConfig(
-            timeout=7200,       # tăng timeout mỗi job lên 120 phút (model local chậm)
-            max_workers=1,     # chạy tuần tự thật sự, đúng bản chất model local trên 1 GPU
+            timeout=7200,
+            max_workers=1,
         ),
     )
 
     print("=" * 50)
-    print("KẾT QUẢ ĐÁNH GIÁ")
+    print("KẾT QUẢ ĐÁNH GIÁ (RAGAs + LLM Judge)")
     print("=" * 50)
     print(result)
 

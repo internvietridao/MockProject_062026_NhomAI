@@ -3,7 +3,7 @@ utils.py
 --------
 Các hàm tiện ích dùng chung (đọc/ghi dữ liệu, validate sample, chia
 train/val/test) — tách ra từ build_train_dataset.py để pipeline/evaluate.py
-cũng có thể tái sử dụng khi cần đọc trực tiếp medquad.json thay vì chỉ dùng
+cũng có thể tái sử dụng khi cần đọc trực tiếp final_train_dataset.json thay vì chỉ dùng
 vài câu hỏi mẫu.
 """
 
