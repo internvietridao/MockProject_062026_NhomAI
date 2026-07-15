@@ -20,6 +20,8 @@ Embbeding_RAG/
 │   └── run.py                       # Chạy tự động quy trình load DB & đánh giá
 ├── nomic-embed-text-v1.5/           # Module RAG sử dụng mô hình nomic-embed-text-v1.5
 │   └── (Cấu trúc tương tự như all-MiniLM-L6-v2 ở trên)
+├── bge-small-en-v1.5/               # Module RAG sử dụng mô hình BAAI/bge-small-en-v1.5
+│   └── (Cấu trúc tương tự như all-MiniLM-L6-v2 ở trên)
 ├── data_ingestion_chunking.py        # Đọc dữ liệu MD thô và phân mảnh (Module 1)
 └── requirements.txt                 # Dependencies của dự án
 ```
@@ -66,6 +68,12 @@ Di chuyển vào thư mục mô hình mong muốn và khởi chạy:
 * **Với mô hình Nomic**:
   ```bash
   cd nomic-embed-text-v1.5
+  python run.py
+  ```
+
+* **Với mô hình BGE**:
+  ```bash
+  cd bge-small-en-v1.5
   python run.py
   ```
 

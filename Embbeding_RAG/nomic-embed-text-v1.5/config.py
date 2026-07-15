@@ -21,6 +21,7 @@ TOP_K = 3
 
 RESET_DB = True
 
+# "cosine", "bm25", "hybrid" (combines both using RRF)
 RETRIEVAL_MODE = "hybrid"
 
 NUM_TEST_QUERIES = 100
