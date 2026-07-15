@@ -72,6 +72,7 @@ def load_judge_llm():
             base_url=JUDGE_API_BASE,
             api_key=JUDGE_API_KEY,
             temperature=0,
+            max_tokens=600,
         )
 
     print(
