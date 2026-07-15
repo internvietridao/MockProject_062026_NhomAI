@@ -93,7 +93,7 @@ print("Cấu hình mặc định — bỏ comment các dòng trên nếu cần t
 ```python
 import pandas as pd
 
-results = pd.read_csv("outputs/evaluation_results.csv")
+results = pd.read_csv("outputs_Phi-3-3.8B/evaluation_results.csv")
 
 print(f"Tổng số mẫu đánh giá: {len(results)}")
 print(f"\nKết quả trung bình:")
@@ -113,7 +113,7 @@ results.head()
 ```python
 # Di chuyển vào thư mục train để nén trực tiếp thư mục outputs
 %cd /kaggle/working/project/train
-!zip -r /kaggle/working/lora_adapter.zip outputs/
+!zip -r /kaggle/working/lora_adapter.zip outputs_Phi-3-3.8B/
 
 # Di chuyển về thư mục làm việc gốc và tạo liên kết tải file
 %cd /kaggle/working

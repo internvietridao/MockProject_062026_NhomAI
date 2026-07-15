@@ -116,7 +116,44 @@ def main():
         if checkpoints:
             checkpoints.sort(key=lambda x: int(x.split("-")[-1]))
             resume_from_checkpoint = checkpoints[-1]
-            print(f"[RESUME] Phát hiện checkpoint cũ. Sẽ tiếp tục huấn luyện từ: {resume_from_checkpoint}")
+            print(f"[RESUME] Phát hiện checkpoint trong output_dir: {resume_from_checkpoint}")
+
+    # Nếu không tìm thấy checkpoint trong output_dir, quét /kaggle/input để tìm và copy sang
+    KAGGLE_INPUT_DIR = "/kaggle/input"
+    if resume_from_checkpoint is None and os.path.exists(KAGGLE_INPUT_DIR):
+        print("[RESUME] Không có checkpoint trong output_dir. Đang quét /kaggle/input/...")
+        input_checkpoints = []
+        for root, dirs, files in os.walk(KAGGLE_INPUT_DIR):
+            for d in dirs:
+                if d.startswith("checkpoint-"):
+                    full_path = os.path.join(root, d)
+                    try:
+                        step_num = int(d.split("-")[-1])
+                        input_checkpoints.append((step_num, full_path))
+                    except ValueError:
+                        continue
+        
+        if input_checkpoints:
+            input_checkpoints.sort(key=lambda x: x[0])
+            best_step, best_checkpoint_path = input_checkpoints[-1]
+            print(f"[RESUME] Tìm thấy checkpoint trong /kaggle/input/: {best_checkpoint_path} (step {best_step})")
+            
+            import shutil
+            os.makedirs(train_cfg.output_dir, exist_ok=True)
+            dest_checkpoint = os.path.join(train_cfg.output_dir, f"checkpoint-{best_step}")
+            if not os.path.exists(dest_checkpoint):
+                print(f"[RESUME] Đang sao chép checkpoint sang {dest_checkpoint}...")
+                shutil.copytree(best_checkpoint_path, dest_checkpoint)
+                print(f"[RESUME] Sao chép hoàn tất!")
+            else:
+                print(f"[RESUME] Checkpoint đã tồn tại tại {dest_checkpoint}, bỏ qua sao chép.")
+            
+            resume_from_checkpoint = dest_checkpoint
+
+    if resume_from_checkpoint:
+        print(f"[RESUME] Sẽ tiếp tục huấn luyện từ: {resume_from_checkpoint}")
+    else:
+        print("[RESUME] Không tìm thấy checkpoint. Bắt đầu training từ đầu.")
 
     train_result = trainer.train(resume_from_checkpoint=resume_from_checkpoint)
 

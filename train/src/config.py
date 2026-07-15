@@ -58,7 +58,7 @@ class DataConfig:
 
 @dataclass
 class TrainConfig:
-    output_dir: str = "outputs_Phi-3"
+    output_dir: str = "outputs_Phi-3-3.8B"
     num_train_epochs: int = 1
     per_device_train_batch_size: int = 2
     per_device_eval_batch_size: int = 2
