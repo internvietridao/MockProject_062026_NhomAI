@@ -55,7 +55,10 @@ def load_model_with_peft(
         )
 
         if lora_cfg.target_modules == "auto":
-            target_modules = ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"]
+            if "phi-3" in model_cfg.model_id.lower() or "phi3" in model_cfg.model_id.lower():
+                target_modules = ["qkv_proj", "o_proj", "gate_up_proj", "down_proj"]
+            else:
+                target_modules = ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"]
         else:
             target_modules = lora_cfg.target_modules
 

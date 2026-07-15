@@ -14,7 +14,7 @@ import torch
 
 @dataclass
 class ModelConfig:
-    model_id: str = "unsloth/llama-3-8b-Instruct-bnb-4bit"
+    model_id: str = "unsloth/Phi-3-mini-4k-instruct-bnb-4bit"
     torch_dtype: str = "bfloat16"
     device_map: str = "auto"
     trust_remote_code: bool = True
@@ -81,7 +81,7 @@ class TrainConfig:
     optim: str = "paged_adamw_8bit"
     gradient_checkpointing: bool = True
 
-    push_to_hub: bool = True
+    push_to_hub: bool = False
     hub_model_id: Optional[str] = None
     hf_token: Optional[str] = None
 
