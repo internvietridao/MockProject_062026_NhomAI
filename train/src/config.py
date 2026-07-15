@@ -35,7 +35,7 @@ class ModelConfig:
 class LoraConfig:
     r: int = 16
     lora_alpha: int = 32
-    lora_dropout: float = 0.05
+    lora_dropout: float = 0.0
     target_modules: str = "auto"
     bias: str = "none"
     task_type: str = "CAUSAL_LM"
@@ -45,7 +45,7 @@ class LoraConfig:
 class DataConfig:
     dataset_path: str = "data/final_train_dataset.json"
     prompt_style: str = "gemma"
-    max_seq_length: int = 1024
+    max_seq_length: int = 2048
     train_split_ratio: float = 0.8
     val_split_ratio: float = 0.1
     system_prompt: str = (
@@ -73,11 +73,11 @@ class TrainConfig:
     eval_strategy: str = "steps"
     eval_steps: int = 200
     save_strategy: str = "steps"
-    save_steps: int = 1000
+    save_steps: int = 200
     save_total_limit: int = 2
 
-    fp16: bool = False
-    bf16: bool = True
+    fp16: bool = True
+    bf16: bool = False
     optim: str = "paged_adamw_8bit"
     gradient_checkpointing: bool = True
 

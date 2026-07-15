@@ -105,7 +105,19 @@ def main():
     print("  BẮT ĐẦU TRAINING")
     print(f"{'=' * 60}\n")
 
-    train_result = trainer.train()
+    resume_from_checkpoint = None
+    if os.path.exists(train_cfg.output_dir):
+        checkpoints = [
+            os.path.join(train_cfg.output_dir, d)
+            for d in os.listdir(train_cfg.output_dir)
+            if d.startswith("checkpoint-")
+        ]
+        if checkpoints:
+            checkpoints.sort(key=lambda x: int(x.split("-")[-1]))
+            resume_from_checkpoint = checkpoints[-1]
+            print(f"[RESUME] Phát hiện checkpoint cũ. Sẽ tiếp tục huấn luyện từ: {resume_from_checkpoint}")
+
+    train_result = trainer.train(resume_from_checkpoint=resume_from_checkpoint)
 
     train_metrics = train_result.metrics
     train_loss = train_metrics.get("train_loss", 0)
