@@ -307,7 +307,7 @@ def main():
     # eval_loss trong lúc train -- cần thiết để EarlyStopping + chọn
     # checkpoint tốt nhất hoạt động, vì chỉ chạy 1 epoch nên "epoch" chỉ
     # cho đúng 1 điểm đo (không đủ để biết đã qua điểm tối ưu hay chưa).
-    EVAL_STEPS = 50
+    EVAL_STEPS = 200
 
     callbacks = [ProgressCallback()]
     if val_dataset is not None:
@@ -322,7 +322,7 @@ def main():
         per_device_eval_batch_size=2,
         gradient_accumulation_steps=4,
         learning_rate=2e-4,
-        logging_steps=1,          # log mỗi step
+        logging_steps=10,          # log mỗi step
         # save_strategy PHẢI khớp tần suất với eval_strategy để
         # load_best_model_at_end tìm đúng checkpoint tương ứng.
         save_strategy="steps" if val_dataset is not None else "epoch",
@@ -346,7 +346,7 @@ def main():
         gradient_checkpointing_kwargs={"use_reentrant": False},
         report_to="none",
         dataset_text_field="text",
-        max_length=1024,
+        max_length=512,
         disable_tqdm=False,       # bật progress bar
     )
 
