@@ -3,6 +3,9 @@ tokenizers>=0.21,<0.22  # transformers==4.55.4 yêu cầu bản này; nếu khô
                         # 1 gói khác có thể kéo tokenizers lên 0.22.x và làm
                         # sentence_transformers/transformers import lỗi
                         # (ImportError khi load HuggingFaceEmbeddings)
+huggingface-hub>=0.34.0,<1.0  # transformers==4.55.4 yêu cầu bản này; nếu
+                              # không pin, có thể bị kéo lên 1.x và cùng lỗi
+                              # ImportError như tokenizers ở trên
 peft==0.17.0
 trl==0.21.0
 accelerate==1.10.1
@@ -13,6 +16,9 @@ datasets==4.0.0
 ragas==0.2.10
 diskcache>=5.6.3      # ragas==0.2.10 cần gói này, không tự cài kèm (pip báo
                        # "dependency resolver" warning nếu thiếu)
+pysbd                  # ragas/utils.py import trực tiếp pysbd.languages,
+                       # không tự kéo theo khi cài ragas
+appdirs
 langchain==0.2.16
 langchain-community==0.2.16
 langchain-core==0.2.38
