@@ -25,6 +25,7 @@ Cách chạy:
     python -m pipeline.evaluate
 """
 
+import logging
 import os
 
 import pandas as pd
@@ -38,6 +39,7 @@ try:
     from langchain_huggingface import HuggingFaceEmbeddings
 except ImportError:
     from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_core.callbacks.base import BaseCallbackHandler
 from ragas import evaluate
 from ragas.metrics import (
     answer_relevancy,
@@ -57,6 +59,51 @@ from src.config import (
     PREDICTIONS_CSV,
     USE_RAG,
 )
+
+# Logger riêng để debug giám khảo (finish_reason, token dùng, lỗi API cụ thể)
+# -- bật lên để biết chính xác 1 lần gọi bị lỗi là do đâu, thay vì chỉ thấy
+# "LLMDidNotFinishException" chung chung từ ragas.executor.
+logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(name)s] %(message)s")
+judge_logger = logging.getLogger("judge_debug")
+
+
+class JudgeDebugCallback(BaseCallbackHandler):
+    """
+    Log lại mỗi lần gọi giám khảo để dễ chẩn đoán lỗi:
+      - finish_reason != "stop"  -> bị cắt vì hết max_tokens (cần tăng max_tokens)
+      - lỗi API (rate limit/timeout/...) -> in message gốc từ API
+    """
+
+    def on_llm_end(self, response, **kwargs):
+        try:
+            gen = response.generations[0][0]
+            finish_reason = None
+            usage = None
+            info = getattr(gen, "generation_info", None) or {}
+            finish_reason = info.get("finish_reason")
+
+            msg = getattr(gen, "message", None)
+            if msg is not None and getattr(msg, "response_metadata", None):
+                finish_reason = finish_reason or msg.response_metadata.get("finish_reason")
+                usage = msg.response_metadata.get("token_usage")
+
+            if finish_reason and finish_reason != "stop":
+                judge_logger.warning(
+                    "Giám khảo trả lời KHÔNG hoàn chỉnh -> finish_reason=%s "
+                    "(nếu là 'length' thì cần tăng max_tokens). token_usage=%s",
+                    finish_reason, usage,
+                )
+            else:
+                judge_logger.info("Giám khảo trả lời OK -> finish_reason=%s, token_usage=%s",
+                                   finish_reason, usage)
+        except Exception as e:
+            judge_logger.info("Không đọc được chi tiết response giám khảo: %s", e)
+
+    def on_llm_error(self, error, **kwargs):
+        # In nguyên lỗi gốc từ API (rate limit 429, timeout, invalid request...)
+        judge_logger.error("Lỗi gọi API giám khảo: %s: %s", type(error).__name__, error)
+
+
 
 USE_GPU = torch.cuda.is_available()
 
@@ -78,7 +125,9 @@ def load_judge_llm():
             base_url=JUDGE_API_BASE,
             api_key=JUDGE_API_KEY,
             temperature=0,
-            max_tokens=600,
+            max_tokens=1024,  # 600 quá thấp -> LLMDidNotFinishException khi
+                               # câu trả lời của giám khảo bị cắt giữa chừng
+            callbacks=[JudgeDebugCallback()],
         )
 
     print(
