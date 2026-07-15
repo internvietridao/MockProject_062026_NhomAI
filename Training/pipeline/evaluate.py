@@ -31,7 +31,13 @@ import pandas as pd
 import torch
 
 from datasets import Dataset
-from langchain_community.embeddings import HuggingFaceEmbeddings
+try:
+    # langchain-huggingface là package mới, thay thế cho
+    # langchain_community.embeddings.HuggingFaceEmbeddings (đã deprecated,
+    # sẽ bị xoá ở LangChain 1.0). Dùng bản mới nếu có sẵn.
+    from langchain_huggingface import HuggingFaceEmbeddings
+except ImportError:
+    from langchain_community.embeddings import HuggingFaceEmbeddings
 from ragas import evaluate
 from ragas.metrics import (
     answer_relevancy,
