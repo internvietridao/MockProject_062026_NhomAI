@@ -396,11 +396,18 @@ def main():
     trainer.save_model(str(ADAPTER_DIR))
     tokenizer.save_pretrained(str(ADAPTER_DIR))
 
+    import subprocess
+    subprocess.run(
+        ["zip", "-r", "output.zip", "output"],
+        cwd="/kaggle/working/MockProject_062026_NhomAI/Training",
+        check=True,
+    )
+    print("Đã zip -> Training/output.zip (tải về ngay!)")
+
     # --------------------------------------------------------
     # Xuất CSV dự đoán (ROUGE/BLEU) trên tập TEST -- input cho
     # bước LLM Judge (Prometheus / API) ở pipeline/evaluate.py.
     # Không dùng eval_loss/perplexity ở đây vì đó là số đo trong
-    # lúc train (trên val set), khác với đánh giá cuối trên test set.
     # --------------------------------------------------------
     print("Đang tải tập test (thô) để xuất CSV ROUGE/BLEU...")
     test_raw = load_raw_test_for_export(TEST_FILE)
