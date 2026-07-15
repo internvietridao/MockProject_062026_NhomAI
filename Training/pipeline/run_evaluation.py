@@ -1,141 +1,226 @@
 """
-run_evaluation.py
-------------------
-Chạy RIÊNG bước ROUGE/BLEU trên model ĐÃ TRAIN SẴN (output/output_model),
-KHÔNG train lại. Dùng khi bạn đã có checkpoint từ trước và chỉ muốn:
-  - đổi max_samples (vd: test full thay vì 100 mẫu),
-  - hoặc chạy lại evaluation vì lần trước bị ngắt giữa chừng,
-mà không muốn tốn thời gian train lại.
+evaluation.py — Đánh giá model: ROUGE, BLEU, Perplexity, và xuất CSV kết quả.
 
-Cách chạy:
-    python -m pipeline.run_evaluation
-    python -m pipeline.run_evaluation --max_samples 500
+Sử dụng thư viện evaluate của HuggingFace cho các metrics chuẩn.
+Hàm save_predictions_csv() xuất kết quả inference cho LLM-as-a-judge.
+
+ĐÃ SỬA so với bản gốc:
+  - Ghi CSV liên tục mỗi `save_every` mẫu (không đợi generate hết mới ghi
+    1 lần) -- nếu Kaggle/session bị ngắt giữa chừng, tiến độ đã làm không
+    bị mất.
+  - Hỗ trợ resume=True: đọc CSV cũ (nếu có), bỏ qua các câu hỏi đã có sẵn
+    prediction, chỉ generate tiếp phần còn thiếu.
+    CẢNH BÁO: resume chỉ an toàn khi CSV cũ là của ĐÚNG model hiện tại (vd
+    lần chạy trước bị ngắt giữa chừng). Nếu bạn vừa train lại model khác,
+    PHẢI để resume=False (mặc định) để tránh CSV bị lẫn prediction của 2
+    model khác nhau (model cũ ở các câu đầu, model mới ở các câu sau).
 """
 
-import argparse
-import json
+import math
 import os
+from typing import Dict
 
+import evaluate
+import nltk
+import numpy as np
 import pandas as pd
 import torch
 from datasets import Dataset
-from transformers import AutoModelForCausalLM, AutoTokenizer
-from peft import PeftModel
+from transformers import PreTrainedTokenizer
 
-from src.config import (
-    ADAPTER_DIR,
-    BASE_MODEL_NAME,
-    MAX_NEW_TOKENS_TRAIN_GEN,
-    PREDICTIONS_CSV,
-    PROMPT_STYLE,
-    SYSTEM_PROMPT,
-    TEST_FILE,
-)
-from src.evaluation import save_predictions_csv
+try:
+    nltk.data.find("tokenizers/punkt_tab")
+except LookupError:
+    nltk.download("punkt_tab", quiet=True)
 
-USE_GPU = torch.cuda.is_available()
+_rouge_metric = evaluate.load("rouge")
+_bleu_metric = evaluate.load("bleu")
 
 
-def load_trained_model():
-    """Load base model + adapter LoRA đã train sẵn từ ADAPTER_DIR (giống
-    cách pipeline/chat.py load, KHÔNG gắn LoRA mới / KHÔNG train)."""
-    if not os.path.exists(ADAPTER_DIR):
-        raise FileNotFoundError(
-            f"Không tìm thấy {ADAPTER_DIR}. Hãy chạy `python -m pipeline.train` "
-            f"trước để có model đã train."
+def compute_perplexity(eval_loss: float) -> float:
+    return math.exp(eval_loss) if eval_loss < 100 else float("inf")
+
+
+def build_compute_metrics(tokenizer: PreTrainedTokenizer):
+    def compute_metrics(eval_preds) -> Dict[str, float]:
+        logits, labels = eval_preds
+
+        if isinstance(logits, tuple):
+            logits = logits[0]
+
+        predictions = np.argmax(logits, axis=-1)
+        labels = np.where(labels != -100, labels, tokenizer.pad_token_id)
+        predictions = np.where(labels != -100, predictions, tokenizer.pad_token_id)
+
+        decoded_preds = tokenizer.batch_decode(predictions, skip_special_tokens=True)
+        decoded_labels = tokenizer.batch_decode(labels, skip_special_tokens=True)
+
+        decoded_preds = [pred.strip() for pred in decoded_preds]
+        decoded_labels = [label.strip() for label in decoded_labels]
+
+        valid_pairs = [
+            (p, l) for p, l in zip(decoded_preds, decoded_labels)
+            if p and l
+        ]
+        if not valid_pairs:
+            return {"rouge1": 0.0, "rouge2": 0.0, "rougeL": 0.0, "bleu": 0.0}
+
+        valid_preds, valid_labels = zip(*valid_pairs)
+
+        rouge_results = _rouge_metric.compute(
+            predictions=list(valid_preds),
+            references=list(valid_labels),
+            use_stemmer=True,
         )
 
-    print(f"Đang load model đã train từ {ADAPTER_DIR}...")
-    tokenizer = AutoTokenizer.from_pretrained(str(ADAPTER_DIR))
+        bleu_preds = [nltk.word_tokenize(p) for p in valid_preds]
+        bleu_refs = [[nltk.word_tokenize(r)] for r in valid_labels]
 
-    base_model = AutoModelForCausalLM.from_pretrained(
-        BASE_MODEL_NAME,
-        torch_dtype=torch.float16 if USE_GPU else torch.float32,
-        device_map="auto" if USE_GPU else {"": "cpu"},
-    )
-    model = PeftModel.from_pretrained(base_model, str(ADAPTER_DIR))
-    model.eval()
-    print("Load xong.")
-    return model, tokenizer
+        try:
+            bleu_result = _bleu_metric.compute(
+                predictions=bleu_preds,
+                references=bleu_refs,
+            )
+            bleu_score = bleu_result["bleu"]
+        except (ZeroDivisionError, ValueError):
+            bleu_score = 0.0
 
+        return {
+            "rouge1": rouge_results["rouge1"],
+            "rouge2": rouge_results["rouge2"],
+            "rougeL": rouge_results["rougeL"],
+            "bleu": bleu_score,
+        }
 
-def load_raw_test_for_export(path):
-    """Đọc thẳng test.jsonl -> Dataset {question, answer} (map ground_truth
-    -> answer nếu cần), giống hệt logic trong pipeline/train.py."""
-    if not os.path.exists(path):
-        return None
-
-    raw_samples = []
-    with open(path, "r", encoding="utf-8") as f:
-        for line in f:
-            line = line.strip()
-            if not line:
-                continue
-            row = json.loads(line)
-            raw_samples.append({
-                "question": row["question"],
-                "answer": row.get("ground_truth", row.get("answer", "")),
-            })
-
-    return Dataset.from_list(raw_samples) if raw_samples else None
+    return compute_metrics
 
 
-def main(max_samples: int = None):
+def save_predictions_csv(
+    model,
+    tokenizer: PreTrainedTokenizer,
+    dataset: Dataset,
+    output_path: str,
+    system_prompt: str,
+    prompt_style: str = "alpaca",
+    max_new_tokens: int = 256,
+    max_samples: int = 1700,
+    resume: bool = False,
+    save_every: int = 5,
+):
     """
+    Chạy inference trên tập test và lưu kết quả ra CSV.
+
+    File CSV: question, reference, prediction, rouge1, rouge2, rougeL, bleu
+    Sẵn sàng cho LLM-as-a-judge pipeline sau này.
+
     Args:
-        max_samples: số mẫu test dùng để tính ROUGE/BLEU. Nếu để None (mặc
-            định), sẽ đọc từ dòng lệnh (--max_samples, mặc định 100 nếu
-            không truyền) -- dùng khi chạy `python -m pipeline.run_evaluation`.
-            Truyền trực tiếp giá trị khi gọi từ notebook, vd:
-                run_evaluation.main(max_samples=1733)
-            để bỏ qua argparse hoàn toàn (tránh lỗi "-f kernel.json" của
-            Jupyter/Colab/Kaggle).
+        model: Model đã train (PEFT wrapped)
+        tokenizer: Tokenizer
+        dataset: Tập test (HuggingFace Dataset)
+        output_path: Đường dẫn file CSV đầu ra
+        system_prompt: System prompt cho model
+        prompt_style: "alpaca" hoặc "chatml"
+        max_new_tokens: Số token tối đa sinh ra
+        max_samples: Giới hạn số mẫu inference (tránh tốn thời gian)
+        resume: True -> đọc CSV cũ tại output_path (nếu có), bỏ qua các câu
+            hỏi đã có sẵn, chỉ generate tiếp phần còn thiếu. CHỈ dùng khi
+            chắc chắn CSV cũ là của đúng model hiện tại (lần chạy trước bị
+            ngắt giữa chừng). Mặc định False -> luôn ghi đè từ đầu.
+        save_every: Ghi CSV ra đĩa sau mỗi bấy nhiêu mẫu mới (không đợi
+            generate hết mới ghi 1 lần) -- giảm rủi ro mất tiến độ nếu bị
+            ngắt giữa chừng (Kaggle hết giờ, mất kết nối, v.v.)
     """
-    if max_samples is None:
-        parser = argparse.ArgumentParser()
-        parser.add_argument(
-            "--max_samples",
-            type=int,
-            default=100,
-            help="Số mẫu test dùng để tính ROUGE/BLEU (mặc định 100, giống train.py). "
-                 "Đặt lớn hơn (vd: 1733) để chạy trên toàn bộ tập test -- sẽ lâu hơn.",
+    model.eval()
+    num_samples = min(len(dataset), max_samples)
+
+    results = []
+    done_questions = set()
+    if resume and os.path.exists(output_path):
+        old_df = pd.read_csv(output_path)
+        results = old_df.to_dict("records")
+        done_questions = set(old_df["question"].astype(str))
+        print(
+            f"[EVAL] Resume: đã có {len(results)} mẫu trong {output_path}, "
+            f"sẽ bỏ qua các câu này và chỉ generate phần còn thiếu."
         )
-        args = parser.parse_known_args()[0]
-        max_samples = args.max_samples
+    else:
+        print(f"[EVAL] Bắt đầu MỚI -- sẽ ghi đè {output_path} nếu đã tồn tại.")
 
-    model, tokenizer = load_trained_model()
+    print(f"[EVAL] Mục tiêu: {num_samples} mẫu.")
 
-    print("Đang tải tập test (thô)...")
-    test_raw = load_raw_test_for_export(TEST_FILE)
-    if test_raw is None:
-        raise FileNotFoundError(
-            f"Không tìm thấy/rỗng {TEST_FILE}. Hãy chạy "
-            f"`python -m pipeline.build_train_dataset` trước."
+    new_count = 0
+    for i in range(num_samples):
+        example = dataset[i]
+        question = example["question"]
+        reference = example["answer"]
+
+        if str(question) in done_questions:
+            continue
+
+        if prompt_style == "chatml":
+            prompt = (
+                f"<|im_start|>system\n{system_prompt}<|im_end|>\n"
+                f"<|im_start|>user\n{question}<|im_end|>\n"
+                f"<|im_start|>assistant\n"
+            )
+        else:
+            prompt = (
+                f"### Instruction:\n{system_prompt}\n\n"
+                f"### Input:\n{question}\n\n"
+                f"### Response:\n"
+            )
+
+        inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
+
+        with torch.no_grad():
+            outputs = model.generate(
+                **inputs,
+                max_new_tokens=max_new_tokens,
+                do_sample=False,
+                pad_token_id=tokenizer.pad_token_id,
+            )
+
+        generated_ids = outputs[0][inputs["input_ids"].shape[1]:]
+        prediction = tokenizer.decode(generated_ids, skip_special_tokens=True).strip()
+
+        rouge_scores = _rouge_metric.compute(
+            predictions=[prediction],
+            references=[reference],
+            use_stemmer=True,
         )
-    print(f"Số câu hỏi test: {len(test_raw)} | Sẽ chạy: {min(len(test_raw), max_samples)}")
 
-    save_predictions_csv(
-        model=model,
-        tokenizer=tokenizer,
-        dataset=test_raw,
-        output_path=str(PREDICTIONS_CSV),
-        system_prompt=SYSTEM_PROMPT,
-        prompt_style=PROMPT_STYLE,
-        max_new_tokens=MAX_NEW_TOKENS_TRAIN_GEN,
-        max_samples=max_samples,
-    )
-    print(f"Đã lưu CSV dự đoán -> {PREDICTIONS_CSV}")
+        pred_tokens = nltk.word_tokenize(prediction) if prediction else []
+        ref_tokens = [nltk.word_tokenize(reference)]
+        try:
+            bleu_score = _bleu_metric.compute(
+                predictions=[pred_tokens],
+                references=[ref_tokens],
+            )["bleu"]
+        except (ZeroDivisionError, ValueError):
+            bleu_score = 0.0
 
-    pred_df = pd.read_csv(PREDICTIONS_CSV)
-    print(f"ROUGE-1 (avg): {pred_df['rouge1'].mean():.4f}")
-    print(f"ROUGE-2 (avg): {pred_df['rouge2'].mean():.4f}")
-    print(f"ROUGE-L (avg): {pred_df['rougeL'].mean():.4f}")
-    print(f"BLEU    (avg): {pred_df['bleu'].mean():.4f}")
-    print(
-        "Bước tiếp theo: chạy `python -m pipeline.evaluate` để đưa CSV này "
-        "qua LLM Judge (RAGAs + Prometheus/API)."
-    )
+        results.append({
+            "question": question,
+            "reference": reference,
+            "prediction": prediction,
+            "rouge1": round(rouge_scores["rouge1"], 4),
+            "rouge2": round(rouge_scores["rouge2"], 4),
+            "rougeL": round(rouge_scores["rougeL"], 4),
+            "bleu": round(bleu_score, 4),
+        })
+        done_questions.add(str(question))
+        new_count += 1
 
+        if new_count % save_every == 0:
+            pd.DataFrame(results).to_csv(output_path, index=False, encoding="utf-8")
+            print(f"[EVAL] Đã inference {len(results)}/{num_samples} mẫu... (đã lưu CSV)")
 
-if __name__ == "__main__":
-    main()
+    df = pd.DataFrame(results)
+    df.to_csv(output_path, index=False, encoding="utf-8")
+    print(f"\n{'=' * 60}")
+    print(f"[KẾT QUẢ] Đã lưu {len(results)} mẫu → {output_path}")
+    print(f"  ROUGE-1 (avg): {df['rouge1'].mean():.4f}")
+    print(f"  ROUGE-2 (avg): {df['rouge2'].mean():.4f}")
+    print(f"  ROUGE-L (avg): {df['rougeL'].mean():.4f}")
+    print(f"  BLEU    (avg): {df['bleu'].mean():.4f}")
+    print(f"{'=' * 60}")

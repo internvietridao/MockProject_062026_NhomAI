@@ -3,9 +3,21 @@ evaluation.py — Đánh giá model: ROUGE, BLEU, Perplexity, và xuất CSV k�
 
 Sử dụng thư viện evaluate của HuggingFace cho các metrics chuẩn.
 Hàm save_predictions_csv() xuất kết quả inference cho LLM-as-a-judge.
+
+ĐÃ SỬA so với bản gốc:
+  - Ghi CSV liên tục mỗi `save_every` mẫu (không đợi generate hết mới ghi
+    1 lần) -- nếu Kaggle/session bị ngắt giữa chừng, tiến độ đã làm không
+    bị mất.
+  - Hỗ trợ resume=True: đọc CSV cũ (nếu có), bỏ qua các câu hỏi đã có sẵn
+    prediction, chỉ generate tiếp phần còn thiếu.
+    CẢNH BÁO: resume chỉ an toàn khi CSV cũ là của ĐÚNG model hiện tại (vd
+    lần chạy trước bị ngắt giữa chừng). Nếu bạn vừa train lại model khác,
+    PHẢI để resume=False (mặc định) để tránh CSV bị lẫn prediction của 2
+    model khác nhau (model cũ ở các câu đầu, model mới ở các câu sau).
 """
 
 import math
+import os
 from typing import Dict
 
 import evaluate
@@ -92,6 +104,8 @@ def save_predictions_csv(
     prompt_style: str = "alpaca",
     max_new_tokens: int = 256,
     max_samples: int = 1700,
+    resume: bool = False,
+    save_every: int = 5,
 ):
     """
     Chạy inference trên tập test và lưu kết quả ra CSV.
@@ -108,17 +122,40 @@ def save_predictions_csv(
         prompt_style: "alpaca" hoặc "chatml"
         max_new_tokens: Số token tối đa sinh ra
         max_samples: Giới hạn số mẫu inference (tránh tốn thời gian)
+        resume: True -> đọc CSV cũ tại output_path (nếu có), bỏ qua các câu
+            hỏi đã có sẵn, chỉ generate tiếp phần còn thiếu. CHỈ dùng khi
+            chắc chắn CSV cũ là của đúng model hiện tại (lần chạy trước bị
+            ngắt giữa chừng). Mặc định False -> luôn ghi đè từ đầu.
+        save_every: Ghi CSV ra đĩa sau mỗi bấy nhiêu mẫu mới (không đợi
+            generate hết mới ghi 1 lần) -- giảm rủi ro mất tiến độ nếu bị
+            ngắt giữa chừng (Kaggle hết giờ, mất kết nối, v.v.)
     """
     model.eval()
-    results = []
     num_samples = min(len(dataset), max_samples)
 
-    print(f"[EVAL] Bắt đầu inference {num_samples} mẫu...")
+    results = []
+    done_questions = set()
+    if resume and os.path.exists(output_path):
+        old_df = pd.read_csv(output_path)
+        results = old_df.to_dict("records")
+        done_questions = set(old_df["question"].astype(str))
+        print(
+            f"[EVAL] Resume: đã có {len(results)} mẫu trong {output_path}, "
+            f"sẽ bỏ qua các câu này và chỉ generate phần còn thiếu."
+        )
+    else:
+        print(f"[EVAL] Bắt đầu MỚI -- sẽ ghi đè {output_path} nếu đã tồn tại.")
 
+    print(f"[EVAL] Mục tiêu: {num_samples} mẫu.")
+
+    new_count = 0
     for i in range(num_samples):
         example = dataset[i]
         question = example["question"]
         reference = example["answer"]
+
+        if str(question) in done_questions:
+            continue
 
         if prompt_style == "chatml":
             prompt = (
@@ -171,9 +208,12 @@ def save_predictions_csv(
             "rougeL": round(rouge_scores["rougeL"], 4),
             "bleu": round(bleu_score, 4),
         })
+        done_questions.add(str(question))
+        new_count += 1
 
-        if (i + 1) % 10 == 0:
-            print(f"[EVAL] Đã inference {i + 1}/{num_samples} mẫu...")
+        if new_count % save_every == 0:
+            pd.DataFrame(results).to_csv(output_path, index=False, encoding="utf-8")
+            print(f"[EVAL] Đã inference {len(results)}/{num_samples} mẫu... (đã lưu CSV)")
 
     df = pd.DataFrame(results)
     df.to_csv(output_path, index=False, encoding="utf-8")
