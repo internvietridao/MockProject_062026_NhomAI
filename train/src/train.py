@@ -7,6 +7,7 @@ Kết nối tất cả module: config → data → model → training → evalua
 import math
 import os
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+os.environ["UNSLOTH_RETURN_LOGITS"] = "1"
 import sys
 
 from dotenv import load_dotenv
