@@ -52,16 +52,25 @@ def _format_gemma(example: dict, system_prompt: str) -> str:
     )
 
 
+def _format_phi3(example: dict, system_prompt: str) -> str:
+    return (
+        f"<|system|>\n{system_prompt}<|end|>\n"
+        f"<|user|>\n{example['question']}<|end|>\n"
+        f"<|assistant|>\n{example['answer']}<|end|>"
+    )
+
+
 def get_formatting_func(style: str, system_prompt: str) -> Callable:
     formatters = {
         "alpaca": _format_alpaca,
         "chatml": _format_chatml,
         "gemma": _format_gemma,
+        "phi3": _format_phi3,
     }
 
     if style not in formatters:
         raise ValueError(
-            f"prompt_style phải là 'alpaca', 'chatml' hoặc 'gemma', nhận được: '{style}'"
+            f"prompt_style phải là 'alpaca', 'chatml', 'gemma' hoặc 'phi3', nhận được: '{style}'"
         )
 
     formatter = formatters[style]
