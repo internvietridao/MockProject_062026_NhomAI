@@ -55,10 +55,7 @@ def load_model_with_peft(
         )
 
         if lora_cfg.target_modules == "auto":
-            if "phi-3" in model_cfg.model_id.lower() or "phi3" in model_cfg.model_id.lower():
-                target_modules = ["qkv_proj", "o_proj", "gate_up_proj", "down_proj"]
-            else:
-                target_modules = ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"]
+            target_modules = ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"]
         else:
             target_modules = lora_cfg.target_modules
 
@@ -70,7 +67,7 @@ def load_model_with_peft(
             lora_dropout=0,  # Unsloth tối ưu tốc độ tốt nhất với dropout = 0
             bias=lora_cfg.bias,
             use_gradient_checkpointing="unsloth",  # Gradient Checkpointing cực kỳ tối ưu của Unsloth
-            random_state=lora_cfg.task_type if hasattr(lora_cfg, "seed") else 3407,
+            random_state=3407,
         )
         return model
 
@@ -91,8 +88,6 @@ def load_model_with_peft(
     model = AutoModelForCausalLM.from_pretrained(model_cfg.model_id, **model_kwargs)
 
     model.config.torch_dtype = model_cfg.get_torch_dtype()
-
-    model = prepare_model_for_kbit_training(model)
 
     model = prepare_model_for_kbit_training(model)
 

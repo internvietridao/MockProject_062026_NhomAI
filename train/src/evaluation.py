@@ -122,18 +122,34 @@ def save_predictions_csv(
         question = example["question"]
         reference = example["answer"]
 
-        if prompt_style == "chatml":
-            prompt = (
+        # Xây dựng prompt inference (không chứa answer, chỉ chứa phần mở đầu cho assistant)
+        inference_prompts = {
+            "chatml": (
                 f"<|im_start|>system\n{system_prompt}<|im_end|>\n"
                 f"<|im_start|>user\n{question}<|im_end|>\n"
                 f"<|im_start|>assistant\n"
-            )
-        else:
-            prompt = (
+            ),
+            "gemma": (
+                f"<start_of_turn>user\n{system_prompt}\n\n{question}<end_of_turn>\n"
+                f"<start_of_turn>model\n"
+            ),
+            "phi3": (
+                f"<|system|>\n{system_prompt}<|end|>\n"
+                f"<|user|>\n{question}<|end|>\n"
+                f"<|assistant|>\n"
+            ),
+            "alpaca": (
                 f"### Instruction:\n{system_prompt}\n\n"
                 f"### Input:\n{question}\n\n"
                 f"### Response:\n"
+            ),
+        }
+
+        if prompt_style not in inference_prompts:
+            raise ValueError(
+                f"prompt_style phải là 'alpaca', 'chatml', 'gemma' hoặc 'phi3', nhận được: '{prompt_style}'"
             )
+        prompt = inference_prompts[prompt_style]
 
         inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
 
