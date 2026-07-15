@@ -45,15 +45,23 @@ def _format_chatml(example: dict, system_prompt: str) -> str:
     )
 
 
+def _format_gemma(example: dict, system_prompt: str) -> str:
+    return (
+        f"<start_of_turn>user\n{system_prompt}\n\n{example['question']}<end_of_turn>\n"
+        f"<start_of_turn>model\n{example['answer']}<end_of_turn>"
+    )
+
+
 def get_formatting_func(style: str, system_prompt: str) -> Callable:
     formatters = {
         "alpaca": _format_alpaca,
         "chatml": _format_chatml,
+        "gemma": _format_gemma,
     }
 
     if style not in formatters:
         raise ValueError(
-            f"prompt_style phải là 'alpaca' hoặc 'chatml', nhận được: '{style}'"
+            f"prompt_style phải là 'alpaca', 'chatml' hoặc 'gemma', nhận được: '{style}'"
         )
 
     formatter = formatters[style]
