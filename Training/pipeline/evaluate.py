@@ -19,10 +19,7 @@ THAY ĐỔI SO VỚI BẢN CŨ:
     không set, tự động fallback về load Prometheus cục bộ (code cũ).
 
 Cài đặt cần thiết:
-    pip install -r requirements.txt
-
-Cách chạy:
-    python -m pipeline.evaluate
+    pip install -r requirements_ver1.txt
 """
 
 import logging
@@ -106,6 +103,32 @@ class JudgeDebugCallback(BaseCallbackHandler):
 
 
 USE_GPU = torch.cuda.is_available()
+
+
+# ============================================================
+# CẤU HÌNH LƯU KẾT QUẢ THEO BATCH (để không mất hết nếu API hết token/lỗi
+# giữa chừng, và để chống mất dữ liệu khi chạy trên Colab - runtime có thể
+# bị ngắt bất cứ lúc nào và /content sẽ bị xoá sạch).
+# ============================================================
+
+# Nếu đang chạy trên Colab và đã mount Drive ở /content/drive, tự động lưu
+# kết quả vào đó thay vì /content (sẽ mất khi runtime bị ngắt kết nối).
+_DRIVE_DIR = "/content/drive/MyDrive/medquad_eval"
+if os.path.isdir("/content/drive/MyDrive"):
+    os.makedirs(_DRIVE_DIR, exist_ok=True)
+    RESULTS_CSV = os.path.join(_DRIVE_DIR, "ragas_scores.csv")
+else:
+    # Không phải Colab hoặc chưa mount Drive -> lưu cạnh PREDICTIONS_CSV như cũ
+    RESULTS_CSV = os.path.join(
+        os.path.dirname(PREDICTIONS_CSV) or ".",
+        "ragas_scores.csv",
+    )
+
+# Số câu chấm mỗi batch trước khi ghi CSV. Để nhỏ (3-5) nếu sợ hết token
+# giữa chừng và muốn lưu sát sao; để lớn hơn nếu muốn ít overhead khởi tạo.
+BATCH_SIZE = int(os.environ.get("MEDQUAD_EVAL_BATCH_SIZE", "5"))
+
+print(f"Kết quả đánh giá sẽ được lưu (append theo batch) vào: {RESULTS_CSV}")
 
 
 # ============================================================
@@ -262,30 +285,82 @@ def main():
     samples = load_predictions()
     print(f"Số mẫu: {len(samples)}")
 
-    dataset = Dataset.from_list(samples)
-
     print("Đang khởi tạo model giám khảo (tách biệt model vừa train)...")
     llm_judge = load_judge_llm()
 
     print("Đang load embedding model (cho Answer Relevance)...")
     embeddings = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL_NAME)
 
-    print("Đang chấm điểm bằng RAGAs...")
-    result = evaluate(
-        dataset,
-        metrics=select_metrics(),
-        llm=llm_judge,
-        embeddings=embeddings,
-        run_config=RunConfig(
-            timeout=7200,
-            max_workers=1,
-        ),
-    )
+    metrics = select_metrics()
+
+    # Nếu RESULTS_CSV đã có từ lần chạy trước (bị đứt giữa chừng), đọc lại
+    # để biết những câu nào đã chấm rồi -> chỉ chấm tiếp phần còn thiếu,
+    # tránh gọi API tốn token chấm lại từ đầu.
+    done_questions = set()
+    if os.path.exists(RESULTS_CSV):
+        try:
+            done_df = pd.read_csv(RESULTS_CSV)
+            done_questions = set(done_df["question"].astype(str).tolist())
+            print(
+                f"Tìm thấy {len(done_questions)} câu đã chấm từ lần chạy trước "
+                f"trong {RESULTS_CSV} -> bỏ qua, chỉ chấm tiếp phần còn lại."
+            )
+        except Exception as e:
+            judge_logger.warning("Không đọc được %s cũ (%s) -> coi như chưa chấm câu nào.",
+                                  RESULTS_CSV, e)
+
+    remaining = [s for s in samples if str(s["question"]) not in done_questions]
+    print(f"Còn {len(remaining)}/{len(samples)} câu cần chấm (batch size = {BATCH_SIZE}).")
+
+    if not remaining:
+        print("Không còn câu nào cần chấm -> dùng luôn kết quả đã có.")
+    else:
+        for i in range(0, len(remaining), BATCH_SIZE):
+            batch = remaining[i:i + BATCH_SIZE]
+            batch_no = i // BATCH_SIZE + 1
+            print(f"--- Batch {batch_no} ({len(batch)} câu, {i + len(batch)}/{len(remaining)}) ---")
+
+            try:
+                batch_dataset = Dataset.from_list(batch)
+                result = evaluate(
+                    batch_dataset,
+                    metrics=metrics,
+                    llm=llm_judge,
+                    embeddings=embeddings,
+                    run_config=RunConfig(
+                        timeout=7200,
+                        max_workers=1,
+                    ),
+                    # 1 câu lỗi (timeout/format sai/...) chỉ ra NaN cho câu đó,
+                    # không làm crash cả batch -> vẫn lưu được các câu còn lại.
+                    raise_exceptions=False,
+                )
+            except Exception as e:
+                judge_logger.error(
+                    "Batch %d lỗi nặng (có thể do hết quota API) -> dừng lại. "
+                    "Các batch trước đã lưu an toàn ở %s. Chạy lại script để chấm "
+                    "tiếp phần còn thiếu. Lỗi gốc: %s: %s",
+                    batch_no, RESULTS_CSV, type(e).__name__, e,
+                )
+                break
+
+            batch_df = result.to_pandas()
+            header = not os.path.exists(RESULTS_CSV)
+            batch_df.to_csv(RESULTS_CSV, mode="a", header=header, index=False)
+            print(f"Đã lưu batch {batch_no} vào {RESULTS_CSV}")
 
     print("=" * 50)
     print("KẾT QUẢ ĐÁNH GIÁ (RAGAs + LLM Judge)")
     print("=" * 50)
-    print(result)
+    if os.path.exists(RESULTS_CSV):
+        final_df = pd.read_csv(RESULTS_CSV)
+        print(f"Tổng số câu đã chấm: {len(final_df)}")
+        score_cols = [c for c in final_df.columns
+                      if c not in ("question", "answer", "ground_truth", "contexts")]
+        print(final_df[score_cols].mean(numeric_only=True))
+        print(f"\nChi tiết đầy đủ: {RESULTS_CSV}")
+    else:
+        print("Chưa có kết quả nào được lưu.")
 
 
 if __name__ == "__main__":
