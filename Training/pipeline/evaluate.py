@@ -43,7 +43,14 @@ from ragas.metrics import (
     context_precision,
     context_recall,
     faithfulness,
+    AnswerRelevancy,
 )
+# strictness=1 thay vì mặc định 3 -> giảm 3 lệnh gọi/câu xuống còn 1 lệnh/câu.
+# Quan trọng vì free tier Groq cho llama-3.3-70b-versatile giới hạn CỨNG
+# 1.000 request/NGÀY -- strictness=3 sẽ cần ~16.485 request cho 5.495 câu,
+# strictness=1 chỉ cần ~5.495 request (vẫn > 1.000/ngày nhưng đỡ hơn nhiều).
+answer_relevancy_fast = AnswerRelevancy(strictness=1)
+
 from ragas.run_config import RunConfig
 
 from src.config import (
@@ -147,7 +154,7 @@ def load_judge_llm():
         # Mỗi lần gọi giám khảo tốn ~1500-2000 token (prompt + completion) ->
         # giãn request ra để không vượt ngưỡng, thay vì bắn dồn dập rồi bị 429.
         rate_limiter = InMemoryRateLimiter(
-            requests_per_second=1 / 20,  # ~1 request / 20 giây (an toàn dưới 6000 TPM)
+            requests_per_second=1 / 8,  # ~1 request / 8 giây (an toàn dưới 6000 TPM)
             check_every_n_seconds=0.1,
             max_bucket_size=1,           # không cho dồn nhiều request cùng lúc
         )
@@ -158,7 +165,7 @@ def load_judge_llm():
             base_url=JUDGE_API_BASE,
             api_key=JUDGE_API_KEY,
             temperature=0,
-            max_tokens=1024,  # 600 quá thấp -> LLMDidNotFinishException khi
+            max_tokens=256,  # 600 quá thấp -> LLMDidNotFinishException khi
                                # câu trả lời của giám khảo bị cắt giữa chừng
             callbacks=[JudgeDebugCallback()],
             rate_limiter=rate_limiter,
@@ -275,9 +282,9 @@ def select_metrics():
 
     print(
         "USE_RAG=False -> bỏ qua faithfulness/context_precision/context_recall "
-        "(cần contexts thật, hiện không có). Chỉ chấm answer_relevancy."
+        "(cần contexts thật, hiện không có). Chỉ chấm answer_relevancy_fast."
     )
-    return [answer_relevancy]
+    return [answer_relevancy_fast]
 
 
 def main():
