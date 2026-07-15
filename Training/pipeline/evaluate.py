@@ -117,7 +117,17 @@ USE_GPU = torch.cuda.is_available()
 
 def load_judge_llm():
     if JUDGE_API_KEY:
+        from langchain_core.rate_limiters import InMemoryRateLimiter
         from langchain_openai import ChatOpenAI
+
+        # Groq free tier (llama-3.1-8b-instant) giới hạn 6000 token/phút.
+        # Mỗi lần gọi giám khảo tốn ~1500-2000 token (prompt + completion) ->
+        # giãn request ra để không vượt ngưỡng, thay vì bắn dồn dập rồi bị 429.
+        rate_limiter = InMemoryRateLimiter(
+            requests_per_second=1 / 20,  # ~1 request / 20 giây (an toàn dưới 6000 TPM)
+            check_every_n_seconds=0.1,
+            max_bucket_size=1,           # không cho dồn nhiều request cùng lúc
+        )
 
         print(f"Gọi model giám khảo qua API: {JUDGE_API_MODEL} ({JUDGE_API_BASE})")
         return ChatOpenAI(
@@ -128,6 +138,9 @@ def load_judge_llm():
             max_tokens=1024,  # 600 quá thấp -> LLMDidNotFinishException khi
                                # câu trả lời của giám khảo bị cắt giữa chừng
             callbacks=[JudgeDebugCallback()],
+            rate_limiter=rate_limiter,
+            max_retries=6,    # nếu vẫn dính 429 (bucket khác cùng lúc...),
+                               # tự thử lại có backoff thay vì crash luôn
         )
 
     print(
