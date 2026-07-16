@@ -159,6 +159,24 @@ def load_judge_llm():
             max_bucket_size=1,           # không cho dồn nhiều request cùng lúc
         )
 
+        # THỬ bật JSON mode -- ép model trả JSON đúng cấu trúc thay vì text tự
+        # do. Giúp giảm lỗi parse với model NHỎ/YẾU (như llama-3.1-8b-instant)
+        # hay bị lỗi khi RAGAs cố ép output về prompt chuẩn.
+        # CẢNH BÁO: không phải model/provider nào cũng hỗ trợ đúng cách RAGAs
+        # cần (RAGAs không tự thêm "return JSON" vào prompt, chỉ dựa vào model
+        # tự hiểu structure) -- nếu JSON mode làm mọi câu đều lỗi (model trả
+        # JSON nhưng SAI schema RAGAs mong đợi), set biến môi trường
+        # MEDQUAD_JUDGE_JSON_MODE=0 để tắt, quay lại text thường.
+        use_json_mode = os.environ.get("MEDQUAD_JUDGE_JSON_MODE", "1") == "1"
+        model_kwargs = {}
+        if use_json_mode:
+            print(
+                "Bật JSON mode cho giám khảo (giảm lỗi parse với model nhỏ). "
+                "Nếu thấy TOÀN BỘ câu bị lỗi/NaN sau khi bật, set "
+                "MEDQUAD_JUDGE_JSON_MODE=0 và chạy lại để tắt JSON mode."
+            )
+            model_kwargs["response_format"] = {"type": "json_object"}
+
         print(f"Gọi model giám khảo qua API: {JUDGE_API_MODEL} ({JUDGE_API_BASE})")
         return ChatOpenAI(
             model=JUDGE_API_MODEL,
@@ -171,6 +189,7 @@ def load_judge_llm():
             rate_limiter=rate_limiter,
             max_retries=6,    # nếu vẫn dính 429 (bucket khác cùng lúc...),
                                # tự thử lại có backoff thay vì crash luôn
+            model_kwargs=model_kwargs,
         )
 
     print(
@@ -366,7 +385,32 @@ def main():
         final_df = pd.read_csv(RESULTS_CSV)
         print(f"Tổng số câu đã chấm: {len(final_df)}")
         score_cols = [c for c in final_df.columns
-                      if c not in ("question", "answer", "ground_truth", "contexts")]
+                      if c not in ("question", "answer", "ground_truth", "contexts",
+                                   "user_input", "response", "retrieved_contexts")]
+
+        # ---- RÀO TRƯỚC: cảnh báo rõ nếu có câu bị NaN (không chấm được) ----
+        # NaN thường do: model trả sai format (JSON mode không hợp), bị cắt
+        # giữa chừng (max_tokens thấp), hoặc lỗi API tạm thời không retry nổi.
+        for col in score_cols:
+            if col not in final_df.columns:
+                continue
+            n_nan = final_df[col].isna().sum()
+            n_total = len(final_df)
+            if n_nan > 0:
+                pct = 100 * n_nan / n_total
+                print(
+                    f"[CẢNH BÁO] Cột '{col}': {n_nan}/{n_total} câu ({pct:.1f}%) "
+                    f"bị NaN -- không chấm điểm được."
+                )
+                if pct > 50:
+                    print(
+                        f"  -> Tỷ lệ lỗi RẤT CAO (>50%). Nhiều khả năng do JSON mode "
+                        f"không hợp với model/provider này. Thử set biến môi trường "
+                        f"MEDQUAD_JUDGE_JSON_MODE=0 rồi chạy lại (xem log "
+                        f"'judge_debug' phía trên để biết finish_reason/lỗi cụ thể "
+                        f"của từng lần gọi bị fail)."
+                    )
+
         print(final_df[score_cols].mean(numeric_only=True))
         print(f"\nChi tiết đầy đủ: {RESULTS_CSV}")
     else:
