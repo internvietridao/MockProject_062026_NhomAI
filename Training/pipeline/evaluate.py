@@ -165,7 +165,7 @@ def load_judge_llm():
             base_url=JUDGE_API_BASE,
             api_key=JUDGE_API_KEY,
             temperature=0,
-            max_tokens=256,  # 600 quá thấp -> LLMDidNotFinishException khi
+            max_tokens=512,  # 600 quá thấp -> LLMDidNotFinishException khi
                                # câu trả lời của giám khảo bị cắt giữa chừng
             callbacks=[JudgeDebugCallback()],
             rate_limiter=rate_limiter,
@@ -307,7 +307,10 @@ def main():
     if os.path.exists(RESULTS_CSV):
         try:
             done_df = pd.read_csv(RESULTS_CSV)
-            done_questions = set(done_df["question"].astype(str).tolist())
+            # ragas >=0.2 đổi tên cột "question" -> "user_input" khi xuất ra to_pandas().
+            # Dò cả 2 tên để tương thích ngược, tránh lặp lại lỗi resume-sai-cột.
+            question_col = "user_input" if "user_input" in done_df.columns else "question"
+            done_questions = set(done_df[question_col].astype(str).tolist())
             print(
                 f"Tìm thấy {len(done_questions)} câu đã chấm từ lần chạy trước "
                 f"trong {RESULTS_CSV} -> bỏ qua, chỉ chấm tiếp phần còn lại."
