@@ -2,6 +2,7 @@
 .agent/
 document/
 data_raw/
+LIGHTNING_AI_GUIDE.md/
 
 # ── Python cache & IDE ──
 __pycache__/

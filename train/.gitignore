@@ -12,6 +12,11 @@ build/
 checkpoints/
 runs/
 wandb/
+outputs_Qwen-0.5B/*
+!outputs_Qwen-0.5B/evaluation_results.csv
+outputs_Phi-3-3.8B/*
+!outputs_Phi-3-3.8B/evaluation_results.csv
+
 
 # ── Log files ──
 *.log
