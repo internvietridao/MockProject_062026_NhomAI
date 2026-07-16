@@ -54,8 +54,8 @@ python -m pipeline.train
 # 4. Demo chatbot
 python -m pipeline.chat
 
-# 5. Đánh giá bằng LLM Judge (đọc CSV do bước 3 xuất ra)
-python -m pipeline.evaluate
+# 5. Đánh giá bằng LLM Judge -- KHÔNG chạy ở đây, xem mục
+#    "🔀 Chạy tách rời: Kaggle / Colab" bên dưới (do Kaggle hay hết giờ session)
 ```
 
 Chạy bằng `python -m pipeline.<script_name>` (không phải
@@ -120,13 +120,47 @@ MEDQUAD_JUDGE_API_KEY="sk-..." python -m pipeline.evaluate
 
 ---
 
-## 🏆 Chạy trên Kaggle
+## 🔀 Chạy tách rời: Kaggle (build data + train + chat) / Colab (evaluate)
 
-Mở `main_pipeline.ipynb`, chạy tuần tự các cell theo thứ tự
-build_train_dataset → train → (chat demo) → evaluate.
+Kaggle free tier giới hạn thời gian GPU/phiên khá ngắn, không đủ để chạy hết
+bước LLM Judge (`pipeline/evaluate.py`) — mỗi câu tốn nhiều giây do rate limit
+của API giám khảo, tổng thời gian cho vài nghìn câu test dễ vượt quá session
+Kaggle cho phép. Vì vậy pipeline được tách làm 2 nơi chạy:
 
-Lưu ý: Kaggle free tier giới hạn thời gian GPU/phiên khá ngắn — nếu train +
-inference ROUGE/BLEU đang chạy dở mà hết giờ, checkpoint model (`output_model/`)
-vẫn đã được lưu an toàn từ trước đó, nhưng `evaluation_results.csv` chỉ được
-ghi ra **sau khi chạy xong toàn bộ vòng lặp inference**, nên có thể mất nếu bị
-ngắt giữa chừng bước này.
+| Bước | Chạy ở đâu | Vì sao |
+|---|---|---|
+| `build_train_dataset.py` | Kaggle | Đọc `data/final_train_dataset.json`, không tốn nhiều thời gian |
+| `train.py` (+ ROUGE/BLEU tự động) | Kaggle | Cần GPU để fine-tune LoRA |
+| `chat.py` | Kaggle | Demo nhanh, dùng luôn GPU đang có sẵn |
+| `evaluate.py` (LLM Judge) | **Colab** | Kaggle hết giờ session giữa chừng; evaluate.py chỉ gọi API giám khảo qua mạng, không cần GPU |
+
+### Đưa `evaluation_results.csv` từ Kaggle sang Colab qua GitHub
+
+`evaluate.py` không tự generate lại câu trả lời — nó chỉ đọc `PREDICTIONS_CSV`
+(`output/evaluation_results.csv`) đã được `train.py` sinh sẵn ở Kaggle. Vì repo
+project được clone về ở cả 2 nơi, cách đơn giản nhất để mang file này từ
+Kaggle sang Colab là commit & push nó lên cùng repo:
+
+1. Ở Kaggle, sau khi `train.py` chạy xong (đã có `output/evaluation_results.csv`),
+   `git add output/evaluation_results.csv && git commit -m "..." && git push`
+   từ trong notebook Kaggle. Lưu ý: nếu `.gitignore` đang chặn thư mục
+   `output/`, cần thêm ngoại lệ cho riêng file CSV này (file nhỏ, khác với
+   checkpoint model không nên đẩy lên git).
+2. Ở Colab, `git clone` lại đúng repo đó — `evaluation_results.csv` đã có sẵn
+   đúng vị trí tương đối (`output/`) mà `src/config.py` cần, không phải set
+   thêm biến môi trường hay mount Drive để lấy file này.
+
+### Chạy nhiều phiên (resume) trên Colab
+
+`evaluate.py` chấm theo batch nhỏ (mặc định `BATCH_SIZE=1`, đặt qua
+`MEDQUAD_EVAL_BATCH_SIZE`) và ghi CSV ngay sau mỗi batch vào Google Drive
+(`/content/drive/MyDrive/medquad_eval/ragas_scores.csv`, tự nhận diện nếu
+Drive đã mount) — tách biệt khỏi thư mục repo vừa clone, vì `/content` (kể cả
+repo mới clone) sẽ mất sạch khi Colab runtime bị ngắt kết nối, còn Drive thì
+không.
+
+Vì vậy, mỗi lần vào Colab chạy tiếp: chỉ cần mount Drive + clone lại repo (thư
+mục `medquad`) là đủ — **không cần giữ nguyên session cũ**. `evaluate.py` tự
+đọc `ragas_scores.csv` đã có trên Drive từ lần trước, biết câu nào đã chấm rồi
+và bỏ qua, tiếp tục đúng chỗ dừng dù thư mục repo vừa clone lại là mới hoàn
+toàn.
