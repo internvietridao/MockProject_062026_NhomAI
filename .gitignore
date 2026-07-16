@@ -2,7 +2,6 @@
 .agent/
 document/
 data_raw/
-LIGHTNING_AI_GUIDE.md/
 
 # ── Python cache & IDE ──
 __pycache__/
@@ -13,3 +12,12 @@ __pycache__/
 *.swo
 .DS_Store
 Thumbs.db
+
+# ── Training outputs ──
+checkpoints/
+runs/
+wandb/
+outputs_Qwen-0.5B/*
+!outputs_Qwen-0.5B/evaluation_results.csv
+outputs_Phi-3-3.8B/*
+!outputs_Phi-3-3.8B/evaluation_results.csv
