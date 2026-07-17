@@ -75,8 +75,11 @@ def get_formatting_func(style: str, system_prompt: str) -> Callable:
 
     formatter = formatters[style]
 
-    def formatting_func(example):
-        return [formatter(example, system_prompt)]
+    def formatting_func(examples):
+        return [
+            formatter({"question": q, "answer": a}, system_prompt)
+            for q, a in zip(examples["question"], examples["answer"])
+        ]
 
     return formatting_func
 
