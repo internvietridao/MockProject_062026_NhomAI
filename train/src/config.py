@@ -14,7 +14,7 @@ import torch
 
 @dataclass
 class ModelConfig:
-    model_id: str = "unsloth/Phi-3-mini-4k-instruct-bnb-4bit"
+    model_id: str = "unsloth/gemma-2-2b-it-bnb-4bit"
     torch_dtype: str = "bfloat16"
     device_map: str = "auto"
     trust_remote_code: bool = True
@@ -44,7 +44,7 @@ class LoraConfig:
 @dataclass
 class DataConfig:
     dataset_path: str = "data/final_train_dataset.json"
-    prompt_style: str = "phi3"
+    prompt_style: str = "gemma"
     max_seq_length: int = 2048
     train_split_ratio: float = 0.8
     val_split_ratio: float = 0.1
@@ -58,7 +58,7 @@ class DataConfig:
 
 @dataclass
 class TrainConfig:
-    output_dir: str = "outputs_Phi-3-3.8B"
+    output_dir: str = "outputs_Gemma-2-2B"
     num_train_epochs: int = 1
     per_device_train_batch_size: int = 2
     per_device_eval_batch_size: int = 2
