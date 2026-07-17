@@ -76,7 +76,7 @@ def get_formatting_func(style: str, system_prompt: str) -> Callable:
     formatter = formatters[style]
 
     def formatting_func(example):
-        return formatter(example, system_prompt)
+        return [formatter(example, system_prompt)]
 
     return formatting_func
 
