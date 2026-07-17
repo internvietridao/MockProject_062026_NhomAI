@@ -10,6 +10,11 @@ os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 os.environ["UNSLOTH_RETURN_LOGITS"] = "1"
 import sys
 
+try:
+    import unsloth  
+except ImportError:
+    pass
+
 from dotenv import load_dotenv
 from trl import SFTTrainer, SFTConfig
 from transformers import EarlyStoppingCallback
