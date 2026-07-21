@@ -1,24 +1,9 @@
 """
-Đánh giá model bằng ROUGE/BLEU/Perplexity, và sinh CSV kết quả inference
-trên tập test để dùng cho LLM-as-a-judge (pipeline/evaluate.py).
+evaluation.py — Đánh giá model: ROUGE, BLEU, Perplexity, và xuất CSV kết quả.
 
-2 hàm chính:
-- build_compute_metrics(): tính ROUGE/BLEU trong lúc TRAIN (Trainer gọi
-  tự động mỗi lần eval trên val set, dùng teacher-forcing nên nhanh
-  nhưng không phản ánh đúng chất lượng generate thật).
-- save_predictions_csv(): chạy inference THẬT (model tự generate từng
-  câu, autoregressive) trên tập test, tính ROUGE/BLEU/độ tương đồng RAG,
-  lưu ra CSV (question, reference, prediction, contexts, rag_used,
-  rag_similarity_pct, rag_raw_contexts, rouge1/2/L, bleu).
+Sử dụng thư viện evaluate của HuggingFace cho các metrics chuẩn.
+Hàm save_predictions_csv() xuất kết quả inference cho LLM-as-a-judge.
 
-Hỗ trợ:
-- Ghi CSV liên tục (không đợi chạy hết mới ghi) -- tránh mất tiến độ nếu
-  bị ngắt giữa chừng (Kaggle hết giờ, Colab mất kết nối...).
-- resume=True để chạy tiếp phần còn thiếu (CHỈ dùng khi chắc chắn CSV cũ
-  là của đúng model hiện tại).
-- RAG (retrieve_context_fn): nếu truyền vào, mỗi câu hỏi sẽ được lấy
-  context thật, lọc theo % tương đồng, chỉ context đủ liên quan mới được
-  đưa vào prompt.
 """
 
 import json
@@ -115,6 +100,7 @@ def save_predictions_csv(
     retrieve_context_fn=None,
     rag_top_k: int = 3,
     rag_similarity_threshold: float = None,
+    rag_relative_threshold: float = 0.5,
 ):
     """
     Chạy inference trên tập test và lưu kết quả ra CSV.
@@ -154,9 +140,12 @@ def save_predictions_csv(
         rag_top_k: số chunks lấy về mỗi câu hỏi khi retrieve_context_fn
             được dùng.
         rag_similarity_threshold: ngưỡng % tương đồng (0..1) để CHẤP NHẬN
-            context. None -> dùng SIMILARITY_THRESHOLD mặc định của RAG
-            project (xem rag_bridge). Chỉ có ý nghĩa khi RETRIEVAL_MODE
-            của RAG project là "cosine".
+            context -- CHỈ dùng khi RETRIEVAL_MODE="cosine". None -> dùng
+            SIMILARITY_THRESHOLD mặc định của RAG project.
+        rag_relative_threshold: ngưỡng % TƯƠNG ĐỐI (0..1, mặc định 0.5) --
+            CHỈ dùng khi RETRIEVAL_MODE="bm25" hoặc "hybrid". Tự động so
+            điểm mỗi context với điểm CAO NHẤT trong top-k của CHÍNH câu
+            hỏi đó -- không cần tự đoán ngưỡng tuyệt đối.
     """
     model.eval()
     num_samples = min(len(dataset), max_samples)
@@ -189,16 +178,19 @@ def save_predictions_csv(
         used_contexts = []
         raw_contexts = []
         similarity_pct_list = []
+        relative_pct_list = []
         rag_used = False
         if retrieve_context_fn is not None:
             try:
                 rag_result = retrieve_context_fn(
                     question, top_k=rag_top_k,
                     similarity_threshold=rag_similarity_threshold,
+                    relative_threshold=rag_relative_threshold,
                 )
                 used_contexts = rag_result["used_contexts"]
                 raw_contexts = rag_result["raw_contexts"]
                 similarity_pct_list = rag_result["similarity_pct"]
+                relative_pct_list = rag_result["relative_pct"]
                 rag_used = rag_result["rag_used"]
             except Exception as e:
                 print(f"[CẢNH BÁO][RAG] Retrieve context lỗi cho câu '{question[:50]}...': {e} -> dùng prompt không context.")
@@ -255,20 +247,17 @@ def save_predictions_csv(
             "reference": reference,
             "prediction": prediction,
             # Context THẬT SỰ được đưa vào prompt (đã lọc theo threshold).
-            # Rỗng "[]" nếu không dùng RAG hoặc không có context nào đạt
-            # threshold -- evaluate.py dùng cột này cho faithfulness/
-            # context_precision/context_recall.
+            # Rỗng "[]" nếu không dùng RAG hoặc không có context nào đạt threshold.
             "contexts": json.dumps(used_contexts, ensure_ascii=False),
             # True nếu câu này thực sự có dùng context (đạt threshold).
-            # False -> model trả lời KHÔNG có ngữ cảnh (dù có retrieve
-            # được gì đó, nhưng bị loại vì không đủ liên quan).
+            # False -> model trả lời KHÔNG có ngữ cảnh
             "rag_used": rag_used,
-            # % tương đồng của từng context retrieve được (song song với
-            # rag_raw_contexts theo thứ tự) -- None nếu RETRIEVAL_MODE
-            # không phải "cosine" (không quy đổi được thang đo).
             "rag_similarity_pct": json.dumps(similarity_pct_list),
-            # TOÀN BỘ context retrieve được (kể cả bị loại vì không đủ
-            # tương đồng) -- để xem/debug tại sao 1 câu không dùng RAG.
+            # % TƯƠNG ĐỐI (so với context tốt nhất trong CHÍNH câu hỏi này)
+            # -- chỉ có giá trị khi RETRIEVAL_MODE="bm25"/"hybrid".
+            "rag_relative_pct": json.dumps(relative_pct_list),
+            # TOÀN BỘ context retrieve được (kể cả bị loại vì không đủ tương đồng) 
+            # -- để xem/debug tại sao 1 câu không dùng RAG.
             "rag_raw_contexts": json.dumps(raw_contexts, ensure_ascii=False),
             "rouge1": round(rouge_scores["rouge1"], 4),
             "rouge2": round(rouge_scores["rouge2"], 4),

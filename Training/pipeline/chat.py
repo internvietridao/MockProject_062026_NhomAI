@@ -1,23 +1,20 @@
 """
-File dùng để CHAT THẬT với model đã train (sau khi có output_model/) --
-người dùng nhập câu hỏi trực tiếp, model trả lời.
+chat.py
+-------
+File dùng lúc CHẠY THẬT (inference) - sau khi đã train xong (có output_model/).
 
-Nếu muốn dùng RAG, chunks liên quan sẽ được retrieve thật từ vector DB
-(qua rag_bridge), tính % tương đồng, và chỉ chunks đủ liên quan mới được
-đưa vào prompt cho model.
+Luồng:
+  question -> (nếu USE_RAG=True) rag_bridge.get_context_with_similarity()
+              lấy chunks thật từ vector DB + tính % tương đồng, LỌC BỎ
+              context không đủ liên quan
+            -> build_prompt() (từ src/prompt_template.py)
+            -> model đã train (base model + adapter LoRA)
+            -> câu trả lời
+Cách chạy (vòng lặp hỏi-đáp thật):
+    python -m pipeline.chat
 
-Điểm khác biệt quan trọng: việc bật/tắt RAG ở đây ĐỘC LẬP với cờ USE_RAG
-dùng cho train/evaluate -- có thể tự chọn riêng cho từng câu hỏi ngay
-trong lúc chat, không cần đổi biến môi trường hay restart.
-
-Cách chạy:
-    python -m pipeline.chat          # vòng lặp hỏi-đáp thật
-    python -m pipeline.chat --demo   # demo nhanh 1 câu cố định
-
-Trong lúc chat, gõ:
-    /rag on   -> bật RAG cho các câu hỏi tiếp theo
-    /rag off  -> tắt RAG (Q&A thuần)
-    exit/quit -> thoát
+Cách chạy demo nhanh (1 câu, không cần nhập tay):
+    python -m pipeline.chat --demo
 """
 
 import sys
@@ -69,6 +66,7 @@ def load_chat_model():
 
 def get_chunks_for_question(question: str, top_k: int = 3,
                              similarity_threshold: float = None,
+                             relative_threshold: float = 0.5,
                              verbose: bool = True,
                              use_rag: bool = None) -> list[str]:
     """
@@ -78,6 +76,12 @@ def get_chunks_for_question(question: str, top_k: int = 3,
         - None (mặc định) -> dùng theo USE_RAG chung (src.config).
         - True  -> LUÔN thử RAG cho câu này, bất kể USE_RAG chung là gì.
         - False -> LUÔN bỏ qua RAG cho câu này, trả lời Q&A thuần.
+    similarity_threshold: ngưỡng % TUYỆT ĐỐI (0..1) -- chỉ dùng khi
+        RETRIEVAL_MODE="cosine".
+    relative_threshold: ngưỡng % TƯƠNG ĐỐI (0..1, mặc định 0.5) -- chỉ
+        dùng khi RETRIEVAL_MODE="bm25"/"hybrid". Tự động so điểm mỗi
+        context với điểm CAO NHẤT trong top-k của CHÍNH câu hỏi đó, không
+        cần tự đoán số như trước.
     """
     effective_use_rag = USE_RAG if use_rag is None else use_rag
     if not effective_use_rag:
@@ -87,22 +91,26 @@ def get_chunks_for_question(question: str, top_k: int = 3,
     try:
         result = get_context_with_similarity(
             question, top_k=top_k, similarity_threshold=similarity_threshold,
+            relative_threshold=relative_threshold,
         )
     except Exception as e:
         print(f"[CẢNH BÁO] Retrieve context thất bại ({e}) -> trả lời không có ngữ cảnh.")
         return []
 
     if verbose:
-        print(f"\n--- RAG cho câu hỏi này (mode={result['retrieval_mode']}) ---")
-        for i, (raw, pct) in enumerate(zip(result["raw_contexts"], result["similarity_pct"]), 1):
-            pct_str = f"{pct:.1f}%" if pct is not None else "N/A (mode không quy đổi được % tương đồng)"
+        mode = result["retrieval_mode"]
+        print(f"\n--- RAG cho câu hỏi này (mode={mode}) ---")
+        pct_list = result["similarity_pct"] if mode == "cosine" else result["relative_pct"]
+        pct_label = "Tương đồng (tuyệt đối)" if mode == "cosine" else "Tương đối (so với tốt nhất)"
+        for i, (raw, pct) in enumerate(zip(result["raw_contexts"], pct_list), 1):
+            pct_str = f"{pct:.1f}%" if pct is not None else "N/A"
             preview = raw[:150].replace("\n", " ")
-            print(f"  [{i}] Tương đồng: {pct_str} | {preview}...")
+            print(f"  [{i}] {pct_label}: {pct_str} | {preview}...")
 
         if result["rag_used"]:
             print(f"  -> DÙNG RAG: {len(result['used_contexts'])} context đạt ngưỡng, đưa vào prompt.")
         else:
-            print("  -> KHÔNG DÙNG RAG: không có context nào đạt ngưỡng tương đồng, trả lời Q&A thuần.")
+            print("  -> KHÔNG DÙNG RAG: không có context nào đạt ngưỡng, trả lời Q&A thuần.")
         print("-" * 50)
 
     return result["used_contexts"]
@@ -154,11 +162,12 @@ def generate_answer(model, tokenizer, chunks: list[str], question: str,
 # ============================================================
 
 def ask(model, tokenizer, question: str, top_k: int = 3,
-        similarity_threshold: float = None, verbose: bool = True,
-        use_rag: bool = None) -> str:
+        similarity_threshold: float = None, relative_threshold: float = 0.5,
+        verbose: bool = True, use_rag: bool = None) -> str:
     chunks = get_chunks_for_question(
         question, top_k=top_k,
-        similarity_threshold=similarity_threshold, verbose=verbose,
+        similarity_threshold=similarity_threshold,
+        relative_threshold=relative_threshold, verbose=verbose,
         use_rag=use_rag,
     )
     return generate_answer(model, tokenizer, chunks, question)

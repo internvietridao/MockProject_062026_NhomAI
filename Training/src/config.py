@@ -38,26 +38,16 @@ TEST_RATIO = 0.15
 SPLIT_SEED = 42
 
 # ---- RAG toggle ----
-# Hiện tại CHƯA nối vector DB thật -> mặc định TẮT rag, train/test thuần
-# Q&A (chỉ question -> answer, không có đoạn ngữ cảnh nào). Khi nối RAG thật
-# vào (vector DB trả về chunks), bật lại bằng biến môi trường:
-#   MEDQUAD_USE_RAG=1 python -m pipeline.build_train_dataset
-# Bật/tắt được độc lập ở TỪNG bước (build_train_dataset / chat / evaluate)
-# nếu cần so sánh có-RAG vs không-RAG, nhưng mặc định dùng chung 1 cờ này để
-# đồng bộ giữa lúc train và lúc test.
 USE_RAG = os.environ.get("MEDQUAD_USE_RAG", "0") == "1"
 
 # ---- Model ----
-# Model nhỏ, free, phổ biến cho fine-tune trên máy yếu / Colab-Kaggle free tier.
-# Đổi ở ĐÂY DUY NHẤT nếu muốn dùng model khác — mọi script khác sẽ tự đồng bộ.
 BASE_MODEL_NAME = os.environ.get("MEDQUAD_BASE_MODEL", "Qwen/Qwen2.5-0.5B-Instruct")
 ADAPTER_DIR = OUTPUT_DIR / "output_model"
 
 # ---- Sinh dự đoán ra CSV (ROUGE/BLEU) ----
 # Sau khi train xong, chạy inference thật trên tập TEST rồi lưu CSV
-# (question, reference, prediction, rouge1/2/L, bleu). CSV này dùng làm
-# input cho bước LLM Judge ở evaluate.py -- KHÔNG generate lại câu trả lời
-# lần 2 ở đó nữa.
+# (question, reference, prediction, rouge1/2/L, bleu). CSV này dùng làm input cho bước LLM Judge ở evaluate.py 
+# -- KHÔNG generate lại câu trả lời lần 2 ở đó nữa.
 PREDICTIONS_CSV = OUTPUT_DIR / "evaluation_results.csv"
 
 # Bảng tổng hợp 1 dòng cuối cùng: model, rouge1/2/L, bleu, perplexity,
@@ -75,11 +65,6 @@ PROMPT_STYLE = os.environ.get("MEDQUAD_PROMPT_STYLE", "chatml")
 # ---- Đánh giá (RAGAs) ----
 EMBEDDING_MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"  # free, nhẹ
 
-# Model GIÁM KHẢO — PHẢI KHÁC với model đang được đánh giá (BASE_MODEL_NAME +
-# ADAPTER_DIR), nếu không sẽ bị lỗi "tự chấm bài mình" (self-preference bias):
-# model vừa fine-tune có xu hướng tự thấy câu trả lời của chính nó hợp lý hơn
-# thực tế khi được giao luôn vai giám khảo.
-#
 # Ưu tiên gọi giám khảo qua API (xem JUDGE_API_* bên dưới) -- nhanh và không
 # tốn VRAM. Prometheus 2 cục bộ (local HF model) chỉ dùng làm PHƯƠNG ÁN DỰ
 # PHÒNG khi không có JUDGE_API_KEY.
@@ -87,8 +72,6 @@ JUDGE_MODEL_NAME = os.environ.get("MEDQUAD_JUDGE_MODEL", "prometheus-eval/promet
 JUDGE_LOAD_IN_4BIT = os.environ.get("MEDQUAD_JUDGE_4BIT", "1") != "0"
 
 # ---- Giám khảo qua API ----
-# Nếu MEDQUAD_JUDGE_API_KEY có giá trị -> evaluate.py gọi model giám khảo
-# qua API (endpoint kiểu OpenAI-compatible) thay vì load model 7B cục bộ.
 JUDGE_API_BASE = os.environ.get("MEDQUAD_JUDGE_API_BASE", "https://api.openai.com/v1")
 JUDGE_API_KEY = os.environ.get("MEDQUAD_JUDGE_API_KEY", "")
 JUDGE_API_MODEL = os.environ.get("MEDQUAD_JUDGE_API_MODEL", "gpt-4o-mini")

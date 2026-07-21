@@ -4,17 +4,8 @@ train.py
 Fine-tune một model nhỏ (miễn phí) bằng LoRA, dùng dữ liệu train.jsonl
 đã được build sẵn từ pipeline/build_train_dataset.py
 
-Yêu cầu cài đặt (chạy 1 lần):
-    pip install -r requirements.txt
-
 Cách chạy:
     python -m pipeline.train
-
-Sau khi train xong, model LoRA sẽ được lưu vào src.config.ADAPTER_DIR
-(mặc định: output/output_model). Ngay sau đó, script tự chạy inference
-trên tập TEST và xuất CSV (question, reference, prediction, ROUGE/BLEU)
-vào src.config.PREDICTIONS_CSV -- CSV này là input cho bước LLM Judge ở
-pipeline/evaluate.py (KHÔNG generate lại câu trả lời lần 2 ở đó).
 """
 import json
 import os
@@ -144,9 +135,6 @@ def load_and_format_dataset(tokenizer, path, required=True):
 
 # ============================================================
 # 3b. LOAD TẬP TEST "THÔ" (question/answer) ĐỂ XUẤT CSV ROUGE/BLEU
-#     -- khác với load_and_format_dataset() ở trên (dataset đó đã bị
-#     format thành "text" theo chat template, không dùng để inference
-#     câu-hỏi-riêng được nữa).
 # ============================================================
 
 def load_raw_test_for_export(path):
@@ -329,20 +317,13 @@ def main():
         save_steps=EVAL_STEPS,
         eval_strategy="steps" if val_dataset is not None else "no",
         eval_steps=EVAL_STEPS,
-        # Sau khi train xong, tự động load lại checkpoint có eval_loss
-        # THẤP NHẤT (không nhất thiết là checkpoint cuối cùng) -> đây là
-        # điểm tối ưu, tránh trường hợp train "đi quá" rồi mới dừng.
         load_best_model_at_end=val_dataset is not None,
         metric_for_best_model="eval_loss" if val_dataset is not None else None,
         greater_is_better=False if val_dataset is not None else None,
         save_total_limit=3,       # chỉ giữ 3 checkpoint gần nhất, đỡ tốn ổ đĩa
         fp16=USE_GPU,              # khớp dtype fp16 thật của model -> bật GradScaler, tránh underflow gradient
         use_cpu=not USE_GPU,
-        # Để Trainer TỰ bật gradient checkpointing (đồng bộ với fp16/accelerate.prepare),
-        # không tự gọi model.gradient_checkpointing_enable() thủ công bên ngoài nữa.
         gradient_checkpointing=True,
-        # use_reentrant=True (mặc định cũ) có thể làm đứt gradient tới LoRA
-        # khi kết hợp với model 4-bit -> val_loss đứng yên, không học được gì.
         gradient_checkpointing_kwargs={"use_reentrant": False},
         report_to="none",
         dataset_text_field="text",
@@ -355,9 +336,7 @@ def main():
         args=training_args,
         train_dataset=train_dataset,
         eval_dataset=val_dataset,
-        peft_config=lora_config,   # SFTTrainer tự lo prepare_model_for_kbit_training
-                                    # -> get_peft_model -> gradient_checkpointing_enable()
-                                    # -> enable_input_require_grads() đúng thứ tự nội bộ.
+        peft_config=lora_config,
         callbacks=callbacks,
     )
 
@@ -407,7 +386,6 @@ def main():
     # --------------------------------------------------------
     # Xuất CSV dự đoán (ROUGE/BLEU) trên tập TEST -- input cho
     # bước LLM Judge (Prometheus / API) ở pipeline/evaluate.py.
-    # Không dùng eval_loss/perplexity ở đây vì đó là số đo trong
     # --------------------------------------------------------
     print("Đang tải tập test (thô) để xuất CSV ROUGE/BLEU...")
     test_raw = load_raw_test_for_export(TEST_FILE)

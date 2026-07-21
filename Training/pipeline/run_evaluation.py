@@ -1,20 +1,15 @@
 """
-Chạy RIÊNG bước inference + ROUGE/BLEU trên model ĐÃ TRAIN SẴN, KHÔNG
-train lại. Dùng khi đã có checkpoint và chỉ muốn:
-- Đổi max_samples (test full thay vì demo 100 mẫu).
-- Chạy lại vì lần trước bị ngắt giữa chừng (resume=True).
-- Bật/tắt RAG (USE_RAG trong src/config.py) mà không cần train lại model.
+run_evaluation.py
+------------------
+Chạy RIÊNG bước ROUGE/BLEU trên model ĐÃ TRAIN SẴN (output/output_model),
+KHÔNG train lại. Dùng khi bạn đã có checkpoint từ trước và chỉ muốn:
+  - đổi max_samples (vd: test full thay vì 100 mẫu),
+  - hoặc chạy lại evaluation vì lần trước bị ngắt giữa chừng (resume=True),
+mà không muốn tốn thời gian train lại.
 
-Tự động đọc tập test (test.jsonl), load model + adapter LoRA, và nếu
-USE_RAG=True sẽ tự nối rag_bridge để retrieve context thật cho từng câu
-hỏi trước khi generate. Kết quả lưu vào evaluation_results.csv (đường dẫn
-theo PREDICTIONS_CSV trong config), sẵn sàng cho bước LLM Judge sau đó.
-
-Cách gọi từ notebook:
-    run_evaluation.main()                              # full tập test
-    run_evaluation.main(max_samples=500)                # 500 mẫu
-    run_evaluation.main(resume=True)                    # nối tiếp CSV cũ
-    run_evaluation.main(rag_similarity_threshold=0.70)   # đổi ngưỡng RAG
+Cách chạy:
+    python -m pipeline.run_evaluation                    # full tập test
+    python -m pipeline.run_evaluation --max_samples 500  # 500 mẫu
 """
 
 import argparse
@@ -86,7 +81,9 @@ def load_raw_test_for_export(path):
     return Dataset.from_list(raw_samples) if raw_samples else None
 
 
-def main(max_samples: int = None, resume: bool = False, rag_similarity_threshold: float = None):
+def main(max_samples: int = None, resume: bool = False,
+         rag_similarity_threshold: float = None,
+         rag_relative_threshold: float = 0.5):
     """
     Args:
         max_samples: số mẫu test dùng để tính ROUGE/BLEU.
@@ -96,9 +93,13 @@ def main(max_samples: int = None, resume: bool = False, rag_similarity_threshold
             câu đã có sẵn prediction, chỉ generate tiếp phần còn thiếu.
             CHỈ bật khi chắc chắn CSV cũ là của ĐÚNG model hiện tại.
         rag_similarity_threshold: ngưỡng % tương đồng (0..1, vd 0.70) để
-            CHẤP NHẬN context RAG. None -> dùng SIMILARITY_THRESHOLD mặc
-            định của RAG project. Chỉ áp dụng đúng ý nghĩa khi
-            RETRIEVAL_MODE của RAG project là "cosine" (xem rag_bridge.py).
+            CHẤP NHẬN context RAG. CHỈ áp dụng khi RETRIEVAL_MODE của RAG
+            project là "cosine". None -> dùng SIMILARITY_THRESHOLD mặc
+            định của RAG project.
+        rag_relative_threshold: ngưỡng % TƯƠNG ĐỐI (0..1, mặc định 0.5) --
+            CHỈ áp dụng khi RETRIEVAL_MODE là "bm25" hoặc "hybrid". Tự
+            động so điểm mỗi context với điểm CAO NHẤT trong top-k của
+            CHÍNH câu hỏi đó -- không cần tự đoán ngưỡng tuyệt đối.
     """
     print("Đang tải tập test (thô)...")
     test_raw = load_raw_test_for_export(TEST_FILE)
@@ -109,9 +110,8 @@ def main(max_samples: int = None, resume: bool = False, rag_similarity_threshold
         )
 
     if max_samples is None:
-        # Chỉ parse argparse khi cần (không đụng khi gọi trực tiếp từ
-        # notebook với max_samples đã truyền sẵn) -- tránh lỗi "-f kernel.json"
-        # của Jupyter/Colab/Kaggle.
+        # Chỉ parse argparse khi cần (không đụng khi gọi trực tiếp từ notebook với max_samples đã truyền sẵn) 
+        # -- tránh lỗi "-f kernel.json"
         parser = argparse.ArgumentParser()
         parser.add_argument(
             "--max_samples",
@@ -146,6 +146,7 @@ def main(max_samples: int = None, resume: bool = False, rag_similarity_threshold
         resume=resume,
         retrieve_context_fn=retrieve_context_fn,
         rag_similarity_threshold=rag_similarity_threshold,
+        rag_relative_threshold=rag_relative_threshold,
     )
     print(f"Đã lưu CSV dự đoán -> {PREDICTIONS_CSV}")
 

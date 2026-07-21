@@ -9,15 +9,6 @@ Build 3 tập train/val/test từ final_train_dataset.json:
                   cuối cùng bằng RAGAs (pipeline/evaluate.py). Model chưa
                   từng thấy các câu hỏi này lúc train.
 
-train.jsonl / val.jsonl lưu ở dạng "messages" chuẩn (chat format) sẵn sàng
-đưa vào SFTTrainer. test.jsonl lưu ở dạng "thô" (question / contexts /
-ground_truth) vì evaluate.py cần tự sinh câu trả lời bằng model rồi mới
-build prompt, không dùng answer có sẵn.
-
-Mặc định KHÔNG dùng RAG (xem src/config.py -> USE_RAG): train/test thuần
-Q&A, chưa có đoạn ngữ cảnh nào. Khi nối vector DB thật, bật lại bằng
-MEDQUAD_USE_RAG=1.
-
 Cách chạy:
     python -m pipeline.build_train_dataset
 """
@@ -43,8 +34,8 @@ def to_chat_sample(sample):
     question = sample["question"].strip()
     answer = sample["answer"].strip()
 
-    # Nếu USE_RAG=True: dùng chính "answer" gốc trong MedQuAD làm chunk giả
-    # lập (chưa có vector DB thật). Nếu USE_RAG=False (mặc định hiện tại):
+    # Nếu USE_RAG=True: dùng chính "answer" gốc trong MedQuAD làm chunk giả lập 
+    # (chưa có vector DB thật). Nếu USE_RAG=False (mặc định hiện tại):
     # không đưa ngữ cảnh nào, model học trả lời bằng kiến thức đã fine-tune.
     chunks = [answer] if USE_RAG else None
     messages = build_prompt(chunks=chunks, question=question)

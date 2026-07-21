@@ -1,28 +1,15 @@
-"""Cầu nối giữa project chính (MedQuAD) và project RAG riêng (Embedding_RAG
-của thành viên khác) để lấy context thật từ vector DB.
-
-File này làm 2 việc:
-1. Import an toàn retrieval.py từ RAG project mà không bị đụng độ tên
-   module (cả 2 project đều có file config.py riêng).
-2. Retrieve context cho 1 câu hỏi, tính % tương đồng, và LỌC BỎ context
-   không đủ liên quan trước khi trả về -- tránh model bị "dắt mũi" bởi
-   context sai chủ đề.
-
-Cấu hình qua biến môi trường:
-    MEDQUAD_RAG_DIR -- đường dẫn tới thư mục model RAG muốn dùng
-        (vd .../Embbeding_RAG/nomic-embed-text-v1.5)
-
-Hàm chính dùng ở nơi khác:
-    get_context_with_similarity(question, top_k, similarity_threshold)
-        -> dict gồm used_contexts (context đạt ngưỡng, dùng để đưa vào
-        prompt), raw_contexts (tất cả context lấy được, kể cả bị loại),
-        similarity_pct (% tương đồng), rag_used (có dùng RAG cho câu này
-        không).
-
-Lưu ý: % tương đồng chỉ tính đúng khi RAG project dùng RETRIEVAL_MODE=
-"cosine". Với "bm25"/"hybrid", không lọc được theo threshold (điểm không
-cùng thang đo), sẽ dùng hết context lấy được.
 """
+src/rag_bridge.py
+------------------
+Cầu nối gọi retrieve_context() từ project RAG riêng (Embedding_RAG/ của
+thành viên khác) mà KHÔNG bị đụng độ tên module.
+
+CẤU HÌNH:
+  Set biến môi trường MEDQUAD_RAG_DIR trỏ đúng vào thư mục model RAG muốn
+  dùng, ví dụ:
+      export MEDQUAD_RAG_DIR=/path/to/Embbeding_RAG/nomic-embed-text-v1.5
+"""
+
 import os
 import sys
 import importlib
@@ -101,41 +88,65 @@ def get_context_with_similarity(
     question: str,
     top_k: int = 3,
     similarity_threshold: float = None,
+    relative_threshold: float = 0.5,
 ) -> dict:
     """
-    Retrieve context + tính % tương đồng, LỌC BỎ context không đủ liên quan
-    (chỉ áp dụng đúng ý nghĩa khi RETRIEVAL_MODE="cosine").
+    Retrieve context + lọc theo ngưỡng, TỰ ĐỘNG chọn cách đo phù hợp với
+    RETRIEVAL_MODE -- không cần người dùng tự đoán số:
+
+    - "cosine": có % TUYỆT ĐỐI thật (similarity = 1 - distance, thang 0..1
+      cố định, so sánh được giữa các câu hỏi khác nhau). Lọc bằng
+      similarity_threshold.
+    - "bm25"/"hybrid": KHÔNG có thang cố định giữa các câu hỏi khác nhau
+      (điểm phụ thuộc độ dài câu hỏi, số từ khớp...). Thay vào đó, tự động
+      tính "% TƯƠNG ĐỐI" NGAY TRONG top-k của câu hỏi đó:
+          relative_pct = score / điểm_cao_nhất_trong_top_k * 100
+      Nghĩa là "context này tốt bằng bao nhiêu % so với context tốt NHẤT
+      tìm được cho câu hỏi này" -- context nào quá kém so với cái tốt
+      nhất (dưới relative_threshold) sẽ bị loại. Cách này tự động 100%,
+      không cần người dùng quan sát/tự chọn số như trước.
+
+    Args:
+        similarity_threshold: ngưỡng % (0..1) -- CHỈ dùng khi mode="cosine".
+            None -> lấy SIMILARITY_THRESHOLD mặc định của RAG project.
+        relative_threshold: ngưỡng % TƯƠNG ĐỐI (0..1, mặc định 0.5 = 50%)
+            -- CHỈ dùng khi mode="bm25"/"hybrid". Context có điểm dưới
+            relative_threshold * điểm_cao_nhất sẽ bị loại.
 
     Returns dict:
         {
             "used_contexts": List[str]   -- context ĐỦ liên quan, dùng để đưa
                                              vào prompt cho model (rỗng nếu
-                                             không có context nào đạt threshold)
+                                             không có context nào đạt ngưỡng)
             "raw_contexts": List[str]    -- TẤT CẢ context retrieve được (kể cả
                                              bị loại), để xem/debug
             "scores": List[float]        -- điểm thô tương ứng raw_contexts
-            "similarity_pct": List[float or None] -- % tương đồng (chỉ có giá
-                                             trị khi mode="cosine", None nếu
-                                             mode khác không quy đổi được)
+            "similarity_pct": List[float or None] -- % ý nghĩa TUYỆT ĐỐI, chỉ
+                                             có giá trị khi mode="cosine"
+            "relative_pct": List[float or None] -- % ý nghĩa TƯƠNG ĐỐI (so
+                                             với context tốt nhất trong CHÍNH
+                                             câu hỏi này), chỉ có giá trị khi
+                                             mode="bm25"/"hybrid"
             "rag_used": bool             -- có context nào được dùng không
             "retrieval_mode": str
         }
     """
-    global _warned_non_cosine
-
     retrieve_context, rag_config = _load_retrieve_context_fn()
     retrieval_mode = getattr(rag_config, "RETRIEVAL_MODE", "cosine")
-    threshold = (
-        similarity_threshold
-        if similarity_threshold is not None
-        else getattr(rag_config, "SIMILARITY_THRESHOLD", 0.70)
-    )
 
     results = retrieve_context(question, top_k=top_k)
     raw_contexts = [r["text_content"] for r in results]
     scores = [r["score"] for r in results]
 
+    similarity_pct = [None] * len(raw_contexts)
+    relative_pct = [None] * len(raw_contexts)
+
     if retrieval_mode == "cosine":
+        threshold = (
+            similarity_threshold
+            if similarity_threshold is not None
+            else getattr(rag_config, "SIMILARITY_THRESHOLD", 0.70)
+        )
         # Chroma cosine distance -> similarity = 1 - distance, clip về 0..1
         similarity_pct = [max(0.0, min(1.0, 1.0 - s)) * 100 for s in scores]
         used_contexts = [
@@ -143,26 +154,25 @@ def get_context_with_similarity(
             if pct >= threshold * 100
         ]
     else:
-        # bm25/hybrid: score KHÔNG cùng thang đo % tương đồng -- không lọc
-        # được công bằng theo threshold. Dùng tất cả context lấy về, để
-        # nguyên "similarity_pct" là None để người dùng biết không so được.
-        if not _warned_non_cosine:
-            print(
-                f"[rag_bridge][CẢNH BÁO] RETRIEVAL_MODE='{retrieval_mode}' -- "
-                f"score không quy đổi được thành % tương đồng chuẩn, nên KHÔNG "
-                f"lọc theo SIMILARITY_THRESHOLD. Toàn bộ context retrieve được "
-                f"sẽ được dùng. Nếu muốn lọc theo threshold đúng nghĩa, đổi "
-                f"RETRIEVAL_MODE='cosine' trong config.py của RAG project."
-            )
-            _warned_non_cosine = True
-        similarity_pct = [None] * len(raw_contexts)
-        used_contexts = list(raw_contexts)
+        # bm25/hybrid: KHÔNG có thang cố định giữa các câu hỏi -- nhưng vẫn
+        # tự động đo được % TƯƠNG ĐỐI trong chính top-k này (không cần người dùng tự đoán số).
+        max_score = max(scores) if scores else 0.0
+        if max_score > 0:
+            relative_pct = [max(0.0, s / max_score) * 100 for s in scores]
+        else:
+            relative_pct = [0.0 for _ in scores]
+
+        used_contexts = [
+            ctx for ctx, pct in zip(raw_contexts, relative_pct)
+            if pct >= relative_threshold * 100
+        ]
 
     return {
         "used_contexts": used_contexts,
         "raw_contexts": raw_contexts,
         "scores": scores,
         "similarity_pct": similarity_pct,
+        "relative_pct": relative_pct,
         "rag_used": len(used_contexts) > 0,
         "retrieval_mode": retrieval_mode,
     }
