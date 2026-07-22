@@ -2,22 +2,6 @@
 evaluate.py
 -----------
 Đánh giá chất lượng chatbot RAG bằng RAGAs.
-
-QUAN TRỌNG - GIÁM KHẢO PHẢI TÁCH RỜI MODEL ĐANG ĐƯỢC ĐÁNH GIÁ:
-Trước đây file này dùng chính model vừa fine-tune (base + adapter LoRA) làm
-luôn LLM Judge -- giống 1 học sinh tự chấm bài thi của mình: model có xu
-hướng tự đánh giá cao câu trả lời của chính nó (self-preference bias), kết
-quả không đáng tin.
-
-THAY ĐỔI SO VỚI BẢN CŨ:
-  - KHÔNG tự load model bị đánh giá + tự generate câu trả lời nữa. Bước sinh
-    câu trả lời (+ ROUGE/BLEU) đã làm ở CUỐI pipeline/train.py rồi, kết quả
-    lưu sẵn ở src.config.PREDICTIONS_CSV (question, reference, prediction,
-    rouge1/2/L, bleu). File này chỉ ĐỌC csv đó lên, tránh generate 2 lần.
-  - Giám khảo ƯU TIÊN gọi qua API (nhanh, không tốn VRAM) thay vì load
-    Prometheus 2 (7B) cục bộ. Đặt MEDQUAD_JUDGE_API_KEY để dùng API; nếu
-    không set, tự động fallback về load Prometheus cục bộ (code cũ).
-
 Cài đặt cần thiết:
     pip install -r requirements_ver1.txt
 """

@@ -4,20 +4,6 @@ evaluation.py — Đánh giá model: ROUGE, BLEU, Perplexity, và xuất CSV k�
 Sử dụng thư viện evaluate của HuggingFace cho các metrics chuẩn.
 Hàm save_predictions_csv() xuất kết quả inference cho LLM-as-a-judge.
 
-ĐÃ SỬA so với bản gốc:
-  - Ghi CSV liên tục mỗi `save_every` mẫu (không đợi generate hết mới ghi
-    1 lần) -- nếu Kaggle/session bị ngắt giữa chừng, tiến độ đã làm không
-    bị mất.
-  - Hỗ trợ resume=True: đọc CSV cũ (nếu có), bỏ qua các câu hỏi đã có sẵn
-    prediction, chỉ generate tiếp phần còn thiếu.
-    CẢNH BÁO: resume chỉ an toàn khi CSV cũ là của ĐÚNG model hiện tại (vd
-    lần chạy trước bị ngắt giữa chừng). Nếu bạn vừa train lại model khác,
-    PHẢI để resume=False (mặc định) để tránh CSV bị lẫn prediction của 2
-    model khác nhau (model cũ ở các câu đầu, model mới ở các câu sau).
-  - Dùng CHUNG build_prompt() (src/prompt_template.py) với chat.py -- thay
-    vì tự build prompt thủ công riêng như trước. Đảm bảo model được
-    generate/đánh giá bằng ĐÚNG prompt format (bao gồm SYSTEM_PROMPT_RAG
-    có chỉ dẫn chống-bịa) giống hệt lúc chat thật, không bị lệch giữa 2 nơi.
 """
 
 import json
@@ -119,58 +105,27 @@ def save_predictions_csv(
     rag_relative_threshold: float = 0.5,
 ):
     """
-    Chạy inference trên tập test và lưu kết quả ra CSV.
+    Chạy inference trên tập test và lưu kết quả đánh giá vào CSV.
 
-    File CSV: question, reference, prediction, rouge1, rouge2, rougeL, bleu
-    (+ "contexts" nếu retrieve_context_fn được truyền vào).
-    Sẵn sàng cho LLM-as-a-judge pipeline sau này.
+    CSV gồm: question, reference, prediction, ROUGE, BLEU và (nếu dùng RAG)
+    các thông tin về context được retrieve.
 
     Args:
-        model: Model đã train (PEFT wrapped)
-        tokenizer: Tokenizer
-        dataset: Tập test (HuggingFace Dataset)
-        output_path: Đường dẫn file CSV đầu ra
-        system_prompt: [ĐÃ DEPRECATED, KHÔNG CÒN DÙNG] -- trước đây dùng để
-            build prompt thủ công. Giờ prompt được build bằng
-            src.prompt_template.build_prompt() (system prompt cố định
-            SYSTEM_PROMPT_RAG/SYSTEM_PROMPT_NO_RAG tuỳ có context hay
-            không). Giữ tham số này trong chữ ký hàm CHỈ để không phá vỡ
-            code cũ đang truyền vào (run_evaluation.py, train.py) -- giá
-            trị truyền vào bị BỎ QUA hoàn toàn.
-        prompt_style: [ĐÃ DEPRECATED, KHÔNG CÒN DÙNG] -- tương tự
-            system_prompt, giờ dùng tokenizer.apply_chat_template() (đúng
-            chat template của model) thay vì tự build "alpaca"/"chatml"
-            thủ công.
-        max_new_tokens: Số token tối đa sinh ra
-        max_samples: Giới hạn số mẫu inference (tránh tốn thời gian)
-        resume: True -> đọc CSV cũ tại output_path (nếu có), bỏ qua các câu
-            hỏi đã có sẵn, chỉ generate tiếp phần còn thiếu. CHỈ dùng khi
-            chắc chắn CSV cũ là của đúng model hiện tại (lần chạy trước bị
-            ngắt giữa chừng). Mặc định False -> luôn ghi đè từ đầu.
-        save_every: Ghi CSV ra đĩa sau mỗi bấy nhiêu mẫu mới (không đợi
-            generate hết mới ghi 1 lần) -- giảm rủi ro mất tiến độ nếu bị
-            ngắt giữa chừng (Kaggle hết giờ, mất kết nối, v.v.)
-        retrieve_context_fn: hàm nhận (question, top_k, similarity_threshold)
-            -> dict {"used_contexts", "raw_contexts", "scores",
-            "similarity_pct", "rag_used", "retrieval_mode"} (xem
-            src.rag_bridge.get_context_with_similarity). Nếu truyền vào
-            (khi USE_RAG=True), mỗi câu hỏi sẽ được retrieve + lọc context
-            theo độ tương đồng TRƯỚC khi build prompt -- chỉ context ĐỦ
-            liên quan mới được đưa vào model, tránh model học/trả lời theo
-            context sai chủ đề. CSV sẽ lưu thêm cột "rag_used",
-            "rag_similarity_pct", "rag_raw_contexts" để biết câu nào có
-            dùng RAG, độ tương đồng bao nhiêu, và context thô lấy được là
-            gì (kể cả bị loại). Nếu để None (mặc định), giữ nguyên hành vi
-            cũ: prompt Q&A thuần, không có ngữ cảnh.
-        rag_top_k: số chunks lấy về mỗi câu hỏi khi retrieve_context_fn
-            được dùng.
-        rag_similarity_threshold: ngưỡng % tương đồng (0..1) để CHẤP NHẬN
-            context -- CHỈ dùng khi RETRIEVAL_MODE="cosine". None -> dùng
-            SIMILARITY_THRESHOLD mặc định của RAG project.
-        rag_relative_threshold: ngưỡng % TƯƠNG ĐỐI (0..1, mặc định 0.5) --
-            CHỈ dùng khi RETRIEVAL_MODE="bm25" hoặc "hybrid". Tự động so
-            điểm mỗi context với điểm CAO NHẤT trong top-k của CHÍNH câu
-            hỏi đó -- không cần tự đoán ngưỡng tuyệt đối.
+        model: Model đã fine-tune.
+        tokenizer: Tokenizer của model.
+        dataset: Tập dữ liệu đánh giá.
+        output_path: Đường dẫn lưu file CSV.
+        system_prompt: Deprecated. Giữ để tương thích với code cũ.
+        prompt_style: Deprecated. Giữ để tương thích với code cũ.
+        max_new_tokens: Số token tối đa được sinh.
+        max_samples: Số lượng mẫu tối đa cần đánh giá.
+        resume: Tiếp tục từ CSV đã có nếu True.
+        save_every: Lưu CSV sau mỗi N mẫu.
+        retrieve_context_fn: Hàm retrieve context cho RAG. Nếu None, chạy
+            inference không sử dụng RAG.
+        rag_top_k: Số context retrieve cho mỗi câu hỏi.
+        rag_similarity_threshold: Ngưỡng similarity (cosine retrieval).
+        rag_relative_threshold: Ngưỡng relative score (BM25/Hybrid retrieval).
     """
     model.eval()
     num_samples = min(len(dataset), max_samples)
@@ -263,18 +218,11 @@ def save_predictions_csv(
             "question": question,
             "reference": reference,
             "prediction": prediction,
-            # Context THẬT SỰ được đưa vào prompt (đã lọc theo threshold).
-            # Rỗng "[]" nếu không dùng RAG hoặc không có context nào đạt
-            # threshold -- evaluate.py dùng cột này cho faithfulness/
-            # context_precision/context_recall.
+            # Context sau khi lọc, dùng cho đánh giá RAG.
             "contexts": json.dumps(used_contexts, ensure_ascii=False),
-            # True nếu câu này thực sự có dùng context (đạt threshold).
-            # False -> model trả lời KHÔNG có ngữ cảnh (dù có retrieve
-            # được gì đó, nhưng bị loại vì không đủ liên quan).
             "rag_used": rag_used,
             # % tương đồng của từng context retrieve được (song song với
-            # rag_raw_contexts theo thứ tự) -- None nếu RETRIEVAL_MODE
-            # không phải "cosine" (không quy đổi được thang đo).
+            # rag_raw_contexts theo thứ tự) -- None nếu không phải "cosine".
             "rag_similarity_pct": json.dumps(similarity_pct_list),
             # % TƯƠNG ĐỐI (so với context tốt nhất trong CHÍNH câu hỏi này)
             # -- chỉ có giá trị khi RETRIEVAL_MODE="bm25"/"hybrid".

@@ -72,9 +72,9 @@ JUDGE_MODEL_NAME = os.environ.get("MEDQUAD_JUDGE_MODEL", "prometheus-eval/promet
 JUDGE_LOAD_IN_4BIT = os.environ.get("MEDQUAD_JUDGE_4BIT", "1") != "0"
 
 # ---- Giám khảo qua API ----
-JUDGE_API_BASE = os.environ.get("MEDQUAD_JUDGE_API_BASE", "https://api.openai.com/v1")
+JUDGE_API_BASE = os.environ.get("MEDQUAD_JUDGE_API_BASE", "https://api.groq.com/openai/v1")
 JUDGE_API_KEY = os.environ.get("MEDQUAD_JUDGE_API_KEY", "")
-JUDGE_API_MODEL = os.environ.get("MEDQUAD_JUDGE_API_MODEL", "gpt-4o-mini")
+JUDGE_API_MODEL = os.environ.get("MEDQUAD_JUDGE_API_MODEL", "llama-3.1-8b-instant")
 
 # ---- Sinh câu trả lời ----
 MAX_NEW_TOKENS_TRAIN_GEN = 300   # dùng khi generate answer cho eval
