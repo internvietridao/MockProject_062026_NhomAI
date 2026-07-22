@@ -4,6 +4,20 @@ evaluation.py — Đánh giá model: ROUGE, BLEU, Perplexity, và xuất CSV k�
 Sử dụng thư viện evaluate của HuggingFace cho các metrics chuẩn.
 Hàm save_predictions_csv() xuất kết quả inference cho LLM-as-a-judge.
 
+ĐÃ SỬA so với bản gốc:
+  - Ghi CSV liên tục mỗi `save_every` mẫu (không đợi generate hết mới ghi
+    1 lần) -- nếu Kaggle/session bị ngắt giữa chừng, tiến độ đã làm không
+    bị mất.
+  - Hỗ trợ resume=True: đọc CSV cũ (nếu có), bỏ qua các câu hỏi đã có sẵn
+    prediction, chỉ generate tiếp phần còn thiếu.
+    CẢNH BÁO: resume chỉ an toàn khi CSV cũ là của ĐÚNG model hiện tại (vd
+    lần chạy trước bị ngắt giữa chừng). Nếu bạn vừa train lại model khác,
+    PHẢI để resume=False (mặc định) để tránh CSV bị lẫn prediction của 2
+    model khác nhau (model cũ ở các câu đầu, model mới ở các câu sau).
+  - Dùng CHUNG build_prompt() (src/prompt_template.py) với chat.py -- thay
+    vì tự build prompt thủ công riêng như trước. Đảm bảo model được
+    generate/đánh giá bằng ĐÚNG prompt format (bao gồm SYSTEM_PROMPT_RAG
+    có chỉ dẫn chống-bịa) giống hệt lúc chat thật, không bị lệch giữa 2 nơi.
 """
 
 import json
@@ -18,6 +32,8 @@ import pandas as pd
 import torch
 from datasets import Dataset
 from transformers import PreTrainedTokenizer
+
+from src.prompt_template import build_prompt
 
 try:
     nltk.data.find("tokenizers/punkt_tab")
@@ -91,8 +107,8 @@ def save_predictions_csv(
     tokenizer: PreTrainedTokenizer,
     dataset: Dataset,
     output_path: str,
-    system_prompt: str,
-    prompt_style: str = "alpaca",
+    system_prompt: str = None,
+    prompt_style: str = None,
     max_new_tokens: int = 256,
     max_samples: int = 1700,
     resume: bool = False,
@@ -114,8 +130,17 @@ def save_predictions_csv(
         tokenizer: Tokenizer
         dataset: Tập test (HuggingFace Dataset)
         output_path: Đường dẫn file CSV đầu ra
-        system_prompt: System prompt cho model
-        prompt_style: "alpaca" hoặc "chatml"
+        system_prompt: [ĐÃ DEPRECATED, KHÔNG CÒN DÙNG] -- trước đây dùng để
+            build prompt thủ công. Giờ prompt được build bằng
+            src.prompt_template.build_prompt() (system prompt cố định
+            SYSTEM_PROMPT_RAG/SYSTEM_PROMPT_NO_RAG tuỳ có context hay
+            không). Giữ tham số này trong chữ ký hàm CHỈ để không phá vỡ
+            code cũ đang truyền vào (run_evaluation.py, train.py) -- giá
+            trị truyền vào bị BỎ QUA hoàn toàn.
+        prompt_style: [ĐÃ DEPRECATED, KHÔNG CÒN DÙNG] -- tương tự
+            system_prompt, giờ dùng tokenizer.apply_chat_template() (đúng
+            chat template của model) thay vì tự build "alpaca"/"chatml"
+            thủ công.
         max_new_tokens: Số token tối đa sinh ra
         max_samples: Giới hạn số mẫu inference (tránh tốn thời gian)
         resume: True -> đọc CSV cũ tại output_path (nếu có), bỏ qua các câu
@@ -195,23 +220,15 @@ def save_predictions_csv(
             except Exception as e:
                 print(f"[CẢNH BÁO][RAG] Retrieve context lỗi cho câu '{question[:50]}...': {e} -> dùng prompt không context.")
 
-        context_block = ""
-        if used_contexts:
-            joined_context = "\n\n".join(used_contexts)
-            context_block = f"Context:\n{joined_context}\n\n"
-
-        if prompt_style == "chatml":
-            prompt = (
-                f"<|im_start|>system\n{system_prompt}<|im_end|>\n"
-                f"<|im_start|>user\n{context_block}{question}<|im_end|>\n"
-                f"<|im_start|>assistant\n"
-            )
-        else:
-            prompt = (
-                f"### Instruction:\n{system_prompt}\n\n"
-                f"### Input:\n{context_block}{question}\n\n"
-                f"### Response:\n"
-            )
+        # Dùng CHUNG build_prompt() với chat.py -- đảm bảo model được
+        # generate bằng ĐÚNG format (system prompt chống-bịa khi có RAG,
+        # đúng chat template của tokenizer) giống hệt lúc chat thật.
+        messages = build_prompt(used_contexts, question)
+        prompt = tokenizer.apply_chat_template(
+            messages,
+            tokenize=False,
+            add_generation_prompt=True,
+        )
 
         inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
 
@@ -247,17 +264,23 @@ def save_predictions_csv(
             "reference": reference,
             "prediction": prediction,
             # Context THẬT SỰ được đưa vào prompt (đã lọc theo threshold).
-            # Rỗng "[]" nếu không dùng RAG hoặc không có context nào đạt threshold.
+            # Rỗng "[]" nếu không dùng RAG hoặc không có context nào đạt
+            # threshold -- evaluate.py dùng cột này cho faithfulness/
+            # context_precision/context_recall.
             "contexts": json.dumps(used_contexts, ensure_ascii=False),
             # True nếu câu này thực sự có dùng context (đạt threshold).
-            # False -> model trả lời KHÔNG có ngữ cảnh
+            # False -> model trả lời KHÔNG có ngữ cảnh (dù có retrieve
+            # được gì đó, nhưng bị loại vì không đủ liên quan).
             "rag_used": rag_used,
+            # % tương đồng của từng context retrieve được (song song với
+            # rag_raw_contexts theo thứ tự) -- None nếu RETRIEVAL_MODE
+            # không phải "cosine" (không quy đổi được thang đo).
             "rag_similarity_pct": json.dumps(similarity_pct_list),
             # % TƯƠNG ĐỐI (so với context tốt nhất trong CHÍNH câu hỏi này)
             # -- chỉ có giá trị khi RETRIEVAL_MODE="bm25"/"hybrid".
             "rag_relative_pct": json.dumps(relative_pct_list),
-            # TOÀN BỘ context retrieve được (kể cả bị loại vì không đủ tương đồng) 
-            # -- để xem/debug tại sao 1 câu không dùng RAG.
+            # TOÀN BỘ context retrieve được (kể cả bị loại vì không đủ
+            # tương đồng) -- để xem/debug tại sao 1 câu không dùng RAG.
             "rag_raw_contexts": json.dumps(raw_contexts, ensure_ascii=False),
             "rouge1": round(rouge_scores["rouge1"], 4),
             "rouge2": round(rouge_scores["rouge2"], 4),

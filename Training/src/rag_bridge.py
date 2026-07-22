@@ -91,44 +91,22 @@ def get_context_with_similarity(
     relative_threshold: float = 0.5,
 ) -> dict:
     """
-    Retrieve context + lọc theo ngưỡng, TỰ ĐỘNG chọn cách đo phù hợp với
-    RETRIEVAL_MODE -- không cần người dùng tự đoán số:
+    Retrieve top-k contexts và tự động lọc theo mức độ liên quan.
 
-    - "cosine": có % TUYỆT ĐỐI thật (similarity = 1 - distance, thang 0..1
-      cố định, so sánh được giữa các câu hỏi khác nhau). Lọc bằng
-      similarity_threshold.
-    - "bm25"/"hybrid": KHÔNG có thang cố định giữa các câu hỏi khác nhau
-      (điểm phụ thuộc độ dài câu hỏi, số từ khớp...). Thay vào đó, tự động
-      tính "% TƯƠNG ĐỐI" NGAY TRONG top-k của câu hỏi đó:
-          relative_pct = score / điểm_cao_nhất_trong_top_k * 100
-      Nghĩa là "context này tốt bằng bao nhiêu % so với context tốt NHẤT
-      tìm được cho câu hỏi này" -- context nào quá kém so với cái tốt
-      nhất (dưới relative_threshold) sẽ bị loại. Cách này tự động 100%,
-      không cần người dùng quan sát/tự chọn số như trước.
+    - Cosine: sử dụng ngưỡng similarity tuyệt đối (`similarity_threshold`).
+    - BM25/Hybrid: sử dụng ngưỡng tương đối (`relative_threshold`), tính theo
+    tỷ lệ điểm của mỗi context so với context có điểm cao nhất trong top-k.
+    Các context dưới ngưỡng sẽ bị loại.
 
-    Args:
-        similarity_threshold: ngưỡng % (0..1) -- CHỈ dùng khi mode="cosine".
-            None -> lấy SIMILARITY_THRESHOLD mặc định của RAG project.
-        relative_threshold: ngưỡng % TƯƠNG ĐỐI (0..1, mặc định 0.5 = 50%)
-            -- CHỈ dùng khi mode="bm25"/"hybrid". Context có điểm dưới
-            relative_threshold * điểm_cao_nhất sẽ bị loại.
-
-    Returns dict:
+    Returns:
         {
-            "used_contexts": List[str]   -- context ĐỦ liên quan, dùng để đưa
-                                             vào prompt cho model (rỗng nếu
-                                             không có context nào đạt ngưỡng)
-            "raw_contexts": List[str]    -- TẤT CẢ context retrieve được (kể cả
-                                             bị loại), để xem/debug
-            "scores": List[float]        -- điểm thô tương ứng raw_contexts
-            "similarity_pct": List[float or None] -- % ý nghĩa TUYỆT ĐỐI, chỉ
-                                             có giá trị khi mode="cosine"
-            "relative_pct": List[float or None] -- % ý nghĩa TƯƠNG ĐỐI (so
-                                             với context tốt nhất trong CHÍNH
-                                             câu hỏi này), chỉ có giá trị khi
-                                             mode="bm25"/"hybrid"
-            "rag_used": bool             -- có context nào được dùng không
-            "retrieval_mode": str
+            "used_contexts": Context được đưa vào prompt,
+            "raw_contexts": Tất cả context retrieve được,
+            "scores": Điểm retrieval gốc,
+            "similarity_pct": Similarity tuyệt đối (chỉ Cosine),
+            "relative_pct": Similarity tương đối (chỉ BM25/Hybrid),
+            "rag_used": Có sử dụng context hay không,
+            "retrieval_mode": Chế độ retrieval hiện tại,
         }
     """
     retrieve_context, rag_config = _load_retrieve_context_fn()
