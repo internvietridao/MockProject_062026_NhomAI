@@ -33,6 +33,7 @@ from src.config import (
     SYSTEM_PROMPT,
     TEST_FILE,
     TRAIN_FILE,
+    USE_RAG,
     VAL_FILE,
 )
 from src.evaluation import compute_perplexity, save_predictions_csv
@@ -399,6 +400,15 @@ def main():
         )
     else:
         print(f"Số câu hỏi test: {len(test_raw)}")
+
+        retrieve_context_fn = None
+        if USE_RAG:
+            print("USE_RAG=True -> sẽ retrieve context THẬT + lọc theo ngưỡng (qua rag_bridge).")
+            from src.rag_bridge import get_context_with_similarity
+            retrieve_context_fn = get_context_with_similarity
+        else:
+            print("USE_RAG=False -> chạy Q&A thuần, không có ngữ cảnh (như cũ).")
+
         print("Đang chạy inference trên tập test để tính ROUGE/BLEU...")
         save_predictions_csv(
             model=model,
@@ -408,6 +418,7 @@ def main():
             system_prompt=SYSTEM_PROMPT,
             prompt_style=PROMPT_STYLE,
             max_new_tokens=MAX_NEW_TOKENS_TRAIN_GEN,
+            retrieve_context_fn=retrieve_context_fn,
         )
         print(f"Đã lưu CSV dự đoán -> {PREDICTIONS_CSV}")
         print(
@@ -431,6 +442,7 @@ def main():
 
     print_and_save_summary({
         "model": BASE_MODEL_NAME,
+        "use_rag": USE_RAG,
         "rouge1": rouge1,
         "rouge2": rouge2,
         "rougeL": rougeL,
