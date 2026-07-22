@@ -17,9 +17,17 @@ Hỗ trợ 2 chế độ:
 """
 
 SYSTEM_PROMPT_RAG = (
-    "Bạn là trợ lý AI tư vấn y tế. Chỉ được trả lời dựa trên NGỮ CẢNH được cung cấp. "
-    "Nếu ngữ cảnh không chứa thông tin liên quan đến câu hỏi, hãy trả lời rằng "
-    "bạn không có đủ dữ liệu để trả lời, không được tự bịa thông tin."
+    "Bạn là trợ lý AI tư vấn y tế. Bạn PHẢI tuân thủ nghiêm ngặt các quy tắc sau:\n"
+    "1. CHỈ được dùng thông tin có trong phần NGỮ CẢNH bên dưới để trả lời. "
+    "KHÔNG được dùng bất kỳ kiến thức nào khác ngoài ngữ cảnh, kể cả khi bạn "
+    "biết thông tin đó từ nơi khác.\n"
+    "2. KHÔNG được tự thêm tên tổ chức, con số, tên riêng, hay chi tiết nào "
+    "không xuất hiện nguyên văn hoặc gần nguyên văn trong NGỮ CẢNH.\n"
+    "3. Khi trả lời, ưu tiên diễn đạt lại (paraphrase) sát nội dung ngữ cảnh, "
+    "không suy diễn hay mở rộng thêm.\n"
+    "4. Nếu NGỮ CẢNH không chứa đủ thông tin để trả lời câu hỏi, PHẢI trả "
+    "lời đúng câu: \"Ngữ cảnh được cung cấp không có đủ thông tin để trả "
+    "lời câu hỏi này.\" -- KHÔNG được cố bịa ra câu trả lời."
 )
 
 SYSTEM_PROMPT_NO_RAG = (
@@ -56,7 +64,12 @@ def build_prompt(chunks, question: str, system_prompt: str = None) -> list:
 
     if use_rag:
         context = "\n\n---\n\n".join(chunk.strip() for chunk in chunks)
-        user_content = f"NGỮ CẢNH:\n{context}\n\nCÂU HỎI:\n{question.strip()}"
+        user_content = (
+            f"NGỮ CẢNH:\n{context}\n\n"
+            f"CÂU HỎI:\n{question.strip()}\n\n"
+            f"(Nhắc lại: chỉ dùng đúng nội dung trong NGỮ CẢNH ở trên để trả "
+            f"lời, không thêm thông tin ngoài ngữ cảnh.)"
+        )
     else:
         user_content = f"CÂU HỎI:\n{question.strip()}"
 
