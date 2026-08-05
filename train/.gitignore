@@ -1,0 +1,33 @@
+.env
+LIGHTNING_AI_GUIDE.md
+
+# ── Python cache ──
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+
+
+# ── Log files ──
+*.log
+nohup.out
+
+# ── Hugging Face & Pip cache ──
+.cache/
+~/.cache/huggingface/
+~/.cache/pip/
+
+# ── Jupyter Notebook checkpoints ──
+.ipynb_checkpoints/
+
+# ── IDE ──
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ── OS generated ──
+.DS_Store
+Thumbs.db
