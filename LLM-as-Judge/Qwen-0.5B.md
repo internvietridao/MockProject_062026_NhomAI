@@ -2,15 +2,16 @@
 
 - **Mô hình Giám khảo:** Gemini (gemini-2.5-flash)
 - **Số lượng mẫu đánh giá:** 10 / 100 mẫu ngẫu nhiên
-- **File nguồn:** `outputs_Qwen-0.5B/evaluation_results.csv`
+- **File nguồn:** `E:\AI_VTD\MockProject_062026_NhomAI\train\outputs_Qwen-0.5B/evaluation_results.csv`
 
 ## 📊 Điểm số Đánh giá Trung bình (Thang điểm 1-5)
 
 | Tiêu chí đánh giá | Điểm trung bình | Trạng thái | Mô tả tiêu chí |
 | :--- | :--- | :--- | :--- |
-| **Medical Accuracy & Safety** | **2.70 / 5.0** | 🔴 Yếu | Độ chính xác y khoa và tính an toàn của lời khuyên |
-| **Completeness & Coverage** | **1.30 / 5.0** | 🔴 Yếu | Mức độ đầy đủ thông tin so với câu trả lời chuẩn |
-| **Professional Tone & Format** | **4.70 / 5.0** | 🟢 Tốt | Giọng điệu chuyên nghiệp, trực diện, chuẩn ChatML |
+| **Medical Accuracy & Safety** | **2.90 / 5.0** | 🔴 Yếu | Độ chính xác y khoa và tính an toàn của lời khuyên |
+| **Completeness & Coverage** | **1.50 / 5.0** | 🔴 Yếu | Mức độ đầy đủ thông tin so với câu trả lời chuẩn |
+| **Professional Tone & Format** | **4.90 / 5.0** | 🟢 Tốt | Giọng điệu chuyên nghiệp, trực diện, chuẩn ChatML |
+| **Answer Relevancy** | **3.40 / 5.0** | 🟡 Trung bình | Mức độ liên quan và tập trung vào câu hỏi của câu trả lời |
 
 ## 📝 Chi tiết đánh giá từng mẫu thử nghiệm
 
@@ -21,11 +22,12 @@
 - **Câu dự đoán (Prediction):** *"These resources address the diagnosis or management of trismus-pseudocamptodactyly syndrome: - Gene Review: Gene Review: Trismus-Pseudocamptodactyly Syndrome - Genetic Testing Registry: Trismus-pseudocamptodactyly syndrome These resources from MedlinePlus offer information about the diagnosis and management of various health conditions: - Diagnostic Tests - Drug Therapy - Surgery and Rehabilitation - Genetic Counseling - Palliative Care"*
 
 #### Điểm số chi tiết:
-- **Medical Accuracy:** `3/5` — *Chatbot không chứa thông tin y khoa sai lệch hay nguy hiểm. Tuy nhiên, nó không trực tiếp cung cấp thông tin điều trị cụ thể (phẫu thuật và vật lý trị liệu) được đề cập trong câu trả lời chuẩn, mà thay vào đó chỉ dẫn đến các tài nguyên chung, khiến câu trả lời không chính xác trong việc cung cấp nội dung y khoa trực tiếp cho câu hỏi.*
-- **Completeness:** `1/5` — *Chatbot hoàn toàn bỏ sót thông tin cốt lõi về các phương pháp điều trị cụ thể được báo cáo (phẫu thuật và vật lý trị liệu) có trong câu trả lời chuẩn. Nó chỉ liệt kê các tài nguyên mà không trực tiếp trả lời câu hỏi về điều trị.*
-- **Tone & Format:** `5/5` — *Giọng điệu chuyên nghiệp, khách quan và định dạng trình bày rõ ràng, trực diện bằng các gạch đầu dòng, không có từ ngữ thừa thãi hay xã giao.*
+- **Medical Accuracy:** `3/5` — *Câu trả lời liệt kê các loại hình điều trị chung chung (như liệu pháp dùng thuốc, chăm sóc giảm nhẹ) mà không có bối cảnh cụ thể cho hội chứng này, và không đề cập đến việc các lựa chọn điều trị tốt nhất chưa được thiết lập rõ ràng như trong câu trả lời chuẩn. Điều này làm giảm độ chính xác chuyên môn khi áp dụng vào tình huống cụ thể.*
+- **Completeness:** `2/5` — *Chatbot bỏ sót thông tin quan trọng nhất từ câu trả lời chuẩn, đó là 'các lựa chọn điều trị tốt nhất cho hội chứng này chưa được thiết lập rõ ràng'. Chatbot cũng không đưa ra khuyến nghị trực tiếp để nói chuyện với nhà cung cấp dịch vụ y tế.*
+- **Tone & Format:** `5/5` — *Giọng điệu chuyên nghiệp, khách quan. Định dạng danh sách gạch đầu dòng rõ ràng, dễ đọc và trực diện.*
+- **Answer Relevancy:** `2/5` — *Câu hỏi yêu cầu 'các phương pháp điều trị', nhưng câu trả lời của chatbot lại chủ yếu liệt kê 'các tài nguyên' liên quan đến chẩn đoán hoặc quản lý. Việc liệt kê các mục như 'Xét nghiệm chẩn đoán' và 'Tư vấn di truyền' là không liên quan trực tiếp đến các phương pháp điều trị của hội chứng.*
 - **ROUGE-1 / ROUGE-L:** `0.2667 / 0.1714`
-- **Nhận xét chung:** Chatbot đã không trực tiếp trả lời câu hỏi về các phương pháp điều trị cho hội chứng Trismus-pseudocamptodactyly mà chỉ cung cấp các tài nguyên liên quan đến chẩn đoán hoặc quản lý nói chung. Điều này làm giảm đáng kể độ đầy đủ và tính hữu ích của câu trả lời so với câu trả lời chuẩn, dù không có thông tin sai lệch.
+- **Nhận xét chung:** Câu trả lời của chatbot có giọng điệu và định dạng chuyên nghiệp nhưng lại không trực tiếp trả lời câu hỏi về các phương pháp điều trị. Thay vào đó, nó cung cấp các tài nguyên chung chung và các loại hình chăm sóc rộng lớn, bỏ qua thông tin quan trọng từ câu trả lời chuẩn về tình trạng chưa được thiết lập rõ ràng của các phương pháp điều trị cụ thể cho hội chứng này. Độ chính xác và liên quan bị ảnh hưởng đáng kể do sự thiếu cụ thể và gián tiếp trong cách trình bày.
 
 ---
 
@@ -36,11 +38,12 @@
 - **Câu dự đoán (Prediction):** *"Vaginal diaphragm (VDD)."*
 
 #### Điểm số chi tiết:
-- **Medical Accuracy:** `1/5` — *Câu trả lời sai hoàn toàn về mặt y khoa. Màng ngăn âm đạo (vaginal diaphragm) không phải là biện pháp tránh thai dạng tiêm mà là một phương pháp rào cản. Đây là thông tin sai lệch nghiêm trọng và có thể gây nguy hiểm nếu được áp dụng.*
-- **Completeness:** `1/5` — *Câu trả lời của chatbot hoàn toàn không đề cập đến biện pháp tránh thai dạng tiêm phổ biến nhất, mà đưa ra một phương pháp hoàn toàn khác và sai, do đó không cung cấp bất kỳ thông tin chính xác hoặc liên quan nào.*
-- **Tone & Format:** `5/5` — *Giọng điệu trực tiếp, súc tích và không có từ ngữ thừa thãi. Định dạng rõ ràng.*
+- **Medical Accuracy:** `1/5` — *Thông tin hoàn toàn sai lệch. Vaginal diaphragm (VDD) không phải là thuốc tiêm tránh thai mà là một phương pháp rào cản.*
+- **Completeness:** `1/5` — *Câu trả lời của chatbot hoàn toàn không đề cập đến thuốc tiêm tránh thai, do đó bỏ sót toàn bộ thông tin cốt lõi và chính xác so với câu trả lời chuẩn.*
+- **Tone & Format:** `5/5` — *Giọng điệu trực tiếp, súc tích và không có từ ngữ thừa thãi, đáp ứng tiêu chuẩn chuyên nghiệp về mặt định dạng.*
+- **Answer Relevancy:** `1/5` — *Câu trả lời hoàn toàn lạc đề vì Vaginal diaphragm không phải là thuốc tiêm tránh thai như câu hỏi yêu cầu, mà là một phương pháp tránh thai khác.*
 - **ROUGE-1 / ROUGE-L:** `0.0000 / 0.0000`
-- **Nhận xét chung:** Câu trả lời của chatbot hoàn toàn không chính xác về mặt y khoa và thể hiện sự 'bịa đặt' (hallucination) nghiêm trọng. Nó đưa ra một phương pháp tránh thai không phải dạng tiêm và hoàn toàn sai lệch với câu hỏi được đặt ra. Đây là một câu trả lời không thể chấp nhận được đối với một câu hỏi y khoa.
+- **Nhận xét chung:** Chatbot đã đưa ra một câu trả lời hoàn toàn sai về mặt y khoa và lạc đề nghiêm trọng. 'Vaginal diaphragm' không phải là thuốc tiêm tránh thai và câu trả lời này có thể gây hiểu lầm nguy hiểm. Chatbot cần cải thiện đáng kể về độ chính xác y khoa và khả năng hiểu đúng yêu cầu của câu hỏi.
 
 ---
 
@@ -107,11 +110,12 @@ Cancer of the penis
 Cancer of the bronchial air"*
 
 #### Điểm số chi tiết:
-- **Medical Accuracy:** `1/5` — *Câu trả lời của chatbot chứa thông tin sai lệch nghiêm trọng và bịa đặt (hallucination), đặc biệt là về việc u nguyên bào thần kinh (neuroblastoma) là loại phổ biến thứ hai ở người lớn trên 65 tuổi và việc liên kết nó với danh sách dài các bệnh ung thư khác mà không có cơ sở khoa học rõ ràng trong ngữ cảnh của các yếu tố nguy cơ. U nguyên bào thần kinh chủ yếu là ung thư ở trẻ em.*
-- **Completeness:** `1/5` — *Câu trả lời chuẩn tập trung vào các rủi ro của việc sàng lọc u nguyên bào thần kinh (chẩn đoán quá mức, kết quả âm tính giả, dương tính giả). Câu trả lời của chatbot không đề cập đến bất kỳ điểm nào trong số này mà thay vào đó cố gắng trả lời về các yếu tố nguy cơ mắc bệnh, nhưng lại không chính xác. Do đó, nó không bao quát bất kỳ thông tin quan trọng nào từ câu trả lời chuẩn.*
-- **Tone & Format:** `4/5` — *Giọng điệu của chatbot nhìn chung là chuyên nghiệp và khách quan, định dạng rõ ràng, không có từ ngữ thừa thãi. Tuy nhiên, tính chính xác y khoa bị thiếu hụt nghiêm trọng làm giảm tổng thể sự chuyên nghiệp của nội dung.*
+- **Medical Accuracy:** `1/5` — *Câu trả lời của chatbot chứa thông tin sai lệch nghiêm trọng và bịa đặt (hallucination). Thông tin về neuroblastoma là phổ biến ở người lớn trên 65 tuổi và việc nó xảy ra ở những người mắc các bệnh ung thư khác (như ung thư máu, đường tiết niệu, đường tiêu hóa, v.v.) là hoàn toàn không chính xác về mặt y khoa và có thể gây nguy hiểm.*
+- **Completeness:** `1/5` — *Câu trả lời của chatbot không bao quát bất kỳ điểm chính hoặc thông tin quan trọng nào từ Câu trả lời chuẩn. Câu trả lời chuẩn nói về các rủi ro của việc sàng lọc neuroblastoma, trong khi chatbot lại cố gắng trả lời về đối tượng có nguy cơ mắc bệnh, nhưng lại mắc lỗi nghiêm trọng về mặt y tế.*
+- **Tone & Format:** `4/5` — *Giọng điệu của chatbot tương đối chuyên nghiệp và khách quan, định dạng rõ ràng, không có từ ngữ thừa thãi. Tuy nhiên, nội dung lại sai lệch nghiêm trọng.*
+- **Answer Relevancy:** `2/5` — *Mặc dù chatbot cố gắng trả lời trực tiếp câu hỏi 'Ai có nguy cơ mắc Neuroblastoma?', phần lớn thông tin được cung cấp là sai lệch nghiêm trọng và không liên quan đến các yếu tố rủi ro thực tế của bệnh. Nó chỉ đúng về mặt chủ đề nhưng hoàn toàn sai về mặt nội dung, khiến câu trả lời không có giá trị thực tiễn.*
 - **ROUGE-1 / ROUGE-L:** `0.1618 / 0.1120`
-- **Nhận xét chung:** Câu trả lời của chatbot đã hiểu sai hoàn toàn câu hỏi và đưa ra thông tin y khoa sai lệch nghiêm trọng. Mặc dù câu hỏi yêu cầu về 'ai có nguy cơ mắc bệnh', câu trả lời chuẩn lại nói về 'rủi ro của việc sàng lọc'. Chatbot cố gắng trả lời câu hỏi nhưng lại cung cấp các sự thật bịa đặt, đặc biệt là về nguy cơ ở người lớn và mối liên hệ với các loại ung thư khác, điều này có thể gây hiểu lầm nguy hiểm.
+- **Nhận xét chung:** Chatbot đã hiểu sai hoàn toàn về bản chất của bệnh neuroblastoma và các yếu tố rủi ro của nó. Nó đã bịa đặt thông tin nghiêm trọng (hallucination), cung cấp những thông tin sai lệch và có khả năng gây nguy hiểm về y tế. Mặc dù giọng điệu chuyên nghiệp, nhưng nội dung không đáng tin cậy. Câu trả lời chuẩn lại không trực tiếp trả lời câu hỏi của người dùng mà tập trung vào rủi ro sàng lọc, nên không thể dùng làm thước đo đầy đủ cho độ chính xác về nội dung câu hỏi.
 
 ---
 
@@ -122,11 +126,12 @@ Cancer of the bronchial air"*
 - **Câu dự đoán (Prediction):** *"Older adults often have reduced bowel movements due to decreased muscle tone and increased risk of dehydration."*
 
 #### Điểm số chi tiết:
-- **Medical Accuracy:** `5/5` — *Câu trả lời của chatbot đưa ra các lý do chính xác về mặt y khoa cho tình trạng táo bón mãn tính ở người lớn tuổi (giảm trương lực cơ và tăng nguy cơ mất nước).*
-- **Completeness:** `1/5` — *Chatbot không đề cập đến bất kỳ ý chính nào có trong câu trả lời chuẩn (chuyển hóa chậm hơn, giảm hoạt động thể chất, thay đổi chế độ ăn uống).*
-- **Tone & Format:** `5/5` — *Giọng điệu chuyên nghiệp, khách quan và trực tiếp. Không có từ ngữ thừa thãi hay không cần thiết.*
+- **Medical Accuracy:** `5/5` — *Thông tin về 'giảm trương lực cơ' (decreased muscle tone) và 'nguy cơ mất nước cao hơn' (increased risk of dehydration) đều là các nguyên nhân chính xác và quan trọng gây táo bón mạn tính ở người lớn tuổi.*
+- **Completeness:** `2/5` — *Mặc dù câu trả lời của chatbot đưa ra các lý do chính xác và liên quan, nhưng nó không đề cập đến bất kỳ lý do nào được liệt kê trong Câu trả lời chuẩn (chuyển hóa chậm hơn, ít hoạt động thể chất, thay đổi chế độ ăn), do đó không bao quát các ý chính từ nguồn tham khảo đã cho.*
+- **Tone & Format:** `5/5` — *Câu trả lời rất trực tiếp, ngắn gọn, sử dụng ngôn ngữ chuyên nghiệp và không chứa bất kỳ từ ngữ thừa thãi nào, hoàn toàn phù hợp với ngữ cảnh y khoa.*
+- **Answer Relevancy:** `5/5` — *Câu trả lời tập trung hoàn toàn vào việc giải thích nguyên nhân gây táo bón mạn tính ở người lớn tuổi, đi thẳng vào trọng tâm câu hỏi mà không lan man.*
 - **ROUGE-1 / ROUGE-L:** `0.1600 / 0.1600`
-- **Nhận xét chung:** Câu trả lời của chatbot cung cấp thông tin chính xác về mặt y khoa và có giọng điệu chuyên nghiệp. Tuy nhiên, nó hoàn toàn bỏ sót các điểm cụ thể được nêu trong câu trả lời chuẩn, mặc dù các lý do của chatbot cũng hợp lệ.
+- **Nhận xét chung:** Chatbot đã cung cấp một câu trả lời chính xác về mặt y khoa và có giọng điệu chuyên nghiệp, trực tiếp giải quyết câu hỏi. Tuy nhiên, điểm yếu lớn nhất là chatbot không bao quát được bất kỳ điểm chính nào có trong câu trả lời chuẩn, dù các lý do nó đưa ra cũng đúng. Điều này cho thấy sự khác biệt trong việc lựa chọn thông tin so với nguồn tham khảo.
 
 ---
 
@@ -137,11 +142,12 @@ Cancer of the bronchial air"*
 - **Câu dự đoán (Prediction):** *"Stop the procedure immediately to prevent further complications."*
 
 #### Điểm số chi tiết:
-- **Medical Accuracy:** `3/5` — *Câu trả lời chính xác về việc dừng thủ thuật ngay lập tức, đây là hành động an toàn cơ bản. Tuy nhiên, nó bỏ qua bước quan trọng là thông báo cho nhà cung cấp dịch vụ y tế (provider), một phần thiết yếu của quy trình an toàn y khoa.*
-- **Completeness:** `2/5` — *Câu trả lời chỉ nêu được một phần của hành động cần thiết (dừng thủ thuật) và hoàn toàn bỏ sót yêu cầu quan trọng là thông báo cho nhà cung cấp dịch vụ y tế, là một phần cốt lõi trong câu trả lời chuẩn.*
-- **Tone & Format:** `5/5` — *Giọng điệu trực tiếp, chuyên nghiệp và súc tích, không có từ ngữ thừa thãi.*
+- **Medical Accuracy:** `5/5` — *Câu trả lời đưa ra hành động ban đầu hoàn toàn chính xác và an toàn về mặt y khoa ("Stop the procedure immediately"). Không có thông tin sai lệch hay nguy hiểm.*
+- **Completeness:** `2/5` — *Câu trả lời bỏ sót một bước quan trọng có trong Câu trả lời chuẩn là "notify the provider immediately". Việc thông báo cho nhà cung cấp dịch vụ y tế là một phần không thể thiếu trong quy trình xử lý biến chứng.*
+- **Tone & Format:** `5/5` — *Giọng điệu chuyên nghiệp, trực tiếp và không có từ ngữ thừa thãi. Định dạng rõ ràng.*
+- **Answer Relevancy:** `5/5` — *Câu trả lời tập trung hoàn toàn vào câu hỏi và cung cấp hành động cần thiết khi gặp lực cản trong quá trình rút catheter.*
 - **ROUGE-1 / ROUGE-L:** `0.5000 / 0.5000`
-- **Nhận xét chung:** Chatbot đã đưa ra khuyến nghị đúng đắn về việc dừng thủ thuật ngay lập tức khi gặp lực cản trong quá trình tháo catheter. Tuy nhiên, một thiếu sót nghiêm trọng là không đề cập đến việc thông báo cho nhà cung cấp dịch vụ y tế, một bước không thể thiếu trong quy trình y khoa để đảm bảo an toàn và xử lý kịp thời các biến chứng tiềm ẩn.
+- **Nhận xét chung:** Chatbot đã cung cấp một hành động ban đầu chính xác và an toàn là dừng thủ thuật ngay lập tức. Tuy nhiên, nó đã bỏ lỡ một bước quan trọng và cần thiết trong quy trình y tế là thông báo cho nhà cung cấp dịch vụ y tế, điều này làm giảm đáng kể độ đầy đủ của câu trả lời so với tiêu chuẩn thực hành y khoa.
 
 ---
 
@@ -152,11 +158,12 @@ Cancer of the bronchial air"*
 - **Câu dự đoán (Prediction):** *"Congenital adrenal hyperplasia is a condition that affects the adrenal glands. The adrenal glands are located just below the kidneys and make hormones that regulate many of the body's functions. In people with congenital adrenal hyperplasia, the adrenal glands do not produce enough of these hormones. As a result, the levels of certain hormones in the blood are abnormally high. This can cause symptoms such as - High blood pressure - Fatigue - Muscle weakness - Low blood sugar - Increased risk of infections - Abnormal growth and development in children - An increased risk of developing cancer These symptoms vary from person to person. Some affected individuals have no signs or symptoms at birth; others may develop them later in life. Congenital adrenal hyperplasia is caused by mutations in the CYP19 gene. It is inherited in an autosomal recessive manner. Treatment depends on the severity of the condition and its signs and symptoms."*
 
 #### Điểm số chi tiết:
-- **Medical Accuracy:** `1/5` — *Câu trả lời của chatbot chứa nhiều thông tin y khoa sai lệch nghiêm trọng và có thể gây nguy hiểm. Ví dụ, nó khẳng định CAH do đột biến gen CYP19 (thực tế là gen CYP21A2 gây ra thể phổ biến nhất) và tăng nguy cơ ung thư (hoàn toàn sai lệch, là sự bịa đặt y khoa). Vị trí tuyến thượng thận cũng sai (nằm trên thận, không phải dưới). Mô tả cơ chế bệnh sinh (không sản xuất đủ hormone) cũng không chính xác hoàn toàn, vì CAH thường liên quan đến việc sản xuất thừa androgen.*
-- **Completeness:** `1/5` — *Câu trả lời của chatbot bỏ sót rất nhiều thông tin quan trọng và đặc trưng có trong câu trả lời chuẩn, như việc CAH là một nhóm các tình trạng di truyền, cơ chế thiếu enzyme và sản xuất thừa androgen (thay vào đó đưa ra mô tả sai). Các triệu chứng đặc trưng của thể nặng như bộ phận sinh dục mơ hồ ở nữ giới, mất nước, nôn mửa, tiêu chảy, cũng như các vấn đề về khả năng sinh sản của thể nhẹ đều bị bỏ qua. Thay vào đó, nó liệt kê nhiều triệu chứng chung chung hoặc hoàn toàn sai lệch (nguy cơ ung thư).*
-- **Tone & Format:** `5/5` — *Giọng điệu của chatbot chuyên nghiệp, khách quan và sử dụng định dạng rõ ràng, trực diện với các gạch đầu dòng cho triệu chứng. Không có từ ngữ thừa thãi hay không phù hợp với ngữ cảnh y khoa.*
+- **Medical Accuracy:** `1/5` — *Câu trả lời chứa nhiều thông tin sai lệch nghiêm trọng. Cụ thể, chatbot liệt kê các triệu chứng không chính xác (ví dụ: huyết áp cao thay vì thấp trong một số trường hợp, tăng nguy cơ nhiễm trùng và ung thư không phải là đặc trưng của CAH) và đặc biệt là sai hoàn toàn về nguyên nhân gen (nêu CYP19 thay vì CYP21A2), có thể gây hiểu lầm nguy hiểm cho người đọc.*
+- **Completeness:** `1/5` — *Mặc dù cố gắng định nghĩa, câu trả lời bỏ sót nhiều chi tiết cốt lõi và quan trọng có trong Câu trả lời chuẩn, như cơ chế bệnh sinh cụ thể (thiếu enzyme dẫn đến sản xuất quá mức androgen) và các triệu chứng đặc trưng ở nữ giới sơ sinh (bộ phận sinh dục mơ hồ), đồng thời thay thế chúng bằng thông tin sai lệch.*
+- **Tone & Format:** `5/5` — *Giọng điệu của câu trả lời chuyên nghiệp, khách quan và định dạng trình bày rõ ràng, trực diện, không chứa các từ ngữ thừa thãi.*
+- **Answer Relevancy:** `5/5` — *Câu trả lời tập trung hoàn toàn vào câu hỏi, đi thẳng vào trọng tâm về việc giải thích 'Tăng sản tuyến thượng thận bẩm sinh là gì', không có thông tin lan man hay không liên quan.*
 - **ROUGE-1 / ROUGE-L:** `0.4645 / 0.2774`
-- **Nhận xét chung:** Câu trả lời của chatbot có phong cách và định dạng chuyên nghiệp nhưng lại mắc phải những lỗi nghiêm trọng về độ chính xác y khoa và độ đầy đủ thông tin. Đặc biệt, thông tin sai lệch về gen gây bệnh và nguy cơ ung thư là không thể chấp nhận được, khiến câu trả lời này trở nên nguy hiểm và không đáng tin cậy. Nó hoàn toàn không đáp ứng được yêu cầu về kiến thức y tế chuyên sâu.
+- **Nhận xét chung:** Chatbot đã thực hiện kém ở các tiêu chí về độ chính xác và đầy đủ y khoa, với nhiều lỗi sai nghiêm trọng về triệu chứng và nguyên nhân di truyền của bệnh. Mặc dù giọng điệu và độ liên quan tốt, nhưng những sai sót về nội dung y tế cơ bản khiến câu trả lời này không đáng tin cậy và có khả năng gây hại.
 
 ---
 
@@ -167,11 +174,12 @@ Cancer of the bronchial air"*
 - **Câu dự đoán (Prediction):** *"To ensure safety and prevent injury to patients."*
 
 #### Điểm số chi tiết:
-- **Medical Accuracy:** `1/5` — *Câu trả lời của chatbot hiểu sai hoàn toàn ngữ cảnh câu hỏi. Việc sử dụng kiềm chế vì sự tiện lợi của nhân viên là một hành vi vi phạm đạo đức và an toàn, không phải để 'đảm bảo an toàn và ngăn ngừa tổn thương'. Chatbot đã đưa ra một mục đích của việc sử dụng kiềm chế đúng cách, nhưng lại áp dụng sai vào ngữ cảnh của câu hỏi về việc cấm sử dụng kiềm chế sai mục đích.*
-- **Completeness:** `1/5` — *Chatbot bỏ sót hoàn toàn các ý chính quan trọng có trong câu trả lời chuẩn: 'vi phạm quyền bệnh nhân' và 'có thể gây hại'. Câu trả lời của nó không giải thích lý do tại sao không được dùng kiềm chế vì sự tiện lợi.*
-- **Tone & Format:** `5/5` — *Giọng điệu chuyên nghiệp, khách quan và câu trả lời trực diện, không có từ ngữ thừa thãi.*
+- **Medical Accuracy:** `1/5` — *Câu trả lời của chatbot nói về mục đích chung của việc sử dụng các biện pháp hạn chế (đảm bảo an toàn), nhưng câu hỏi lại về lý do tại sao không được sử dụng cho sự tiện lợi của nhân viên. Việc sử dụng biện pháp hạn chế cho sự tiện lợi của nhân viên thực chất là hành vi sai trái, vi phạm quyền của bệnh nhân và có thể gây hại, hoàn toàn ngược lại với việc đảm bảo an toàn.*
+- **Completeness:** `1/5` — *Câu trả lời của chatbot không đề cập đến bất kỳ lý do chính nào được nêu trong câu trả lời chuẩn (vi phạm quyền của bệnh nhân, gây hại) và hoàn toàn bỏ qua bản chất của câu hỏi về việc lạm dụng biện pháp hạn chế.*
+- **Tone & Format:** `5/5` — *Câu trả lời ngắn gọn, trực tiếp và không có từ ngữ thừa, thể hiện giọng điệu chuyên nghiệp.*
+- **Answer Relevancy:** `1/5` — *Câu trả lời của chatbot không tập trung vào lý do tại sao không được sử dụng biện pháp hạn chế cho sự tiện lợi của nhân viên mà lại đề cập đến mục đích chung của việc sử dụng các biện pháp này, khiến câu trả lời lạc đề hoàn toàn.*
 - **ROUGE-1 / ROUGE-L:** `0.2353 / 0.1176`
-- **Nhận xét chung:** Câu trả lời của chatbot đã thất bại trong việc giải thích lý do cốt lõi của câu hỏi. Nó đưa ra một tuyên bố chung về mục đích của việc sử dụng kiềm chế (để đảm bảo an toàn) nhưng hoàn toàn không giải quyết được vấn đề tại sao không được lạm dụng kiềm chế vì sự tiện lợi của nhân viên. Điều này cho thấy sự hiểu sai nghiêm trọng về nguyên tắc đạo đức và an toàn trong chăm sóc bệnh nhân liên quan đến việc sử dụng kiềm chế.
+- **Nhận xét chung:** Câu trả lời của chatbot đã hiểu sai hoàn toàn trọng tâm của câu hỏi. Thay vì giải thích lý do tại sao không được lạm dụng các biện pháp hạn chế vì sự tiện lợi của nhân viên (vi phạm quyền và gây hại), nó lại đưa ra một tuyên bố chung về mục đích của việc sử dụng các biện pháp này để đảm bảo an toàn, điều này không liên quan và thậm chí còn gây hiểu lầm trong ngữ cảnh câu hỏi.
 
 ---
 
@@ -182,11 +190,12 @@ Cancer of the bronchial air"*
 - **Câu dự đoán (Prediction):** *"Time of day affects mood swings and triggers aggression."*
 
 #### Điểm số chi tiết:
-- **Medical Accuracy:** `3/5` — *Câu trả lời của chatbot không sai về mặt y khoa nhưng quá chung chung. Nó không đề cập đến bối cảnh cụ thể của bệnh sa sút trí tuệ (dementia) như câu trả lời chuẩn, mà chỉ đưa ra một nhận định tổng quát.*
-- **Completeness:** `1/5` — *Câu trả lời của chatbot bỏ sót hoàn toàn thông tin quan trọng về đối tượng (người mắc bệnh sa sút trí tuệ) và lý do cụ thể (họ có thể hoạt động tốt hơn vào những thời điểm nhất định trong ngày, thường là buổi sáng), khiến câu trả lời thiếu tính đặc hiệu và đầy đủ so với câu trả lời chuẩn.*
+- **Medical Accuracy:** `3/5` — *Câu trả lời không sai về mặt y khoa nhưng quá chung chung, thiếu đi sự cụ thể về ngữ cảnh y tế (ví dụ: bệnh sa sút trí tuệ hoặc hội chứng 'sundowning') mà câu hỏi thường ngụ ý trong quản lý hành vi hung hăng.*
+- **Completeness:** `1/5` — *Câu trả lời bỏ sót hoàn toàn đối tượng cụ thể (bệnh nhân sa sút trí tuệ) và lý do chính mà thời gian trong ngày lại quan trọng (khả năng hoạt động tốt hơn vào một số thời điểm nhất định) mà câu trả lời chuẩn đề cập. Nó chỉ đưa ra một nhận định chung chung.*
 - **Tone & Format:** `5/5` — *Giọng điệu chuyên nghiệp, trực tiếp và không có từ ngữ thừa thãi.*
+- **Answer Relevancy:** `4/5` — *Câu trả lời tập trung vào trọng tâm của câu hỏi về mối liên hệ giữa thời gian trong ngày và hành vi hung hăng, nhưng còn quá đơn giản và chưa thực sự đi sâu vào khía cạnh 'quản lý' hành vi.*
 - **ROUGE-1 / ROUGE-L:** `0.2400 / 0.2400`
-- **Nhận xét chung:** Câu trả lời của chatbot đưa ra một nhận định đúng nhưng rất chung chung và thiếu đi các chi tiết y khoa quan trọng được đề cập trong câu trả lời chuẩn, đặc biệt là về đối tượng bệnh nhân cụ thể và cơ chế liên quan đến 'chức năng tốt hơn' vào các thời điểm trong ngày. Điều này làm giảm đáng kể giá trị thông tin của câu trả lời.
+- **Nhận xét chung:** Câu trả lời của chatbot chính xác ở mức độ khái quát nhưng thiếu đi tính cụ thể và chuyên sâu về y khoa mà câu trả lời chuẩn cung cấp. Nó không đề cập đến nhóm bệnh nhân hoặc cơ chế cụ thể giúp quản lý hành vi hung hăng hiệu quả dựa trên thời gian trong ngày, làm mất đi giá trị y khoa thực tiễn.
 
 ---
 
@@ -197,11 +206,12 @@ Cancer of the bronchial air"*
 - **Câu dự đoán (Prediction):** *"A legal document specifying healthcare preferences for a patient’s treatment."*
 
 #### Điểm số chi tiết:
-- **Medical Accuracy:** `5/5` — *Câu trả lời hoàn toàn chính xác về mặt y khoa, không chứa thông tin sai lệch hay nguy hiểm.*
-- **Completeness:** `3/5` — *Câu trả lời bỏ sót một chi tiết quan trọng có trong câu trả lời chuẩn: điều kiện khi bệnh nhân không còn khả năng đưa ra quyết định y tế. Điều này làm cho định nghĩa chưa đầy đủ về mặt chức năng của chỉ thị y tế trước.*
-- **Tone & Format:** `5/5` — *Giọng điệu chuyên nghiệp, khách quan và định dạng trực tiếp, không có từ ngữ thừa thãi.*
+- **Medical Accuracy:** `5/5` — *Câu trả lời hoàn toàn chính xác về mặt y khoa, không chứa thông tin sai lệch hay nguy hiểm. Định nghĩa cơ bản về chỉ thị y tế là một tài liệu pháp lý là đúng.*
+- **Completeness:** `3/5` — *Câu trả lời của chatbot chưa đầy đủ bằng câu trả lời chuẩn. Nó thiếu chi tiết quan trọng về mục đích của chỉ thị y tế là để áp dụng 'trong trường hợp bệnh nhân không thể tự đưa ra quyết định y tế'.*
+- **Tone & Format:** `5/5` — *Giọng điệu chuyên nghiệp, khách quan và trực tiếp. Câu trả lời ngắn gọn và đi thẳng vào vấn đề.*
+- **Answer Relevancy:** `5/5` — *Câu trả lời tập trung hoàn toàn vào câu hỏi, không lan man hay đề cập đến thông tin không liên quan.*
 - **ROUGE-1 / ROUGE-L:** `0.4571 / 0.4000`
-- **Nhận xét chung:** Câu trả lời của chatbot chính xác về mặt y khoa và có giọng điệu chuyên nghiệp. Tuy nhiên, nó thiếu một chi tiết quan trọng về ngữ cảnh áp dụng của chỉ thị y tế trước (khi bệnh nhân không thể tự đưa ra quyết định), làm cho định nghĩa chưa hoàn toàn đầy đủ so với câu trả lời chuẩn.
+- **Nhận xét chung:** Chatbot đã đưa ra một định nghĩa chính xác và ngắn gọn về chỉ thị y tế. Tuy nhiên, nó đã bỏ sót một khía cạnh quan trọng về thời điểm mà chỉ thị này có hiệu lực, đó là khi bệnh nhân không còn khả năng tự đưa ra quyết định y tế. Việc bổ sung chi tiết này sẽ giúp câu trả lời đầy đủ và bao quát hơn.
 
 ---
 
@@ -274,11 +284,12 @@ People who have type 2 diabetes are more likely to have high blood sugar levels,
 People who have type 2 diabetes are more likely to have high"*
 
 #### Điểm số chi tiết:
-- **Medical Accuracy:** `4/5` — *Thông tin về bệnh tiểu đường Type 2 và các yếu tố nguy cơ liên quan như cao huyết áp, cholesterol cao, đường huyết cao là chính xác. Tuy nhiên, nó không đề cập rõ ràng đến tiểu đường Type 1, một đối tượng quan trọng có nguy cơ theo câu trả lời chuẩn, làm giảm nhẹ độ bao quát ban đầu của câu trả lời.*
-- **Completeness:** `1/5` — *Câu trả lời của chatbot cực kỳ thiếu sót so với câu trả lời chuẩn. Nó chỉ tập trung vào tiểu đường Type 2 và một vài yếu tố liên quan (huyết áp, cholesterol, đường huyết), bỏ qua hoàn toàn tiểu đường Type 1, ba cách chính mà tiểu đường ảnh hưởng đến nguy cơ, cũng như danh sách rất chi tiết các yếu tố nguy cơ có thể kiểm soát và không thể kiểm soát khác (tuổi tác, giới tính, tiền sử gia đình, hút thuốc, béo phì, tiền tiểu đường, hội chứng chuyển hóa, thiếu hoạt động thể chất, chế độ ăn uống không lành mạnh, căng thẳng, tiền sản giật). Câu cuối cùng cũng bị bỏ dở.*
-- **Tone & Format:** `3/5` — *Giọng điệu chuyên nghiệp và khách quan. Định dạng sử dụng các đoạn văn và gạch đầu dòng khá rõ ràng. Tuy nhiên, việc câu trả lời bị bỏ dở ở cuối làm giảm tính chuyên nghiệp và định dạng tối ưu.*
+- **Medical Accuracy:** `4/5` — *Thông tin được cung cấp hoàn toàn chính xác về mặt y khoa, không chứa sai lệch hay gây nguy hiểm. Tuy nhiên, câu trả lời tập trung chủ yếu vào đái tháo đường type 2 mà bỏ qua đái tháo đường type 1, một yếu tố nguy cơ quan trọng được đề cập trong câu trả lời chuẩn.*
+- **Completeness:** `1/5` — *Câu trả lời của chatbot rất sơ sài và bỏ sót phần lớn các ý chính quan trọng có trong câu trả lời chuẩn. Nó chỉ đề cập đến bệnh đái tháo đường (chủ yếu là type 2) và một số yếu tố liên quan trực tiếp, nhưng hoàn toàn bỏ qua đái tháo đường type 1, cũng như danh sách chi tiết các yếu tố nguy cơ khác có thể kiểm soát được và không thể kiểm soát được cho bệnh tim mạch đái tháo đường.*
+- **Tone & Format:** `5/5` — *Giọng điệu chuyên nghiệp, khách quan, định dạng rõ ràng và trực diện. Không có từ ngữ thừa thãi hay không phù hợp với ngữ cảnh y khoa.*
+- **Answer Relevancy:** `4/5` — *Câu trả lời tập trung vào câu hỏi và các thông tin được cung cấp đều liên quan trực tiếp đến đối tượng có nguy cơ mắc bệnh tim mạch đái tháo đường. Mặc dù thiếu sót về độ đầy đủ, nhưng phần thông tin được trình bày không bị lan man hay lạc đề.*
 - **ROUGE-1 / ROUGE-L:** `0.3266 / 0.1552`
-- **Nhận xét chung:** Câu trả lời của chatbot cung cấp thông tin chính xác về tác động của tiểu đường Type 2 lên bệnh tim mạch nhưng rất thiếu sót về mặt bao quát. Nó bỏ qua nhiều thông tin quan trọng được đề cập trong câu trả lời chuẩn, đặc biệt là về tiểu đường Type 1 và một loạt các yếu tố nguy cơ khác. Việc câu trả lời bị bỏ dở ở cuối cũng là một điểm trừ.
+- **Nhận xét chung:** Câu trả lời của chatbot có giọng điệu chuyên nghiệp và thông tin cung cấp chính xác cho những gì nó đề cập. Tuy nhiên, nó cực kỳ thiếu sót về độ đầy đủ, chỉ tập trung vào đái tháo đường type 2 và các yếu tố liên quan trực tiếp, bỏ qua rất nhiều yếu tố nguy cơ quan trọng khác được nêu trong câu trả lời chuẩn, bao gồm đái tháo đường type 1 và các yếu tố nguy cơ chung của bệnh tim mạch. Do đó, nó chỉ cung cấp một phần rất nhỏ của bức tranh tổng thể về 'ai có nguy cơ mắc bệnh tim mạch đái tháo đường'.
 
 ---
 

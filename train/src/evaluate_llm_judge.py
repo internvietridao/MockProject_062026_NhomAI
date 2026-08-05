@@ -7,6 +7,7 @@ import sys
 import io
 import json
 import random
+import time
 import argparse
 import pandas as pd
 from typing import Dict, List, Optional
@@ -60,7 +61,7 @@ Nhiệm vụ của bạn là đánh giá câu trả lời dự đoán (Predictio
 [CÂU TRẢ LỜI CỦA CHATBOT (PREDICTION)]
 {prediction}
 
-Hãy đánh giá và chấm điểm theo 3 tiêu chí sau trên thang điểm từ 1 đến 5 (1: Tệ nhất, 5: Tốt nhất):
+Hãy đánh giá và chấm điểm theo 4 tiêu chí sau trên thang điểm từ 1 đến 5 (1: Tệ nhất, 5: Tốt nhất):
 
 1. Medical Accuracy & Safety (Độ chính xác và An toàn Y khoa):
 - Điểm 5: Hoàn toàn chính xác về mặt y khoa, không chứa thông tin sai lệch hay nguy hiểm.
@@ -77,6 +78,11 @@ Hãy đánh giá và chấm điểm theo 3 tiêu chí sau trên thang điểm t�
 - Điểm 3-4: Đạt chuẩn chuyên môn nhưng vẫn có một chút từ ngữ thừa, hoặc định dạng chưa tối ưu.
 - Điểm 1-2: Giọng điệu không phù hợp (quá thân mật, không giống chuyên gia y khoa) hoặc cấu trúc hỗn loạn.
 
+4. Answer Relevancy (Độ liên quan của câu trả lời):
+- Điểm 5: Câu trả lời tập trung hoàn toàn vào câu hỏi, đi thẳng vào trọng tâm, không bị lan man hay đề cập đến những thông tin không liên quan.
+- Điểm 3-4: Trả lời đúng câu hỏi nhưng có một số chi tiết hơi lan man hoặc không quá liên quan trực tiếp đến câu hỏi.
+- Điểm 1-2: Trả lời lạc đề, không giải quyết đúng câu hỏi được hỏi hoặc câu trả lời không liên quan.
+
 Yêu cầu đầu ra bắt buộc phải trả về dưới định dạng JSON với cấu trúc sau:
 {{
   "accuracy_score": <int từ 1 đến 5>,
@@ -85,47 +91,93 @@ Yêu cầu đầu ra bắt buộc phải trả về dưới định dạng JSON 
   "completeness_reason": "<Giải thích ngắn gọn bằng tiếng Việt lý do chấm điểm tiêu chí này>",
   "tone_score": <int từ 1 đến 5>,
   "tone_reason": "<Giải thích ngắn gọn bằng tiếng Việt lý do chấm điểm tiêu chí này>",
+  "relevancy_score": <int từ 1 đến 5>,
+  "relevancy_reason": "<Giải thích ngắn gọn bằng tiếng Việt lý do chấm điểm tiêu chí này>",
   "overall_comment": "<Nhận xét tổng quan bằng tiếng Việt về câu trả lời của chatbot>"
 }}
 """
 
 
-def evaluate_with_gemini(model, question: str, reference: str, prediction: str) -> Optional[Dict]:
+def evaluate_with_gemini(model, question: str, reference: str, prediction: str, max_retries: int = 5) -> Optional[Dict]:
     prompt = get_evaluation_prompt(question, reference, prediction)
-    try:
-        response = model.generate_content(prompt)
-        return json.loads(response.text)
-    except Exception as e:
-        print(f"Lỗi khi gọi Gemini API: {str(e)}")
-        return None
+    for attempt in range(max_retries):
+        try:
+            response = model.generate_content(prompt)
+            return json.loads(response.text)
+        except Exception as e:
+            err_msg = str(e)
+            is_rate_limit = "429" in err_msg or "quota" in err_msg.lower() or "limit" in err_msg.lower()
+            
+            if is_rate_limit and attempt < max_retries - 1:
+                import re
+                retry_seconds = 15.0  # Thời gian chờ mặc định nếu không parse được
+                
+                # Trích xuất thời gian chờ từ thông báo lỗi (ví dụ: Please retry in 56.1s. hoặc seconds: 56)
+                match_retry = re.search(r"Please retry in ([\d\.]+)s", err_msg)
+                if match_retry:
+                    retry_seconds = float(match_retry.group(1)) + 1.0
+                else:
+                    match_seconds = re.search(r"seconds:\s*(\d+)", err_msg)
+                    if match_seconds:
+                        retry_seconds = float(match_seconds.group(1)) + 2.0
+                    else:
+                        retry_seconds = (attempt + 1) * 15.0  # Tự động tăng thời gian chờ ở các lần sau
+                
+                print(f"⚠️ Gặp lỗi Rate Limit (429). Thử lại lần {attempt + 1}/{max_retries} sau {retry_seconds:.1f} giây...")
+                time.sleep(retry_seconds)
+            else:
+                print(f"Lỗi khi gọi Gemini API (Lần thử {attempt + 1}/{max_retries}): {err_msg}")
+                if not is_rate_limit:
+                    break
+    return None
 
 
-def evaluate_with_openai(client, question: str, reference: str, prediction: str) -> Optional[Dict]:
+
+def evaluate_with_openai(client, question: str, reference: str, prediction: str, max_retries: int = 5) -> Optional[Dict]:
     prompt = get_evaluation_prompt(question, reference, prediction)
-    try:
-        response = client.chat.completions.create(
-            model="gpt-4o-mini",
-            messages=[
-                {"role": "system", "content": "You are a professional evaluator that outputs structured JSON."},
-                {"role": "user", "content": prompt}
-            ],
-            response_format={"type": "json_object"}
-        )
-        return json.loads(response.choices[0].message.content)
-    except Exception as e:
-        print(f"Lỗi khi gọi OpenAI API: {str(e)}")
-        return None
+    for attempt in range(max_retries):
+        try:
+            response = client.chat.completions.create(
+                model="gpt-4o-mini",
+                messages=[
+                    {"role": "system", "content": "You are a professional evaluator that outputs structured JSON."},
+                    {"role": "user", "content": prompt}
+                ],
+                response_format={"type": "json_object"}
+            )
+            return json.loads(response.choices[0].message.content)
+        except Exception as e:
+            err_msg = str(e)
+            is_rate_limit = "429" in err_msg or "rate limit" in err_msg.lower()
+            
+            if is_rate_limit and attempt < max_retries - 1:
+                retry_seconds = (attempt + 1) * 10.0
+                print(f"⚠️ Gặp lỗi Rate Limit OpenAI (429). Thử lại lần {attempt + 1}/{max_retries} sau {retry_seconds} giây...")
+                time.sleep(retry_seconds)
+            else:
+                print(f"Lỗi khi gọi OpenAI API (Lần thử {attempt + 1}/{max_retries}): {err_msg}")
+                if not is_rate_limit:
+                    break
+    return None
+
 
 
 def main():
     parser = argparse.ArgumentParser(description="Đánh giá kết quả fine-tune bằng LLM-as-a-judge.")
-    parser.add_argument("--csv", type=str, default="outputs_Qwen-0.5B/evaluation_results.csv", help="Đường dẫn tới file CSV kết quả.")
+    parser.add_argument("--csv", type=str, default="outputs_Gemma-2-2B/evaluation_results.csv", help="Đường dẫn tới file CSV kết quả.")
     parser.add_argument("--num_samples", type=int, default=10, help="Số lượng mẫu ngẫu nhiên để đánh giá.")
-    parser.add_argument("--output", type=str, default="LLM-as-Judge/Qwen-0.5B.md", help="Đường dẫn lưu báo cáo Markdown.")
+    parser.add_argument("--output", type=str, default="LLM-as-Judge/Gemma-2-2B.md", help="Đường dẫn lưu báo cáo Markdown.")
     parser.add_argument("--provider", type=str, default="auto", choices=["auto", "gemini", "openai"], help="API Provider sử dụng.")
     args = parser.parse_args()
 
     load_dotenv()
+
+    output_path = args.output
+    if not os.path.isabs(output_path):
+        project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+        if "LLM-as-Judge" in output_path:
+            basename = os.path.basename(output_path)
+            output_path = os.path.join(project_root, "LLM-as-Judge", basename)
 
     csv_path = args.csv
     if not os.path.exists(csv_path):
@@ -185,6 +237,10 @@ def main():
         
         print(f"[{idx+1}/{num_samples}] Đang chấm điểm câu hỏi: {question[:50]}...")
         
+        if idx > 0:
+            sleep_time = 12 if "Gemini" in provider_used else 1
+            time.sleep(sleep_time)
+            
         if "Gemini" in provider_used:
             res = evaluate_with_gemini(client, question, reference, prediction)
         else:
@@ -207,15 +263,24 @@ def main():
     avg_accuracy = sum(r["accuracy_score"] for r in evaluated_results) / len(evaluated_results)
     avg_completeness = sum(r["completeness_score"] for r in evaluated_results) / len(evaluated_results)
     avg_tone = sum(r["tone_score"] for r in evaluated_results) / len(evaluated_results)
-    output_dir = os.path.dirname(args.output)
+    avg_relevancy = sum(r["relevancy_score"] for r in evaluated_results) / len(evaluated_results)
+    output_dir = os.path.dirname(output_path)
     if output_dir:
         os.makedirs(output_dir, exist_ok=True)
 
-    with open(args.output, "w", encoding="utf-8") as f:
+    # Kiểm tra và xóa file cũ nếu đã tồn tại để đảm bảo ghi đè hoàn toàn nội dung mới
+    if os.path.exists(output_path):
+        try:
+            os.remove(output_path)
+        except Exception as e:
+            print(f"⚠️ Không thể xóa file cũ {output_path}: {e}. Tiến hành ghi đè trực tiếp.")
+
+    with open(output_path, "w", encoding="utf-8") as f:
+
         f.write(f"# 🩺 Báo cáo Đánh giá Chất lượng LLM-as-a-judge\n\n")
         f.write(f"- **Mô hình Giám khảo:** {provider_used}\n")
         f.write(f"- **Số lượng mẫu đánh giá:** {len(evaluated_results)} / {len(df)} mẫu ngẫu nhiên\n")
-        f.write(f"- **File nguồn:** `{args.csv}`\n\n")
+        f.write(f"- **File nguồn:** `{csv_path}`\n\n")
         
         f.write(f"## 📊 Điểm số Đánh giá Trung bình (Thang điểm 1-5)\n\n")
         f.write(f"| Tiêu chí đánh giá | Điểm trung bình | Trạng thái | Mô tả tiêu chí |\n")
@@ -224,10 +289,12 @@ def main():
         status_accuracy = "🟢 Tốt" if avg_accuracy >= 4.0 else ("🟡 Trung bình" if avg_accuracy >= 3.0 else "🔴 Yếu")
         status_completeness = "🟢 Tốt" if avg_completeness >= 4.0 else ("🟡 Trung bình" if avg_completeness >= 3.0 else "🔴 Yếu")
         status_tone = "🟢 Tốt" if avg_tone >= 4.0 else ("🟡 Trung bình" if avg_tone >= 3.0 else "🔴 Yếu")
+        status_relevancy = "🟢 Tốt" if avg_relevancy >= 4.0 else ("🟡 Trung bình" if avg_relevancy >= 3.0 else "🔴 Yếu")
         
         f.write(f"| **Medical Accuracy & Safety** | **{avg_accuracy:.2f} / 5.0** | {status_accuracy} | Độ chính xác y khoa và tính an toàn của lời khuyên |\n")
         f.write(f"| **Completeness & Coverage** | **{avg_completeness:.2f} / 5.0** | {status_completeness} | Mức độ đầy đủ thông tin so với câu trả lời chuẩn |\n")
-        f.write(f"| **Professional Tone & Format** | **{avg_tone:.2f} / 5.0** | {status_tone} | Giọng điệu chuyên nghiệp, trực diện, chuẩn ChatML |\n\n")
+        f.write(f"| **Professional Tone & Format** | **{avg_tone:.2f} / 5.0** | {status_tone} | Giọng điệu chuyên nghiệp, trực diện, chuẩn ChatML |\n")
+        f.write(f"| **Answer Relevancy** | **{avg_relevancy:.2f} / 5.0** | {status_relevancy} | Mức độ liên quan và tập trung vào câu hỏi của câu trả lời |\n\n")
         
         f.write(f"## 📝 Chi tiết đánh giá từng mẫu thử nghiệm\n\n")
         
@@ -241,11 +308,12 @@ def main():
             f.write(f"- **Medical Accuracy:** `{r['accuracy_score']}/5` — *{r['accuracy_reason']}*\n")
             f.write(f"- **Completeness:** `{r['completeness_score']}/5` — *{r['completeness_reason']}*\n")
             f.write(f"- **Tone & Format:** `{r['tone_score']}/5` — *{r['tone_reason']}*\n")
+            f.write(f"- **Answer Relevancy:** `{r['relevancy_score']}/5` — *{r['relevancy_reason']}*\n")
             f.write(f"- **ROUGE-1 / ROUGE-L:** `{r['rouge1']:.4f} / {r['rougeL']:.4f}`\n")
             f.write(f"- **Nhận xét chung:** {r['overall_comment']}\n\n")
             f.write(f"---\n\n")
             
-    print(f"Báo cáo đánh giá đã được xuất thành công ra file: {args.output}")
+    print(f"Báo cáo đánh giá đã được xuất thành công ra file: {output_path}")
 
 
 if __name__ == "__main__":

@@ -13,11 +13,18 @@ __pycache__/
 .DS_Store
 Thumbs.db
 
-# ── Training outputs ──
+# ── Training outputs & Heavy Model Weights ──
 checkpoints/
 runs/
 wandb/
-outputs_Qwen-0.5B/*
-!outputs_Qwen-0.5B/evaluation_results.csv
-outputs_Phi-3-3.8B/*
-!outputs_Phi-3-3.8B/evaluation_results.csv
+**/outputs_*/*
+!**/outputs_*/evaluation_results.csv
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.onnx
+
+# ── Vector DB & Large Chunks ──
+**/chroma_db/
+**/chunks/all_chunks.json
